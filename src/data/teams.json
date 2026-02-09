@@ -1,0 +1,56 @@
+[
+    {
+        "image": "/team/sandeep_kalra.jpeg",
+        "title": "Sandeep Agarwal",
+        "subtitle": "Founder & CEO",
+        "handle": "@sandeep_agarwal",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/sandeep-agarwal-504568227/"
+      },
+      {
+        "image": "/team/sunny_kalra.jpeg",
+        "title": "Sunny Kalra",
+        "subtitle": "Founder & Chief Growth Specialist",
+        "handle": "@sunny_kalra",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/sunny-kalra"
+      },
+      {
+        "image": "/team/shourya.jpeg",
+        "title": "Shourya K. Chirania",
+        "subtitle": "Founder & Chief AI Officer",
+        "handle": "@shourya",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/shourya-kumar-chirania-a7a45a190/"
+      },
+      {
+        "image": "/team/ayush.png",
+        "title": "Ayush Mangal",
+        "subtitle":"Developer & Designer",
+        "handle": "@0xayushm",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/0xayushm"
+      },
+      {
+        "image": "/team/vaibhav.jpeg",
+        "title": "Vaibhav Khandelwal",
+        "subtitle": "Tech Manager & AI Engineer",
+        "handle": "@vaibhav_khandelwal",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/vaibhav-khandelwal-437730192/"
+      },
+      {
+        "image": "/team/snehal.jpg",
+        "title": "Snehal Raj",
+        "subtitle": "Developer & AI Engineer",
+        "handle": "@snehal",
+        "borderColor": "#4F46E5",
+        "gradient": "linear-gradient(145deg,#000,#C08457, #000)",
+        "url": "https://www.linkedin.com/in/snehal-raj-darkshark/"
+      }
+]
