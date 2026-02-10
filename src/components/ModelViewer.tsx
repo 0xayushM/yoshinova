@@ -12,19 +12,19 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 import SceneRig from "./SceneRig";
-import Hero from "./Hero";
-import Gear1 from "./Gear1";
-import Gear2 from "./Gear2";
-import Gear3 from "./Gear3";
-import Gear4 from "./Gear4";
-import About from "./About";
-import Philosophy from "./Philosophy";
-import Testimonials from "./Testimonials";
-import Contact from "./Contact";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
+import Section3 from "./Section3";
+import Section4 from "./Section4";
+import Section5 from "./Section5";
+import Section6 from "./Section6";
+import Section7 from "./Section7";
+import Section8 from "./Section8";
 import Section9 from "./Section9";
-import Team from './Team'
+import Section10 from "./Section10";
+import Section11 from "./Section11";
+import Section12 from "./Section12";
+import Section13 from "./Section13";
 
 export default function ModelViewer(): JSX.Element {
   useEffect(() => {
@@ -105,19 +105,19 @@ export default function ModelViewer(): JSX.Element {
           {/* HTML overlay sections (11 full-screen sections) */}
           <Scroll html>
             <div className="relative z-20 w-screen">
-              <Hero />{/* Section 1 */}
-              <About />{/* Section 2 */}
-              <Section1 />{/* Section 3 */}
-              <Section2 />{/* Section 4 */}
-              <Gear1 /> {/* Section 5 */}
-              <Gear2 /> {/* Section 6 */}
-              <Gear3 /> {/* Section 7 */}
-              <Gear4 /> {/* Section 8 */}
-              <Section9/>{/* Section 9 */}
-              <Philosophy/> {/* Section 10 */}
-              <Testimonials/> {/* Section 11 */}
-              <Team/> {/* Section 12 */}
-              <Contact/> {/* Section 13 */}
+              <Section1 />
+              <Section2 />
+              <Section3 />
+              <Section4 />
+              <Section5 />
+              <Section6 />
+              <Section7 />
+              <Section8 />
+              <Section9 />
+              <Section10 />
+              <Section11 />
+              <Section12 />
+              <Section13 />
             </div>
           </Scroll>
           {/* <Footer/> */}

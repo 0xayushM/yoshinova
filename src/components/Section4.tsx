@@ -2,12 +2,12 @@
 
 import React from 'react';
 
-const Section2 = () => {
+const Section4 = () => {
   return (
     <section className="w-screen h-screen flex items-center justify-center">
-      <div className="text-white text-2xl">Section 2</div>
+      <div className="text-white text-2xl">Section 4</div>
     </section>
   );
 };
 
-export default Section2;
+export default Section4;
