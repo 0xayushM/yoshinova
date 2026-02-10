@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Yoshinova",
   description: "Excellence, Happiness, Dharma",
   icons: {
-    icon: "/logo.png",
+    icon: "/logo_white.ico",
   },
 };
 
