@@ -49,17 +49,17 @@ const Section1 = () => {
         <div />
 
         {/* Middle row: Company name left, headline center, learn more right */}
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between border-t border-white/20">
           {/* Left: Company name */}
-          <div className="flex-shrink-0">
-            <h2 className="text-white text-lg md:text-2xl font-light tracking-wide">
+          <div className="flex-shrink-0 pt-4">
+            <h2 className="text-white text-lg md:text-2xl font-bold tracking-wide">
               Yoshinova
             </h2>
           </div>
 
           {/* Center: Main headline */}
-          <div className="flex-1 text-center px-4">
-            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-light leading-tight">
+          <div className="flex-1 px-4 pt-4 flex justify-center items-center w-full">
+            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-medium leading-tight">
               Where Power
               <br />
               Unlocks Potential
@@ -69,7 +69,7 @@ const Section1 = () => {
           {/* Right: Learn More + animated bar */}
           <div className="flex-shrink-0 group cursor-pointer">
             {/* Top bar: small bar on right, slides full width on hover */}
-            <div className="relative w-40 md:w-52 h-[2px] bg-white/20 mb-3 overflow-hidden">
+            <div className="relative w-40 md:w-52 h-[4px] bg-white/20 mb-3 overflow-hidden">
               <div className="absolute top-0 right-0 w-1/4 h-full bg-white transition-all duration-500 ease-out group-hover:w-full group-hover:right-auto group-hover:left-0" />
             </div>
             <div className="flex items-center justify-between">
@@ -91,9 +91,6 @@ const Section1 = () => {
           </p>
         </div>
       </div>
-
-      {/* Decorative horizontal line (right side, middle area) */}
-      <div className="absolute right-6 md:right-10 lg:right-14 top-1/2 -translate-y-12 w-16 md:w-24 h-[1px] bg-white hidden md:block" />
     </section>
   );
 };
