@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description: "Excellence, Happiness, Dharma",
   icons: {
     icon: "/logo_white.ico",
+    apple: "/logo_white.png",
   },
 };
 
