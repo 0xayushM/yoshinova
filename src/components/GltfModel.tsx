@@ -2,6 +2,13 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useGLTF, useAnimations, Center } from "@react-three/drei";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+
+// Configure useGLTF to use Draco decoder
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
+useGLTF.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
 
 interface GltfModelProps {
   url?: string;
@@ -11,7 +18,7 @@ interface GltfModelProps {
 }
 
 export function GltfModel({
-  url = "/models/yoshinova.glb",
+  url = "/models/yoshinova_compressed.glb",
   scale = 0.1,
   position = [0.0, 0.0, 0.0],
   rotation = [0, 0, 0],
@@ -102,6 +109,6 @@ export function GltfModel({
 }
 
 // preload hint (call once when module is imported)
-useGLTF.preload("/models/yoshinova.glb");
+useGLTF.preload("/models/yoshinova_compressed.glb");
 
 export default GltfModel;
