@@ -25,7 +25,7 @@ const Navbar = () => {
           <button onClick={scrollToHome} className='flex items-center cursor-pointer'>
             <Image
               src="/logo.png"
-              alt="EDHWay logo"
+              alt="Yoshinova logo"
               width={160}
               height={40}
               className="h-12 w-auto md:h-12"

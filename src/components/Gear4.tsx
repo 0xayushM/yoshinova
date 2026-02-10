@@ -16,7 +16,7 @@ const Gear4 = () => {
             </h1>
             <hr className="w-full h-[2px] bg-tertiary my-4" />
             <h2 className='text-tertiary text-xl md:text-2xl lg:text-4xl archimoto-bold uppercase w-full tracking-tight'>
-              the EDHWay
+              the Yoshinova
             </h2>
             <p className='text-sm lg:text-2xl text-justify hyphens-auto break-words tracking-tight archimoto transition-colors duration-100 group-hover:text-background mb-4 md:mb-8'>
               Seamless Digital Ecosystem Integration. We design and implement bespoke technological solutions, integrating disparate systems with AI-driven platforms to create a unified, intelligent, and scalable digital infrastructure.
