@@ -83,20 +83,29 @@ export default function ModelViewer(): JSX.Element {
 
   return (
     <div style={{ position: "fixed", inset: 0, width: "100%", height: "100vh", zIndex: 0 }}>
-      <Canvas shadows camera={{ position: [0, 0, 3], fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 45 }}>
+      <Canvas shadows camera={{ position: [0, 0, 3], fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 45 }} gl={{ toneMapping: 4, toneMappingExposure: 1.0 }}>
 
         {/* Lights */}
-        <ambientLight intensity={0.1} />
+        <ambientLight intensity={0.6} />
         <directionalLight
           castShadow
-          position={[0, 0, 0]}
-          intensity={0.1}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
+          position={[5, 8, 5]}
+          intensity={3.2}
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-bias={-0.0005}
+          shadow-normalBias={0.02}
+          shadow-camera-near={0.1}
+          shadow-camera-far={50}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
         />
-        <pointLight position={[-6, -6, -6]} intensity={0.2} />
+        <directionalLight position={[-5, 3, -5]} intensity={0.4} />
+        <pointLight position={[-6, -6, -6]} intensity={0.3} />
 
-        <Environment preset="studio" />
+        <Environment preset="city" environmentIntensity={0.5} />
 
         <ScrollControls pages={13} damping={0.3}>
           <Suspense fallback={null}>
