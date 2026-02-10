@@ -238,7 +238,7 @@ const ContactDialog = ({ isOpen, onClose }: ContactDialogProps) => {
               {/* Right Column: Vertical Text */}
               <div className="hidden lg:flex items-center justify-start">
                 <h1 className="[writing-mode:vertical-lr] text-7xl font-bold tracking-widest nebulax bg-gradient-to-b from-tertiary to-foreground bg-clip-text text-transparent">
-                  EDHWAY
+                  Yoshinova
                 </h1>
               </div>
             </div>

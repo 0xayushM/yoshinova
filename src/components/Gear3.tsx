@@ -16,7 +16,7 @@ const Gear3 = () => {
             </h1>
             <hr className="w-full h-[2px] bg-tertiary my-4" />
             <h2 className='text-tertiary text-xl md:text-2xl lg:text-4xl archimoto-bold uppercase w-full tracking-tight'>
-              the EDHWay
+              the Yoshinova
             </h2>
             <p className='text-sm lg:text-2xl text-justify hyphens-auto break-words tracking-tight archimoto transition-colors duration-100 group-hover:text-background mb-4 md:mb-8'>
               Cashflow & Topline Amplification Engine. We leverage AI for predictive financial analytics, automate expense management, and optimize revenue streams through pricing strategies and operational cost reductions, ensuring robust cash flow and sustained profitability.

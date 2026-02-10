@@ -17,7 +17,7 @@ export default function AnimatedLoading({
 }: Props) {
   return (
     <div
-      aria-label="EDHWAY loading"
+      aria-label="Yoshinova loading"
       className={`animated-heading ${className}`}
       style={{
         color,
@@ -31,7 +31,7 @@ export default function AnimatedLoading({
       }}
     >
       <TextType
-        text={["EDHWAY"]}
+        text={["Yoshinova"]}
         typingSpeed={100}
         pauseDuration={1500}
         showCursor={true}
