@@ -59,10 +59,21 @@ export function GltfModel({
 
       const assignFallback = (mat: any) => {
         if (!mat || mat.isShaderMaterial) {
-          return new THREE.MeshStandardMaterial({
+          const fallback = new THREE.MeshStandardMaterial({
             color: mat && mat.color ? mat.color : new THREE.Color(0xdddddd),
             roughness: 0.6,
           });
+          // Preserve emissive properties from shader materials
+          if (mat && mat.emissive) {
+            fallback.emissive = mat.emissive.clone();
+            fallback.emissiveIntensity = mat.emissiveIntensity ?? 1;
+            if (mat.emissiveMap) fallback.emissiveMap = mat.emissiveMap;
+          }
+          return fallback;
+        }
+        // Keep emissive materials visible but not overpowering
+        if (mat.emissive && (mat.emissive.r > 0 || mat.emissive.g > 0 || mat.emissive.b > 0)) {
+          mat.emissiveIntensity = Math.min(mat.emissiveIntensity ?? 1, 1);
         }
         return mat;
       };
