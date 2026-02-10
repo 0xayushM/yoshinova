@@ -10,8 +10,6 @@ import {
   easeInOut,
   S,
   cuts,
-  shellNames,
-  fadeTargetNames,
   rotAList,
   rotBList,
   getPositions,
@@ -128,12 +126,6 @@ export default function SceneRig(): JSX.Element {
     if (capRef.current) {
       capRef.current.rotation.z = u * Math.PI * 2;
     }
-
-    // -----------------------
-    // GLOBAL CLONE PASS (for fade targets + section targets — clone only once)
-    // -----------------------
-    for (const name of fadeTargetNames) addToGlobalCloneIfNeeded(name);
-
     // -----------------------
     // GLOBAL FADE (skip section-controlled meshes)
     // -----------------------
@@ -166,26 +158,6 @@ export default function SceneRig(): JSX.Element {
           const base = baseOpacity[j] ?? 1;
           m.opacity = base * alpha;
         });
-      }
-    }
-
-    // -----------------------
-    // Shell animation (unchanged logic, with MAX_WORLD_OFFSET tuned)
-    // -----------------------
-    if (modelRef.current) {
-      modelRef.current.updateMatrixWorld(true);
-      for (const name of shellNames) {
-        if (!shells.current[name]) {
-          const ref = modelRef.current.getObjectByName(name) || null;
-          if (ref) {
-            shells.current[name] = {
-              ref,
-              parent: ref.parent || null,
-              baseLocalPos: ref.position.clone(),
-              baseScale: ref.scale.clone(),
-            };
-          }
-        }
       }
     }
 
