@@ -5,7 +5,7 @@ import React from 'react';
 const Section6 = () => {
   return (
     <section className="w-screen h-screen flex items-center justify-center">
-      <div className="text-white text-2xl">Section 6</div>
+      <div className="text-black text-2xl">Section 6</div>
     </section>
   );
 };

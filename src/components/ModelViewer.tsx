@@ -12,6 +12,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 import SceneRig from "./SceneRig";
+import ScrollBroadcaster from "./ScrollBroadcaster";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
@@ -101,6 +102,7 @@ export default function ModelViewer(): JSX.Element {
           <Suspense fallback={null}>
             <SceneRig />
           </Suspense>
+          <ScrollBroadcaster />
 
           {/* HTML overlay sections (11 full-screen sections) */}
           <Scroll html>
