@@ -252,7 +252,7 @@ export default function SceneRig(): JSX.Element {
 
   return (
     <group ref={modelRef}>
-      <GltfModel url="/models/edhway.glb" scale={modelScale} />
+      <GltfModel url="/models/yoshinova.glb" scale={modelScale} />
     </group>
   );
 }

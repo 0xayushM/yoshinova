@@ -16,7 +16,7 @@ const Gear1 = () => {
             </h1>
             <hr className="w-full h-[2px] bg-tertiary my-4" />
             <h2 className='text-tertiary text-xl md:text-2xl lg:text-4xl archimoto-bold uppercase w-full tracking-tight'>
-              the EDHWay
+              the Yoshinova
             </h2>
             <p className='text-sm lg:text-2xl text-justify hyphens-auto break-words tracking-tight archimoto transition-colors duration-100 group-hover:text-background mb-4 md:mb-8'>
               AI-Driven Reach & Conversion Nexus. We deploy advanced AI analytics to pinpoint your ideal audience, craft hyper-targeted campaigns, and automate outreach, ensuring your message cuts through the clutter and converts prospects into loyal customers.

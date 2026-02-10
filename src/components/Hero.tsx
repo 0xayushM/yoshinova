@@ -50,7 +50,7 @@ const Hero = () => {
             
             {/* Subtext */}
             <p className='text-foreground/80 text-base md:text-lg lg:text-xl archimoto mb-10 max-w-xl'>
-              EDHWAY helps growing businesses automate repetitive work, connect broken workflows, and scale without burning teams out.
+              Yoshinova helps growing businesses automate repetitive work, connect broken workflows, and scale without burning teams out.
             </p>
             
             {/* CTA Buttons */}

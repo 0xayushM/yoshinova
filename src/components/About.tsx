@@ -14,7 +14,7 @@ const About = () => {
                     <div className='w-4/5 grid md:grid-cols-2 pt-12 pb-20 md:pt-20 items-center gap-8'>
                         <div>
                             <p className="archimoto text-background text-justify break-words hyphens-auto text-sm md:text-lg">
-                                At <span className='text-background nebulax'>EDHWay</span>, we believe that growth should be smooth, not chaotic. Most businesses lose time, money, and opportunities because of broken workflows, disconnected marketing, and manual follow-ups.
+                                At <span className='text-background nebulax'>Yoshinova</span>, we believe that growth should be smooth, not chaotic. Most businesses lose time, money, and opportunities because of broken workflows, disconnected marketing, and manual follow-ups.
                                 <br />
                                 <br />
                                 Our mission is simple: turn <span className='border-tertiary border-b-2 archimoto-bold'>businesses into growth engines</span> by eliminating inefficiencies and giving them the tools to grow predictably.

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EDHWAY",
+  title: "Yoshinova",
   description: "Excellence, Happiness, Dharma",
   icons: {
     icon: "/logo.png",
