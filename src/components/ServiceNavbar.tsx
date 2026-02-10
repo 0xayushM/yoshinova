@@ -1,95 +1,50 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { services } from '@/utils/services';
+import { useRouter } from 'next/navigation';
 import { useNavDirection } from './PageTransition';
 
-const Navbar = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+const ServiceNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const router = useRouter();
-  const { navigateForward } = useNavDirection();
-
-  useEffect(() => {
-    const handleDreiScroll = (e: Event) => {
-      const offset = (e as CustomEvent).detail?.offset ?? 0;
-      setScrollProgress(offset);
-    };
-
-    window.addEventListener('drei-scroll', handleDreiScroll);
-    return () => window.removeEventListener('drei-scroll', handleDreiScroll);
-  }, []);
-
-  // Lock body scroll when menu is open
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      setHoveredService(null);
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
-
-  const scrollToHome = () => {
-    setMenuOpen(false);
-    const scrollContainer = document.querySelector('.scroll') as HTMLElement;
-    if (scrollContainer) {
-      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  // Logo shrinks from large (120px) to small (48px) over the first section (0 to 1/13)
-  const shrinkEnd = 1 / 13;
-  const shrinkT = Math.min(scrollProgress / shrinkEnd, 1);
-  const logoSize = 120 - 72 * shrinkT; // 120px -> 48px
-
-  // Invert logo to black after section 2 (2/13 of scroll)
-  const invertThreshold = 2 / 13;
-  const isDark = scrollProgress > invertThreshold;
+  const { navigateForward, navigateBack } = useNavDirection();
 
   const hasHover = hoveredService !== null;
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[95] transition-opacity duration-300 ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <div className='flex items-start justify-between w-full p-4 md:px-10 lg:px-14'>
-          <button onClick={scrollToHome} className='flex items-center cursor-pointer'>
+      <nav className="fixed top-0 left-0 w-full z-50">
+        <div className="flex items-center justify-between w-full p-4 md:px-10 lg:px-14">
+          <button onClick={() => { navigateBack(); router.push('/'); }} className="flex items-center cursor-pointer">
             <Image
               src="/logo_white.png"
               alt="Yoshinova logo"
               width={160}
               height={160}
-              className="object-contain transition-[filter] duration-300"
-              style={{
-                height: `${logoSize}px`,
-                width: 'auto',
-                filter: (isDark && !menuOpen) ? 'invert(1)' : 'none',
-              }}
+              className="object-contain"
+              style={{ height: '48px', width: 'auto' }}
               priority
             />
           </button>
-          
-          {/* Menu toggle button */}
-          <button 
+
+          {/* Services menu button */}
+          <button
             onClick={() => setMenuOpen(!menuOpen)}
             className={`flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 backdrop-blur-sm border tracking-wider uppercase text-xs md:text-sm transition-all duration-300 rounded-md cursor-pointer ${
               menuOpen
                 ? 'bg-transparent border-transparent'
-                : isDark
-                  ? 'bg-black/10 hover:bg-black/20 text-black border-black/20'
-                  : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
+                : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
             }`}
           >
             {!menuOpen && (
               <>
-                <span>Yoshinova</span>
+                <span>Services</span>
                 <div className="flex flex-col gap-[3px]">
-                  <span className={`block w-4 h-[1.5px] transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-white'}`} />
-                  <span className={`block w-4 h-[1.5px] transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-white'}`} />
+                  <span className="block w-4 h-[1.5px] bg-white" />
+                  <span className="block w-4 h-[1.5px] bg-white" />
                 </div>
               </>
             )}
@@ -105,12 +60,12 @@ const Navbar = () => {
             : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* Default background (light gray) */}
+        {/* Default background */}
         <div className={`absolute inset-0 bg-[#e8e6e1] transition-transform duration-500 ease-in-out origin-top ${
           menuOpen ? 'scale-y-100' : 'scale-y-0'
         }`} />
 
-        {/* Service background images — all preloaded, opacity-toggled */}
+        {/* Service background images */}
         {services.map((service, i) => (
           <div
             key={i}
@@ -168,7 +123,7 @@ const Navbar = () => {
                       navigateForward();
                       router.push(`/services/${service.slug}`);
                     }}
-                    className={`text-left text-xl lg:text-4xl font-bold uppercase tracking-tight transition-all duration-300 cursor-pointer ${
+                    className={`text-left text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight transition-all duration-300 cursor-pointer ${
                       hasHover
                         ? hoveredService === i
                           ? 'text-white'
@@ -193,4 +148,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default ServiceNavbar;
