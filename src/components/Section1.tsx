@@ -50,16 +50,10 @@ const Section1 = () => {
 
         {/* Middle row: Company name left, headline center, learn more right */}
         <div className="flex justify-between border-t border-white/20">
-          {/* Left: Company name */}
-          <div className="flex-shrink-0 pt-4">
-            <h2 className="text-white text-lg md:text-2xl font-bold tracking-wide">
-              Yoshinova
-            </h2>
-          </div>
 
           {/* Center: Main headline */}
-          <div className="flex-1 px-4 pt-4 flex justify-center items-center w-full">
-            <h1 className="text-white text-2xl md:text-4xl lg:text-5xl font-medium leading-tight">
+          <div className="flex-1 px-4 pt-4 flex justify-start items-center w-full">
+            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium leading-[6rem] tracking-tight uppercase">
               Where Power
               <br />
               Unlocks Potential
@@ -82,7 +76,7 @@ const Section1 = () => {
         </div>
 
         {/* Bottom row: Description block */}
-        <div className="max-w-xs md:max-w-sm">
+        <div className="max-w-xs md:max-w-sm px-4">
           <h3 className="text-white text-sm md:text-base font-semibold mb-2">
             Energy Infrastructure Platform
           </h3>
