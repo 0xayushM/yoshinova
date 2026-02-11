@@ -3,5 +3,5 @@ export const services = [
   { label: 'TELECOM', slug: 'telecom', image: '/images/telecom.jpg' },
   { label: 'INDUSTRIAL', slug: 'industrial', image: '/images/industrial.jpg' },
   { label: 'COMMERCIAL', slug: 'commercial', image: '/images/commercial.jpg' },
-  { label: 'SOLAR', slug: 'solar', image: '/images/solar.jpg' },
+  { label: 'SOLAR POWER', slug: 'solar', image: '/images/solar.jpg' },
 ];

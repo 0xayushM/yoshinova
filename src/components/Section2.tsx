@@ -41,23 +41,11 @@ const Section2 = () => {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content layer */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center p-6 md:p-10 lg:p-14">
+      <div className="relative z-10 w-full h-full flex flex-col justify-center p-6 md:p-10 lg:p-14 lg:px-48">
         {/* Main headline text */}
-        <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-light leading-tight max-w-4xl">
+        <h1 className="text-white text-xl md:text-3xl lg:text-5xl font-medium leading-tight max-w-4xl">
           We take a technology-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow.
         </h1>
-
-        {/* Learn More / Our Platform link */}
-        <div className="mt-12">
-          <p className="text-white/60 text-xs uppercase tracking-widest mb-2">Learn More</p>
-          <div className="flex items-center gap-3 group cursor-pointer">
-            <span className="text-white text-sm md:text-base font-medium">Our Platform</span>
-            <span className="text-green-400 text-lg transition-transform group-hover:translate-x-1">→</span>
-          </div>
-          <div className="mt-2 w-48 h-px bg-white/30 relative">
-            <div className="absolute right-0 bottom-0 w-8 h-0.5 bg-green-400" />
-          </div>
-        </div>
       </div>
     </section>
   );
