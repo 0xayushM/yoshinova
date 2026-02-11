@@ -44,16 +44,14 @@ const Section1 = () => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content layer */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-between p-6 md:p-10 lg:p-14">
-        {/* Top spacer (logo is in fixed Navbar) */}
-        <div />
+      <div className="relative z-10 w-full h-full flex flex-col justify-center p-6 md:p-10 lg:p-14">
 
         {/* Middle row: Company name left, headline center, learn more right */}
-        <div className="flex justify-between border-t border-white/20">
+        <div className="flex justify-between flex-col md:flex-row border-t gap-12 border-white/20">
 
           {/* Center: Main headline */}
           <div className="flex-1 px-4 pt-4 flex justify-start items-center w-full">
-            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium leading-[6rem] tracking-tight uppercase">
+            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase">
               Where Power
               <br />
               Unlocks Potential
@@ -73,16 +71,6 @@ const Section1 = () => {
               <span className="text-white text-lg">↓</span>
             </div>
           </div>
-        </div>
-
-        {/* Bottom row: Description block */}
-        <div className="max-w-xs md:max-w-sm px-4">
-          <h3 className="text-white text-sm md:text-base font-semibold mb-2">
-            Energy Infrastructure Platform
-          </h3>
-          <p className="text-white/80 text-xs md:text-sm font-light leading-relaxed">
-            Yoshinova develops and operates an integrated portfolio of power, digital infrastructure, and compute assets purpose-built to fuel the world&apos;s most transformative technologies.
-          </p>
         </div>
       </div>
     </section>
