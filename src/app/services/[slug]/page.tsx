@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { useRef, useEffect, useState } from 'react';
 import { services } from '@/utils/services';
 import PageNavbar from '@/components/PageNavbar';
+import SmoothScroll from '@/components/SmoothScroll';
 
 export default function ServicePage() {
   const params = useParams();
@@ -18,8 +19,9 @@ export default function ServicePage() {
     if (!containerRef.current || !textRef.current) return;
 
     const resize = () => {
-      const container = containerRef.current!;
-      const text = textRef.current!;
+      if (!containerRef.current || !textRef.current) return;
+      const container = containerRef.current;
+      const text = textRef.current;
       // Get the usable width inside padding
       const style = getComputedStyle(container);
       const availableWidth = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
@@ -55,31 +57,32 @@ export default function ServicePage() {
 
   return (
     <>
-    <PageNavbar />
-    <main className="relative min-h-screen">
-      {/* Hero section with full-screen background */}
-      <section className="relative w-full h-screen overflow-hidden">
-        <Image
-          src={service.image}
-          alt={service.label}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20" />
+      <PageNavbar />
+      <SmoothScroll>
+      <main className="relative min-h-screen">
+        {/* Hero section with full-screen background */}
+        <section className="relative w-full h-screen overflow-hidden">
+          <Image
+            src={service.image}
+            alt={service.label}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/20" />
 
-        {/* Large service name — auto-sized to fill width */}
-        <div ref={containerRef} className="absolute inset-x-0 top-48 z-10 px-6 pb-10 md:pb-16">
-          <h1
-            ref={textRef}
-            className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
-            style={{ fontSize: `${fontSize}px` }}
-          >
-            {service.label}
-          </h1>
-        </div>
-      </section>
-    </main>
+          <div ref={containerRef} className="absolute inset-x-0 top-48 z-10 px-6 pb-10 md:pb-16">
+            <h1
+              ref={textRef}
+              className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
+              style={{ fontSize: `${fontSize}px` }}
+            >
+              {service.label}
+            </h1>
+          </div>
+        </section>
+      </main>
+    </SmoothScroll>
     </>
   );
 }

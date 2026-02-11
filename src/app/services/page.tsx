@@ -8,8 +8,9 @@ import PageNavbar from '@/components/PageNavbar';
 
 export default function AllServicesPage() {
   return (
-    <SmoothScroll>
+    <>
       <PageNavbar isDark />
+      <SmoothScroll>
       <main className="relative min-h-screen bg-[#e8e6e1]">
       <div className="pt-32 pb-20 px-4">
         <h1 className="text-center text-gray-600 text-2xl md:text-3xl font-bold uppercase tracking-tight mb-12">
@@ -42,5 +43,6 @@ export default function AllServicesPage() {
       </div>
     </main>
     </SmoothScroll>
+    </>
   );
 }

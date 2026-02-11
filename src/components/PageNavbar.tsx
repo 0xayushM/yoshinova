@@ -53,10 +53,11 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
 
   return (
     <>
-      {/* Hover zone at top of screen to reveal navbar */}
+      {/* Hover zone at top of screen to reveal navbar — pointer-events only when nav is hidden */}
       <div
         onMouseEnter={handleMouseEnterTop}
         className="fixed top-0 left-0 w-full h-16 z-[9991]"
+        style={{ pointerEvents: navVisible ? 'none' : 'auto' }}
       />
 
       <nav
@@ -64,7 +65,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
         style={{ transform: (navVisible || menuOpen) ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
-          <button onClick={goHome} className="flex items-center cursor-pointer">
+          <button onClick={goHome} className="p-4 flex items-center cursor-pointer">
             <Image
               src="/logo_white.png"
               alt="Yoshinova logo"
