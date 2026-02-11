@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { services } from '@/utils/services';
 import SmoothScroll from '@/components/SmoothScroll';
+import PageNavbar from '@/components/PageNavbar';
 
 export default function AllServicesPage() {
   return (
     <SmoothScroll>
+      <PageNavbar isDark />
       <main className="relative min-h-screen bg-[#e8e6e1]">
       <div className="pt-32 pb-20 px-4">
         <h1 className="text-center text-gray-600 text-2xl md:text-3xl font-bold uppercase tracking-tight mb-12">

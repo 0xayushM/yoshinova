@@ -1,69 +1,67 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { services } from '@/utils/services';
 
-const Navbar = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+interface PageNavbarProps {
+  isDark?: boolean; // true = black text/logo (for light backgrounds), false = white (for dark backgrounds)
+}
+
+const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [navVisible, setNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const router = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
+  // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const handleDreiScroll = (e: Event) => {
-      const offset = (e as CustomEvent).detail?.offset ?? 0;
-      setScrollProgress(offset);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY > lastScrollY.current && currentY > 80) {
+        setNavVisible(false);
+      } else {
+        setNavVisible(true);
+      }
+      lastScrollY.current = currentY;
     };
 
-    window.addEventListener('drei-scroll', handleDreiScroll);
-    return () => window.removeEventListener('drei-scroll', handleDreiScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close menu when navigating
+  useEffect(() => {
+    setMenuOpen(false);
+    setNavVisible(true);
+  }, [pathname]);
+
+  const handleMouseEnterTop = useCallback(() => {
+    setNavVisible(true);
   }, []);
 
   const goHome = () => {
     setMenuOpen(false);
-    const scrollContainer = document.querySelector('.scroll') as HTMLElement;
-    if (scrollContainer) {
-      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    router.push('/');
   };
 
-  // Logo: big only on home page at top, shrinks on scroll or when menu open
-  const smallLogo = 50;
-  const bigLogo = 200;
-  let logoSize: number;
-
-  if (menuOpen || isMobile) {
-    logoSize = smallLogo;
-  } else {
-    const shrinkEnd = 1 / 13;
-    const clampedProgress = scrollProgress < 0.005 ? 0 : scrollProgress;
-    const shrinkT = Math.min(clampedProgress / shrinkEnd, 1);
-    logoSize = bigLogo - (bigLogo - smallLogo) * shrinkT;
-  }
-
-  const invertThreshold = 2 / 13;
-  const isDark = scrollProgress > invertThreshold;
-
   const hasHover = hoveredService !== null;
+  const logoSize = 50;
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
-
-  const content = (
+  return (
     <>
+      {/* Hover zone at top of screen to reveal navbar */}
+      <div
+        onMouseEnter={handleMouseEnterTop}
+        className="fixed top-0 left-0 w-full h-16 z-[9991]"
+      />
+
       <nav
-        className="fixed top-0 left-0 w-full z-[9990]"
+        className="fixed top-0 left-0 w-full z-[9990] transition-transform duration-500 ease-in-out"
+        style={{ transform: (navVisible || menuOpen) ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
           <button onClick={goHome} className="flex items-center cursor-pointer">
@@ -173,9 +171,6 @@ const Navbar = () => {
       </div>
     </>
   );
-
-  if (!mounted) return null;
-  return createPortal(content, document.body);
 };
 
-export default Navbar;
+export default PageNavbar;

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useRef, useEffect, useState } from 'react';
 import { services } from '@/utils/services';
+import PageNavbar from '@/components/PageNavbar';
 
 export default function ServicePage() {
   const params = useParams();
@@ -53,6 +54,8 @@ export default function ServicePage() {
   }
 
   return (
+    <>
+    <PageNavbar />
     <main className="relative min-h-screen">
       {/* Hero section with full-screen background */}
       <section className="relative w-full h-screen overflow-hidden">
@@ -77,5 +80,6 @@ export default function ServicePage() {
         </div>
       </section>
     </main>
+    </>
   );
 }
