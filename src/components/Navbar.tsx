@@ -17,8 +17,16 @@ const Navbar = () => {
   const isServiceDetail = pathname.startsWith('/services/') && pathname !== '/services';
   const isServicesPage = isAllServices || isServiceDetail;
   const [navVisible, setNavVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const lastScrollY = useRef(0);
   const hoverZoneRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleDreiScroll = (e: Event) => {
@@ -75,7 +83,7 @@ const Navbar = () => {
   const bigLogo = 200;
   let logoSize: number;
 
-  if (!isHome || menuOpen) {
+  if (!isHome || menuOpen || isMobile) {
     logoSize = smallLogo;
   } else {
     const shrinkEnd = 1 / 13;
