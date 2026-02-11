@@ -20,16 +20,16 @@ export const cuts = [0.0, S(1), S(2), S(3), S(4), S(5), S(6), S(7), S(8), S(9), 
 
 // Desktop positions
 export const P0 = new THREE.Vector3(0.15, 0, 0);
-export const P1 = new THREE.Vector3(0.1, 0, 0);
-export const P2 = new THREE.Vector3(0.2, 0, 0);
-export const P3 = new THREE.Vector3(1, 0.5, 1);
-export const P4 = new THREE.Vector3(1, 0.2, 3.5);
-export const P5 = new THREE.Vector3(1.1, -0.2, 4.6);
-export const P6 = new THREE.Vector3(0.3, 0, 3);
-export const P7 = new THREE.Vector3(1.5, 0, 2.5);
+export const P1 = new THREE.Vector3(0.2, 0, 0);
+export const P2 = new THREE.Vector3(0.42, 0, 0);
+export const P3 = new THREE.Vector3(1.5, 0.6, 0.6);
+export const P4 = new THREE.Vector3(1.1, 0.2, 3.4);
+export const P5 = new THREE.Vector3(1.2, -0.3, 4.5);
+export const P6 = new THREE.Vector3(1.3, 0.5, 1.7);
+export const P7 = new THREE.Vector3(1, 0, 2.6);
 export const P8 = new THREE.Vector3(0.4, -0.8, 3.5);
 export const P9 = new THREE.Vector3(0.21, 0, 0);
-export const P10 = new THREE.Vector3(0.08, 0, 0);
+export const P10 = new THREE.Vector3(0.25, 0.3, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0.15, 0, 0);
@@ -52,8 +52,8 @@ export const getPositions = (isMobile: boolean) => {
     };
   }
   return {
-    posAList: [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P10],
-    posBList: [P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P10, P10]
+    posAList: [P0, P1, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10],
+    posBList: [P1, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P10]
   };
 };
 
@@ -68,7 +68,7 @@ export const Q_thirdSection = new THREE.Quaternion().setFromEuler(new THREE.Eule
 export const Q_fourthSection = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(-45), deg(0), "YXZ"));
 export const Q_section5 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(-90), deg(-10), "YXZ"));
 export const Q_section6 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(10), deg(-40), deg(-10), "YXZ"));
-export const Q_section7 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(20), deg(0), deg(0), "YXZ"));
+export const Q_section7 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(70), deg(0), "YXZ"));
 export const Q_section8 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-10), deg(110), deg(30), "YXZ"));
 export const Q_section9 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-30), deg(140), deg(20), "YXZ"));
 

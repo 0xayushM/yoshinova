@@ -61,7 +61,8 @@ export function GltfModel({
         if (!mat || mat.isShaderMaterial) {
           const fallback = new THREE.MeshStandardMaterial({
             color: mat && mat.color ? mat.color : new THREE.Color(0xdddddd),
-            roughness: 0.6,
+            roughness: 0.7,
+            envMapIntensity: 1.0,
           });
           // Preserve emissive properties from shader materials
           if (mat && mat.emissive) {
@@ -74,6 +75,13 @@ export function GltfModel({
         // Keep emissive materials visible but not overpowering
         if (mat.emissive && (mat.emissive.r > 0 || mat.emissive.g > 0 || mat.emissive.b > 0)) {
           mat.emissiveIntensity = Math.min(mat.emissiveIntensity ?? 1, 1);
+        }
+        // Outdoor-realistic material tuning
+        if (mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial) {
+          mat.envMapIntensity = Math.min(mat.envMapIntensity ?? 1, 1.2);
+          mat.metalness = Math.min(mat.metalness ?? 0, 0.9);
+          mat.roughness = Math.max(mat.roughness ?? 0.5, 0.15);
+          mat.needsUpdate = true;
         }
         return mat;
       };
