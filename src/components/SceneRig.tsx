@@ -236,7 +236,7 @@ export default function SceneRig(): JSX.Element {
 
   return (
     <group ref={modelRef} name="model-root">
-      <GltfModel url="https://yoshinova-assets.s3.ap-south-1.amazonaws.com/models/yoshinova.glb" scale={modelScale} />
+      <GltfModel url="/models/yoshinova.glb" scale={modelScale} />
     </group>
   );
 }

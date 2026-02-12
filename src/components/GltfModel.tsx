@@ -11,13 +11,13 @@ interface GltfModelProps {
 }
 
 export function GltfModel({
-  url = "https://yoshinova-assets.s3.ap-south-1.amazonaws.com/models/yoshinova.glb",
+  url = "/models/yoshinova.glb",
   scale = 0.1,
   position = [0.0, 0.0, 0.0],
   rotation = [0, 0, 0],
 }: GltfModelProps) {
   const group = useRef<THREE.Group | null>(null);
-  const gltf = useGLTF(url) as any;
+  const gltf = useGLTF(url, true) as any;
   const { actions, mixer } = useAnimations(gltf.animations, group);
 
   // Auto-play & loop all animations
@@ -110,6 +110,6 @@ export function GltfModel({
 }
 
 // preload hint (call once when module is imported)
-useGLTF.preload("https://yoshinova-assets.s3.ap-south-1.amazonaws.com/models/yoshinova.glb");
+useGLTF.preload("/models/yoshinova.glb", true);
 
 export default GltfModel;
