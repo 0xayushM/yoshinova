@@ -71,7 +71,19 @@ export default function SceneRig(): JSX.Element {
       const mesh = child as THREE.Mesh;
       if (processedMeshUUIDs.current.has(mesh.uuid)) return;
       const mats = Array.isArray((mesh as any).material) ? (mesh as any).material : [(mesh as any).material];
-      const cloned = mats.map((m: any) => (m?.isMaterial ? m.clone() : m));
+      const cloned = mats.map((m: any) => {
+        if (!m?.isMaterial) return m;
+        const c = m.clone();
+        // Ensure cloned texture maps have a valid .image so the renderer
+        // doesn't throw "Cannot read properties of undefined (reading 'image')"
+        const texProps = ['map', 'normalMap', 'aoMap', 'emissiveMap', 'roughnessMap', 'metalnessMap', 'alphaMap', 'envMap', 'lightMap', 'bumpMap', 'displacementMap'];
+        for (const prop of texProps) {
+          if (c[prop] && !c[prop].image) {
+            c[prop] = null;
+          }
+        }
+        return c;
+      });
       (mesh as any).material = Array.isArray((mesh as any).material) ? cloned : cloned[0];
       const baseOpacity = cloned.map((m: any) => (typeof m?.opacity === "number" ? m.opacity : 1));
       fadeMeshEntries.current.push({ mesh, baseOpacity });
