@@ -32,16 +32,16 @@ export const P9 = new THREE.Vector3(-0.1, 0, 0);
 export const P10 = new THREE.Vector3(-0.1, 0, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
-export const P0_MOBILE = new THREE.Vector3(0.15, 0, 0);
-export const P1_MOBILE = new THREE.Vector3(0.1, 0, 0);
-export const P2_MOBILE = new THREE.Vector3(0.15, 0, 0);
-export const P3_MOBILE = new THREE.Vector3(0.65, 0.2, 1.5);
-export const P4_MOBILE = new THREE.Vector3(0.5, 0, 1.5);
-export const P5_MOBILE = new THREE.Vector3(0.8, -0.3, 3.5);
-export const P6_MOBILE = new THREE.Vector3(0.2, -0.2, 2.4);
-export const P7_MOBILE = new THREE.Vector3(0.8, -0.2, 2);
+export const P0_MOBILE = new THREE.Vector3(0, 0, 0);
+export const P1_MOBILE = new THREE.Vector3(0, 0, 0);
+export const P2_MOBILE = new THREE.Vector3(-0.05, 0, 0);
+export const P3_MOBILE = new THREE.Vector3(0.65, 0.35, 1.5);
+export const P4_MOBILE = new THREE.Vector3(0.2, 0.2, 3.2);
+export const P5_MOBILE = new THREE.Vector3(0.7, -0.3, 3.5);
+export const P6_MOBILE = new THREE.Vector3(0.9, 0.2, 2.2);
+export const P7_MOBILE = new THREE.Vector3(0.8, -0.3, 2);
 export const P8_MOBILE = new THREE.Vector3(0.3, -0.8, 2.5);
-export const P9_MOBILE = new THREE.Vector3(0.15, 0, 0);
+export const P9_MOBILE = new THREE.Vector3(0, 0, 0);
 
 // Helper function to get positions based on screen size
 export const getPositions = (isMobile: boolean) => {
