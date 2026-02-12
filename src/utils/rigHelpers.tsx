@@ -19,17 +19,17 @@ export const S = (n: number) => n / 12;
 export const cuts = [0.0, S(1), S(2), S(3), S(4), S(5), S(6), S(7), S(8), S(9), S(10), S(11), 1.0];
 
 // Desktop positions
-export const P0 = new THREE.Vector3(0.15, 0, 0);
-export const P1 = new THREE.Vector3(0.2, 0, 0);
-export const P2 = new THREE.Vector3(0.42, 0, 0);
-export const P3 = new THREE.Vector3(1.5, 0.6, 0.6);
-export const P4 = new THREE.Vector3(1.1, 0.2, 3.4);
-export const P5 = new THREE.Vector3(1.2, -0.3, 4.5);
-export const P6 = new THREE.Vector3(1.3, 0.5, 1.7);
-export const P7 = new THREE.Vector3(1, 0, 2.6);
-export const P8 = new THREE.Vector3(0.4, -0.8, 3.5);
-export const P9 = new THREE.Vector3(0.21, 0, 0);
-export const P10 = new THREE.Vector3(0.25, 0.3, 0);
+export const P0 = new THREE.Vector3(0, 0, 0);
+export const P1 = new THREE.Vector3(-0.1, 0, 0);
+export const P2 = new THREE.Vector3(-0.1, 0, 0);
+export const P3 = new THREE.Vector3(1, 0.6, 0.6);
+export const P4 = new THREE.Vector3(1, 0.2, 3.4);
+export const P5 = new THREE.Vector3(0.8, -0.3, 4.5);
+export const P6 = new THREE.Vector3(1.5, 0.5, 2.2);
+export const P7 = new THREE.Vector3(1.2, -0.2, 2.9);
+export const P8 = new THREE.Vector3(0.4, -1, 3.5);
+export const P9 = new THREE.Vector3(-0.1, 0, 0);
+export const P10 = new THREE.Vector3(-0.1, 0, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0.15, 0, 0);
