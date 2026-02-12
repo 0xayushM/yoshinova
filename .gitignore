@@ -33,9 +33,6 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-# large 3D model files (hosted on S3)
-/public/models/*.glb
-
 # vercel
 .vercel
 
