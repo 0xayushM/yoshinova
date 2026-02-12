@@ -3,7 +3,7 @@
 import React, { JSX, Suspense, useEffect } from "react";
 import * as THREE from "three";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Environment, ScrollControls, Scroll } from "@react-three/drei";
+import { ScrollControls, Scroll } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -168,6 +168,7 @@ export default function ModelViewer(): JSX.Element {
       <Canvas
         shadows
         dpr={[1, 2]}
+        style={{ background: 'linear-gradient(180deg, #7bb1e8ff 0%, #d6dce4 40%, #e8e6e1 100%)' }}
         camera={{
           position: [0, 0, 3],
           fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 45,
@@ -175,7 +176,7 @@ export default function ModelViewer(): JSX.Element {
         gl={{
           antialias: true,
           toneMapping: THREE.ACESFilmicToneMapping,
-          toneMappingExposure: 0.9,
+          toneMappingExposure: 1.2,
           outputColorSpace: THREE.SRGBColorSpace,
         }}
       >
@@ -184,21 +185,14 @@ export default function ModelViewer(): JSX.Element {
         <SceneSetup />
 
         {/* Lights — outdoor daylight rig */}
-        <ambientLight intensity={0.15} />
-        <hemisphereLight args={[0x87ceeb, 0xb97a56, 0.4]} />
+        <ambientLight intensity={0.8} />
+        <hemisphereLight args={[0x87ceeb, 0xb97a56, 1.2]} />
 
         {/* Sun light that follows the model so shadows persist at every scroll position */}
         <ShadowLightRig />
 
-        {/* Subtle fill from the opposite side */}
-        <directionalLight position={[-5, 3, -5]} intensity={0.15} />
-
-        {/* HDRI sky — used as both visible background and environment reflections */}
-        <Environment
-          files="/hdri/scene1.exr"
-          background
-          environmentIntensity={0.7}
-        />
+        {/* Fill from the opposite side */}
+        <directionalLight position={[-5, 3, -5]} intensity={0.6} />
 
         <ScrollControls pages={13} damping={0.3}>
           <Suspense fallback={null}>
