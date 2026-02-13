@@ -61,11 +61,11 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
       />
 
       <nav
-        className="fixed top-0 left-0 w-full z-[9990] transition-transform duration-500 ease-in-out"
+        className="fixed top-0 left-0 w-full z-[9990] pointer-events-none transition-transform duration-500 ease-in-out"
         style={{ transform: (navVisible || menuOpen) ? 'translateY(0)' : 'translateY(-100%)' }}
       >
         <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
-          <button onClick={goHome} className="p-4 flex items-center cursor-pointer">
+          <button onClick={goHome} className="p-4 flex items-center cursor-pointer pointer-events-auto">
             <Image
               src="/logo_white.png"
               alt="Yoshinova logo"
@@ -84,7 +84,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
           {/* Brand name — absolutely centered, clickable to go home */}
           <button
             onClick={goHome}
-            className="absolute left-1/2 -translate-x-1/2 text-base md:text-xl lg:text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+            className="absolute left-1/2 -translate-x-1/2 text-base md:text-xl lg:text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
             style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
           >
             Yoshinova
@@ -94,7 +94,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
           <button
             onMouseEnter={() => setMenuOpen(true)}
             onClick={() => { setMenuOpen(false); router.push('/services'); }}
-            className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+            className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
           >
             <div className="flex font-light items-center justify-between gap-8" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}>
               <span>Services</span>
@@ -105,6 +105,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
 
       {/* Full-screen menu overlay (hover preview) */}
       <div
+        onClick={() => { setMenuOpen(false); setHoveredService(null); }}
         className={`fixed inset-0 z-[9980] transition-all duration-500 ease-in-out ${
           menuOpen
             ? 'opacity-100 pointer-events-auto'
@@ -138,7 +139,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
         <div className={`absolute inset-0 z-10 flex items-center transition-opacity duration-300 delay-200 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}>
-          <div className="p-6 md:p-10 lg:p-14 lg:px-64">
+          <div className="p-6 md:p-10 lg:p-14 lg:px-64" onClick={(e) => e.stopPropagation()}>
             <ul className="space-y-1 md:space-y-2">
               {services.map((service, i) => (
                 <li key={i}>
