@@ -27,6 +27,7 @@ import Section10 from "./Section10";
 import Section11 from "./Section11";
 import Section12 from "./Section12";
 import Section13 from "./Section13";
+import BESSCard from "./BESSCard";
 
 /**
  * Configures renderer shadow map type and adds atmospheric fog.
@@ -221,6 +222,7 @@ export default function ModelViewer(): JSX.Element {
           {/* <Footer/> */}
         </ScrollControls>
       </Canvas>
+      <BESSCard />
     </div>
   );
 }

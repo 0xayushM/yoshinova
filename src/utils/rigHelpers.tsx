@@ -22,14 +22,14 @@ export const cuts = [0.0, S(1), S(2), S(3), S(4), S(5), S(6), S(7), S(8), S(9), 
 export const P0 = new THREE.Vector3(0, 0, 0);
 export const P1 = new THREE.Vector3(-0.1, 0, 0);
 export const P2 = new THREE.Vector3(-0.1, 0, 0);
-export const P3 = new THREE.Vector3(1, 0.6, 0.6);
-export const P4 = new THREE.Vector3(0, 0.4, 4);
-export const P5 = new THREE.Vector3(0.8, -0.3, 4.5);
-export const P6 = new THREE.Vector3(1.5, 0.5, 2.2);
-export const P7 = new THREE.Vector3(1.2, -0.2, 2.9);
-export const P8 = new THREE.Vector3(0.4, -1, 3.5);
+export const P3 = new THREE.Vector3(1, 0.6, 0.75);
+export const P4 = new THREE.Vector3(0, 0.4, 4.2);
+export const P5 = new THREE.Vector3(0.8, -0.3, 4.8);
+export const P6 = new THREE.Vector3(1.3, 0.5, 3.05);
+export const P7 = new THREE.Vector3(1.5, 0., 3);
+export const P8 = new THREE.Vector3(0.5, -0.75, 3.6);
 export const P9 = new THREE.Vector3(-0.1, 0, 0);
-export const P10 = new THREE.Vector3(-0.1, 0, 0);
+export const P10 = new THREE.Vector3(-0.1, 0, 0.0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0, 0, 0);
@@ -68,7 +68,7 @@ export const Q_thirdSection = new THREE.Quaternion().setFromEuler(new THREE.Eule
 export const Q_fourthSection = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(-45), deg(0), "YXZ"));
 export const Q_section5 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(-130), deg(0), "YXZ"));
 export const Q_section6 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(10), deg(-40), deg(-10), "YXZ"));
-export const Q_section7 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(0), deg(70), deg(0), "YXZ"));
+export const Q_section7 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(3), deg(50), deg(5), "YXZ"));
 export const Q_section8 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-10), deg(110), deg(30), "YXZ"));
 export const Q_section9 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-30), deg(140), deg(20), "YXZ"));
 
