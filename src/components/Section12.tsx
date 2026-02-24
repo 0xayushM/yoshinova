@@ -44,21 +44,21 @@ const Section12 = () => {
   const currentStory = newsStories[currentIndex];
 
   return (
-    <section className="w-screen h-screen relative overflow-hidden bg-[var(--color-tertiary2)]">
+    <section className="w-screen md:min-h-screen relative overflow-hidden bg-[var(--color-tertiary2)]">
       {/* Top Section - Headline and Description */}
-      <div className="w-full h-1/2 flex flex-col justify-center items-end px-16 relative">
+      <div className="w-full h-full md:h-1/2 flex flex-col-reverse md:flex-col justify-center items-end p-4 md:px-16 relative">
         {/* Navigation Arrows */}
-        <div className="absolute left-12 top-1/2 -translate-y-1/2 flex gap-6">
+        <div className="md:absolute left-4 md:left-12 md:top-1/2 md:-translate-y-1/2 flex gap-6">
           <button 
             onClick={handlePrev}
-            className="w-16 h-16 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
+            className="md:w-16 md:h-16 w-12 h-12 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
             aria-label="Previous story"
           >
             <span className="text-2xl">←</span>
           </button>
           <button 
             onClick={handleNext}
-            className="w-16 h-16 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
+            className="md:w-16 md:h-16 w-12 h-12 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
             aria-label="Next story"
           >
             <span className="text-2xl">→</span>
@@ -66,23 +66,23 @@ const Section12 = () => {
         </div>
 
         {/* Headline and Description */}
-        <div className="max-w-2xl py-12">
-          <h1 className="text-black text-7xl pt-12 md:text-8xl lg:text-9xl font-normal leading-[6rem] mb-6">
+        <div className="max-w-2xl py-4 md:py-12">
+          <h1 className="text-black text-4xl md:pt-12 md:text-8xl lg:text-9xl font-normal leading-[2rem] md:leading-[6rem] mb-4 md:mb-6">
             News & Story
           </h1>
-          <p className="text-black text-lg md:text-xl leading-relaxed">
+          <p className="text-black text-base md:text-xl leading-relaxed">
             Discover how Yoshinova is transforming energy storage across industries. From groundbreaking deployments to innovative solutions, explore our latest achievements in sustainable energy management and BESS technology.
           </p>
         </div>
       </div>
 
       {/* Bottom Section - News Card */}
-      <div className="w-full h-1/2 flex items-stretch">
+      <div className="w-full h-full md:h-1/2 flex flex-col md:flex-row md:items-stretch">
         {/* Left Side - Text Content */}
-        <div className="w-1/2 bg-[#D3D3D3] p-12 flex flex-col justify-between">
+        <div className="w-full md:w-1/2 bg-[#D3D3D3] p-4 md:p-12 flex flex-col justify-between">
           <div>
             <p className="text-black text-xs uppercase tracking-widest mb-6">{currentStory.category}</p>
-            <h2 className="text-black text-4xl md:text-5xl font-normal leading-tight mb-6">
+            <h2 className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6">
               {currentStory.title}
             </h2>
             <p className="text-black/80 text-base leading-relaxed">
@@ -93,7 +93,7 @@ const Section12 = () => {
         </div>
 
         {/* Right Side - Image */}
-        <div className="w-1/2 relative">
+        <div className="w-full md:w-1/2 relative">
           <Image
             src={currentStory.image}
             alt={currentStory.title}

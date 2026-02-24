@@ -51,7 +51,7 @@ const Section1 = () => {
 
           {/* Center: Main headline */}
           <div className="flex-3 pt-4 flex justify-start items-center w-full">
-            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase pl-12">
+            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase px-4 md:pl-12">
               Where Power
               UnlocksPotential
             </h1>
@@ -59,7 +59,7 @@ const Section1 = () => {
 
           {/* Right: Learn More + animated bar */} 
           <div className="flex-1 flex-shrink-0 group">
-            <p className="text-white text-lg md:text-xl font-light tracking-tight text-left mr-auto my-4 px-8 border-l border-white/50">
+            <p className="text-white text-base md:text-xl font-light tracking-tight text-left mr-auto my-4 px-4 md:px-8 md:border-l md:border-white/50">
               Advanced battery energy storage systems designed for industrial, commercial, and residential applications. Eliminate diesel dependency, optimize power costs, and create revenue-generating assets through intelligent energy management.
             </p>
           </div>

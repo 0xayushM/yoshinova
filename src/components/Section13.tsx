@@ -125,7 +125,7 @@ const Section13 = () => {
         <h1
           className="font-bold leading-[1.1] w-full text-center select-none"
           style={{
-            fontSize: 'clamp(80px, 14vw, 220px)',
+            fontSize: 'clamp(100px, 14vw, 150px)',
             letterSpacing: '-0.02em',
             marginBottom: '-0.05em',
             background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',
