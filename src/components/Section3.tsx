@@ -23,7 +23,7 @@ const Section3 = () => {
 
       {/* Top left category label */}
       <div className="absolute top-24 right-12 z-20">
-        <p className="text-tertiary text-xs uppercase tracking-widest">[01] — CORE EXPERTISE</p>
+        <p className="text-[#6A9F30] text-xs uppercase tracking-widest">[01] — CORE EXPERTISE</p>
       </div>
 
       {/* Main content */}
@@ -50,7 +50,7 @@ const Section3 = () => {
           </h1>
           
           <div className="space-y-6 max-w-md">
-            <h2 className=" text-2xl text-tertiary font-normal border-t-2 border-tertiary">
+            <h2 className=" text-2xl text-[#6A9F30] font-normal border-t-2 border-tertiary">
               Optimize Your Operations
             </h2>
             <p className="text-white/80 text-base leading-relaxed">

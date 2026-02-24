@@ -53,7 +53,7 @@ const Section11 = () => {
                 Advisor
               </h3>
             </div>
-            <div className="flex-1 py-16 px-12 border-r bg-tertiary border-slate-300">
+            <div className="flex-1 py-16 px-12 border-r bg-[#6A9F30] border-slate-300">
               <h3 className="text-white text-3xl md:text-4xl font-light">
                 Technical
                 <br />
