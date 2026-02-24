@@ -5,19 +5,19 @@ import React from 'react';
 
 const Section2 = () => {
   return (
-    <section className="w-screen h-screen relative overflow-hidden bg-slate-300/90">
+    <section className="w-screen min-h-screen relative overflow-hidden bg-slate-300/90">
       <div className="w-full h-full flex flex-col justify-center items-end">
         {/* Title Section */}
-      <div className="w-full py-16 px-12 pt-48">
-        <h1 className="text-black uppercase text-5xl md:text-7xl font-light text-left leading-[3rem]">
+      <div className="w-full py-16 px-4 md:px-12 md:pt-48">
+        <h1 className="text-black uppercase text-4xl md:text-7xl font-light text-left leading-[3rem]">
           The dual bleed
           <br />
-          <span className="font-normal leading-[6rem] uppercase">in power costs</span>
+          <span className="font-normal leading-[1rem] md:leading-[6rem] uppercase">in power costs</span>
         </h1>
       </div>
 
       {/* Grid Layout - 4 columns */}
-      <div className="w-full h-[calc(100%-200px)] grid grid-cols-4">
+      <div className="w-full h-[calc(100%-200px)] grid md:grid-cols-2 lg:grid-cols-4">
         {/* Column 1: Image */}
         <div className="bg-slate-400 relative overflow-hidden">
           <Image 
@@ -30,9 +30,9 @@ const Section2 = () => {
         </div>
 
         {/* Column 2: Inside Bleed */}
-        <div className="bg-slate-200 flex flex-col justify-between p-12">
+        <div className="bg-slate-200 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-3xl font-normal mb-6">
+            <h2 className="text-black text-2xl md:text-3xl font-normal mb-6">
               Inside Bleed
             </h2>
             <p className="text-black text-base leading-relaxed mb-8">
@@ -49,9 +49,9 @@ const Section2 = () => {
         </div>
 
         {/* Column 3: Outside Bleed */}
-        <div className="bg-slate-100 flex flex-col justify-between p-12">
+        <div className="bg-slate-100 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-3xl font-normal mb-6">
+            <h2 className="text-black text-2xl md:text-3xl font-normal mb-6">
               Outside Bleed
             </h2>
             <p className="text-black text-base leading-relaxed mb-8">
@@ -59,16 +59,16 @@ const Section2 = () => {
             </p>
           </div>
           <div className="flex justify-center">
-            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="md:w-20 md:h-20 w-16 h-16" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M50 20 L65 40 L55 40 L55 60 L70 60 L50 90 L50 65 L35 65 L50 20 Z" fill="currentColor" />
             </svg>
           </div>
         </div>
 
         {/* Column 4: The Solution */}
-        <div className="bg-[#6A9F30] flex flex-col justify-between p-12">
+        <div className="bg-[#6A9F30] flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-white text-3xl font-normal mb-6">
+            <h2 className="text-white text-2xl md:text-3xl font-normal mb-6">
               The Solution
             </h2>
             <p className="text-white text-base leading-relaxed mb-8">

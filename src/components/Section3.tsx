@@ -27,7 +27,7 @@ const Section3 = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full h-full flex items-center justify-between px-12">
+      <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
         {/* Left side - Large headline and description */}
         <div className="flex-1 max-w-2xl h-full flex items-center justify-center">
           <Image 
