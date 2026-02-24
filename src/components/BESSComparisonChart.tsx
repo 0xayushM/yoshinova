@@ -149,10 +149,10 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
   const wWidth = hoveredLegend === "with" ? 2.5 : 2;
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full flex flex-col">
       {/* Legend */}
-      <div className="flex items-center gap-4 mb-3 text-[10px] md:text-xs text-white/50 flex-wrap">
-        <span className="font-medium text-white/60 text-[9px] uppercase tracking-wider">{yAxisLabel}</span>
+      <div className="flex items-center gap-4 mb-3 text-[10px] md:text-xs text-black/70 flex-wrap flex-shrink-0">
+        <span className="font-medium text-black/80 text-[9px] uppercase tracking-wider">{yAxisLabel}</span>
         <span
           className="flex items-center gap-1.5 cursor-pointer transition-opacity duration-200"
           style={{ opacity: hoveredLegend === "with" ? 0.4 : 1 }}
@@ -174,7 +174,8 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
       </div>
 
       {/* SVG Chart */}
-      <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+      <div className="flex-1 min-h-0 flex items-center justify-center">
+        <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-full max-h-full bg-white rounded-lg" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id={`bessGrad-${uid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={`rgba(${accentRgb}, 0.2)`} />
@@ -199,8 +200,8 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
           const y = toY(val);
           return (
             <g key={`y-${i}`}>
-              <line x1={padL} x2={padL + plotW} y1={y} y2={y} stroke="rgba(255,255,255,0.06)" strokeWidth={0.5} />
-              <text x={padL - 6} y={y + 3} textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize={8}>
+              <line x1={padL} x2={padL + plotW} y1={y} y2={y} stroke="rgba(0,0,0,0.1)" strokeWidth={0.5} />
+              <text x={padL - 6} y={y + 3} textAnchor="end" fill="rgba(0,0,0,0.6)" fontSize={8}>
                 {val.toFixed(val >= 1 ? 1 : 2)}{yAxisUnit}
               </text>
             </g>
@@ -208,11 +209,11 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
         })}
 
         {xLabels.map((label, i) => (
-          <text key={label} x={toX(xHours[i])} y={padT + plotH + 14} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize={8}>
+          <text key={label} x={toX(xHours[i])} y={padT + plotH + 14} textAnchor="middle" fill="rgba(0,0,0,0.6)" fontSize={8}>
             {label}
           </text>
         ))}
-        <text x={padL - 6} y={padT + plotH + 14} textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize={8}>Hour</text>
+        <text x={padL - 6} y={padT + plotH + 14} textAnchor="end" fill="rgba(0,0,0,0.6)" fontSize={8}>Hour</text>
 
         {/* Fills */}
         <path ref={fillRef} d={withFillPath} fill={`url(#bessGrad-${uid})`} style={{ opacity: 0 }} />
@@ -254,6 +255,7 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
           style={{ transform: "scale(0)", transformOrigin: `${peakX}px ${peakY}px` }}
         />
       </svg>
+      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@ import ScrollBroadcaster from "./ScrollBroadcaster";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
-import Section3_5 from "./Section3_5";
+import Section3_2 from "./Section3_2";
 import Section4 from "./Section4";
 import Section5 from "./Section5";
 import Section6 from "./Section6";
@@ -201,13 +201,13 @@ export default function ModelViewer(): JSX.Element {
           </Suspense>
           <ScrollBroadcaster />
 
-          {/* HTML overlay sections (14 full-screen sections) */}
+          {/* HTML overlay sections (15 full-screen sections) */}
           <Scroll html>
             <div className="relative z-20 w-screen">
               <Section1 />
               <Section2 />
               <Section3 />
-              <Section3_5 />
+              <Section3_2 />
               <Section4 />
               <Section5 />
               <Section6 />
