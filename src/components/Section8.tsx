@@ -7,7 +7,7 @@ import { commercialData } from '@/utils/bessData';
 const Section8 = () => {
   return (
     <section className="w-screen h-screen relative overflow-hidden">
-      <BESSCard zone={commercialData} align="left" sectionIndex={7} />
+      <BESSCard zone={commercialData} align="left" sectionIndex={8} />
     </section>
   );
 };
