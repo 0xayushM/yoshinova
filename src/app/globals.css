@@ -44,3 +44,141 @@ html, body {
   overflow: visible;
   width: 100%;
 }
+
+/* ── BESS Card — liquid glass effect ── */
+@keyframes bess-border-rotate {
+  0%   { --bess-angle: 0deg; }
+  100% { --bess-angle: 360deg; }
+}
+
+@keyframes bess-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes bess-glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.7; }
+}
+
+@property --bess-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.bess-card-outer {
+  position: relative;
+  border-radius: 16px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--bess-angle),
+    rgba(255,255,255,0.06) 0%,
+    rgba(var(--zone-rgb, 120,200,255), 0.25) 25%,
+    rgba(var(--zone-rgb, 120,200,255), 0.12) 50%,
+    rgba(255,255,255,0.04) 75%,
+    rgba(255,255,255,0.06) 100%
+  );
+  animation: bess-border-rotate 6s linear infinite;
+}
+
+.bess-card-outer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: conic-gradient(
+    from var(--bess-angle),
+    transparent 0%,
+    rgba(var(--zone-rgb, 120,200,255), 0.12) 25%,
+    rgba(var(--zone-rgb, 120,200,255), 0.06) 50%,
+    transparent 75%
+  );
+  filter: blur(20px);
+  animation: bess-glow-pulse 3s ease-in-out infinite, bess-border-rotate 6s linear infinite;
+  z-index: -1;
+}
+
+.bess-card-inner {
+  position: relative;
+  border-radius: 14.5px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 15, 20, 0.88) 0%,
+      rgba(25, 28, 40, 0.92) 40%,
+      rgba(18, 20, 30, 0.90) 100%
+    );
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  overflow: hidden;
+}
+
+.bess-card-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06) 0%,
+    transparent 50%,
+    rgba(255,255,255,0.02) 100%
+  );
+  pointer-events: none;
+}
+
+.bess-card-inner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(var(--zone-rgb, 120,200,255), 0.06) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 80%,
+    rgba(var(--zone-rgb, 120,200,255), 0.03) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.bess-card-outer:hover .bess-card-inner::after {
+  opacity: 1;
+}
+
+.bess-stat-block {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.bess-stat-block:hover {
+  background: rgba(var(--zone-rgb, 120,200,255), 0.06);
+  border-color: rgba(var(--zone-rgb, 120,200,255), 0.15);
+  box-shadow: 0 0 16px rgba(var(--zone-rgb, 120,200,255), 0.1),
+              inset 0 0 12px rgba(var(--zone-rgb, 120,200,255), 0.04);
+}
+
+.bess-shimmer-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: bess-shimmer 4s ease-in-out infinite;
+}
