@@ -52,8 +52,13 @@ const Navbar = () => {
     logoSize = bigLogo - (bigLogo - smallLogo) * shrinkT;
   }
 
-  const invertThreshold = 2 / 13;
+  const invertThreshold = 9 / 14;
   const isDark = scrollProgress > invertThreshold;
+
+  // Hide navbar from Section4 (4/14) to Section10 (10/14)
+  const hideStartThreshold = 4 / 14;
+  const hideEndThreshold = 11 / 14;
+  const isHidden = scrollProgress >= hideStartThreshold && scrollProgress < hideEndThreshold;
 
   const hasHover = hoveredService !== null;
 
@@ -63,7 +68,8 @@ const Navbar = () => {
   const content = (
     <>
       <nav
-        className="fixed top-0 left-0 w-full z-[9990] pointer-events-none"
+        className="fixed top-0 left-0 w-full z-[9990] pointer-events-none transition-opacity duration-500"
+        style={{ opacity: isHidden ? 0 : 1 }}
       >
         <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
           <button onClick={goHome} className="flex items-center cursor-pointer pointer-events-auto">

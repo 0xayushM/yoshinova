@@ -44,32 +44,24 @@ const Section1 = () => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content layer */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center p-6 md:p-10 lg:p-14">
+      <div className="relative z-10 w-full h-full flex flex-col justify-center ">
 
         {/* Middle row: Company name left, headline center, learn more right */}
-        <div className="flex justify-between flex-col md:flex-row border-t gap-12 border-white/20">
+        <div className="flex justify-between flex flex-col md:flex-row border-t border-white/20">
 
           {/* Center: Main headline */}
-          <div className="flex-1 px-4 pt-4 flex justify-start items-center w-full">
-            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase">
+          <div className="flex-3 pt-4 flex justify-start items-center w-full">
+            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase pl-12">
               Where Power
-              <br />
-              Unlocks Potential
+              UnlocksPotential
             </h1>
           </div>
 
-          {/* Right: Learn More + animated bar */}
-          <div className="flex-shrink-0 group cursor-pointer">
-            {/* Top bar: small bar on right, slides full width on hover */}
-            <div className="relative w-40 md:w-52 h-[4px] bg-white/20 mb-3 overflow-hidden">
-              <div className="absolute top-0 right-0 w-1/4 h-full bg-white transition-all duration-500 ease-out group-hover:w-full group-hover:right-auto group-hover:left-0" />
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-white text-sm md:text-base font-light tracking-wide">
-                Learn More
-              </span>
-              <span className="text-white text-lg">↓</span>
-            </div>
+          {/* Right: Learn More + animated bar */} 
+          <div className="flex-1 flex-shrink-0 group">
+            <p className="text-white text-lg md:text-xl font-light tracking-tight text-left mr-auto my-4 px-8 border-l border-white/50">
+              Advanced battery energy storage systems designed for industrial, commercial, and residential applications. Eliminate diesel dependency, optimize power costs, and create revenue-generating assets through intelligent energy management.
+            </p>
           </div>
         </div>
       </div>
