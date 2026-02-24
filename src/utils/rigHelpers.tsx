@@ -34,7 +34,7 @@ export const P11 = new THREE.Vector3(1, 0.5, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0, 0, 0);
-export const P1_MOBILE = new THREE.Vector3(0, 0, 0);
+export const P1_MOBILE = new THREE.Vector3(0, 0, 1);
 export const P2_MOBILE = new THREE.Vector3(-0.05, 0, 0);
 export const P3_MOBILE = new THREE.Vector3(-0.05, 0, 0);
 export const P4_MOBILE = new THREE.Vector3(0.6, 0.2, 1.2); //household
@@ -48,10 +48,10 @@ export const P9_MOBILE = new THREE.Vector3(0.4, -0.4, 2.5); // solar
 export const getPositions = (isMobile: boolean) => {
   if (isMobile) {
     return {
-      posAList: [P0_MOBILE, P1_MOBILE, P2_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE],
-      posBList: [P1_MOBILE, P2_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE],
-      rotAList: rotAList_MOBILE,
-      rotBList: rotBList_MOBILE
+      posAList: [P0_MOBILE, P1_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE],
+      posBList: [P1_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE],
+      rotAList: rotAList,
+      rotBList: rotBList
     };
   }
   return {
@@ -80,5 +80,5 @@ export const Q_section9 = new THREE.Quaternion().setFromEuler(new THREE.Euler(de
 export const rotAList = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
 export const rotBList = [Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
 
-export const rotAList_MOBILE = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection,Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
-export const rotBList_MOBILE = [Q_secondSection, Q_thirdSection, Q_thirdSection,Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
+export const rotAList_MOBILE = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_thirdSection,Q_secondSection, Q_secondSection];
+export const rotBList_MOBILE = [Q_secondSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection,Q_thirdSection, Q_secondSection, Q_secondSection];

@@ -4,15 +4,15 @@ import React from 'react';
 
 const Section11 = () => {
   return (
-    <section className="w-full h-full md:min-h-screen relative overflow-hidden">
+    <section className="w-full h-screen md:min-h-screen relative overflow-hidden">
       <div className="flex flex-col h-full justify-between">
         {/* Main Content Area */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2">
+        <div className="w-full h-screen md:h-full grid grid-cols-1 md:grid-cols-2">
           {/* Left: Content */}
-          <div className="flex flex-col justify-between p-4 md:p-16 bg-white">
+          <div className="flex flex-col justify-between p-4 pt-20 md:p-16 bg-white">
             {/* Large Headline */}
             <div>
-              <h1 className="text-black text-4xl md:text-7xl lg:text-8xl font-medium leading-[2rem] md:leading-[6rem] my-4 md:my-12 uppercase">
+              <h1 className="text-black text-4xl md:text-7xl lg:text-8xl font-medium leading-[2rem] md:leading-[6rem] mb-4 md:my-12 uppercase">
                 The Yoshinova
                 <br />
                 Quality
