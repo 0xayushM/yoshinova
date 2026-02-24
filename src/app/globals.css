@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-tertiary: #6A9F30;
+}
+
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('/fonts/HelveticaNeueLTW0545Light.otf') format('opentype');

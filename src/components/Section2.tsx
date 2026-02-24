@@ -1,81 +1,90 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import Image from 'next/image';
+import React from 'react';
 
 const Section2 = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = (e: Event) => {
-      if (!sectionRef.current || !bgRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = Math.max(0, Math.min(1, 1 - rect.top / vh));
-      const parallaxY = (progress - 0.5) * vh * 0.3;
-      bgRef.current.style.transform = `translateY(${parallaxY}px)`;
-    };
-
-    window.addEventListener('drei-scroll', handleScroll);
-    return () => window.removeEventListener('drei-scroll', handleScroll);
-  }, []);
-
   return (
-    <section ref={sectionRef} className="w-screen h-screen relative overflow-hidden">
-      {/* Background Video (parallax layer) */}
-      <div ref={bgRef} className="absolute will-change-transform" style={{ top: '-15%', left: 0, right: 0, height: '130%' }}>
-      <video
-        className="w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-      >
-        <source src="/video/about.mp4" type="video/mp4" />
-      </video>
+    <section className="w-screen h-screen relative overflow-hidden bg-slate-300/90">
+      <div className="w-full h-full flex flex-col justify-center items-end">
+        {/* Title Section */}
+      <div className="w-full py-16 px-12 pt-48">
+        <h1 className="text-black uppercase text-5xl md:text-7xl font-light text-left leading-[3rem]">
+          The dual bleed
+          <br />
+          <span className="font-normal leading-[6rem] uppercase">in power costs</span>
+        </h1>
       </div>
 
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* Grid Layout - 4 columns */}
+      <div className="w-full h-[calc(100%-200px)] grid grid-cols-4">
+        {/* Column 1: Image */}
+        <div className="bg-slate-400 relative overflow-hidden">
+          <Image 
+            src="/images/industrial2.jpg" 
+            alt="Industrial facility"
+            className="w-full h-full object-cover"
+            width={500}
+            height={500}
+          />
+        </div>
 
-      {/* Content layer */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center p-6 md:p-10 lg:p-14">
-        <div className="max-w-7xl mx-auto w-full space-y-12">
-          {/* Main headline */}
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center mb-16">
-            You Are Paying For Power Twice
-          </h1>
-          
-          {/* Two-column pain points */}
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            {/* Block 1: Inside Bleed */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-10 rounded-lg space-y-4 hover:bg-white/15 transition-all duration-300">
-              <div className="text-red-400 text-6xl font-bold mb-4">01</div>
-              <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">The Inside Bleed</h2>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-                Inefficient motors, poor power factors, and hidden leaks on your floor are silently draining your margins.
-              </p>
-            </div>
-            
-            {/* Block 2: Outside Bleed */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 md:p-10 rounded-lg space-y-4 hover:bg-white/15 transition-all duration-300">
-              <div className="text-red-400 text-6xl font-bold mb-4">02</div>
-              <h2 className="text-white text-2xl md:text-3xl font-bold mb-4">The Outside Bleed</h2>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-                Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit.
-              </p>
-            </div>
-          </div>
-          
-          {/* Transition statement */}
-          <div className="text-center pt-8">
-            <p className="text-white text-2xl md:text-3xl font-light italic">
-              You cannot fix one without the other. That is why we built a two-step system.
+        {/* Column 2: Inside Bleed */}
+        <div className="bg-slate-200 flex flex-col justify-between p-12">
+          <div>
+            <h2 className="text-black text-3xl font-normal mb-6">
+              Inside Bleed
+            </h2>
+            <p className="text-black text-base leading-relaxed mb-8">
+              Inefficient motors, poor power factors, and hidden energy leaks on your production floor silently drain margins. Without real-time monitoring and optimization, you're paying for wasted power every single day.
             </p>
           </div>
+          <div className="flex justify-center">
+            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="50" cy="50" r="30" />
+              <path d="M50 20 L50 35 M50 65 L50 80 M20 50 L35 50 M65 50 L80 50" />
+              <circle cx="50" cy="50" r="8" fill="currentColor" />
+            </svg>
+          </div>
         </div>
+
+        {/* Column 3: Outside Bleed */}
+        <div className="bg-slate-100 flex flex-col justify-between p-12">
+          <div>
+            <h2 className="text-black text-3xl font-normal mb-6">
+              Outside Bleed
+            </h2>
+            <p className="text-black text-base leading-relaxed mb-8">
+              Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit. This external pressure compounds internal inefficiencies, creating a double financial drain.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M50 20 L65 40 L55 40 L55 60 L70 60 L50 90 L50 65 L35 65 L50 20 Z" fill="currentColor" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Column 4: The Solution */}
+        <div className="bg-tertiary flex flex-col justify-between p-12">
+          <div>
+            <h2 className="text-white text-3xl font-normal mb-6">
+              The Solution
+            </h2>
+            <p className="text-white text-base leading-relaxed mb-8">
+              Our two-step system addresses both bleeds simultaneously. First, we audit and optimize your floor operations. Then, we deploy custom-sized BESS to eliminate diesel dependency and arbitrage peak tariffs.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="20" y="30" width="60" height="40" />
+              <path d="M30 50 L45 50 M55 50 L70 50" strokeWidth="3" />
+              <circle cx="50" cy="50" r="5" fill="currentColor" />
+              <path d="M40 20 L40 30 M60 20 L60 30 M40 70 L40 80 M60 70 L60 80" />
+            </svg>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
   );
