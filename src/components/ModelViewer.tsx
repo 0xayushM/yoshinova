@@ -17,6 +17,7 @@ import ScrollBroadcaster from "./ScrollBroadcaster";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
+import Section3_5 from "./Section3_5";
 import Section4 from "./Section4";
 import Section5 from "./Section5";
 import Section6 from "./Section6";
@@ -119,7 +120,7 @@ export default function ModelViewer(): JSX.Element {
       const scrollContainer = document.querySelector('.scroll') as HTMLElement;
       
       if (scrollContainer) {
-        const totalPages = 13;
+        const totalPages = 14;
         let isSnapping = false;
         let snapTimeout: NodeJS.Timeout;
 
@@ -194,18 +195,19 @@ export default function ModelViewer(): JSX.Element {
         {/* Fill from the opposite side */}
         <directionalLight position={[-5, 3, -5]} intensity={0.6} />
 
-        <ScrollControls pages={13} damping={0.3}>
+        <ScrollControls pages={14} damping={0.3}>
           <Suspense fallback={null}>
             <SceneRig />
           </Suspense>
           <ScrollBroadcaster />
 
-          {/* HTML overlay sections (11 full-screen sections) */}
+          {/* HTML overlay sections (14 full-screen sections) */}
           <Scroll html>
             <div className="relative z-20 w-screen">
               <Section1 />
               <Section2 />
               <Section3 />
+              <Section3_5 />
               <Section4 />
               <Section5 />
               <Section6 />

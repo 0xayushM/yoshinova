@@ -7,7 +7,7 @@ import { residentialData } from '@/utils/bessData';
 const Section4 = () => {
   return (
     <section className="w-screen h-screen relative overflow-hidden">
-      <BESSCard zone={residentialData} align="right" sectionIndex={3} />
+      <BESSCard zone={residentialData} align="right" sectionIndex={4} />
     </section>
   );
 };
