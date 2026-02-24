@@ -5,21 +5,21 @@ import React from 'react';
 
 const Section2 = () => {
   return (
-    <section className="w-screen h-screen relative overflow-hidden bg-slate-300/90">
+    <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-slate-300/90">
       <div className="w-full h-full flex flex-col justify-center items-end">
         {/* Title Section */}
-      <div className="w-full py-16 px-12 pt-48">
-        <h1 className="text-black uppercase text-5xl md:text-7xl font-light text-left leading-[3rem]">
+      <div className="w-full py-8 md:py-16 px-4 md:px-12 md:pt-48">
+        <h1 className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[3rem]">
           The dual bleed
           <br />
-          <span className="font-normal leading-[6rem] uppercase">in power costs</span>
+          <span className="font-normal leading-[1rem] md:leading-[6rem] uppercase">in power costs</span>
         </h1>
       </div>
 
       {/* Grid Layout - 4 columns */}
-      <div className="w-full h-[calc(100%-200px)] grid grid-cols-4">
+      <div className="w-full h-[calc(100%-200px)] grid md:grid-cols-2 lg:grid-cols-4">
         {/* Column 1: Image */}
-        <div className="bg-slate-400 relative overflow-hidden">
+        <div className="hidden md:block bg-slate-400 relative overflow-hidden">
           <Image 
             src="/images/industrial2.jpg" 
             alt="Industrial facility"
@@ -30,16 +30,16 @@ const Section2 = () => {
         </div>
 
         {/* Column 2: Inside Bleed */}
-        <div className="bg-slate-200 flex flex-col justify-between p-12">
+        <div className="bg-slate-200 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-3xl font-normal mb-6">
+            <h2 className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6">
               Inside Bleed
             </h2>
-            <p className="text-black text-base leading-relaxed mb-8">
+            <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               Inefficient motors, poor power factors, and hidden energy leaks on your production floor silently drain margins. Without real-time monitoring and optimization, you're paying for wasted power every single day.
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="hidden md:flex justify-center">
             <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="50" cy="50" r="30" />
               <path d="M50 20 L50 35 M50 65 L50 80 M20 50 L35 50 M65 50 L80 50" />
@@ -49,33 +49,33 @@ const Section2 = () => {
         </div>
 
         {/* Column 3: Outside Bleed */}
-        <div className="bg-slate-100 flex flex-col justify-between p-12">
+        <div className="bg-slate-100 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-3xl font-normal mb-6">
+            <h2 className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6">
               Outside Bleed
             </h2>
-            <p className="text-black text-base leading-relaxed mb-8">
+            <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit. This external pressure compounds internal inefficiencies, creating a double financial drain.
             </p>
           </div>
-          <div className="flex justify-center">
-            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
+          <div className="hidden md:flex justify-center">
+            <svg className="md:w-20 md:h-20 w-16 h-16" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M50 20 L65 40 L55 40 L55 60 L70 60 L50 90 L50 65 L35 65 L50 20 Z" fill="currentColor" />
             </svg>
           </div>
         </div>
 
         {/* Column 4: The Solution */}
-        <div className="bg-[#6A9F30] flex flex-col justify-between p-12">
+        <div className="bg-[#6A9F30] flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-white text-3xl font-normal mb-6">
+            <h2 className="text-white text-xl md:text-3xl font-normal mb-4 md:mb-6">
               The Solution
             </h2>
-            <p className="text-white text-base leading-relaxed mb-8">
+            <p className="text-white text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               Our two-step system addresses both bleeds simultaneously. First, we audit and optimize your floor operations. Then, we deploy custom-sized BESS to eliminate diesel dependency and arbitrage peak tariffs.
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="hidden md:flex justify-center">
             <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="20" y="30" width="60" height="40" />
               <path d="M30 50 L45 50 M55 50 L70 50" strokeWidth="3" />

@@ -35,14 +35,14 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
     <section className={`w-screen h-screen relative overflow-hidden ${gradientClass}`}>
       <div className={`w-full h-full flex flex-col justify-center items-${isLeft ? 'start' : 'end'}`}>
         <div className='w-full'>
-          <h1 className={`text-white text-5xl md:text-7xl lg:text-8xl font-medium md:leading-[7rem] tracking-tight ${isLeft ? 'text-left' : 'text-right'} w-full px-12 uppercase border-b border-white/50`}>
+          <h1 className={`text-white text-4xl md:text-7xl lg:text-8xl font-medium leading-[4rem] md:leading-[7rem] tracking-tight ${isLeft ? 'text-left' : 'text-right'} w-full px-12 uppercase border-b border-white/50`}>
             {title}
           </h1>
-          <p className={`text-white text-lg md:text-xl font-medium tracking-tight ${isLeft ? 'text-left' : 'text-right'} max-w-[50%] ${isLeft ? 'mr-auto' : 'ml-auto'} my-4 px-12`}>
+          <p className={`text-white text-lg md:text-xl font-medium tracking-tight ${isLeft ? 'text-left' : 'text-right'} md:max-w-[50%] ${isLeft ? 'mr-auto' : 'ml-auto'} my-4 px-12`}>
             {description}
           </p>
         </div>
-        <div className="w-[30vw] h-[30vh] mx-12 bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
+        <div className="md:w-[30vw] h-[30vh] w-[80vw] mx-12 bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
           <div className="relative z-10 h-full w-full overflow-hidden">
             <BESSComparisonChart
               data={chartData}

@@ -23,11 +23,11 @@ const Section13 = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex flex-col">
+    <section className="w-screen h-screen md:min-h-screen flex flex-col">
       {/* Top area: left form + right transparent */}
       <div className="flex flex-1 min-h-0">
         {/* Left side — dark background with form */}
-        <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12">
+        <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12 pt-20">
           {/* Company info row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase">
             <div className="space-y-1">
@@ -121,11 +121,11 @@ const Section13 = () => {
       </div>
 
       {/* Bottom — giant YOSHINOVA text */}
-      <div className="w-full bg-[#0a0a0a] flex items-end overflow-hidden" style={{ height: '35%' }}>
+      <div className="hidden md:block w-full bg-[#0a0a0a] flex items-end overflow-hidden" style={{ height: '35%' }}>
         <h1
           className="font-bold leading-[1.1] w-full text-center select-none"
           style={{
-            fontSize: 'clamp(80px, 14vw, 220px)',
+            fontSize: 'clamp(100px, 14vw, 150px)',
             letterSpacing: '-0.02em',
             marginBottom: '-0.05em',
             background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',
