@@ -1,11 +1,13 @@
 "use client";
 
 import React from 'react';
+import BESSCard from './BESSCard';
+import { societyData } from '@/utils/bessData';
 
 const Section5 = () => {
   return (
-    <section className="w-screen h-screen flex items-center justify-center">
-      <div className="text-black text-2xl">Section 5</div>
+    <section className="w-screen h-screen relative overflow-hidden">
+      <BESSCard zone={societyData} align="right" sectionIndex={4} />
     </section>
   );
 };
