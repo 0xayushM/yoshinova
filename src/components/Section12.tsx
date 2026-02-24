@@ -44,9 +44,9 @@ const Section12 = () => {
   const currentStory = newsStories[currentIndex];
 
   return (
-    <section className="w-screen md:min-h-screen relative overflow-hidden bg-[var(--color-tertiary2)]">
+    <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-[var(--color-tertiary2)]">
       {/* Top Section - Headline and Description */}
-      <div className="w-full h-full md:h-1/2 flex flex-col-reverse md:flex-col justify-center items-end p-4 md:px-16 relative">
+      <div className="w-full h-1/2 flex flex-col-reverse md:flex-col justify-center items-end p-4 md:px-16 relative">
         {/* Navigation Arrows */}
         <div className="md:absolute left-4 md:left-12 md:top-1/2 md:-translate-y-1/2 flex gap-6">
           <button 
@@ -67,7 +67,7 @@ const Section12 = () => {
 
         {/* Headline and Description */}
         <div className="max-w-2xl py-4 md:py-12">
-          <h1 className="text-black text-4xl md:pt-12 md:text-8xl lg:text-9xl font-normal leading-[2rem] md:leading-[6rem] mb-4 md:mb-6">
+          <h1 className="text-black text-4xl pt-12 md:text-8xl lg:text-9xl font-normal leading-[2rem] md:leading-[6rem] mb-4 md:mb-6">
             News & Story
           </h1>
           <p className="text-black text-base md:text-xl leading-relaxed">
@@ -77,9 +77,9 @@ const Section12 = () => {
       </div>
 
       {/* Bottom Section - News Card */}
-      <div className="w-full h-full md:h-1/2 flex flex-col md:flex-row md:items-stretch">
+      <div className="w-full h-1/2 flex flex-col md:flex-row md:items-stretch">
         {/* Left Side - Text Content */}
-        <div className="w-full md:w-1/2 bg-[#D3D3D3] p-4 md:p-12 flex flex-col justify-between">
+        <div className="w-full h-full md:w-1/2 bg-[#D3D3D3] p-4 md:p-12 flex flex-col justify-between">
           <div>
             <p className="text-black text-xs uppercase tracking-widest mb-6">{currentStory.category}</p>
             <h2 className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6">
