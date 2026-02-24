@@ -9,8 +9,6 @@ import {
   slerpQuat,
   easeInOut,
   cuts,
-  rotAList,
-  rotBList,
   getPositions,
   Q_secondSection,
 } from "../utils/rigHelpers";
@@ -98,8 +96,8 @@ export default function SceneRig(): JSX.Element {
     // positions/rotations lists from helpers
     const posA = positions.posAList[i] ?? positions.posAList[2];
     const posB = positions.posBList[i] ?? positions.posBList[positions.posBList.length - 1];
-    const rotA = rotAList[i] ?? Q_secondSection;
-    const rotB = rotBList[i] ?? Q_secondSection;
+    const rotA = positions.rotAList[i] ?? Q_secondSection;
+    const rotB = positions.rotBList[i] ?? Q_secondSection;
 
     modelRef.current.position.copy(lerpVec3(posA, posB, tMapped));
     
