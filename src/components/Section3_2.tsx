@@ -43,6 +43,25 @@ const zones = [
 ];
 
 const Section3_2 = () => {
+  // Map zone titles to service slugs
+  const getSlugFromTitle = (title: string): string => {
+    const slugMap: Record<string, string> = {
+      'Residential': 'residential',
+      'Commercial': 'commercial',
+      'Industrial': 'industrial',
+      'Telecom': 'telecom',
+      'Solar': 'solar',
+      'Household': 'residential' // Map Household to residential service
+    };
+    return slugMap[title] || 'residential';
+  };
+
+  const handleZoneClick = (title: string) => {
+    const slug = getSlugFromTitle(title);
+    // Use window.location for navigation since router is not available in Three.js context
+    window.location.href = `/services/${slug}`;
+  };
+
   return (
     <section className="w-screen h-screen relative overflow-hidden bg-[#6A9F30]/90 backdrop-blur-sm">
       {/* Main content - reversed layout */}
@@ -74,20 +93,20 @@ const Section3_2 = () => {
         <div className="flex-1 grid grid-rows-3 gap-0 h-full">
           {/* Row 1 */}
           <div className="grid grid-cols-2 gap-0">
-            <ZoneCard {...zones[0]} />
-            <ZoneCard {...zones[1]} />
+            <ZoneCard {...zones[0]} onClick={() => handleZoneClick(zones[0].title)} />
+            <ZoneCard {...zones[1]} onClick={() => handleZoneClick(zones[1].title)} />
           </div>
 
           {/* Row 2 */}
           <div className="grid grid-cols-2 gap-0">
-            <ZoneCard {...zones[2]} />
-            <ZoneCard {...zones[3]} />
+            <ZoneCard {...zones[2]} onClick={() => handleZoneClick(zones[2].title)} />
+            <ZoneCard {...zones[3]} onClick={() => handleZoneClick(zones[3].title)} />
           </div>
 
           {/* Row 3 */}
           <div className="grid grid-cols-2 gap-0">
-            <ZoneCard {...zones[4]} />
-            <ZoneCard {...zones[5]} />
+            <ZoneCard {...zones[4]} onClick={() => handleZoneClick(zones[4].title)} />
+            <ZoneCard {...zones[5]} onClick={() => handleZoneClick(zones[5].title)} />
           </div>
         </div>
       </div>

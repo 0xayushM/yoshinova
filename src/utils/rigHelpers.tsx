@@ -29,7 +29,8 @@ export const P6 = new THREE.Vector3(1.3, 0.5, 3.05); // industrial
 export const P7 = new THREE.Vector3(1.8, 0., 3); // commercial
 export const P8 = new THREE.Vector3(0.7, -0.75, 3.6); // solar
 export const P9 = new THREE.Vector3(-0.1, 0, 0);
-export const P10 = new THREE.Vector3(-0.1, 0, 0.0);
+export const P10 = new THREE.Vector3(0, 0, 0);
+export const P11 = new THREE.Vector3(1, 0.5, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0, 0, 0);
@@ -52,8 +53,8 @@ export const getPositions = (isMobile: boolean) => {
     };
   }
   return {
-    posAList: [P0, P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10],
-    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P10]
+    posAList: [P0, P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P11],
+    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P11]
   };
 };
 
