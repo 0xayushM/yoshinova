@@ -1,14 +1,13 @@
 // components/SceneRig.tsx
 import React, { JSX, useRef, useState, useEffect } from "react";
 import * as THREE from "three";
-import { useFrame, RootState } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
 import GltfModel from "./GltfModel";
 import {
   lerpVec3,
   slerpQuat,
   easeInOut,
-  S,
   cuts,
   rotAList,
   rotBList,
@@ -21,15 +20,17 @@ export default function SceneRig(): JSX.Element {
   const scroll = useScroll();
   const capRef = useRef<THREE.Object3D | null>(null);
   const [modelScale, setModelScale] = useState(0.025);
-  const [isMobile, setIsMobile] = useState(false);
   const [positions, setPositions] = useState(() => getPositions(false));
+  
+  // Mouse tracking for interactive model rotation
+  const targetMouseRot = useRef({ x: 0, y: 0 });
+  const currentMouseRot = useRef({ x: 0, y: 0 });
 
   // Responsive model scaling and positions based on screen size
   useEffect(() => {
     const updateScale = () => {
       const width = window.innerWidth;
       const mobile = width < 768;
-      setIsMobile(mobile);
       setPositions(getPositions(mobile));
       
       if (width < 640) {
@@ -48,52 +49,24 @@ export default function SceneRig(): JSX.Element {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  // caches
-  const shells = useRef<Record<string, { ref: THREE.Object3D | null; parent: THREE.Object3D | null; baseLocalPos: THREE.Vector3; baseScale: THREE.Vector3 }>>({});
-  const fadeMeshEntries = useRef<{ mesh: THREE.Mesh; baseOpacity: number[] }[]>([]);
-  const processedMeshUUIDs = useRef<Set<string>>(new Set());
-  const cachedTargetNames = useRef<Set<string>>(new Set());
+  // Track mouse movement
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalize mouse position to -1 to 1 range and calculate target rotation
+      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+      
+      // Calculate target rotation based on mouse position (subtle effect)
+      const maxRotation = 0.008; // radians
+      targetMouseRot.current.x = mouseY * maxRotation;
+      targetMouseRot.current.y = mouseX * maxRotation;
+    };
 
-  // temps
-  const tmpVecA = useRef(new THREE.Vector3());
-  const tmpVecB = useRef(new THREE.Vector3());
-  const tmpDir = useRef(new THREE.Vector3());
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
-  // small helper used in useFrame for adding section meshes (keeps consistent with global entries)
-  const addToGlobalCloneIfNeeded = (name: string) => {
-    if (!modelRef.current) return;
-    if (cachedTargetNames.current.has(name)) return;
-    const ref = modelRef.current.getObjectByName(name);
-    cachedTargetNames.current.add(name);
-    if (!ref) return;
-    ref.traverse((child: any) => {
-      if (!child || !child.isMesh) return;
-      const mesh = child as THREE.Mesh;
-      if (processedMeshUUIDs.current.has(mesh.uuid)) return;
-      const mats = Array.isArray((mesh as any).material) ? (mesh as any).material : [(mesh as any).material];
-      const cloned = mats.map((m: any) => {
-        if (!m?.isMaterial) return m;
-        const c = m.clone();
-        // Ensure cloned texture maps have a valid .image so the renderer
-        // doesn't throw "Cannot read properties of undefined (reading 'image')"
-        const texProps = ['map', 'normalMap', 'aoMap', 'emissiveMap', 'roughnessMap', 'metalnessMap', 'alphaMap', 'envMap', 'lightMap', 'bumpMap', 'displacementMap'];
-        for (const prop of texProps) {
-          if (c[prop] && !c[prop].image) {
-            c[prop] = null;
-          }
-        }
-        return c;
-      });
-      (mesh as any).material = Array.isArray((mesh as any).material) ? cloned : cloned[0];
-      const baseOpacity = cloned.map((m: any) => (typeof m?.opacity === "number" ? m.opacity : 1));
-      fadeMeshEntries.current.push({ mesh, baseOpacity });
-      processedMeshUUIDs.current.add(mesh.uuid);
-    });
-  };
-
-
-  // the big useFrame loop (keeps same structure as your original)
-  useFrame((state: RootState) => {
+  useFrame(() => {
     if (!modelRef.current) return;
     const u = THREE.MathUtils.clamp(scroll.offset, 0, 1);
 
@@ -129,7 +102,21 @@ export default function SceneRig(): JSX.Element {
     const rotB = rotBList[i] ?? Q_secondSection;
 
     modelRef.current.position.copy(lerpVec3(posA, posB, tMapped));
-    modelRef.current.quaternion.copy(slerpQuat(rotA, rotB, tMapped));
+    
+    // Base rotation from scroll
+    const baseQuat = slerpQuat(rotA, rotB, tMapped);
+    
+    // Smoothly lerp current mouse rotation towards target
+    const lerpFactor = 0.05; // Smooth damping
+    currentMouseRot.current.x += (targetMouseRot.current.x - currentMouseRot.current.x) * lerpFactor;
+    currentMouseRot.current.y += (targetMouseRot.current.y - currentMouseRot.current.y) * lerpFactor;
+    
+    // Apply mouse rotation offset on top of base rotation
+    const mouseQuatX = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), currentMouseRot.current.x);
+    const mouseQuatY = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), currentMouseRot.current.y);
+    
+    // Combine: base rotation + mouse offset
+    modelRef.current.quaternion.copy(baseQuat).multiply(mouseQuatX).multiply(mouseQuatY);
 
     // cap rotation
     if (!capRef.current && modelRef.current) {
@@ -137,100 +124,6 @@ export default function SceneRig(): JSX.Element {
     }
     if (capRef.current) {
       capRef.current.rotation.z = u * Math.PI * 2;
-    }
-    // -----------------------
-    // GLOBAL FADE (skip section-controlled meshes)
-    // -----------------------
-    const sectionMeshUUIDs = new Set<string>();
-
-    if (fadeMeshEntries.current.length) {
-      const s1 = S(3), s2 = S(4), s7 = S(6), s8 = S(9);
-      const MIN_ALPHA = 0.2;
-      let alpha = 1;
-      if (u < s1) {
-        alpha = 1;
-      } else if (u < s2) {
-        const p_ = (u - s1) / (s2 - s1);
-        alpha = 1 - (1 - MIN_ALPHA) * easeInOut(p_);
-      } else if (u < s7) {
-        alpha = MIN_ALPHA;
-      } else if (u < s8) {
-        const p_ = (u - s7) / (s8 - s7);
-        alpha = MIN_ALPHA + (1 - MIN_ALPHA) * easeInOut(p_);
-      } else {
-        alpha = 1;
-      }
-
-      for (const { mesh, baseOpacity } of fadeMeshEntries.current) {
-        if (sectionMeshUUIDs.has(mesh.uuid)) continue;
-        const mats = Array.isArray((mesh as any).material) ? (mesh as any).material : [(mesh as any).material];
-        mats.forEach((m: any, j: number) => {
-          if (!m) return;
-          m.transparent = true;
-          const base = baseOpacity[j] ?? 1;
-          m.opacity = base * alpha;
-        });
-      }
-    }
-
-    for (const name in shells.current) {
-      const data = shells.current[name];
-      if (!data || !data.ref || !data.parent) continue;
-
-      data.parent.updateMatrixWorld(true);
-
-      // world base position of the shell
-      tmpVecA.current.copy(data.baseLocalPos);
-      data.parent.localToWorld(tmpVecA.current);
-
-      // model world pos and direction from model -> shell base
-      modelRef.current.getWorldPosition(tmpVecB.current);
-      tmpDir.current.copy(tmpVecA.current).sub(tmpVecB.current).normalize();
-
-      const MAX_WORLD_OFFSET = 5;
-
-      // New timeline: start scaling DOWN at section 2 (S(2)) and finish by start of section 3 (S(3)).
-      // Reappear window remains S(8) -> S(10) (same as before).
-      const sStartDown = S(1); // begin scale down at start of section 2
-      const sEndDown = S(2);   // reach 0 by start of section 3
-      const sReappearStart = S(7);
-      const sReappearEnd = S(8);
-
-      let scaleFactor = 1;
-      let travel = 0;
-
-      if (u < sStartDown) {
-        // before section 2: full size, no travel
-        scaleFactor = 1;
-        travel = 0;
-      } else if (u < sEndDown) {
-        // during section 2: interpolate 1 -> 0
-        const p_ = easeInOut(THREE.MathUtils.clamp((u - sStartDown) / (sEndDown - sStartDown), 0, 1));
-        scaleFactor = 1 - p_;
-        travel = p_;
-      } else if (u < sReappearStart) {
-        // sections 3..8: hidden
-        scaleFactor = 0;
-        travel = 0;
-      } else if (u < sReappearEnd) {
-        // section 9 window: interpolate 0 -> 1
-        const p_ = easeInOut(THREE.MathUtils.clamp((u - sReappearStart) / (sReappearEnd - sReappearStart), 0, 1));
-        scaleFactor = p_;
-        travel = 1 - p_;
-      } else {
-        // after reassembly: full size
-        scaleFactor = 1;
-        travel = 0;
-      }
-
-      // move shell along radial direction by travel * MAX_WORLD_OFFSET
-      tmpVecA.current.copy(tmpVecA.current).add(tmpDir.current.multiplyScalar(MAX_WORLD_OFFSET * travel));
-      const targetLocal = data.parent.worldToLocal(tmpVecB.current.copy(tmpVecA.current));
-
-      data.ref.position.copy(targetLocal);
-      data.ref.scale.copy(data.baseScale.clone().multiplyScalar(scaleFactor));
-      data.ref.visible = scaleFactor > 0.001;
-      data.ref.updateMatrixWorld();
     }
   });
 
