@@ -7,7 +7,7 @@ import { societyData } from '@/utils/bessData';
 const Section5 = () => {
   return (
     <section className="w-screen h-screen relative overflow-hidden">
-      <BESSCard zone={societyData} align="right" sectionIndex={4} />
+      <BESSCard zone={societyData} align="right" sectionIndex={5} />
     </section>
   );
 };

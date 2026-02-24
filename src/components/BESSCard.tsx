@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import BESSComparisonChart from "./BESSComparisonChart";
 import type { BESSZoneData } from "@/utils/bessData";
@@ -63,17 +63,13 @@ const BESSCard: React.FC<BESSCardProps> = ({
   zone,
   align = "right",
   sectionIndex,
-  totalPages = 13,
+  totalPages = 14,
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isVisible = useRef(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [cardActive, setCardActive] = useState(false);
-  const activeTweens = useRef<gsap.core.Tween[]>([]);
   const rafId = useRef<number>(0);
 
-  const slideX = align === "right" ? 80 : -80;
   const { accent } = zone;
 
   const heroValue = useAnimatedCounter(zone.heroMetric.value, cardActive);
@@ -104,145 +100,109 @@ const BESSCard: React.FC<BESSCardProps> = ({
     };
   }, []);
 
-  // ── Scroll-driven enter/exit ──
-  const killActive = () => {
-    activeTweens.current.forEach((t) => t.kill());
-    activeTweens.current = [];
-  };
-
-  const setRef = (i: number) => (el: HTMLDivElement | null) => { contentRefs.current[i] = el; };
-
-  const animateIn = useCallback(() => {
-    killActive();
-    const card = cardRef.current;
-    if (!card) return;
-    setCardActive(true);
-    const rows = contentRefs.current.filter(Boolean) as HTMLElement[];
-    activeTweens.current = [
-      gsap.to(card, { x: 0, opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }),
-      ...rows.map((el, i) =>
-        gsap.to(el, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", delay: 0.1 + i * 0.08 })
-      ),
-    ];
-  }, []);
-
-  const animateOut = useCallback(() => {
-    killActive();
-    const card = cardRef.current;
-    if (!card) return;
-    setCardActive(false);
-    const rows = contentRefs.current.filter(Boolean) as HTMLElement[];
-    activeTweens.current = [
-      ...rows.reverse().map((el, i) =>
-        gsap.to(el, { opacity: 0, duration: 0.15, ease: "power2.in", delay: i * 0.03 })
-      ),
-      gsap.to(card, { x: slideX, opacity: 0, scale: 0.92, duration: 0.45, ease: "power3.in", delay: 0.08 }),
-    ];
-  }, [slideX]);
-
+  // ── Scroll-driven visibility ──
   useEffect(() => {
-    // Initial hidden state
-    if (cardRef.current) gsap.set(cardRef.current, { opacity: 0, x: slideX, scale: 0.92 });
-    contentRefs.current.forEach((el) => { if (el) gsap.set(el, { opacity: 0, y: 16 }); });
-
     const handleScroll = (e: Event) => {
       const offset = (e as CustomEvent).detail?.offset ?? 0;
       const sectionStart = sectionIndex / totalPages;
       const sectionEnd = (sectionIndex + 1) / totalPages;
-      const enter = sectionStart + (sectionEnd - sectionStart) * 0.15;
-      const exit = sectionEnd - (sectionEnd - sectionStart) * 0.1;
-
-      if (offset >= enter && offset <= exit) {
-        if (!isVisible.current) { isVisible.current = true; animateIn(); }
-      } else {
-        if (isVisible.current) { isVisible.current = false; animateOut(); }
+      
+      // Card is visible throughout the entire section
+      const shouldBeVisible = offset >= sectionStart && offset < sectionEnd;
+      
+      if (shouldBeVisible !== isVisible) {
+        setIsVisible(shouldBeVisible);
+        setCardActive(shouldBeVisible);
       }
     };
 
     window.addEventListener("drei-scroll", handleScroll);
-    return () => { window.removeEventListener("drei-scroll", handleScroll); killActive(); };
-  }, [slideX, sectionIndex, totalPages, animateIn, animateOut]);
+    return () => { window.removeEventListener("drei-scroll", handleScroll); };
+  }, [sectionIndex, totalPages, isVisible]);
 
   return (
-    <div
-      ref={cardRef}
-      className={`absolute top-1/2 -translate-y-1/2 z-30 w-[92vw] md:w-[420px] lg:w-[460px] ${
-        align === "right" ? "right-3 md:right-8 lg:right-12" : "left-3 md:left-8 lg:left-12"
-      }`}
-      style={{ "--zone-rgb": accent.rgb, "--zone-hex": accent.hex } as React.CSSProperties}
-    >
-      <div
-        className="bess-card-outer cursor-pointer"
-        onClick={() => { window.location.href = `/services/${zone.slug}`; }}
-      >
-        <div ref={innerRef} className="bess-card-inner p-4 md:p-6 lg:p-7" style={{ transformStyle: "preserve-3d" }}>
-          <div className="bess-shimmer-line" />
+    <>
+      {isVisible && (
+        <div
+          className={`absolute top-1/2 -translate-y-1/2 z-30 w-[92vw] md:w-[420px] lg:w-[460px] ${
+            align === "right" ? "right-3 md:right-8 lg:right-12" : "left-3 md:left-8 lg:left-12"
+          }`}
+          style={{ "--zone-rgb": accent.rgb, "--zone-hex": accent.hex } as React.CSSProperties}
+        >
+          <div
+            className="bess-card-outer cursor-pointer"
+            onClick={() => { window.location.href = `/services/${zone.slug}`; }}
+          >
+            <div ref={innerRef} className="bess-card-inner p-4 md:p-6 lg:p-7" style={{ transformStyle: "preserve-3d" }}>
+              <div className="bess-shimmer-line" />
 
-          {/* ── Row 1: Title ── */}
-          <div ref={setRef(0)}>
-            <h2 className="relative z-10 text-2xl md:text-3xl font-bold text-white tracking-tight">
-              {zone.title}
-            </h2>
-            <div
-              className="relative z-10 w-10 h-[2px] mt-2 mb-2 rounded-full"
-              style={{ background: `linear-gradient(90deg, ${accent.hex}, transparent)` }}
-            />
-          </div>
+              {/* ── Row 1: Title ── */}
+              <div>
+                <h2 className="relative z-10 text-2xl md:text-3xl font-bold text-white tracking-tight">
+                  {zone.title}
+                </h2>
+                <div
+                  className="relative z-10 w-10 h-[2px] mt-2 mb-2 rounded-full"
+                  style={{ background: `linear-gradient(90deg, ${accent.hex}, transparent)` }}
+                />
+              </div>
 
-          {/* ── Row 2: Impact statement ── */}
-          <div ref={setRef(1)}>
-            <p className="relative z-10 text-[11px] md:text-xs text-white/50 leading-relaxed mb-3">
-              {zone.impact}
-            </p>
-          </div>
+              {/* ── Row 2: Impact statement ── */}
+              <div>
+                <p className="relative z-10 text-[11px] md:text-xs text-white/50 leading-relaxed mb-3">
+                  {zone.impact}
+                </p>
+              </div>
 
-          {/* ── Row 3: Hero metric ── */}
-          <div ref={setRef(2)} className="relative z-10 mb-3">
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl md:text-4xl font-bold" style={{ color: accent.hex }}>
-                {zone.heroMetric.prefix}{heroValue}
-              </span>
-              <span className="text-sm md:text-base font-medium text-white/60">
-                {zone.heroMetric.suffix}
-              </span>
-            </div>
-          </div>
-
-          {/* ── Row 4: Stats grid ── */}
-          <div ref={setRef(3)} className="relative z-10 grid grid-cols-3 gap-2 mb-4">
-            {zone.stats.map((stat, i) => (
-              <div
-                key={i}
-                className="bess-stat-block group/stat rounded-lg p-2.5 text-center transition-all duration-300"
-                style={{ "--zone-rgb": accent.rgb } as React.CSSProperties}
-              >
-                <div className="flex justify-center mb-1.5 opacity-60 group-hover/stat:opacity-100 transition-opacity">
-                  <StatIcon type={stat.icon} color={accent.hex} />
-                </div>
-                <div className="text-base md:text-lg font-bold text-white leading-none mb-0.5">
-                  {stat.value}<span className="text-[10px] font-normal text-white/50">{stat.suffix}</span>
-                </div>
-                <div className="text-[9px] text-white/40 uppercase tracking-wider leading-tight">
-                  {stat.label}
+              {/* ── Row 3: Hero metric ── */}
+              <div className="relative z-10 mb-3">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl md:text-4xl font-bold" style={{ color: accent.hex }}>
+                    {zone.heroMetric.prefix}{heroValue}
+                  </span>
+                  <span className="text-sm md:text-base font-medium text-white/60">
+                    {zone.heroMetric.suffix}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* ── Row 5: Chart ── */}
-          <div ref={setRef(4)} className="relative z-10">
-            <BESSComparisonChart
-              data={zone.chartData}
-              yAxisLabel={zone.yAxisLabel}
-              maxY={zone.maxY}
-              accentHex={accent.hex}
-              accentRgb={accent.rgb}
-              isVisible={cardActive}
-            />
+              {/* ── Row 4: Stats grid ── */}
+              <div className="relative z-10 grid grid-cols-3 gap-2 mb-4">
+                {zone.stats.map((stat, i) => (
+                  <div
+                    key={i}
+                    className="bess-stat-block group/stat rounded-lg p-2.5 text-center transition-all duration-300"
+                    style={{ "--zone-rgb": accent.rgb } as React.CSSProperties}
+                  >
+                    <div className="flex justify-center mb-1.5 opacity-60 group-hover/stat:opacity-100 transition-opacity">
+                      <StatIcon type={stat.icon} color={accent.hex} />
+                    </div>
+                    <div className="text-base md:text-lg font-bold text-white leading-none mb-0.5">
+                      {stat.value}<span className="text-[10px] font-normal text-white/50">{stat.suffix}</span>
+                    </div>
+                    <div className="text-[9px] text-white/40 uppercase tracking-wider leading-tight">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* ── Row 5: Chart ── */}
+              <div className="relative z-10">
+                <BESSComparisonChart
+                  data={zone.chartData}
+                  yAxisLabel={zone.yAxisLabel}
+                  maxY={zone.maxY}
+                  accentHex={accent.hex}
+                  accentRgb={accent.rgb}
+                  isVisible={cardActive}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
