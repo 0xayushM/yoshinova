@@ -54,7 +54,7 @@ const BESSComparisonChart: React.FC<BESSComparisonChartProps> = ({
   maxY,
   accentHex = "#22d3ee",
   accentRgb = "34, 211, 238",
-  isVisible = false,
+  isVisible = true,
 }) => {
   const uid = useId().replace(/:/g, "");
   const withoutLineRef = useRef<SVGPathElement>(null);
