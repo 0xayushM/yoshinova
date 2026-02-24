@@ -90,7 +90,7 @@ const Section3_2 = () => {
         </div>
 
         {/* Right side - 3-row grid of deployment zones */}
-        <div className="hidden md:flex flex-1 grid grid-rows-3 gap-0 h-full">
+        <div className="hidden md:grid flex-1 grid grid-rows-3 gap-0 h-full">
           {/* Row 1 */}
           <div className="grid grid-cols-2 gap-0">
             <ZoneCard {...zones[0]} onClick={() => handleZoneClick(zones[0].title)} />
