@@ -44,7 +44,7 @@ const zones = [
 
 const Section3_2 = () => {
   return (
-    <section className="w-screen h-screen relative overflow-hidden bg-tertiary/90 backdrop-blur-sm">
+    <section className="w-screen h-screen relative overflow-hidden bg-[#6A9F30]/90 backdrop-blur-sm">
       {/* Main content - reversed layout */}
       <div className="relative z-10 w-full h-full flex items-center justify-between gap-12 pl-12">
 

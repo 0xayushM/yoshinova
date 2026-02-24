@@ -66,7 +66,7 @@ const Section2 = () => {
         </div>
 
         {/* Column 4: The Solution */}
-        <div className="bg-tertiary flex flex-col justify-between p-12">
+        <div className="bg-[#6A9F30] flex flex-col justify-between p-12">
           <div>
             <h2 className="text-white text-3xl font-normal mb-6">
               The Solution

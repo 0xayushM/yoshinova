@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-@theme {
+:root{
   --color-tertiary: #6A9F30;
+  --color-tertiary2: #E87722;
 }
 
 @font-face {
