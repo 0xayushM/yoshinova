@@ -25,7 +25,7 @@ const ZoneCard: React.FC<ZoneCardProps> = ({ zoneNumber, title, description, ima
       </div>
       <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-300 ease-out" />
       <div className="relative z-10">
-        <p className="text-tertiary text-xs uppercase tracking-wider mb-2">ZONE {zoneNumber}</p>
+        <p className="text-[#6A9F30] text-xs uppercase tracking-wider mb-2">ZONE {zoneNumber}</p>
         <h3 className="text-white text-2xl uppercase font-medium mb-2">{title}</h3>
         <p className="text-white/70 text-sm">{description}</p>
       </div>

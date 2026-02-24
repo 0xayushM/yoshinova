@@ -1,102 +1,106 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
+
+const newsStories = [
+  {
+    id: 1,
+    category: "PROJECTS",
+    title: "Yoshinova Deploys 500kWh BESS for Industrial Client",
+    description: "Our latest industrial deployment showcases peak shaving capabilities that reduced demand charges by 45% in the first quarter of operation.",
+    date: "2025-02-15",
+    image: "/images/industrial.jpg"
+  },
+  {
+    id: 2,
+    category: "INNOVATION",
+    title: "Smart Energy Management System Launch",
+    description: "Introducing our AI-powered energy management platform that optimizes BESS performance in real-time across all deployment zones.",
+    date: "2025-02-10",
+    image: "/images/commercial.jpg"
+  },
+  {
+    id: 3,
+    category: "SUSTAINABILITY",
+    title: "Carbon Reduction Milestone Achieved",
+    description: "Yoshinova's BESS deployments have collectively eliminated over 10,000 tons of CO2 emissions, equivalent to planting 450,000 trees.",
+    date: "2025-02-05",
+    image: "/images/solar.jpg"
+  }
+];
 
 const Section12 = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? newsStories.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === newsStories.length - 1 ? 0 : prev + 1));
+  };
+
+  const currentStory = newsStories[currentIndex];
+
   return (
-    <section className="w-screen h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50">
-      <div className="max-w-6xl mx-auto w-full p-6 md:p-10 lg:p-14 space-y-12">
-        {/* Main headline */}
-        <h1 className="text-slate-900 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-center mb-8">
-          Funded by Your Own Inefficiency
-        </h1>
-        
-        {/* Subheadline */}
-        <p className="text-slate-700 text-2xl md:text-3xl font-light text-center max-w-4xl mx-auto">
-          Use the savings we find in your Step 1 Audit to fund your Step 2 BESS deployment.
-        </p>
-
-        {/* Financing options */}
-        <div className="grid md:grid-cols-2 gap-8 mt-16">
-          {/* Option 1: Traditional Financing */}
-          <div className="bg-white border-2 border-green-500 rounded-2xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div className="space-y-6">
-              <div className="inline-block bg-green-100 px-4 py-2 rounded-full">
-                <span className="text-green-700 font-semibold text-sm tracking-wide">SMART FINANCING</span>
-              </div>
-              
-              <h2 className="text-slate-900 text-3xl md:text-4xl font-bold">
-                Self-Funding Model
-              </h2>
-              
-              <p className="text-slate-600 text-lg leading-relaxed">
-                The 10% savings we uncover in your energy audit can directly offset your BESS investment. Your inefficiency becomes your down payment.
-              </p>
-              
-              <div className="pt-6 border-t border-slate-200">
-                <h3 className="text-slate-800 font-semibold mb-4">Benefits:</h3>
-                <ul className="space-y-3 text-slate-600">
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Immediate cash flow improvement</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Flexible payment terms</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Asset ownership from day one</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Option 2: Zero-Capex EaaS */}
-          <div className="bg-gradient-to-br from-emerald-600 to-green-700 rounded-2xl p-8 md:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-            <div className="space-y-6">
-              <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                <span className="text-white font-semibold text-sm tracking-wide">ZERO CAPEX</span>
-              </div>
-              
-              <h2 className="text-white text-3xl md:text-4xl font-bold">
-                Energy-as-a-Service
-              </h2>
-              
-              <p className="text-white/90 text-lg leading-relaxed">
-                For qualifying C&I clients, we deploy, own, and operate the BESS. You pay only for the energy you consume—at rates lower than diesel and peak grid.
-              </p>
-              
-              <div className="pt-6 border-t border-white/20">
-                <h3 className="text-white font-semibold mb-4">Perfect For:</h3>
-                <ul className="space-y-3 text-white/90">
-                  <li className="flex items-start">
-                    <span className="text-yellow-300 mr-3 text-xl">★</span>
-                    <span>Companies preserving capital</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yellow-300 mr-3 text-xl">★</span>
-                    <span>Immediate cost reduction needed</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-yellow-300 mr-3 text-xl">★</span>
-                    <span>No upfront investment required</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+    <section className="w-screen h-screen relative overflow-hidden bg-[var(--color-tertiary2)]">
+      {/* Top Section - Headline and Description */}
+      <div className="w-full h-1/2 flex flex-col justify-center items-end px-16 relative">
+        {/* Navigation Arrows */}
+        <div className="absolute left-12 top-1/2 -translate-y-1/2 flex gap-6">
+          <button 
+            onClick={handlePrev}
+            className="w-16 h-16 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
+            aria-label="Previous story"
+          >
+            <span className="text-2xl">←</span>
+          </button>
+          <button 
+            onClick={handleNext}
+            className="w-16 h-16 border-2 border-black flex items-center justify-center hover:bg-black hover:text-[#E87722] transition-colors duration-300"
+            aria-label="Next story"
+          >
+            <span className="text-2xl">→</span>
+          </button>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center pt-8">
-          <p className="text-slate-700 text-xl md:text-2xl font-medium mb-6">
-            Ask about our Zero-Capex Energy-as-a-Service models for qualifying C&I clients.
+        {/* Headline and Description */}
+        <div className="max-w-2xl py-12">
+          <h1 className="text-black text-7xl pt-12 md:text-8xl lg:text-9xl font-normal leading-[6rem] mb-6">
+            News & Story
+          </h1>
+          <p className="text-black text-lg md:text-xl leading-relaxed">
+            Discover how Yoshinova is transforming energy storage across industries. From groundbreaking deployments to innovative solutions, explore our latest achievements in sustainable energy management and BESS technology.
           </p>
-          <button className="px-8 py-4 bg-green-600 text-white text-lg font-semibold rounded-lg hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            Explore Financing Options
-          </button>
+        </div>
+      </div>
+
+      {/* Bottom Section - News Card */}
+      <div className="w-full h-1/2 flex items-stretch">
+        {/* Left Side - Text Content */}
+        <div className="w-1/2 bg-[#D3D3D3] p-12 flex flex-col justify-between">
+          <div>
+            <p className="text-black text-xs uppercase tracking-widest mb-6">{currentStory.category}</p>
+            <h2 className="text-black text-4xl md:text-5xl font-normal leading-tight mb-6">
+              {currentStory.title}
+            </h2>
+            <p className="text-black/80 text-base leading-relaxed">
+              {currentStory.description}
+            </p>
+          </div>
+          
+        </div>
+
+        {/* Right Side - Image */}
+        <div className="w-1/2 relative">
+          <Image
+            src={currentStory.image}
+            alt={currentStory.title}
+            fill
+            className="object-cover"
+            quality={90}
+          />
         </div>
       </div>
     </section>
