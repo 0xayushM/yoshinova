@@ -65,10 +65,12 @@ function ShadowLightRig() {
 
   // The directional light target must be added to the scene for Three.js to use it
   useEffect(() => {
-    if (!lightRef.current) return;
+    if (!lightRef.current || !lightRef.current.target) return;
     scene.add(lightRef.current.target);
     return () => {
-      scene.remove(lightRef.current!.target);
+      if (lightRef.current && lightRef.current.target) {
+        scene.remove(lightRef.current.target);
+      }
     };
   }, [scene]);
 

@@ -12,7 +12,7 @@ const Section11 = () => {
           <div className="flex flex-col justify-between p-16 bg-white">
             {/* Large Headline */}
             <div>
-              <h1 className="text-black text-6xl md:text-7xl lg:text-8xl font-medium leading-[6rem] my-16 uppercase">
+              <h1 className="text-black text-6xl md:text-7xl lg:text-8xl font-medium leading-[6rem] my-12 uppercase">
                 The Yoshinova
                 <br />
                 Quality

@@ -23,128 +23,119 @@ const Section13 = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <div className="max-w-5xl mx-auto w-full p-6 md:p-10 lg:p-14 space-y-12">
-        {/* Main headline */}
-        <div className="text-center space-y-6">
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-            Stop Subsidizing the Grid.
-            <br />
-            Start the Audit.
-          </h1>
-          
-          <p className="text-white/80 text-xl md:text-2xl font-light max-w-3xl mx-auto">
-            Take the first step toward zero-diesel operations and permanent energy cost reduction.
-          </p>
-        </div>
-
-        {/* Lead capture form */}
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 md:p-12 shadow-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Name */}
-              <div className="space-y-2">
-                <label htmlFor="name" className="block text-white font-semibold text-sm tracking-wide">
-                  Your Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="John Doe"
-                />
+    <section className="w-screen h-screen flex flex-col">
+      {/* Top area: left form + right transparent */}
+      <div className="flex flex-1 min-h-0">
+        {/* Left side — dark background with form */}
+        <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12">
+          {/* Company info row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase">
+            <div className="space-y-1">
+              <p className="font-bold text-white/90">Yoshinova</p>
+              <p className="text-white/50 normal-case tracking-normal text-[11px] leading-relaxed">
+                Powering India&apos;s Industrial Future
+              </p>
+            </div>
+            <div className="space-y-3">
+              <div>
+                <p className="text-white/40 mb-1">General Enquiries</p>
+                <a href="mailto:info@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
+                  info@yoshinova.com
+                </a>
               </div>
-
-              {/* Company */}
-              <div className="space-y-2">
-                <label htmlFor="company" className="block text-white font-semibold text-sm tracking-wide">
-                  Company Name *
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Your Manufacturing Co."
-                />
+              <div>
+                <p className="text-white/40 mb-1">New Projects</p>
+                <a href="mailto:projects@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
+                  projects@yoshinova.com
+                </a>
               </div>
             </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Monthly Power Bill */}
-              <div className="space-y-2">
-                <label htmlFor="powerBill" className="block text-white font-semibold text-sm tracking-wide">
-                  Monthly Power Bill Estimate *
-                </label>
-                <input
-                  type="text"
-                  id="powerBill"
-                  name="powerBill"
-                  value={formData.powerBill}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="₹5,00,000"
-                />
-              </div>
-
-              {/* Contact Number */}
-              <div className="space-y-2">
-                <label htmlFor="contact" className="block text-white font-semibold text-sm tracking-wide">
-                  Contact Number *
-                </label>
-                <input
-                  type="tel"
-                  id="contact"
-                  name="contact"
-                  value={formData.contact}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="+91 98765 43210"
-                />
+            <div>
+              <p className="text-white/40 mb-1">Follow</p>
+              <div className="flex flex-col gap-1">
+                <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">Twitter</a>
               </div>
             </div>
+          </div>
 
-            {/* Submit button */}
-            <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full px-8 py-5 bg-gradient-to-r from-blue-600 to-green-600 text-white text-xl font-bold rounded-lg hover:from-blue-700 hover:to-green-700 transition-all duration-300 hover:scale-[1.02] shadow-xl hover:shadow-2xl"
-              >
-                Claim Your Energy Audit
-              </button>
+          {/* Lead capture form */}
+          <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+            <h3 className="text-white text-lg font-bold tracking-wide mb-2">Request an Energy Audit</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
+                placeholder="Your Name *"
+              />
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
+                placeholder="Company Name *"
+              />
             </div>
+            <div className="grid grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="powerBill"
+                value={formData.powerBill}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
+                placeholder="Monthly Power Bill *"
+              />
+              <input
+                type="tel"
+                name="contact"
+                value={formData.contact}
+                onChange={handleChange}
+                required
+                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
+                placeholder="Contact Number *"
+              />
+            </div>
+            <button
+              type="submit"
+              className="mt-2 px-6 py-2.5 bg-white text-black text-sm font-semibold tracking-wide hover:bg-white/90 transition-colors"
+            >
+              Submit
+            </button>
           </form>
 
-          {/* Privacy note */}
-          <p className="text-white/60 text-sm text-center mt-6">
-            Your information is secure. We'll contact you within 24 hours to schedule your profitability audit.
+          {/* Bottom tagline */}
+          <p className="text-white/30 text-[11px] tracking-[0.08em] leading-relaxed max-w-md mt-6">
+            Zero-diesel operations and permanent energy cost reduction — engineered for India&apos;s industrial backbone.
           </p>
         </div>
 
-        {/* Bottom value props */}
-        <div className="grid md:grid-cols-3 gap-6 pt-8">
-          <div className="text-center space-y-2">
-            <div className="text-blue-400 text-4xl font-bold">10%</div>
-            <p className="text-white/80 text-sm">Immediate Savings Guaranteed</p>
-          </div>
-          <div className="text-center space-y-2">
-            <div className="text-green-400 text-4xl font-bold">₹0</div>
-            <p className="text-white/80 text-sm">Audit Cost (Limited Time)</p>
-          </div>
-          <div className="text-center space-y-2">
-            <div className="text-yellow-400 text-4xl font-bold">24h</div>
-            <p className="text-white/80 text-sm">Response Time</p>
-          </div>
-        </div>
+        {/* Right side — transparent to show 3D model */}
+        <div className="hidden md:block w-[45%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50" />
+      </div>
+
+      {/* Bottom — giant YOSHINOVA text */}
+      <div className="w-full bg-[#0a0a0a] flex items-end overflow-hidden" style={{ height: '35%' }}>
+        <h1
+          className="font-bold leading-[1.1] w-full text-center select-none"
+          style={{
+            fontSize: 'clamp(80px, 14vw, 220px)',
+            letterSpacing: '-0.02em',
+            marginBottom: '-0.05em',
+            background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          YOSHINOVA
+        </h1>
       </div>
     </section>
   );

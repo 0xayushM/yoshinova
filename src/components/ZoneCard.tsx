@@ -8,11 +8,15 @@ interface ZoneCardProps {
   title: string;
   description: string;
   imagePath: string;
+  onClick?: () => void;
 }
 
-const ZoneCard: React.FC<ZoneCardProps> = ({ zoneNumber, title, description, imagePath }) => {
+const ZoneCard: React.FC<ZoneCardProps> = ({ zoneNumber, title, description, imagePath, onClick }) => {
   return (
-    <div className="relative overflow-hidden p-6 flex flex-col justify-between group cursor-pointer">
+    <div 
+      className="relative overflow-hidden p-6 flex flex-col justify-between group cursor-pointer"
+      onClick={onClick}
+    >
       <div className="absolute inset-0">
         <Image 
           src={imagePath}
