@@ -65,12 +65,12 @@ const Section3_2 = () => {
   return (
     <section className="w-screen h-screen relative overflow-hidden bg-[#6A9F30]/90 backdrop-blur-sm">
       {/* Main content - reversed layout */}
-      <div className="relative z-10 w-full h-full flex items-center justify-between gap-12 pl-12">
+      <div className="relative z-10 w-full h-full flex items-center justify-between gap-12 px-4 md:pl-12 md:pr-0">
 
         {/* Left side - Large headline and description */}
         <div className="max-w-xl">
           {/* Top left category label */}
-          <div className="absolute top-24 left-12 z-20">
+          <div className="absolute top-24 right-12 md:left-12 z-20">
             <p className="text-white text-xs uppercase tracking-widest">[02] — CORE EXPERTISE</p>
           </div>
           <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight pb-2">
@@ -90,7 +90,7 @@ const Section3_2 = () => {
         </div>
 
         {/* Right side - 3-row grid of deployment zones */}
-        <div className="flex-1 grid grid-rows-3 gap-0 h-full">
+        <div className="hidden md:flex flex-1 grid grid-rows-3 gap-0 h-full">
           {/* Row 1 */}
           <div className="grid grid-cols-2 gap-0">
             <ZoneCard {...zones[0]} onClick={() => handleZoneClick(zones[0].title)} />

@@ -29,32 +29,36 @@ export const P6 = new THREE.Vector3(1.3, 0.5, 3.05); // industrial
 export const P7 = new THREE.Vector3(1.8, 0., 3); // commercial
 export const P8 = new THREE.Vector3(0.7, -0.75, 3.6); // solar
 export const P9 = new THREE.Vector3(-0.1, 0, 0);
-export const P10 = new THREE.Vector3(0, 0, 0);
+export const P10 = new THREE.Vector3(0, 0, 1);
 export const P11 = new THREE.Vector3(1, 0.5, 0);
 
 // Mobile positions (adjusted for better mobile view - closer and more centered)
 export const P0_MOBILE = new THREE.Vector3(0, 0, 0);
 export const P1_MOBILE = new THREE.Vector3(0, 0, 0);
 export const P2_MOBILE = new THREE.Vector3(-0.05, 0, 0);
-export const P3_MOBILE = new THREE.Vector3(0.65, 0.35, 1.5);
-export const P4_MOBILE = new THREE.Vector3(0.2, 0.2, 3.2);
-export const P5_MOBILE = new THREE.Vector3(0.7, -0.3, 3.5);
-export const P6_MOBILE = new THREE.Vector3(0.9, 0.2, 2.2);
-export const P7_MOBILE = new THREE.Vector3(0.8, -0.3, 2);
-export const P8_MOBILE = new THREE.Vector3(0.3, -0.8, 2.5);
-export const P9_MOBILE = new THREE.Vector3(0, 0, 0);
+export const P3_MOBILE = new THREE.Vector3(-0.05, 0, 0);
+export const P4_MOBILE = new THREE.Vector3(0.6, 0.2, 1.2); //household
+export const P5_MOBILE = new THREE.Vector3(0, -0.2, 2.2); // residential
+export const P6_MOBILE = new THREE.Vector3(0.65, -0.2, 3.4); // telecom
+export const P7_MOBILE = new THREE.Vector3(0.8, 0, 2.2); // industrial
+export const P8_MOBILE = new THREE.Vector3(0.8, -0.2, 2.7); // commercial
+export const P9_MOBILE = new THREE.Vector3(0.4, -0.4, 2.5); // solar
 
 // Helper function to get positions based on screen size
 export const getPositions = (isMobile: boolean) => {
   if (isMobile) {
     return {
       posAList: [P0_MOBILE, P1_MOBILE, P2_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE],
-      posBList: [P1_MOBILE, P2_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE]
+      posBList: [P1_MOBILE, P2_MOBILE, P2_MOBILE, P3_MOBILE, P4_MOBILE, P5_MOBILE, P6_MOBILE, P7_MOBILE, P8_MOBILE, P9_MOBILE, P1_MOBILE, P1_MOBILE, P1_MOBILE],
+      rotAList: rotAList_MOBILE,
+      rotBList: rotBList_MOBILE
     };
   }
   return {
     posAList: [P0, P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P11],
-    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P11]
+    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P11],
+    rotAList: rotAList,
+    rotBList: rotBList
   };
 };
 
@@ -75,3 +79,6 @@ export const Q_section9 = new THREE.Quaternion().setFromEuler(new THREE.Euler(de
 
 export const rotAList = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
 export const rotBList = [Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
+
+export const rotAList_MOBILE = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection,Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
+export const rotBList_MOBILE = [Q_secondSection, Q_thirdSection, Q_thirdSection,Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
