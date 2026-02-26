@@ -13,23 +13,23 @@ const Section11 = () => {
             {/* Large Headline */}
             <div>
               <h1 className="text-black text-4xl md:text-7xl lg:text-8xl font-medium leading-[2rem] md:leading-[6rem] mb-4 md:my-12 uppercase">
-                The Yoshinova
+                Built on
                 <br />
-                Quality
+                Trust
               </h1>
             </div>
 
             {/* Bottom Content */}
             <div className="space-y-4 md:space-y-8">
               <div>
-                <p className="text-black/60 text-xs uppercase tracking-wider mb-4">EXPERTISE</p>
+                <p className="text-black/60 text-xs uppercase tracking-wider mb-4">WHO WE ARE</p>
                 <h2 className="text-black text-xl md:text-3xl font-normal mb-6">
-                  Engineered by Industry Veterans
+                  India&apos;s MSME Energy Profitability Partner
                 </h2>
               </div>
 
               <p className="text-black text-xs md:text-base leading-relaxed max-w-lg">
-                Our Chief Energy Advisor brings decades of experience in industrial energy optimization, with a proven track record of delivering 10% immediate savings to manufacturing facilities. Every audit is personally overseen to ensure no inefficiency goes undetected.
+                We built Yoshinova specifically for India&apos;s MSMEs — businesses that deserve enterprise-grade energy solutions without enterprise complexity or cost. Our Chief Energy Advisor personally oversees every audit, ensuring your first savings arrive within 30 days.
               </p>
             </div>
           </div>
@@ -47,25 +47,31 @@ const Section11 = () => {
         <div className="hidden md:block w-full border-b border-slate-300">
           <div className="flex flex-col md:flex-row">
             <div className="flex-1 md:py-16 md:px-12 px-4 py-4 border-r bg-slate-300 border-slate-300">
+              <p className="text-black/50 text-xs uppercase tracking-widest mb-2">01</p>
               <h3 className="text-black text-xl md:text-4xl font-light">
                 Chief Energy
                 <br />
                 Advisor
               </h3>
+              <p className="hidden md:block text-black/60 text-sm mt-3 leading-relaxed">Every audit personally led. No juniors, no guesswork.</p>
             </div>
             <div className="flex-1 md:py-16 md:px-12 px-4 py-4 border-r bg-[#6A9F30] border-slate-300">
+              <p className="text-white/60 text-xs uppercase tracking-widest mb-2">02</p>
               <h3 className="text-white text-xl md:text-4xl font-light">
-                Technical
+                Data-Driven
                 <br />
-                Excellence
+                Deployment
               </h3>
+              <p className="hidden md:block text-white/80 text-sm mt-3 leading-relaxed">BESS sized on your real data. ROI guaranteed, not estimated.</p>
             </div>
-            <div className="flex-1 md:py-16 md:px-12 px-4 py-4 bg-slate-300">
-              <h3 className="text-black text-xl md:text-4xl font-light">
+            <div className="flex-1 md:py-16 md:px-12 px-4 py-4 bg-[#111827]">
+              <p className="text-white/40 text-xs uppercase tracking-widest mb-2">03</p>
+              <h3 className="text-white text-xl md:text-4xl font-light">
                 MSME-First
                 <br />
                 Approach
               </h3>
+              <p className="hidden md:block text-white/60 text-sm mt-3 leading-relaxed">Built for India&apos;s industrial backbone — accessible, practical, proven.</p>
             </div>
           </div>
         </div>

@@ -44,20 +44,30 @@ const Section1 = () => {
       <div className="absolute inset-0 bg-black/30" />
 
       {/* Content layer */}
-      <div className="relative z-10 w-full h-full flex flex-col justify-center ">
+      <div className="relative z-10 w-full h-full flex flex-col justify-center">
 
-        {/* Middle row: Company name left, headline center, learn more right */}
-        <div className="flex justify-between flex flex-col md:flex-row border-t border-white/20">
+        {/* YOSHINOVA label — sits above the border line */}
+        <p className="text-white text-sm md:text-xl font-bold uppercase tracking-widest mb-3 px-4 md:pl-12">
+          YOSHINOVA
+        </p>
 
-          {/* Center: Main headline */}
-          <div className="flex-3 pt-4 flex justify-start items-center w-full">
-            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase px-4 md:pl-12">
-              Where Power
-              UnlocksPotential
+        {/* Main row: headline left, description right */}
+        <div className="flex justify-between flex-col md:flex-row border-t border-white/20">
+
+          {/* Left: Main headline */}
+          <div className="flex-3 pt-4 flex flex-col justify-start w-full px-4 md:pl-12">
+
+            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase">
+              Your Energy
+              <br />
+              Profitability Partner
             </h1>
+            <p className="text-white/60 text-sm md:text-base font-light tracking-wide mt-4 uppercase">
+              Energy Audit &nbsp;·&nbsp; BESS Deployment &nbsp;·&nbsp; India
+            </p>
           </div>
 
-          {/* Right: Learn More + animated bar */} 
+          {/* Right: description */}
           <div className="flex-1 flex-shrink-0 group">
             <p className="text-white text-base md:text-xl font-light tracking-tight text-left mr-auto my-4 px-4 md:px-8 md:border-l md:border-white/50">
               Advanced battery energy storage systems designed for industrial, commercial, and residential applications. Eliminate diesel dependency, optimize power costs, and create revenue-generating assets through intelligent energy management.

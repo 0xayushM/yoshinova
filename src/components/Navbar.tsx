@@ -88,14 +88,14 @@ const Navbar = () => {
             />
           </button>
 
-          {/* Brand name — absolutely centered, clickable to go home */}
+          {/* Brand name — absolutely centered, clickable to go home
           <button
             onClick={goHome}
             className="absolute left-1/2 -translate-x-1/2 text-base md:text-xl lg:text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
             style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
           >
             Yoshinova
-          </button>
+          </button> */}
 
           {/* Services button: hover opens menu, click goes to /services */}
           <button
