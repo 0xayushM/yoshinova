@@ -71,12 +71,11 @@ const Section3_2 = () => {
         <div className="max-w-xl">
           {/* Top left category label */}
           <div className="absolute top-24 right-12 md:left-12 z-20">
-            <p className="text-white text-xs uppercase tracking-widest">[02] — CORE EXPERTISE</p>
+            <p className="text-white text-xs uppercase tracking-widest">SERVICE — 02</p>
           </div>
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight pb-2">
-            02— <br/>
-            BESS
-            DEPLOYMENT
+          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight pb-2 uppercase">
+            BESS<br/>
+            Deployment
           </h1>
           
           <div className="space-y-6 max-w-md">
@@ -84,13 +83,13 @@ const Section3_2 = () => {
               Asset Creation & Revenue Generation
             </h2>
             <p className="text-white/80 text-base leading-relaxed">
-              We take the data from Step 1 to deploy a custom-sized energy storage system. Replace diesel generators, bypass peak Time-of-Day tariffs, and create a revenue-generating asset. Permanent solution to energy cost challenges.
+              We deploy a custom-sized Battery Energy Storage System tailored to your facility's exact needs. Replace diesel generators, bypass peak Time-of-Day tariffs, and transform your energy infrastructure into a revenue-generating asset — a permanent solution to energy cost challenges.
             </p>
           </div>
         </div>
 
         {/* Right side - 3-row grid of deployment zones */}
-        <div className="hidden md:grid flex-1 grid grid-rows-3 gap-0 h-full">
+        <div className="hidden md:grid flex-1 grid-rows-3 gap-0 h-full">
           {/* Row 1 */}
           <div className="grid grid-cols-2 gap-0">
             <ZoneCard {...zones[0]} onClick={() => handleZoneClick(zones[0].title)} />

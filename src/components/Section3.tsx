@@ -21,18 +21,18 @@ const Section3 = () => {
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/50" />
 
-      {/* Top left category label */}
+      {/* Top right category label */}
       <div className="absolute top-24 right-12 z-20">
-        <p className="text-[#6A9F30] text-xs uppercase tracking-widest">[01] — CORE EXPERTISE</p>
+        <p className="text-[#6A9F30] text-xs uppercase tracking-widest">SERVICE — 01</p>
       </div>
 
       {/* Main content */}
       <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
-        {/* Left side - Large headline and description */}
+        {/* Left side - image */}
         <div className="flex-1 max-w-2xl h-full flex items-center justify-center">
           <Image 
             src="/images/industrial.jpg" 
-            alt="Floor Audit Process"
+            alt="Energy Audit"
             className="w-full h-3/4 object-cover"
             style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
             width={500}
@@ -41,21 +41,25 @@ const Section3 = () => {
           />
         </div>
 
-        {/* Right side - 3D image/visual */}
-        
+        {/* Right side - content */}
         <div className="max-w-xl">
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight mb-2">
-            01— <br/>THE FLOOR
-            AUDIT
+          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight mb-2 uppercase">
+            Energy<br/>Audit
           </h1>
           
           <div className="space-y-6 max-w-md">
-            <h2 className=" text-2xl text-[#6A9F30] font-normal border-t-2 border-tertiary">
+            <h2 className="text-2xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]">
               Optimize Your Operations
             </h2>
             <p className="text-white/80 text-base leading-relaxed">
-              Our Chief Energy Advisor steps in to uncover hidden 10% savings immediately. We identify inefficient motors, analyze power factor issues, and detect energy leaks. Your BESS sizing is driven by this hard data, not guesswork.
+              Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
+            <a
+              href="/energy-audit"
+              className="inline-block mt-4 px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              Learn More
+            </a>
           </div>
         </div>
       </div>
