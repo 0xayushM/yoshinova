@@ -9,6 +9,7 @@ const Section2 = () => {
       <div className="w-full h-full flex flex-col justify-center items-end">
         {/* Title Section */}
       <div className="w-full py-8 md:py-16 px-4 md:px-12 md:pt-48">
+        <p className="text-black/40 text-xs uppercase tracking-widest mb-3">The Problem We Solve</p>
         <h1 className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[3rem]">
           The dual bleed
           <br />
@@ -69,10 +70,10 @@ const Section2 = () => {
         <div className="bg-[#6A9F30] flex flex-col justify-between p-4 md:p-12">
           <div>
             <h2 className="text-white text-xl md:text-3xl font-normal mb-4 md:mb-6">
-              The Solution
+              Our Approach
             </h2>
             <p className="text-white text-xs md:text-base leading-relaxed mb-2 md:mb-8">
-              Our two-step system addresses both bleeds simultaneously. First, we audit and optimize your floor operations. Then, we deploy custom-sized BESS to eliminate diesel dependency and arbitrage peak tariffs.
+              We begin with a deep Energy Audit to uncover every hidden cost on your floor — then deploy a right-sized BESS to eliminate diesel dependency and arbitrage peak tariffs. Authority earned first, solution delivered second.
             </p>
           </div>
           <div className="hidden md:flex justify-center">

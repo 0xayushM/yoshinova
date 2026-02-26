@@ -33,7 +33,7 @@ const Section13 = () => {
             <div className="space-y-1">
               <p className="font-bold text-white/90">Yoshinova</p>
               <p className="text-white/50 normal-case tracking-normal text-[11px] leading-relaxed">
-                Powering India&apos;s Industrial Future
+                Your Energy Profitability Partner
               </p>
             </div>
             <div className="space-y-3">
@@ -61,7 +61,8 @@ const Section13 = () => {
 
           {/* Lead capture form */}
           <form onSubmit={handleSubmit} className="space-y-4 mt-6">
-            <h3 className="text-white text-lg font-bold tracking-wide mb-2">Request an Energy Audit</h3>
+            <h3 className="text-white text-lg font-bold tracking-wide mb-1">Start With a Free Energy Audit</h3>
+            <p className="text-white/50 text-xs leading-relaxed mb-2">We find your hidden savings first. Then we talk BESS.</p>
             <div className="grid grid-cols-2 gap-4">
               <input
                 type="text"
@@ -112,7 +113,7 @@ const Section13 = () => {
 
           {/* Bottom tagline */}
           <p className="text-white/30 text-[11px] tracking-[0.08em] leading-relaxed max-w-md mt-6">
-            Zero-diesel operations and permanent energy cost reduction — engineered for India&apos;s industrial backbone.
+            Energy Audit &rarr; Right-sized BESS &rarr; Permanent cost reduction. Built for India&apos;s industrial backbone.
           </p>
         </div>
 
