@@ -13,7 +13,11 @@ import {
   Q_secondSection,
 } from "../utils/rigHelpers";
 
-export default function SceneRig(): JSX.Element {
+interface SceneRigProps {
+  onProgress?: (progress: number) => void;
+}
+
+export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
   const modelRef = useRef<THREE.Group>(null);
   const scroll = useScroll();
   const capRef = useRef<THREE.Object3D | null>(null);
@@ -127,7 +131,7 @@ export default function SceneRig(): JSX.Element {
 
   return (
     <group ref={modelRef} name="model-root">
-      <GltfModel url="/models/yoshinova.glb" scale={modelScale} />
+      <GltfModel url="/models/yoshinova.glb" scale={modelScale} onProgress={onProgress} />
     </group>
   );
 }

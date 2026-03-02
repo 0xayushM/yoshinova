@@ -112,7 +112,11 @@ function ShadowLightRig() {
   );
 }
 
-export default function ModelViewer(): JSX.Element {
+interface ModelViewerProps {
+  onProgress?: (progress: number) => void;
+}
+
+export default function ModelViewer({ onProgress }: ModelViewerProps): JSX.Element {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -199,7 +203,7 @@ export default function ModelViewer(): JSX.Element {
 
         <ScrollControls pages={14} damping={0.3}>
           <Suspense fallback={null}>
-            <SceneRig />
+            <SceneRig onProgress={onProgress} />
           </Suspense>
           <ScrollBroadcaster />
 

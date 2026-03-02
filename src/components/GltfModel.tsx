@@ -8,6 +8,7 @@ interface GltfModelProps {
   scale?: number | [number, number, number];
   position?: [number, number, number];
   rotation?: [number, number, number];
+  onProgress?: (progress: number) => void;
 }
 
 export function GltfModel({
@@ -15,10 +16,28 @@ export function GltfModel({
   scale = 0.1,
   position = [0.0, 0.0, 0.0],
   rotation = [0, 0, 0],
+  onProgress,
 }: GltfModelProps) {
   const group = useRef<THREE.Group | null>(null);
-  const gltf = useGLTF(url, true) as any;
+  const progressReported = useRef(false);
+  
+  const gltf = useGLTF(url, true, undefined, (loader) => {
+    loader.manager.onProgress = (url, loaded, total) => {
+      if (onProgress && total > 0) {
+        const progress = Math.round((loaded / total) * 100);
+        onProgress(progress);
+      }
+    };
+  }) as any;
+  
   const { actions, mixer } = useAnimations(gltf.animations, group);
+  
+  useEffect(() => {
+    if (gltf && !progressReported.current && onProgress) {
+      onProgress(100);
+      progressReported.current = true;
+    }
+  }, [gltf, onProgress]);
 
   // Auto-play & loop all animations
   useEffect(() => {
