@@ -55,8 +55,8 @@ export const getPositions = (isMobile: boolean) => {
     };
   }
   return {
-    posAList: [P0, P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P11],
-    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P11],
+    posAList: [P0, P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10],
+    posBList: [P1, P2, P2, P3, P4, P5, P6, P7, P8, P2, P10, P10, P2],
     rotAList: rotAList,
     rotBList: rotBList
   };
@@ -77,8 +77,8 @@ export const Q_section7 = new THREE.Quaternion().setFromEuler(new THREE.Euler(de
 export const Q_section8 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-10), deg(110), deg(30), "YXZ"));
 export const Q_section9 = new THREE.Quaternion().setFromEuler(new THREE.Euler(deg(-30), deg(140), deg(20), "YXZ"));
 
-export const rotAList = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
-export const rotBList = [Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_secondSection];
+export const rotAList = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection];
+export const rotBList = [Q_secondSection, Q_thirdSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_secondSection, Q_thirdSection, Q_thirdSection];
 
 export const rotAList_MOBILE = [Q_thirdSection, Q_secondSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection, Q_thirdSection,Q_secondSection, Q_secondSection];
 export const rotBList_MOBILE = [Q_secondSection, Q_thirdSection, Q_fourthSection, Q_section5, Q_section6, Q_section7, Q_section8, Q_section9, Q_thirdSection,Q_thirdSection, Q_secondSection, Q_secondSection];
