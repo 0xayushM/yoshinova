@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ZoneCard from './ZoneCard';
+import SplitText from './SplitText';
 
 const zones = [
   {
@@ -73,15 +74,30 @@ const Section3_2 = () => {
           <div className="absolute top-24 right-12 md:left-12 z-20">
             <p className="text-white text-xs uppercase tracking-widest">SERVICE — 02</p>
           </div>
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight pb-2 uppercase">
-            BESS<br/>
-            Deployment
-          </h1>
+          <SplitText
+            text="BESS Deployment"
+            tag="h1"
+            className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight pb-2 uppercase"
+            delay={30}
+            duration={1}
+            splitType="chars"
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="left"
+          />
           
           <div className="space-y-6 max-w-md">
-            <h2 className="text-[#111827] text-2xl font-normal border-t-2 border-[#111827]">
-              Asset Creation & Revenue Generation
-            </h2>
+            <SplitText
+              text="Asset Creation & Revenue Generation"
+              tag="h2"
+              className="text-[#111827] text-2xl font-normal border-t-2 border-[#111827]"
+              delay={20}
+              duration={0.8}
+              splitType="words"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              textAlign="left"
+            />
             <p className="text-white/80 text-base leading-relaxed">
               We deploy a custom-sized Battery Energy Storage System tailored to your facility's exact needs. Replace diesel generators, bypass peak Time-of-Day tariffs, and transform your energy infrastructure into a revenue-generating asset — a permanent solution to energy cost challenges.
             </p>

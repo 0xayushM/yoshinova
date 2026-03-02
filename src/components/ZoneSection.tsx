@@ -2,6 +2,7 @@
 
 import React from 'react';
 import BESSComparisonChart, { ChartDataPoint } from './BESSComparisonChart';
+import SplitText from './SplitText';
 
 interface ZoneSectionProps {
   title: string;
@@ -35,9 +36,19 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
     <section className={`w-screen h-screen relative overflow-hidden ${gradientClass}`}>
       <div className={`w-full h-full flex flex-col justify-center items-${isLeft ? 'start' : 'end'}`}>
         <div className='w-full'>
-          <h1 className={`text-white text-4xl md:text-7xl lg:text-8xl font-medium leading-[4rem] md:leading-[7rem] tracking-tight ${isLeft ? 'text-left' : 'text-right'} w-full px-12 uppercase border-b border-white/50`}>
-            {title}
-          </h1>
+          <div className={`px-12 border-b border-white/50`}>
+            <SplitText
+              text={title}
+              tag="h1"
+              className={`text-white text-4xl md:text-7xl lg:text-8xl font-medium leading-[4rem] md:leading-[7rem] tracking-tight uppercase`}
+              delay={30}
+              duration={1}
+              splitType="chars"
+              from={{ opacity: 0, y: 50 }}
+              to={{ opacity: 1, y: 0 }}
+              textAlign={isLeft ? 'left' : 'right'}
+            />
+          </div>
           <p className={`text-white text-lg md:text-xl font-medium tracking-tight ${isLeft ? 'text-left' : 'text-right'} md:max-w-[50%] ${isLeft ? 'mr-auto' : 'ml-auto'} my-4 px-12`}>
             {description}
           </p>
