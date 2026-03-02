@@ -34,23 +34,27 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       rafId = requestAnimationFrame(smoothScroll);
     };
 
-    updateBodyHeight();
-    rafId = requestAnimationFrame(smoothScroll);
+    // Delay initialization to ensure content is rendered
+    const initTimeout = setTimeout(() => {
+      updateBodyHeight();
+      rafId = requestAnimationFrame(smoothScroll);
+
+      // Update ScrollTrigger after initialization
+      ScrollTrigger.refresh();
+    }, 100);
 
     // Update body height on resize
     const resizeObserver = new ResizeObserver(updateBodyHeight);
     resizeObserver.observe(content);
 
-    // Update ScrollTrigger
-    ScrollTrigger.refresh();
-
     return () => {
+      clearTimeout(initTimeout);
       cancelAnimationFrame(rafId);
       resizeObserver.disconnect();
       document.body.style.height = '';
       content.style.transform = '';
     };
-  }, []);
+  }, [children]);
 
   return (
     <div ref={wrapperRef} className="fixed top-0 left-0 w-full h-screen overflow-hidden z-[1]">

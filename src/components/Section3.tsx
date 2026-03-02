@@ -55,7 +55,7 @@ const Section3 = () => {
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
             <a
-              href="/energy-audit"
+              href="/services/energy-audit"
               className="inline-block mt-4 px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Learn More

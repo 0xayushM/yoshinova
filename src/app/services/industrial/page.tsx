@@ -5,41 +5,41 @@ import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import SmoothScroll from '@/components/SmoothScroll';
 
-const auditSteps = [
+const features = [
   {
     number: "01",
-    title: "On-Site Assessment",
+    title: "Demand Charge Reduction",
     description:
-      "Our Chief Energy Advisor visits your facility to conduct a thorough walkthrough — documenting your machinery, HVAC systems, lighting, and power distribution infrastructure.",
+      "Slash peak demand charges by up to 40% through intelligent load leveling, automatically discharging batteries during high-consumption periods.",
   },
   {
     number: "02",
-    title: "Power Quality Analysis",
+    title: "Power Quality Improvement",
     description:
-      "We deploy power analysers to measure real-time energy consumption, power factor, harmonic distortion, and peak demand patterns across your entire operations.",
+      "Eliminate voltage sags, harmonics, and power factor penalties that damage sensitive equipment and inflate electricity bills.",
   },
   {
     number: "03",
-    title: "Loss Identification",
+    title: "Production Continuity",
     description:
-      "Hidden inefficiencies are mapped: inefficient motors, transformer losses, idle equipment draw, and reactive power penalties that silently inflate your electricity bill.",
+      "Bridge grid outages seamlessly to prevent costly production stoppages, material waste, and missed delivery deadlines.",
   },
   {
     number: "04",
-    title: "Optimisation Report",
+    title: "Renewable Integration",
     description:
-      "You receive a prioritised action plan with projected savings for each intervention — giving you a clear ROI picture before a single rupee is spent.",
+      "Store excess solar or wind energy for use during non-generation hours, maximizing your renewable energy ROI.",
   },
 ];
 
 const benefits = [
-  { stat: "10%+", label: "Typical immediate cost reduction" },
-  { stat: "₹0", label: "Upfront investment for the audit" },
-  { stat: "30 days", label: "Average time to first savings" },
-  { stat: "Data-driven", label: "BESS sizing based on real numbers" },
+  { stat: "20-40%", label: "Reduction in energy costs" },
+  { stat: "100%", label: "Uptime during grid failures" },
+  { stat: "3-5 years", label: "Typical payback period" },
+  { stat: "Real-time", label: "Energy monitoring & control" },
 ];
 
-export default function EnergyAuditPage() {
+export default function IndustrialPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const [fontSize, setFontSize] = useState(100);
@@ -87,7 +87,7 @@ export default function EnergyAuditPage() {
           <section className="relative w-full h-screen overflow-hidden">
             <Image
               src="/images/industrial.jpg"
-              alt="Energy Audit"
+              alt="Industrial BESS"
               fill
               className="object-cover"
               priority
@@ -96,7 +96,7 @@ export default function EnergyAuditPage() {
 
             <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
               <p className="text-[#6A9F30] text-xs uppercase tracking-widest">
-                SERVICE — 01
+                SERVICE — 04
               </p>
             </div>
 
@@ -109,14 +109,13 @@ export default function EnergyAuditPage() {
                 className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
                 style={{ fontSize: `${fontSize}px` }}
               >
-                ENERGY AUDIT
+                INDUSTRIAL
               </h1>
             </div>
 
             <div className="absolute bottom-12 left-6 md:left-14 z-10 max-w-lg">
               <p className="text-white/70 text-base md:text-lg leading-relaxed border-t border-white/20 pt-4">
-                We uncover what your energy bill is hiding. A comprehensive floor
-                audit that delivers real savings — fast.
+                Industrial-scale energy storage that cuts costs, improves power quality, and keeps production running without interruption.
               </p>
             </div>
           </section>
@@ -126,23 +125,18 @@ export default function EnergyAuditPage() {
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                  Why an Energy Audit?
+                  Why Industrial BESS?
                 </p>
                 <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Your floor is bleeding money. We find exactly where.
+                  Manufacturing demands reliable, cost-effective power
                 </h2>
               </div>
               <div>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-                  Most facilities lose 10–25% of their energy to inefficiencies
-                  they cannot see — poor power factor, oversized motors running
-                  at partial load, phantom loads, and avoidable peak demand
-                  charges.
+                  Industrial facilities face unique energy challenges: unpredictable demand spikes, expensive peak charges, power quality issues that damage equipment, and grid outages that halt production lines. Every minute of downtime translates to lost revenue and wasted materials.
                 </p>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                  Our Energy Audit gives you a precise, data-backed map of every
-                  leak. Before you invest in any solution, you know exactly what
-                  it will save — and we prove it.
+                  Our industrial Battery Energy Storage Systems are engineered to handle high-power loads while delivering measurable cost savings. From peak shaving to backup power and renewable integration, we provide scalable solutions that pay for themselves through reduced energy bills and eliminated downtime.
                 </p>
               </div>
             </div>
@@ -164,32 +158,32 @@ export default function EnergyAuditPage() {
             </div>
           </section>
 
-          {/* Audit Process */}
+          {/* Features */}
           <section className="w-full bg-black px-6 md:px-14 py-24 md:py-32">
             <div className="max-w-5xl mx-auto">
               <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                The Process
+                Key Features
               </p>
               <h2 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16">
-                How We Do It
+                Engineered for Heavy Industry
               </h2>
 
               <div className="grid md:grid-cols-2 gap-0 border-t border-white/10">
-                {auditSteps.map((step, i) => (
+                {features.map((feature, i) => (
                   <div
-                    key={step.number}
+                    key={feature.number}
                     className={`p-8 md:p-10 border-b border-white/10 ${
                       i % 2 === 0 ? 'md:border-r md:border-white/10' : ''
                     }`}
                   >
                     <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                      {step.number}
+                      {feature.number}
                     </p>
                     <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3">
-                      {step.title}
+                      {feature.title}
                     </h3>
                     <p className="text-white/60 text-base leading-relaxed">
-                      {step.description}
+                      {feature.description}
                     </p>
                   </div>
                 ))}
@@ -197,35 +191,32 @@ export default function EnergyAuditPage() {
             </div>
           </section>
 
-          {/* What comes next */}
+          {/* Implementation */}
           <section className="w-full bg-[#e8e6e1] px-6 md:px-14 py-24 md:py-32">
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
                   src="/images/industrial2.jpg"
-                  alt="BESS Deployment"
+                  alt="Industrial BESS Installation"
                   fill
                   className="object-cover"
                 />
               </div>
               <div>
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                  What Comes Next
+                  Implementation
                 </p>
                 <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  From Audit to Action
+                  Minimal disruption, maximum impact
                 </h2>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
-                  The audit data doesn&apos;t sit in a report. It directly informs
-                  the sizing and deployment of your Battery Energy Storage
-                  System — so your BESS investment is right-sized, not
-                  guessed. Every kilowatt-hour is accounted for.
+                  We begin with a comprehensive energy audit to identify your facility&apos;s specific needs and savings opportunities. Our team designs a custom BESS solution sized to your load profile, then handles installation, commissioning, and integration with your existing electrical infrastructure. Most systems are operational within weeks, not months.
                 </p>
                 <a
-                  href="/services"
+                  href="/energy-audit"
                   className="inline-block px-6 py-3 border border-black text-black text-sm uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-300"
                 >
-                  Explore All Services
+                  Start with Energy Audit
                 </a>
               </div>
             </div>
@@ -237,17 +228,16 @@ export default function EnergyAuditPage() {
               Get Started
             </p>
             <h2 className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6">
-              Ready to stop the bleed?
+              Cut energy costs while improving reliability
             </h2>
             <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10">
-              Book a no-obligation energy audit and find out exactly how much
-              your facility is leaving on the table.
+              Schedule a facility energy assessment and discover exactly how much you can save with a customized industrial BESS solution.
             </p>
             <a
               href="mailto:contact@yoshinova.in"
               className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
             >
-              Book Your Audit
+              Request Assessment
             </a>
           </section>
 
