@@ -28,8 +28,8 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
 }) => {
   const isLeft = alignment === 'left';
   const gradientClass = gradientDirection === 'left' 
-    ? 'bg-gradient-to-l from-transparent via-transparent to-[#111827]'
-    : 'bg-gradient-to-r from-transparent via-transparent to-[#111827]';
+    ? 'bg-gradient-to-tl from-transparent via-transparent to-[#111827]'
+    : 'bg-gradient-to-tr from-transparent via-transparent to-[#111827]';
 
   return (
     <section className={`w-screen h-screen relative overflow-hidden ${gradientClass}`}>

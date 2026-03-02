@@ -6,16 +6,21 @@ import { createPortal } from 'react-dom';
 
 interface LoadingScreenProps {
   onComplete?: () => void;
+  progress?: number;
 }
 
-const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
-  const [progress, setProgress] = useState(0);
+const LoadingScreen = ({ onComplete, progress: externalProgress }: LoadingScreenProps) => {
+  const [internalProgress, setInternalProgress] = useState(0);
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
+  const progress = externalProgress !== undefined ? externalProgress : internalProgress;
+
   useEffect(() => {
+    if (externalProgress !== undefined) return;
+
     let frame: number;
     let start: number | null = null;
     const duration = 2500;
@@ -25,23 +30,27 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       const elapsed = timestamp - start;
       const pct = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - pct, 3);
-      setProgress(Math.round(eased * 100));
+      setInternalProgress(Math.round(eased * 100));
 
       if (pct < 1) {
         frame = requestAnimationFrame(animate);
-      } else {
-        setTimeout(() => {
-          setVisible(false);
-          setTimeout(() => {
-            onComplete?.();
-          }, 600);
-        }, 300);
       }
     };
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [onComplete]);
+  }, [externalProgress]);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      setTimeout(() => {
+        setVisible(false);
+        setTimeout(() => {
+          onComplete?.();
+        }, 600);
+      }, 300);
+    }
+  }, [progress, onComplete]);
 
   const content = (
     <div
