@@ -29,9 +29,9 @@ const Section3 = () => {
       {/* Main content */}
       <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
         {/* Left side - image */}
-        <div className="flex-1 max-w-2xl h-full flex items-center justify-center">
+        <div className="flex-1 max-w-3xl h-full flex items-center justify-center">
           <Image 
-            src="/images/industrial.jpg" 
+            src="/images/energy-audit.png" 
             alt="Energy Audit"
             className="w-full h-3/4 object-cover"
             style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
