@@ -234,7 +234,7 @@ export default function SolarPage() {
               Schedule a solar assessment and discover how combining panels with storage can transform your energy economics and environmental impact.
             </p>
             <a
-              href="mailto:contact@yoshinova.in"
+              href="/contact"
               className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
             >
               Request Solar Assessment
