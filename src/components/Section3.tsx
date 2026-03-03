@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React from 'react';
+import SplitText from './SplitText';
 
 const Section3 = () => {
   return (
@@ -43,14 +44,52 @@ const Section3 = () => {
 
         {/* Right side - content */}
         <div className="max-w-xl">
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight mb-2 uppercase">
-            Energy<br/>Audit
-          </h1>
+          <div className="mb-2">
+            <SplitText
+              text="Energy"
+              tag="h1"
+              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
+              delay={70}
+              duration={1}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
+            <SplitText
+              text="Audit"
+              tag="h1"
+              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
+              delay={70}
+              duration={1}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
+          </div>
           
           <div className="space-y-6 max-w-md">
-            <h2 className="text-2xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]">
-              Optimize Your Operations
-            </h2>
+            <SplitText
+              text="Optimize Your Operations"
+              tag="h2"
+              className="text-2xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-white/80 text-base leading-relaxed">
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
