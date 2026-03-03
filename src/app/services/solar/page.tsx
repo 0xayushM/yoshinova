@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import SmoothScroll from '@/components/SmoothScroll';
+import SplitText from '@/components/SplitText';
 
 const features = [
   {
@@ -109,7 +110,7 @@ export default function SolarPage() {
                 className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
                 style={{ fontSize: `${fontSize}px` }}
               >
-                SOLAR POWER
+                SOLAR
               </h1>
             </div>
 
@@ -127,9 +128,20 @@ export default function SolarPage() {
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                   Why Solar + Storage?
                 </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Solar panels are just the beginning
-                </h2>
+                <SplitText
+                  text="Solar panels are just the beginning"
+                  tag="h2"
+                  className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6"
+                  delay={50}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.5}
+                  rootMargin="0px"
+                  textAlign="left"
+                />
               </div>
               <div>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
@@ -164,9 +176,20 @@ export default function SolarPage() {
               <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                 Key Features
               </p>
-              <h2 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16">
-                Intelligent Solar Integration
-              </h2>
+              <SplitText
+                text="Intelligent Solar Integration"
+                tag="h2"
+                className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16"
+                delay={50}
+                duration={0.8}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.5}
+                rootMargin="0px"
+                textAlign="left"
+              />
 
               <div className="grid md:grid-cols-2 gap-0 border-t border-white/10">
                 {features.map((feature, i) => (
@@ -179,9 +202,20 @@ export default function SolarPage() {
                     <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                       {feature.number}
                     </p>
-                    <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3">
-                      {feature.title}
-                    </h3>
+                    <SplitText
+                      text={feature.title}
+                      tag="h3"
+                      className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3"
+                      delay={40}
+                      duration={0.6}
+                      ease="power3.out"
+                      splitType="chars"
+                      from={{ opacity: 0, y: 20 }}
+                      to={{ opacity: 1, y: 0 }}
+                      threshold={0.5}
+                      rootMargin="0px"
+                      textAlign="left"
+                    />
                     <p className="text-white/60 text-base leading-relaxed">
                       {feature.description}
                     </p>
@@ -206,9 +240,20 @@ export default function SolarPage() {
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                   System Design
                 </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Optimized for your location and usage
-                </h2>
+                <SplitText
+                  text="Optimized for your location and usage"
+                  tag="h2"
+                  className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6"
+                  delay={50}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.5}
+                  rootMargin="0px"
+                  textAlign="left"
+                />
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
                   We design complete solar-plus-storage systems tailored to your site conditions, energy consumption patterns, and financial goals. Whether you&apos;re adding storage to an existing solar installation or building a new system from scratch, we optimize panel orientation, battery capacity, and inverter sizing to maximize your energy independence and ROI.
                 </p>
@@ -227,9 +272,20 @@ export default function SolarPage() {
             <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
               Get Started
             </p>
-            <h2 className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6">
-              Unlock the full potential of solar energy
-            </h2>
+            <SplitText
+              text="Unlock the full potential of solar energy"
+              tag="h2"
+              className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="center"
+            />
             <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10">
               Schedule a solar assessment and discover how combining panels with storage can transform your energy economics and environmental impact.
             </p>
