@@ -2,19 +2,43 @@
 
 import Image from 'next/image';
 import React from 'react';
+import SplitText from './SplitText';
 
 const Section2 = () => {
   return (
     <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-slate-300/90">
       <div className="w-full h-full flex flex-col justify-center items-end">
         {/* Title Section */}
-      <div className="w-full py-8 md:py-16 px-4 md:px-12 md:pt-48">
-        <p className="text-black/40 text-xs uppercase tracking-widest mb-3">The Problem We Solve</p>
-        <h1 className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[3rem]">
-          The dual bleed
-          <br />
-          <span className="font-normal leading-[1rem] md:leading-[6rem] uppercase">in power costs</span>
-        </h1>
+      <div className="w-full py-8 md:py-16 px-4 md:px-12 md:pt-48 flex flex-col">
+        <p className="text-black/40 text-xs uppercase tracking-widest mb-3 leading-[0.9]">The Problem We Solve</p>
+        <SplitText
+          text="The dual bleed"
+          tag="h1"
+          className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[0.9]"
+          delay={70}
+          duration={1}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.5}
+          rootMargin="0px"
+          textAlign="left"
+        />
+        <SplitText
+          text="in power costs"
+          tag="h1"
+          className="text-black uppercase text-3xl md:text-7xl font-normal text-left leading-[1rem] md:leading-[0.9]"
+          delay={70}
+          duration={1}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.5}
+          rootMargin="0px"
+          textAlign="left"
+        />
       </div>
 
       {/* Grid Layout - 4 columns */}
