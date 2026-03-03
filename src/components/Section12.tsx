@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import SplitText from './SplitText';
 
 const newsStories = [
   {
@@ -67,9 +68,22 @@ const Section12 = () => {
 
         {/* Headline and Description */}
         <div className="max-w-2xl py-4 md:py-12">
-          <h1 className="text-black text-4xl pt-12 md:text-8xl lg:text-9xl font-normal leading-[2rem] md:leading-[6rem] mb-4 md:mb-6">
-            News & Story
-          </h1>
+          <div className="pt-12 mb-4 md:mb-6">
+            <SplitText
+              text="News & Story"
+              tag="h1"
+              className="text-black text-4xl md:text-6xl font-normal leading-[2rem] md:leading-[6rem]"
+              delay={70}
+              duration={1}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
+          </div>
           <p className="text-black text-base md:text-xl leading-relaxed">
             Discover how Yoshinova is transforming energy storage across industries. From groundbreaking deployments to innovative solutions, explore our latest achievements in sustainable energy management and BESS technology.
           </p>
@@ -82,9 +96,20 @@ const Section12 = () => {
         <div className="w-full h-full md:w-1/2 bg-[#D3D3D3] p-4 md:p-12 flex flex-col justify-between">
           <div>
             <p className="text-black text-xs uppercase tracking-widest mb-6">{currentStory.category}</p>
-            <h2 className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6">
-              {currentStory.title}
-            </h2>
+            <SplitText
+              text={currentStory.title}
+              tag="h2"
+              className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-black/80 text-base leading-relaxed">
               {currentStory.description}
             </p>

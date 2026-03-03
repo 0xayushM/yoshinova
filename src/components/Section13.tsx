@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import SplitText from './SplitText';
 
 const Section13 = () => {
   const [formData, setFormData] = useState({
@@ -61,7 +62,20 @@ const Section13 = () => {
 
           {/* Lead capture form */}
           <form onSubmit={handleSubmit} className="space-y-4 mt-6">
-            <h3 className="text-white text-lg font-bold tracking-wide mb-1">Start With a Free Energy Audit</h3>
+            <SplitText
+              text="Start With a Free Energy Audit"
+              tag="h3"
+              className="text-white text-lg font-bold tracking-wide mb-1"
+              delay={40}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 20 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-white/50 text-xs leading-relaxed mb-2">We find your hidden savings first. Then we talk BESS.</p>
             <div className="grid grid-cols-2 gap-4">
               <input
