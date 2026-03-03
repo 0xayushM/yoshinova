@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import SmoothScroll from '@/components/SmoothScroll';
+import SplitText from '@/components/SplitText';
 
 const features = [
   {

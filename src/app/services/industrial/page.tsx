@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import SmoothScroll from '@/components/SmoothScroll';
+import SplitText from '@/components/SplitText';
 
 const features = [
   {
@@ -127,9 +128,20 @@ export default function IndustrialPage() {
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                   Why Industrial BESS?
                 </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Manufacturing demands reliable, cost-effective power
-                </h2>
+                <SplitText
+                  text="Manufacturing demands reliable, cost-effective power"
+                  tag="h2"
+                  className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6"
+                  delay={50}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.5}
+                  rootMargin="0px"
+                  textAlign="left"
+                />
               </div>
               <div>
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
@@ -164,9 +176,20 @@ export default function IndustrialPage() {
               <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                 Key Features
               </p>
-              <h2 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16">
-                Engineered for Heavy Industry
-              </h2>
+              <SplitText
+                text="Engineered for Heavy Industry"
+                tag="h2"
+                className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16"
+                delay={50}
+                duration={0.8}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.5}
+                rootMargin="0px"
+                textAlign="left"
+              />
 
               <div className="grid md:grid-cols-2 gap-0 border-t border-white/10">
                 {features.map((feature, i) => (
@@ -179,9 +202,20 @@ export default function IndustrialPage() {
                     <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                       {feature.number}
                     </p>
-                    <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3">
-                      {feature.title}
-                    </h3>
+                    <SplitText
+                      text={feature.title}
+                      tag="h3"
+                      className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3"
+                      delay={40}
+                      duration={0.6}
+                      ease="power3.out"
+                      splitType="chars"
+                      from={{ opacity: 0, y: 20 }}
+                      to={{ opacity: 1, y: 0 }}
+                      threshold={0.3}
+                      rootMargin="0px"
+                      textAlign="left"
+                    />
                     <p className="text-white/60 text-base leading-relaxed">
                       {feature.description}
                     </p>
@@ -206,9 +240,20 @@ export default function IndustrialPage() {
                 <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
                   Implementation
                 </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Minimal disruption, maximum impact
-                </h2>
+                <SplitText
+                  text="Minimal disruption, maximum impact"
+                  tag="h2"
+                  className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6"
+                  delay={50}
+                  duration={0.8}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 30 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.5}
+                  rootMargin="0px"
+                  textAlign="left"
+                />
                 <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
                   We begin with a comprehensive energy audit to identify your facility&apos;s specific needs and savings opportunities. Our team designs a custom BESS solution sized to your load profile, then handles installation, commissioning, and integration with your existing electrical infrastructure. Most systems are operational within weeks, not months.
                 </p>
@@ -227,9 +272,20 @@ export default function IndustrialPage() {
             <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
               Get Started
             </p>
-            <h2 className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6">
-              Cut energy costs while improving reliability
-            </h2>
+            <SplitText
+              text="Cut energy costs while improving reliability"
+              tag="h2"
+              className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="0px"
+              textAlign="center"
+            />
             <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10">
               Schedule a facility energy assessment and discover exactly how much you can save with a customized industrial BESS solution.
             </p>
