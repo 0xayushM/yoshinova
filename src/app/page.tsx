@@ -20,7 +20,7 @@ export default function Home() {
     <main className="relative min-h-screen">
       {loading && <LoadingScreen onComplete={handleLoadingComplete} progress={loadingProgress} />}
       <div className="flex flex-col items-center h-screen relative z-10">
-        <ModelViewer onProgress={handleProgress} />
+        <ModelViewer onProgress={handleProgress} loadingComplete={!loading} />
       </div>
     </main>
   );

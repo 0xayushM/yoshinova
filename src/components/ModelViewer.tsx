@@ -114,9 +114,10 @@ function ShadowLightRig() {
 
 interface ModelViewerProps {
   onProgress?: (progress: number) => void;
+  loadingComplete?: boolean;
 }
 
-export default function ModelViewer({ onProgress }: ModelViewerProps): JSX.Element {
+export default function ModelViewer({ onProgress, loadingComplete = false }: ModelViewerProps): JSX.Element {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -210,7 +211,7 @@ export default function ModelViewer({ onProgress }: ModelViewerProps): JSX.Eleme
           {/* HTML overlay sections (15 full-screen sections) */}
           <Scroll html>
             <div className="relative z-20 w-screen">
-              <Section1 />
+              <Section1 loadingComplete={loadingComplete} />
               <Section2 />
               <Section3 />
               <Section3_2 />
