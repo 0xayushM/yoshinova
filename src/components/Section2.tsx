@@ -57,9 +57,20 @@ const Section2 = () => {
         {/* Column 2: Inside Bleed */}
         <div className="bg-slate-200 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6">
-              Inside Bleed
-            </h2>
+            <SplitText
+              text="Inside Bleed"
+              tag="h2"
+              className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               Inefficient motors, poor power factors, and hidden energy leaks on your production floor silently drain margins. Without real-time monitoring and optimization, you're paying for wasted power every single day.
             </p>
@@ -76,9 +87,20 @@ const Section2 = () => {
         {/* Column 3: Outside Bleed */}
         <div className="bg-slate-100 flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6">
-              Outside Bleed
-            </h2>
+            <SplitText
+              text="Outside Bleed"
+              tag="h2"
+              className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit. This external pressure compounds internal inefficiencies, creating a double financial drain.
             </p>
@@ -93,9 +115,20 @@ const Section2 = () => {
         {/* Column 4: The Solution */}
         <div className="bg-[#6A9F30] flex flex-col justify-between p-4 md:p-12">
           <div>
-            <h2 className="text-white text-xl md:text-3xl font-normal mb-4 md:mb-6">
-              Our Approach
-            </h2>
+            <SplitText
+              text="Our Approach"
+              tag="h2"
+              className="text-white text-xl md:text-3xl font-normal mb-4 md:mb-6"
+              delay={50}
+              duration={0.8}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.5}
+              rootMargin="0px"
+              textAlign="left"
+            />
             <p className="text-white text-xs md:text-base leading-relaxed mb-2 md:mb-8">
               We begin with a deep Energy Audit to uncover every hidden cost on your floor — then deploy a right-sized BESS to eliminate diesel dependency and arbitrage peak tariffs. Authority earned first, solution delivered second.
             </p>
