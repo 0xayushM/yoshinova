@@ -44,7 +44,7 @@ const Section12 = () => {
   const currentStory = newsStories[currentIndex];
 
   return (
-    <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-[#6A9F30]/50  ">
+    <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-[#6A9F30]/50 backdrop-blur-sm ">
       {/* Top Section - Headline and Description */}
       <div className="w-full h-1/2 flex flex-col-reverse md:flex-col justify-center items-end p-4 md:px-16 relative">
         {/* Navigation Arrows */}
