@@ -1,8 +1,13 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
+import SplitText from './SplitText';
 
-const Section1 = () => {
+interface Section1Props {
+  loadingComplete?: boolean;
+}
+
+const Section1 = ({ loadingComplete = false }: Section1Props) => {
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
 
@@ -57,11 +62,46 @@ const Section1 = () => {
           {/* Left: Main headline */}
           <div className="flex-3 pt-4 flex flex-col justify-start w-full px-4 md:pl-12">
 
-            <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase">
-              Your Energy
-              <br />
-              Profitability Partner
-            </h1>
+            {loadingComplete ? (
+              <SplitText
+                text="Your Energy"
+                tag="h1"
+                className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase"
+                delay={70}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+              />
+            ) : (
+              <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase opacity-0">
+                Your Energy
+              </h1>
+            )}
+            {loadingComplete ? (
+              <SplitText
+                text="Profitability Partner"
+                tag="h1"
+                className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase"
+                delay={70}
+                duration={1}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="left"
+              />
+            ) : (
+              <h1 className="text-transparent text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase opacity-0">
+                Profitability Partner
+              </h1>
+            )}
             <p className="text-white/60 text-sm md:text-base font-light tracking-wide mt-4 uppercase">
               Energy Audit &nbsp;·&nbsp; BESS Deployment &nbsp;·&nbsp; India
             </p>
