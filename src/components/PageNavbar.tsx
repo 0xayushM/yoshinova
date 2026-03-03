@@ -90,16 +90,27 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             Yoshinova
           </button>
 
-          {/* Services button: hover opens menu, click goes to /services */}
-          <button
-            onMouseEnter={() => setMenuOpen(true)}
-            onClick={() => { setMenuOpen(false); router.push('/services'); }}
-            className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
-          >
-            <div className="flex font-light items-center justify-between gap-8" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}>
-              <span>Services</span>
-            </div>
-          </button>
+          <div className="flex items-center gap-8 pointer-events-auto">
+            {/* Services button: hover opens menu, click goes to /services */}
+            <button
+              onMouseEnter={() => setMenuOpen(true)}
+              onClick={() => { setMenuOpen(false); router.push('/services'); }}
+              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+            >
+              <div className="flex font-light items-center justify-between" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}>
+                <span>Services</span>
+              </div>
+            </button>
+            
+            {/* Contact button */}
+            <button
+              onClick={() => { setMenuOpen(false); router.push('/contact'); }}
+              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
+            >
+              Contact
+            </button>
+          </div>
         </div>
       </nav>
 

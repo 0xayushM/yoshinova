@@ -234,7 +234,7 @@ export default function TelecomPage() {
               Contact us for a network-wide power assessment and discover how BESS can reduce your operating costs while improving reliability.
             </p>
             <a
-              href="mailto:contact@yoshinova.in"
+              href="/contact"
               className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
             >
               Request Consultation

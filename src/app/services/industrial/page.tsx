@@ -234,7 +234,7 @@ export default function IndustrialPage() {
               Schedule a facility energy assessment and discover exactly how much you can save with a customized industrial BESS solution.
             </p>
             <a
-              href="mailto:contact@yoshinova.in"
+              href="/contact"
               className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
             >
               Request Assessment
