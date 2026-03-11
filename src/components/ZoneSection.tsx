@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import BESSComparisonChart, { ChartDataPoint } from './BESSComparisonChart';
+import PeakShavingChart from './PeakShavingChart';
+import { ChartDataPoint } from './BESSComparisonChart';
 import SplitText from './SplitText';
 
 interface ZoneSectionProps {
@@ -54,14 +55,11 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
             {description}
           </p>
         </div>
-        <div className="md:w-[30vw] h-[30vh] w-[80vw] mx-12 bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
+        <div className="md:w-[60vw] h-[50vh] w-[90vw] mx-12 bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
           <div className="relative z-10 h-full w-full overflow-hidden">
-            <BESSComparisonChart
+            <PeakShavingChart
               data={chartData}
-              yAxisLabel={yAxisLabel}
-              maxY={maxY}
-              accentHex={accentHex}
-              accentRgb={accentRgb}
+              accentColor={accentHex}
             />
           </div>
         </div>
