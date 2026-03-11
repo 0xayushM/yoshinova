@@ -38,22 +38,8 @@ const Navbar = () => {
     }
   };
 
-  // Logo: big only on home page at top, shrinks on scroll or when menu open
-  const smallLogo = 50;
-  const bigLogo = 200;
-  let logoSize: number;
-
-  if (menuOpen || isMobile) {
-    logoSize = smallLogo;
-  } else {
-    const shrinkEnd = 1 / 13;
-    const clampedProgress = scrollProgress < 0.005 ? 0 : scrollProgress;
-    const shrinkT = Math.min(clampedProgress / shrinkEnd, 1);
-    logoSize = bigLogo - (bigLogo - smallLogo) * shrinkT;
-  }
-
-  const invertThreshold = 9 / 14;
-  const isDark = scrollProgress > invertThreshold;
+  // Logo: constant size
+  const logoSize = 50;
 
   // Hide navbar from Section4 (4/14) to Section10 (10/14)
   const hideStartThreshold = 4 / 14;
@@ -82,7 +68,7 @@ const Navbar = () => {
               style={{
                 height: `${logoSize}px`,
                 width: 'auto',
-                filter: (menuOpen ? (hasHover ? 'none' : 'invert(1)') : (isDark ? 'invert(1)' : 'none')),
+                filter: (menuOpen ? (hasHover ? 'none' : 'invert(1)') : 'none'),
               }}
               priority
             />
@@ -104,7 +90,7 @@ const Navbar = () => {
               onClick={() => { setMenuOpen(false); router.push('/services'); }}
               className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
             >
-              <div className="flex font-light items-center justify-between" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}>
+              <div className="flex font-light items-center justify-between" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}>
                 <span>Services</span>
               </div>
             </button>
@@ -113,7 +99,7 @@ const Navbar = () => {
             <button
               onClick={() => { setMenuOpen(false); router.push('/contact'); }}
               className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
-              style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
+              style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}
             >
               Contact
             </button>
