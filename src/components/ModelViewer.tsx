@@ -26,7 +26,7 @@ import Section8 from "./Section8";
 import Section9 from "./Section9";
 import Section10 from "./Section10";
 import Section11 from "./Section11";
-import Section12 from "./Section12";
+import CaseStudies from "./CaseStudies";
 import Section13 from "./Section13";
 
 /**
@@ -223,7 +223,7 @@ export default function ModelViewer({ onProgress, loadingComplete = false }: Mod
               <Section9 />
               <Section10 />
               <Section11 />
-              <Section12 />
+              <CaseStudies />
               <Section13 />
             </div>
           </Scroll>
