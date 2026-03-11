@@ -16,21 +16,19 @@ const LoadingScreen = ({ onComplete, progress: externalProgress }: LoadingScreen
 
   useEffect(() => { setMounted(true); }, []);
 
-  const progress = externalProgress !== undefined ? externalProgress : internalProgress;
-
+  // Gradually increase internal progress to 90% over 2.5 seconds
   useEffect(() => {
-    if (externalProgress !== undefined) return;
-
     let frame: number;
     let start: number | null = null;
-    const duration = 2500;
+    const duration = 2500; // 2.5 seconds to reach 90%
+    const maxProgress = 90;
 
     const animate = (timestamp: number) => {
       if (!start) start = timestamp;
       const elapsed = timestamp - start;
       const pct = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - pct, 3);
-      setInternalProgress(Math.round(eased * 100));
+      const eased = 1 - Math.pow(1 - pct, 3); // Ease out cubic
+      setInternalProgress(Math.round(eased * maxProgress));
 
       if (pct < 1) {
         frame = requestAnimationFrame(animate);
@@ -39,7 +37,12 @@ const LoadingScreen = ({ onComplete, progress: externalProgress }: LoadingScreen
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [externalProgress]);
+  }, []);
+
+  // Calculate display progress: use external progress if model is loading, otherwise use internal
+  const progress = externalProgress !== undefined && externalProgress > 0
+    ? Math.max(internalProgress, externalProgress) // Use whichever is higher
+    : internalProgress;
 
   useEffect(() => {
     if (progress >= 100) {
