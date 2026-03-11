@@ -95,6 +95,15 @@ const Navbar = () => {
               </div>
             </button>
             
+            {/* Case Studies button */}
+            <button
+              onClick={() => { setMenuOpen(false); router.push('/case-studies'); }}
+              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}
+            >
+              Case Studies
+            </button>
+            
             {/* Contact button */}
             <button
               onClick={() => { setMenuOpen(false); router.push('/contact'); }}
