@@ -113,7 +113,7 @@ const CaseStudies = () => {
               splitType="chars"
               from={{ opacity: 0, y: 30 }}
               to={{ opacity: 1, y: 0 }}
-              threshold={0.3}
+              threshold={0.1}
               rootMargin="0px"
               textAlign="left"
             />

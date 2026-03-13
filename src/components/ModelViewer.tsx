@@ -3,17 +3,16 @@
 import React, { JSX, Suspense, useEffect } from "react";
 import * as THREE from "three";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { ScrollControls, Scroll } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Observer } from "gsap/dist/Observer";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Observer);
 }
 import SceneRig from "./SceneRig";
-import ScrollBroadcaster from "./ScrollBroadcaster";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
@@ -121,50 +120,54 @@ export default function ModelViewer({ onProgress, loadingComplete = false }: Mod
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Wait for drei's scroll container to be ready
     const initTimer = setTimeout(() => {
-      // Find the scroll container created by drei
-      const scrollContainer = document.querySelector('.scroll') as HTMLElement;
-      
-      if (scrollContainer) {
-        const totalPages = 14;
-        let isSnapping = false;
-        let snapTimeout: NodeJS.Timeout;
+      // Get all section elements from the page
+      const sections = document.querySelectorAll('.page-section');
+      if (sections.length === 0) return;
 
-        const handleScroll = () => {
-          if (isSnapping) return;
+      const totalSections = sections.length;
+      let currentSection = 0;
+      let isAnimating = false;
 
-          clearTimeout(snapTimeout);
-          // Shorter timeout on mobile for better responsiveness
-          const isMobile = window.innerWidth < 768;
-          const timeout = isMobile ? 100 : 150;
-          
-          snapTimeout = setTimeout(() => {
-            const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-            const currentScroll = scrollContainer.scrollTop;
-            const currentPage = Math.round((currentScroll / scrollHeight) * (totalPages - 1));
-            const targetScroll = (currentPage / (totalPages - 1)) * scrollHeight;
+      const gotoSection = (index: number) => {
+        if (isAnimating) return;
+        
+        // Clamp index
+        index = Math.max(0, Math.min(totalSections - 1, index));
+        if (index === currentSection) return;
 
-            isSnapping = true;
-            gsap.to(scrollContainer, {
-              scrollTop: targetScroll,
-              duration: isMobile ? 0.4 : 0.5,
-              ease: "power2.inOut",
-              onComplete: () => {
-                isSnapping = false;
-              },
-            });
-          }, timeout);
-        };
+        isAnimating = true;
+        currentSection = index;
 
-        scrollContainer.addEventListener('scroll', handleScroll);
+        // Scroll to the section
+        const targetSection = sections[index] as HTMLElement;
+        
+        gsap.to(window, {
+          scrollTo: { y: targetSection, autoKill: false },
+          duration: 1.2,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            setTimeout(() => {
+              isAnimating = false;
+            }, 200);
+          },
+        });
+      };
 
-        return () => {
-          scrollContainer.removeEventListener('scroll', handleScroll);
-          clearTimeout(snapTimeout);
-        };
-      }
-    }, 300);
+      // Observer for section-by-section scrolling
+      const observer = Observer.create({
+        target: window,
+        type: 'wheel,touch',
+        onDown: () => !isAnimating && gotoSection(currentSection + 1),
+        onUp: () => !isAnimating && gotoSection(currentSection - 1),
+        tolerance: 10,
+        preventDefault: true,
+      });
+
+      return () => {
+        observer.kill();
+      };
+    }, 1000);
 
     return () => {
       clearTimeout(initTimer);
@@ -202,33 +205,9 @@ export default function ModelViewer({ onProgress, loadingComplete = false }: Mod
         {/* Fill from the opposite side */}
         <directionalLight position={[-5, 3, -5]} intensity={0.6} />
 
-        <ScrollControls pages={14} damping={0.3}>
-          <Suspense fallback={null}>
-            <SceneRig onProgress={onProgress} />
-          </Suspense>
-          <ScrollBroadcaster />
-
-          {/* HTML overlay sections (15 full-screen sections) */}
-          <Scroll html>
-            <div className="relative z-20 w-screen">
-              <Section1 loadingComplete={loadingComplete} />
-              <Section2 />
-              <Section3 />
-              <Section3_2 />
-              <Section4 />
-              <Section5 />
-              <Section6 />
-              <Section7 />
-              <Section8 />
-              <Section9 />
-              <Section10 />
-              <Section11 />
-              <CaseStudies />
-              <Section13 />
-            </div>
-          </Scroll>
-          {/* <Footer/> */}
-        </ScrollControls>
+        <Suspense fallback={null}>
+          <SceneRig onProgress={onProgress} />
+        </Suspense>
       </Canvas>
     </div>
   );
