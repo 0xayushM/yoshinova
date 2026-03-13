@@ -41,7 +41,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
         playsInline
         preload="metadata"
       >
-        <source src="/video/hero.mp4" type="video/mp4" />
+        <source src="/video/hero_5.mp4" type="video/mp4" />
       </video>
       </div>
 
