@@ -2,7 +2,6 @@
 import React, { JSX, useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
 import GltfModel from "./GltfModel";
 import {
   lerpVec3,
@@ -19,7 +18,7 @@ interface SceneRigProps {
 
 export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
   const modelRef = useRef<THREE.Group>(null);
-  const scroll = useScroll();
+  const scrollProgress = useRef(0);
   const capRef = useRef<THREE.Object3D | null>(null);
   const [modelScale, setModelScale] = useState(0.025);
   const [positions, setPositions] = useState(() => getPositions(false));
@@ -51,6 +50,19 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
+  // Track window scroll progress
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = window.scrollY;
+      scrollProgress.current = scrollHeight > 0 ? scrolled / scrollHeight : 0;
+    };
+
+    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Track mouse movement
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -70,7 +82,7 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
 
   useFrame(() => {
     if (!modelRef.current) return;
-    const u = THREE.MathUtils.clamp(scroll.offset, 0, 1);
+    const u = THREE.MathUtils.clamp(scrollProgress.current, 0, 1);
 
     // segment index
     let i = 0;
