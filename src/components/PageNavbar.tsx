@@ -102,13 +102,13 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
               </div>
             </button>
 
-            {/* Case Studies button */}
+            {/* About button */}
             <button
-              onClick={() => { setMenuOpen(false); router.push('/case-studies'); }}
+              onClick={() => { setMenuOpen(false); router.push('/about'); }}
               className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
               style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
             >
-              Case Studies
+              About
             </button>
 
             {/* Contact button */}

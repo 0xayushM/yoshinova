@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import PageNavbar from '@/components/PageNavbar';
-import SmoothScroll from '@/components/SmoothScroll';
+import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
+import Logo3D from '@/components/Logo3D';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -27,126 +28,165 @@ export default function ContactPage() {
   return (
     <>
       <PageNavbar />
-      <SmoothScroll>
-        <main className="relative min-h-screen bg-[#0a0a0a]">
-          <section className="w-screen min-h-screen flex flex-col">
-            {/* Top area: left form + right transparent */}
-            <div className="flex flex-1 min-h-0">
-              {/* Left side — dark background with form */}
-              <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12 pt-32">
-                {/* Company info row */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase">
-                  <div className="space-y-1">
-                    <p className="font-bold text-white/90">Yoshinova</p>
-                    <p className="text-white/50 normal-case tracking-normal text-[11px] leading-relaxed">
-                      Your Energy Profitability Partner
-                    </p>
-                  </div>
-                  <div className="space-y-3">
+      
+      {/* Test Section OUTSIDE ScrollSmootherWrapper */}
+      <div className="fixed top-32 left-0 w-full z-50 px-8">
+        <div className="w-full mb-12 border-4 border-red-500 bg-[#0a0a0a] p-4">
+          <h2 className="text-white text-2xl mb-4">Logo Test Section (Direct Import)</h2>
+          <div className="w-full h-[500px] bg-gray-800 border-2 border-yellow-500">
+            <Suspense fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="text-white text-xl">LOADING LOGO...</div>
+              </div>
+            }>
+              <Logo3D />
+            </Suspense>
+          </div>
+        </div>
+      </div>
+      
+      <ScrollSmootherWrapper>
+        <main className="relative min-h-screen bg-[#0a0a0a] pt-32 px-8 md:px-12 lg:px-20">
+          <div className="max-w-[1600px] mx-auto mt-[500px]">
+
+            {/* 3-Column Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 py-12">
+              
+              {/* Left Column - Contact Us */}
+              <div className="space-y-8">
+                <h2 className="text-white text-3xl md:text-4xl font-normal mb-8">Contact Us</h2>
+                
+                {/* Social Links */}
+                <div className="flex gap-4">
+                  <a href="#" className="text-white hover:text-[#6A9F30] transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-white hover:text-[#6A9F30] transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-white hover:text-[#6A9F30] transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </a>
+                </div>
+
+                {/* Phone Numbers */}
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
                     <div>
-                      <p className="text-white/40 mb-1">General Enquiries</p>
-                      <a href="mailto:info@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
-                        info@yoshinova.com
+                      <a href="tel:+13747351162" className="text-white hover:text-[#6A9F30] transition-colors">
+                        +1 (374)-735-1162
                       </a>
                     </div>
-                    <div>
-                      <p className="text-white/40 mb-1">New Projects</p>
-                      <a href="mailto:projects@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
-                        projects@yoshinova.com
-                      </a>
-                    </div>
                   </div>
-                  <div>
-                    <p className="text-white/40 mb-1">Follow</p>
-                    <div className="flex flex-col gap-1">
-                      <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">LinkedIn</a>
-                      <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">Twitter</a>
+                  <div className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-white mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <div>
+                      <a href="tel:+14048576393" className="text-white hover:text-[#6A9F30] transition-colors">
+                        +1 (404)-857-6393
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Lead capture form */}
-                <form onSubmit={handleSubmit} className="space-y-4 mt-6">
-                  <h3 className="text-white text-lg font-bold tracking-wide mb-1">Start With a Free Energy Audit</h3>
-                  <p className="text-white/50 text-xs leading-relaxed mb-2">We find your hidden savings first. Then we talk BESS.</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                      placeholder="Your Name *"
-                    />
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                      placeholder="Company Name *"
-                    />
+                {/* Address */}
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-white mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div className="text-white">
+                    <p>123 Somewhere Street,</p>
+                    <p>California, 19571 USA</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      name="powerBill"
-                      value={formData.powerBill}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                      placeholder="Monthly Power Bill *"
-                    />
-                    <input
-                      type="tel"
-                      name="contact"
-                      value={formData.contact}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                      placeholder="Contact Number *"
-                    />
-                  </div>
+                </div>
+              </div>
+
+              {/* Middle Column - 3D Logo */}
+              <div className="flex items-center justify-center min-h-[500px]">
+                <div className="w-full h-[500px]">
+                  <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-white/50">Loading...</div>}>
+                    <Logo3D />
+                  </Suspense>
+                </div>
+              </div>
+
+              {/* Right Column - Send Us A Message */}
+              <div className="space-y-6">
+                <h2 className="text-white text-3xl md:text-4xl font-normal mb-2">Send Us</h2>
+                <h2 className="text-white text-3xl md:text-4xl font-normal mb-8">A Message</h2>
+                
+                <p className="text-white/60 text-sm mb-8">
+                  Kindly fill this form. Average response is within 24hrs
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-0 py-3 bg-transparent border-b border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-[#6A9F30] transition-colors"
+                    placeholder="Jane Smith"
+                  />
+                  
+                  <input
+                    type="email"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-0 py-3 bg-transparent border-b border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-[#6A9F30] transition-colors"
+                    placeholder="jane@framer.com"
+                  />
+                  
+                  <select
+                    name="powerBill"
+                    value={formData.powerBill}
+                    onChange={(e) => setFormData({...formData, powerBill: e.target.value})}
+                    required
+                    className="w-full px-0 py-3 bg-transparent border-b border-white/20 text-white focus:outline-none focus:border-[#6A9F30] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" className="bg-[#0a0a0a]">Select</option>
+                    <option value="residential" className="bg-[#0a0a0a]">Residential</option>
+                    <option value="commercial" className="bg-[#0a0a0a]">Commercial</option>
+                    <option value="industrial" className="bg-[#0a0a0a]">Industrial</option>
+                  </select>
+                  
+                  <textarea
+                    name="contact"
+                    value={formData.contact}
+                    onChange={(e) => setFormData({...formData, contact: e.target.value})}
+                    required
+                    rows={4}
+                    className="w-full px-0 py-3 bg-transparent border-b border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-[#6A9F30] transition-colors resize-none"
+                    placeholder="Your message..."
+                  />
+                  
                   <button
                     type="submit"
-                    className="mt-2 px-6 py-2.5 bg-white text-black text-sm font-semibold tracking-wide hover:bg-white/90 transition-colors"
+                    className="w-full px-8 py-4 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-colors"
                   >
                     Submit
                   </button>
                 </form>
-
-                {/* Bottom tagline */}
-                <p className="text-white/30 text-[11px] tracking-[0.08em] leading-relaxed max-w-md mt-6">
-                  Energy Audit &rarr; Right-sized BESS &rarr; Permanent cost reduction. Built for India&apos;s industrial backbone.
-                </p>
               </div>
 
-              {/* Right side — transparent to show background */}
-              <div className="hidden md:block w-[45%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50" />
             </div>
-
-            {/* Bottom — giant YOSHINOVA text */}
-            <div className="hidden md:block w-full bg-[#0a0a0a] flex items-end overflow-hidden" style={{ height: '35%' }}>
-              <h1
-                className="font-bold leading-[2] w-full text-center select-none"
-                style={{
-                  fontSize: 'clamp(250px, 14vw, 150px)',
-                  letterSpacing: '-0.02em',
-                  marginBottom: '-0.05em',
-                  background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                YOSHINOVA
-              </h1>
-            </div>
-          </section>
+          </div>
         </main>
-      </SmoothScroll>
+      </ScrollSmootherWrapper>
     </>
   );
 }
