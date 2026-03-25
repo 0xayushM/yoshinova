@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
-import SmoothScroll from '@/components/SmoothScroll';
+import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 
 const auditSteps = [
   {
@@ -80,7 +80,7 @@ export default function EnergyAuditPage() {
   return (
     <>
       <PageNavbar />
-      <SmoothScroll>
+      <ScrollSmootherWrapper>
         <main className="relative min-h-screen bg-[#0a0a0a]">
 
           {/* Hero */}
@@ -252,7 +252,7 @@ export default function EnergyAuditPage() {
           </section>
 
         </main>
-      </SmoothScroll>
+      </ScrollSmootherWrapper>
     </>
   );
 }

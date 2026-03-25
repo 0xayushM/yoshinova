@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
-import SmoothScroll from '@/components/SmoothScroll';
+import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import ServiceHero from '@/components/service/ServiceHero';
 import ServiceIntro from '@/components/service/ServiceIntro';
 import ServiceFeatures from '@/components/service/ServiceFeatures';
@@ -21,7 +21,7 @@ export default function ResidentialPage() {
   return (
     <>
       <PageNavbar />
-      <SmoothScroll>
+      <ScrollSmootherWrapper>
         <main className="relative min-h-screen bg-white">
           
           <ServiceHero 
@@ -131,7 +131,7 @@ export default function ResidentialPage() {
           <ServiceFooter />
 
         </main>
-      </SmoothScroll>
+      </ScrollSmootherWrapper>
     </>
   );
 }
