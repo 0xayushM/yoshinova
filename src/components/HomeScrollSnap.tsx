@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { Observer } from 'gsap/dist/Observer';
@@ -10,9 +11,13 @@ if (typeof window !== 'undefined') {
 }
 
 export default function HomeScrollSnap() {
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  const pathname = usePathname();
 
+  useEffect(() => {
+    // Only run on homepage
+    if (pathname !== '/' || typeof window === "undefined") return;
+
+    let observer: any = null;
     const initTimer = setTimeout(() => {
       // Get all section elements from the page
       const sections = document.querySelectorAll('.page-section');
@@ -48,7 +53,7 @@ export default function HomeScrollSnap() {
       };
 
       // Observer for section-by-section scrolling
-      const observer = Observer.create({
+      observer = Observer.create({
         target: window,
         type: 'wheel,touch',
         onDown: () => !isAnimating && gotoSection(currentSection + 1),
@@ -56,16 +61,15 @@ export default function HomeScrollSnap() {
         tolerance: 10,
         preventDefault: true,
       });
-
-      return () => {
-        observer.kill();
-      };
     }, 1000);
 
     return () => {
       clearTimeout(initTimer);
+      if (observer) {
+        observer.kill();
+      }
     };
-  }, []);
+  }, [pathname]);
 
   return null; // This component doesn't render anything
 }
