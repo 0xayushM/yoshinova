@@ -66,12 +66,20 @@ export default function AboutPage() {
 
             <div
               ref={containerRef}
-              className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-10 px-6 pb-10 md:pb-16"
+              className="absolute inset-x-0 top-1/3 -translate-y-1/2 z-10 px-6"
             >
               <h1
                 ref={textRef}
-                className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
-                style={{ fontSize: `${fontSize}px` }}
+                className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-12"
+                style={{
+                  fontSize: `${fontSize}px`,
+                  background: 'linear-gradient(to top, transparent 0%, white 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  paddingBottom: 0,
+                  marginBottom: 0,
+                }}
               >
                 ABOUT US
               </h1>
