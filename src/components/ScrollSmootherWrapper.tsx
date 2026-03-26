@@ -17,9 +17,11 @@ interface ScrollSmootherWrapperProps {
 export default function ScrollSmootherWrapper({ children }: ScrollSmootherWrapperProps) {
   const smoothWrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const smootherRef = useRef<ScrollSmoother | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isContentReady, setIsContentReady] = useState(false);
   const pathname = usePathname();
+  const isHomepage = pathname === '/';
 
   useEffect(() => {
     // Check if mobile
@@ -48,39 +50,64 @@ export default function ScrollSmootherWrapper({ children }: ScrollSmootherWrappe
   useEffect(() => {
     if (!isContentReady) return;
 
-    let smoother: ScrollSmoother | null = null;
+    let refreshTimer: NodeJS.Timeout | null = null;
 
-    if (smoothWrapperRef.current && contentRef.current) {
-      // Kill any existing ScrollTrigger instances
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      
+    // Kill any existing instances
+    if (smootherRef.current) {
+      smootherRef.current.kill();
+      smootherRef.current = null;
+    }
+    if (ScrollSmoother.get()) {
+      ScrollSmoother.get()?.kill();
+    }
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Only use ScrollSmoother on homepage
+    if (isHomepage && smoothWrapperRef.current && contentRef.current) {
       // Small delay to ensure DOM is fully painted
-      requestAnimationFrame(() => {
+      const initTimer = setTimeout(() => {
         if (smoothWrapperRef.current && contentRef.current) {
-          smoother = ScrollSmoother.create({
-            wrapper: smoothWrapperRef.current,
-            content: contentRef.current,
-            smooth: isMobile ? 0.8 : 1.5,
-            effects: !isMobile,
-            smoothTouch: isMobile ? 0.3 : 0.1,
-            normalizeScroll: false,
-            ignoreMobileResize: true,
-          });
+          try {
+            smootherRef.current = ScrollSmoother.create({
+              wrapper: smoothWrapperRef.current,
+              content: contentRef.current,
+              smooth: isMobile ? 0.8 : 1.5,
+              effects: !isMobile,
+              smoothTouch: isMobile ? 0.3 : 0.1,
+              normalizeScroll: isMobile,
+              ignoreMobileResize: true,
+            });
 
-          // Refresh after images and content load
-          const refreshTimer = setTimeout(() => {
-            smoother?.refresh();
-          }, 500);
-
-          return () => clearTimeout(refreshTimer);
+            // Refresh after images and content load
+            refreshTimer = setTimeout(() => {
+              smootherRef.current?.refresh();
+            }, 500);
+          } catch (error) {
+            console.error('ScrollSmoother creation failed:', error);
+          }
         }
-      });
+      }, 100);
+
+      return () => {
+        clearTimeout(initTimer);
+        if (refreshTimer) clearTimeout(refreshTimer);
+      };
     }
 
     return () => {
-      smoother?.kill();
+      if (refreshTimer) clearTimeout(refreshTimer);
     };
-  }, [isMobile, isContentReady]);
+  }, [isMobile, isContentReady, pathname, isHomepage]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (smootherRef.current) {
+        smootherRef.current.kill();
+        smootherRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div id="smooth-wrapper" ref={smoothWrapperRef} className="w-full h-full">

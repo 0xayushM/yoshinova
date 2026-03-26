@@ -1,17 +1,22 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { services } from '@/utils/services';
+import { gsap } from 'gsap';
+import SplitType from 'split-type';
 
 const Navbar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
+  const menuItemsRef = useRef<(HTMLButtonElement | null)[]>([]);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -19,6 +24,29 @@ const Navbar = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Animate mobile menu items with split text
+  useEffect(() => {
+    if (mobileMenuOpen && menuItemsRef.current.length > 0) {
+      menuItemsRef.current.forEach((item, index) => {
+        if (item) {
+          const split = new SplitType(item, { types: 'chars' });
+          gsap.fromTo(
+            split.chars,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.03,
+              delay: 0.3 + index * 0.1,
+              ease: 'power2.out',
+            }
+          );
+        }
+      });
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleDreiScroll = (e: Event) => {
@@ -32,10 +60,20 @@ const Navbar = () => {
 
   const goHome = () => {
     setMenuOpen(false);
+    setMobileMenuOpen(false);
     const scrollContainer = document.querySelector('.scroll') as HTMLElement;
     if (scrollContainer) {
       scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleMobileNavClick = (path: string) => {
+    setMobileMenuOpen(false);
+    router.push(path);
   };
 
   // Logo: constant size
@@ -68,7 +106,7 @@ const Navbar = () => {
               style={{
                 height: `${logoSize}px`,
                 width: 'auto',
-                filter: (menuOpen ? (hasHover ? 'none' : 'invert(1)') : 'none'),
+                filter: (mobileMenuOpen || menuOpen ? (hasHover ? 'none' : 'invert(1)') : 'none'),
               }}
               priority
             />
@@ -83,7 +121,8 @@ const Navbar = () => {
             Yoshinova
           </button> */}
 
-          <div className="flex items-center gap-8 pointer-events-auto">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8 pointer-events-auto">
             {/* Services button: hover opens menu, click goes to /services */}
             <button
               onMouseEnter={() => setMenuOpen(true)}
@@ -113,6 +152,35 @@ const Navbar = () => {
               Contact
             </button>
           </div>
+
+          {/* Mobile Hamburger Menu */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden pointer-events-auto flex flex-col gap-1.5 w-10 h-10 justify-center items-center z-[10000] relative"
+            aria-label="Toggle menu"
+          >
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                transform: mobileMenuOpen ? 'rotate(45deg)' : 'translateY(-4px)',
+                backgroundColor: mobileMenuOpen ? 'black' : 'white',
+              }}
+            />
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                opacity: mobileMenuOpen ? 0 : 1,
+                backgroundColor: mobileMenuOpen ? 'black' : 'white',
+              }}
+            />
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                transform: mobileMenuOpen ? 'rotate(-45deg)' : 'translateY(4px)',
+                backgroundColor: mobileMenuOpen ? 'black' : 'white',
+              }}
+            />
+          </button>
         </div>
       </nav>
 
@@ -182,6 +250,44 @@ const Navbar = () => {
               ))}
             </ul>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Full-Screen Menu */}
+      <div
+        ref={mobileMenuRef}
+        className={`md:hidden fixed inset-0 z-[9985] transition-all duration-700 ease-in-out origin-top ${
+          mobileMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'
+        }`}
+        style={{
+          backgroundColor: '#e8e6e1',
+          pointerEvents: mobileMenuOpen ? 'auto' : 'none',
+        }}
+      >
+        <div className="flex flex-col items-center justify-center h-full px-8">
+          <nav className="space-y-8 w-full">
+            <button
+              ref={(el) => { menuItemsRef.current[0] = el; }}
+              onClick={() => handleMobileNavClick('/services')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              Services
+            </button>
+            <button
+              ref={(el) => { menuItemsRef.current[1] = el; }}
+              onClick={() => handleMobileNavClick('/about')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              About
+            </button>
+            <button
+              ref={(el) => { menuItemsRef.current[2] = el; }}
+              onClick={() => handleMobileNavClick('/contact')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              Contact
+            </button>
+          </nav>
         </div>
       </div>
     </>

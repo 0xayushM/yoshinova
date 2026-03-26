@@ -1,49 +1,86 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
 import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import SplitText from '@/components/SplitText';
 
 export default function AboutPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const [fontSize, setFontSize] = useState(100);
+
+  useEffect(() => {
+    if (!containerRef.current || !textRef.current) return;
+
+    const resize = () => {
+      if (!containerRef.current || !textRef.current) return;
+      const container = containerRef.current;
+      const text = textRef.current;
+      const style = getComputedStyle(container);
+      const availableWidth = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+
+      let low = 10;
+      let high = 300; // Reduced max size from 500 to 300
+      while (high - low > 1) {
+        const mid = Math.floor((low + high) / 2);
+        text.style.fontSize = `${mid}px`;
+        if (text.scrollWidth > availableWidth) {
+          high = mid;
+        } else {
+          low = mid;
+        }
+      }
+      setFontSize(low);
+    };
+
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <PageNavbar />
       <ScrollSmootherWrapper>
         <main className="relative min-h-screen bg-black">
           
-          {/* Hero Section */}
-          <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-            {/* Geometric background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern id="grid-about" width="100" height="100" patternUnits="userSpaceOnUse">
-                    <path d="M 100 0 L 0 0 0 100" fill="none" stroke="white" strokeWidth="0.5"/>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#grid-about)" />
-                <line x1="0" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="0.5" opacity="0.3"/>
-                <line x1="100%" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="0.5" opacity="0.3"/>
-              </svg>
+          {/* Hero Section with Background Image */}
+          <section className="relative w-full h-screen overflow-hidden">
+            <Image
+              src="/images/about.png"
+              alt="About Yoshinova"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0" />
+
+            <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
+              <p className="text-[#6A9F30] text-xs uppercase tracking-widest">
+                ABOUT US
+              </p>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12">
-              <SplitText
-                text="We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow."
-                tag="h1"
-                className="text-white text-4xl md:text-6xl lg:text-7xl font-normal leading-tight"
-                delay={30}
-                duration={0.8}
-                ease="power3.out"
-                splitType="words"
-                from={{ opacity: 0, y: 30 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="0px"
-                textAlign="left"
-              />
+            <div
+              ref={containerRef}
+              className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-10 px-6 pb-10 md:pb-16"
+            >
+              <h1
+                ref={textRef}
+                className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
+                style={{ fontSize: `${fontSize}px` }}
+              >
+                ABOUT US
+              </h1>
+            </div>
+
+            <div className="absolute bottom-12 left-6 md:left-14 z-10 max-w-lg">
+              <p className="text-white/70 text-base md:text-lg leading-relaxed border-t border-white/20 pt-4">
+                We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow.
+              </p>
             </div>
           </section>
 
