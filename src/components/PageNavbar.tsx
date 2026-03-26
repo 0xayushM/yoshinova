@@ -4,6 +4,8 @@ import Image from 'next/image';
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { services } from '@/utils/services';
+import { gsap } from 'gsap';
+import SplitType from 'split-type';
 
 interface PageNavbarProps {
   isDark?: boolean; // true = black text/logo (for light backgrounds), false = white (for dark backgrounds)
@@ -11,11 +13,14 @@ interface PageNavbarProps {
 
 const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [navVisible, setNavVisible] = useState(true);
   const lastScrollY = useRef(0);
   const router = useRouter();
   const pathname = usePathname();
+  const menuItemsRef = useRef<(HTMLButtonElement | null)[]>([]);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
@@ -36,8 +41,32 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
   // Close menu when navigating
   useEffect(() => {
     setMenuOpen(false);
+    setMobileMenuOpen(false);
     setNavVisible(true);
   }, [pathname]);
+
+  // Animate mobile menu items with split text
+  useEffect(() => {
+    if (mobileMenuOpen && menuItemsRef.current.length > 0) {
+      menuItemsRef.current.forEach((item, index) => {
+        if (item) {
+          const split = new SplitType(item, { types: 'chars' });
+          gsap.fromTo(
+            split.chars,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.03,
+              delay: 0.3 + index * 0.1,
+              ease: 'power2.out',
+            }
+          );
+        }
+      });
+    }
+  }, [mobileMenuOpen]);
 
   const handleMouseEnterTop = useCallback(() => {
     setNavVisible(true);
@@ -45,7 +74,17 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
 
   const goHome = () => {
     setMenuOpen(false);
+    setMobileMenuOpen(false);
     router.push('/');
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleMobileNavClick = (path: string) => {
+    setMobileMenuOpen(false);
+    router.push(path);
   };
 
   const hasHover = hoveredService !== null;
@@ -75,7 +114,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
               style={{
                 height: `${logoSize}px`,
                 width: 'auto',
-                filter: (menuOpen ? (hasHover ? 'none' : 'invert(1)') : (isDark ? 'invert(1)' : 'none')),
+                filter: (mobileMenuOpen || menuOpen ? (hasHover ? 'none' : 'invert(1)') : (isDark ? 'invert(1)' : 'none')),
               }}
               priority
             />
@@ -85,12 +124,13 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
           <button
             onClick={goHome}
             className="absolute left-1/2 -translate-x-1/2 text-base md:text-xl lg:text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
-            style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
+            style={{ color: (mobileMenuOpen || menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
           >
             Yoshinova
           </button>
 
-          <div className="flex items-center gap-8 pointer-events-auto">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8 pointer-events-auto">
             {/* Services button: hover opens menu, click goes to /services */}
             <button
               onMouseEnter={() => setMenuOpen(true)}
@@ -120,6 +160,35 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
               Contact
             </button>
           </div>
+
+          {/* Mobile Hamburger Menu */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden pointer-events-auto flex flex-col gap-1.5 w-10 h-10 justify-center items-center z-[10000] relative"
+            aria-label="Toggle menu"
+          >
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                backgroundColor: (mobileMenuOpen ? 'black' : (isDark ? 'black' : 'white')),
+                transform: mobileMenuOpen ? 'rotate(45deg)' : 'translateY(-4px)',
+              }}
+            />
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                backgroundColor: (mobileMenuOpen ? 'black' : (isDark ? 'black' : 'white')),
+                opacity: mobileMenuOpen ? 0 : 1,
+              }}
+            />
+            <span
+              className="w-6 h-0.5 transition-all duration-300 ease-in-out absolute"
+              style={{
+                backgroundColor: (mobileMenuOpen ? 'black' : (isDark ? 'black' : 'white')),
+                transform: mobileMenuOpen ? 'rotate(-45deg)' : 'translateY(4px)',
+              }}
+            />
+          </button>
         </div>
       </nav>
 
@@ -189,6 +258,44 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
               ))}
             </ul>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Full-Screen Menu */}
+      <div
+        ref={mobileMenuRef}
+        className={`md:hidden fixed inset-0 z-[9985] transition-all duration-700 ease-in-out origin-top ${
+          mobileMenuOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'
+        }`}
+        style={{
+          backgroundColor: '#e8e6e1',
+          pointerEvents: mobileMenuOpen ? 'auto' : 'none',
+        }}
+      >
+        <div className="flex flex-col items-center justify-center h-full px-8">
+          <nav className="space-y-8 w-full">
+            <button
+              ref={(el) => { menuItemsRef.current[0] = el; }}
+              onClick={() => handleMobileNavClick('/services')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              Services
+            </button>
+            <button
+              ref={(el) => { menuItemsRef.current[1] = el; }}
+              onClick={() => handleMobileNavClick('/about')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              About
+            </button>
+            <button
+              ref={(el) => { menuItemsRef.current[2] = el; }}
+              onClick={() => handleMobileNavClick('/contact')}
+              className="block w-full text-left text-4xl font-bold uppercase tracking-tight text-black"
+            >
+              Contact
+            </button>
+          </nav>
         </div>
       </div>
     </>
