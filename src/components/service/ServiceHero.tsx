@@ -68,8 +68,16 @@ export default function ServiceHero({ title, heroImage, heroDescription, service
       >
         <h1
           ref={textRef}
-          className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
-          style={{ fontSize: `${fontSize}px` }}
+          className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-12"
+          style={{
+            fontSize: `${fontSize}px`,
+            background: 'linear-gradient(to top, transparent 20%, white 50%, white 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            paddingBottom: 0,
+            marginBottom: 0,
+          }}
         >
           {title}
         </h1>
