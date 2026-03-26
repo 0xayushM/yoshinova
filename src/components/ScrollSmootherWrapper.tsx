@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollSmoother } from 'gsap/dist/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { usePathname } from 'next/navigation';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -17,6 +18,8 @@ export default function ScrollSmootherWrapper({ children }: ScrollSmootherWrappe
   const smoothWrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isContentReady, setIsContentReady] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check if mobile
@@ -30,25 +33,54 @@ export default function ScrollSmootherWrapper({ children }: ScrollSmootherWrappe
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Reset content ready state on route change
   useEffect(() => {
+    setIsContentReady(false);
+    
+    // Wait for content to be fully rendered
+    const timer = setTimeout(() => {
+      setIsContentReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [pathname, children]);
+
+  useEffect(() => {
+    if (!isContentReady) return;
+
     let smoother: ScrollSmoother | null = null;
 
     if (smoothWrapperRef.current && contentRef.current) {
-      smoother = ScrollSmoother.create({
-        wrapper: smoothWrapperRef.current,
-        content: contentRef.current,
-        smooth: isMobile ? 0.8 : 1.5, // Lighter smoothing on mobile
-        effects: !isMobile, // Enable data-speed effects only on desktop
-        smoothTouch: isMobile ? 0.3 : 0.1, // More responsive touch on mobile
-        normalizeScroll: false, // Allow horizontal scroll to work independently
-        ignoreMobileResize: true,
+      // Kill any existing ScrollTrigger instances
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      
+      // Small delay to ensure DOM is fully painted
+      requestAnimationFrame(() => {
+        if (smoothWrapperRef.current && contentRef.current) {
+          smoother = ScrollSmoother.create({
+            wrapper: smoothWrapperRef.current,
+            content: contentRef.current,
+            smooth: isMobile ? 0.8 : 1.5,
+            effects: !isMobile,
+            smoothTouch: isMobile ? 0.3 : 0.1,
+            normalizeScroll: false,
+            ignoreMobileResize: true,
+          });
+
+          // Refresh after images and content load
+          const refreshTimer = setTimeout(() => {
+            smoother?.refresh();
+          }, 500);
+
+          return () => clearTimeout(refreshTimer);
+        }
       });
     }
 
     return () => {
       smoother?.kill();
     };
-  }, [isMobile]);
+  }, [isMobile, isContentReady]);
 
   return (
     <div id="smooth-wrapper" ref={smoothWrapperRef} className="w-full h-full">
