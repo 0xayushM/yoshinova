@@ -1,65 +1,8 @@
 'use client';
 
-import { Suspense, useState, useRef, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Environment } from '@react-three/drei';
+import { useState } from 'react';
+import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
-import * as THREE from 'three';
-
-function LogoModel() {
-  const { scene } = useGLTF('/models/logo.glb');
-  const modelRef = useRef<THREE.Group>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
-  const targetRotation = useRef({ x: 0, y: 0 });
-  const currentRotation = useRef({ x: 0, y: 0 });
-
-  // Center the model geometry around its bounding box center
-  useEffect(() => {
-    if (scene) {
-      const box = new THREE.Box3().setFromObject(scene);
-      const center = box.getCenter(new THREE.Vector3());
-      scene.position.x = -center.x;
-      scene.position.y = -center.y;
-      scene.position.z = -center.z;
-    }
-  }, [scene]);
-
-  // Track mouse movement
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse position to -1 to 1 range
-      mousePos.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mousePos.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-      
-      // Calculate target rotation based on mouse position
-      targetRotation.current.y = mousePos.current.x * 0.5; // Horizontal rotation
-      targetRotation.current.x = mousePos.current.y * 0.3; // Vertical rotation
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Smooth rotation animation
-  useFrame(() => {
-    if (!modelRef.current) return;
-
-    // Lerp current rotation towards target rotation for smooth movement
-    const lerpFactor = 0.05;
-    currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * lerpFactor;
-    currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * lerpFactor;
-
-    // Apply rotation
-    modelRef.current.rotation.x = currentRotation.current.x;
-    modelRef.current.rotation.y = currentRotation.current.y;
-  });
-  
-  return (
-    <group ref={modelRef}>
-      <primitive object={scene} scale={1} />
-    </group>
-  );
-}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -84,8 +27,21 @@ export default function ContactPage() {
   return (
     <>
       <PageNavbar />
-      <main className="relative min-h-screen bg-[#0a0a0a] pt-32 px-8 md:px-12 lg:px-20">
-        <div className="max-w-[1600px] mx-auto">
+      <main className="relative min-h-screen">
+        {/* Background Image */}
+        <div className="fixed inset-0 z-0">
+          <Image
+            src="/images/contact.png"
+            alt="Contact background"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        <div className="relative z-10 max-w-[1600px] mx-auto pt-32 px-8 md:px-12 lg:px-20">
           {/* 3-Column Layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 py-12">
             
@@ -149,27 +105,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Middle Column - 3D Logo */}
-            <div className="flex items-center justify-center min-h-[500px]">
-              <div className="w-full h-[500px]">
-                <Canvas
-                  camera={{ position: [0, 0, 5], fov: 50 }}
-                  gl={{ antialias: true, alpha: true }}
-                  style={{ background: 'transparent' }}
-                >
-                  <ambientLight intensity={2} />
-                  <directionalLight position={[10, 10, 10]} intensity={3} />
-                  <directionalLight position={[-10, 10, -10]} intensity={2} />
-                  <pointLight position={[0, 5, 0]} intensity={2} />
-                  <directionalLight position={[0, 2, -5]} intensity={1} color="#6A9F30" />
-                  <Environment preset="sunset" />
-                  
-                  <Suspense fallback={null}>
-                    <LogoModel />
-                  </Suspense>
-                </Canvas>
-              </div>
-            </div>
+            {/* Middle Column - Spacer */}
+            <div className="hidden md:block"></div>
 
             {/* Right Column - Send Us A Message */}
             <div className="space-y-6">
