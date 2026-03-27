@@ -56,8 +56,30 @@ export default function HomeScrollSnap() {
       observer = Observer.create({
         target: window,
         type: 'wheel,touch',
-        onDown: () => !isAnimating && gotoSection(currentSection + 1),
-        onUp: () => !isAnimating && gotoSection(currentSection - 1),
+        onChangeY: (self) => {
+          if (isAnimating) return;
+          
+          // For wheel events, deltaY is positive when scrolling down
+          // For touch events, deltaY is negative when swiping up
+          const isWheel = self.event?.type === 'wheel';
+          const delta = self.deltaY;
+          
+          if (isWheel) {
+            // Mouse wheel: scroll down = next section, scroll up = previous section
+            if (delta > 0) {
+              gotoSection(currentSection + 1);
+            } else if (delta < 0) {
+              gotoSection(currentSection - 1);
+            }
+          } else {
+            // Touch: swipe up (negative delta) = next section, swipe down (positive delta) = previous section
+            if (delta < 0) {
+              gotoSection(currentSection + 1);
+            } else if (delta > 0) {
+              gotoSection(currentSection - 1);
+            }
+          }
+        },
         tolerance: 10,
         preventDefault: true,
       });
