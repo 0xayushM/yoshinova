@@ -70,15 +70,11 @@ const Section3_2 = () => {
 
         {/* Left side - Large headline and description */}
         <div className="max-w-xl">
-          {/* Top left category label */}
-          <div className="absolute top-24 right-12 md:left-12 z-20">
-            <p className="text-white text-xs uppercase tracking-widest">SERVICE — 02</p>
-          </div>
           <div className="pb-2">
             <SplitText
-              text="BESS"
+              text="BESS Deployment"
               tag="h1"
-              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
+              className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase"
               delay={70}
               duration={1}
               ease="power3.out"
@@ -89,27 +85,13 @@ const Section3_2 = () => {
               rootMargin="0px"
               textAlign="left"
             />
-            <SplitText
-              text="Deployment"
-              tag="h1"
-              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
-              delay={70}
-              duration={1}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="0px"
-              textAlign="left"
-            />
           </div>
           
           <div className="space-y-6 max-w-md">
             <SplitText
               text="Asset Creation & Revenue Generation"
               tag="h2"
-              className="text-[#111827] text-2xl font-normal border-t-2 border-[#111827]"
+              className="text-[#111827] text-xl font-normal border-t-2 border-[#111827]"
               delay={50}
               duration={0.8}
               ease="power3.out"
@@ -120,9 +102,15 @@ const Section3_2 = () => {
               rootMargin="0px"
               textAlign="left"
             />
-            <p className="text-white/80 text-base leading-relaxed">
+            <p className="text-white/80 text-sm md:text-base leading-relaxed">
               We deploy a custom-sized Battery Energy Storage System tailored to your facility's exact needs. Replace diesel generators, bypass peak Time-of-Day tariffs, and transform your energy infrastructure into a revenue-generating asset — a permanent solution to energy cost challenges.
             </p>
+            <a
+              href="/services/"
+              className="inline-block mt-4 px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              Learn More
+            </a>
           </div>
         </div>
 

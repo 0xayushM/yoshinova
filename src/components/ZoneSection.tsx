@@ -55,7 +55,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
             {description}
           </p>
         </div>
-        <div className="md:w-[40vw] h-[30vh] w-[90vw] mx-12 bg-white rounded-xl p-0 border border-gray-200 shadow-lg">
+        <div className="md:w-[40vw] md:h-[30vh] h-[20vh] w-[70vw] mx-12 bg-white rounded-xl p-0 border border-gray-200 shadow-lg">
           <div className="relative z-10 h-full w-full overflow-hidden">
             <PeakShavingChart
               data={chartData}

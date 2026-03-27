@@ -42,7 +42,7 @@ export default function AboutSection() {
         <SplitText
           text="We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow."
           tag="h2"
-          className="text-white text-3xl md:text-5xl lg:text-6xl font-normal leading-tight mb-16"
+          className="text-white text-2xl md:text-5xl lg:text-6xl font-normal leading-tight mb-16"
           delay={30}
           duration={0.8}
           ease="power3.out"
@@ -56,7 +56,7 @@ export default function AboutSection() {
 
         {/* Learn More Section */}
         <div className="space-y-4">
-          <p className="text-white/60 text-sm uppercase tracking-widest">
+          <p className="text-white/60 text-xs md:text-sm uppercase tracking-widest">
             Learn More
           </p>
           
@@ -64,7 +64,7 @@ export default function AboutSection() {
             href="/about" 
             className="group inline-flex items-center gap-4 pb-2 border-b-2 border-[#6A9F30] hover:border-[#5a8f20] transition-colors duration-300"
           >
-            <span className="text-white text-lg font-normal">
+            <span className="text-white text-base md:text-lg font-normal">
               Our Platform
             </span>
             <svg 
