@@ -21,12 +21,6 @@ const Section3 = () => {
 
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/50" />
-
-      {/* Top right category label */}
-      <div className="absolute top-24 right-12 z-20">
-        <p className="text-[#6A9F30] text-xs uppercase tracking-widest">SERVICE — 01</p>
-      </div>
-
       {/* Main content */}
       <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
         {/* Left side - image */}
@@ -46,23 +40,9 @@ const Section3 = () => {
         <div className="max-w-xl">
           <div className="mb-2">
             <SplitText
-              text="Energy"
+              text="Energy Audit"
               tag="h1"
-              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
-              delay={70}
-              duration={1}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.5}
-              rootMargin="0px"
-              textAlign="left"
-            />
-            <SplitText
-              text="Audit"
-              tag="h1"
-              className="text-white text-5xl md:text-6xl lg:text-7xl font-medium leading-[4rem] tracking-tight uppercase"
+              className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase"
               delay={70}
               duration={1}
               ease="power3.out"
@@ -79,7 +59,7 @@ const Section3 = () => {
             <SplitText
               text="Optimize Your Operations"
               tag="h2"
-              className="text-2xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]"
+              className="text-xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]"
               delay={50}
               duration={0.8}
               ease="power3.out"
@@ -90,7 +70,7 @@ const Section3 = () => {
               rootMargin="0px"
               textAlign="left"
             />
-            <p className="text-white/80 text-base leading-relaxed">
+            <p className="text-white/80 text-sm md:text-base leading-relaxed">
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
             <a

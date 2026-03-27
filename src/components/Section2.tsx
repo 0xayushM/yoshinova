@@ -28,7 +28,7 @@ const Section2 = () => {
         <SplitText
           text="in power costs"
           tag="h1"
-          className="text-black uppercase text-3xl md:text-7xl font-normal text-left leading-[1rem] md:leading-[0.9]"
+          className="text-black uppercase text-3xl md:text-7xl font-normal text-left md:leading-[0.9]"
           delay={70}
           duration={1}
           ease="power3.out"
@@ -42,7 +42,7 @@ const Section2 = () => {
       </div>
 
       {/* Grid Layout - 4 columns */}
-      <div className="w-full h-[calc(100%-200px)] grid md:grid-cols-2 lg:grid-cols-4">
+      <div className="w-full h-[calc(100%-250px)] grid md:grid-cols-2 lg:grid-cols-4">
         {/* Column 1: Image */}
         <div className="hidden md:block bg-slate-400 relative overflow-hidden">
           <Image 
@@ -60,7 +60,7 @@ const Section2 = () => {
             <SplitText
               text="Inside Bleed"
               tag="h2"
-              className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6"
+              className="text-black text-xl md:text-3xl font-normal mb-0 md:mb-6"
               delay={50}
               duration={0.8}
               ease="power3.out"
@@ -72,7 +72,7 @@ const Section2 = () => {
               textAlign="left"
             />
             <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
-              Inefficient motors, poor power factors, and hidden energy leaks on your production floor silently drain margins. Without real-time monitoring and optimization, you're paying for wasted power every single day.
+              Inefficient motors, poor power factors, and hidden energy leaks on your production floor silently drain margins. 
             </p>
           </div>
           <div className="hidden md:flex justify-center">
@@ -102,7 +102,7 @@ const Section2 = () => {
               textAlign="left"
             />
             <p className="text-black text-xs md:text-base leading-relaxed mb-2 md:mb-8">
-              Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit. This external pressure compounds internal inefficiencies, creating a double financial drain.
+              Grid outages and peak Time-of-Day tariffs force you to burn cash on diesel generators at ₹25+ per unit. 
             </p>
           </div>
           <div className="hidden md:flex justify-center">
