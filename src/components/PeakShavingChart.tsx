@@ -129,7 +129,7 @@ const PeakShavingChart: React.FC<PeakShavingChartProps> = ({
   }, [isVisible]);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-white p-4 rounded-lg">
+    <div className="w-full h-full flex flex-col items-center justify-center bg-white p-0 rounded-lg">
       <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           {/* Gradient for charging areas (blue) */}
