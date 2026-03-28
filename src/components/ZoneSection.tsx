@@ -29,7 +29,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
   accentHex,
   accentRgb
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const isLeft = alignment === 'left';
   const gradientClass = gradientDirection === 'left' 
     ? 'bg-gradient-to-tl from-transparent via-transparent to-[#111827]'
@@ -61,7 +61,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
 
   return (
     <section className={`w-screen h-screen relative overflow-hidden ${gradientClass} flex items-center justify-center`}>
-      <div className={`w-full h-full mt-36 md:mt-48 flex flex-col items-${isLeft ? 'start' : 'end'}`}>
+      <div className={`w-full flex flex-col items-${isLeft ? 'start' : 'end'}`}>
         {/* Clickable Header with border */}
         <div 
           className='w-full cursor-pointer hover:bg-white/5 transition-colors border-b border-white/50'
@@ -99,7 +99,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
         <div 
           id={`zone-content-${title}`}
           className="w-full overflow-hidden"
-          style={{ height: 0, opacity: 0 }}
+          style={{ height: 'auto', opacity: 1 }}
         >
           <div className={`pt-8 pb-8 px-12 flex flex-col ${isLeft ? 'items-start' : 'items-end'}`}>
             {isOpen && (

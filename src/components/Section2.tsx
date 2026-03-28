@@ -14,7 +14,7 @@ const Section2 = () => {
         <SplitText
           text="The dual bleed"
           tag="h1"
-          className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[0.9]"
+          className="text-black uppercase text-3xl md:text-7xl font-light text-left leading-[1] tracking-tighter"
           delay={70}
           duration={1}
           ease="power3.out"
@@ -28,7 +28,7 @@ const Section2 = () => {
         <SplitText
           text="in power costs"
           tag="h1"
-          className="text-black uppercase text-3xl md:text-7xl font-normal text-left md:leading-[0.9]"
+          className="text-black uppercase text-3xl md:text-7xl font-normal text-left leading-[1] tracking-tighter"
           delay={70}
           duration={1}
           ease="power3.out"
