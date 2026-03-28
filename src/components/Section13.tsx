@@ -30,7 +30,7 @@ const Section13 = () => {
         {/* Left side — dark background with form */}
         <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12 pt-20">
           {/* Company info row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase md:pt-12">
             <div className="space-y-1">
               <p className="font-bold text-white/90">Yoshinova</p>
               <p className="text-white/50 normal-case tracking-normal text-[11px] leading-relaxed">
@@ -140,7 +140,7 @@ const Section13 = () => {
         <h1
           className="font-bold leading-[2] w-full text-center select-none"
           style={{
-            fontSize: 'clamp(250px, 14vw, 150px)',
+            fontSize: 'clamp(210px, 14vw, 150px)',
             letterSpacing: '-0.02em',
             marginBottom: '-0.05em',
             background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',
