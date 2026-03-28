@@ -29,11 +29,39 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Armstrong';
+  src: url('/fonts/Armstrong.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Armstrong';
+  src: url('/fonts/Armstrong Oblique.otf') format('opentype');
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Armstrong';
+  src: url('/fonts/Armstrong-Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Armstrong', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

@@ -60,13 +60,13 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
         <div className="flex justify-between flex-col md:flex-row border-t border-white/20">
 
           {/* Left: Main headline */}
-          <div className="flex-3 pt-4 flex flex-col justify-start w-full px-4 md:pl-12">
+          <div className="flex-3 pt-4 flex flex-col justify-start w-full px-4 md:pl-12 leading-none">
 
             {loadingComplete ? (
               <SplitText
                 text="Your Energy"
                 tag="h1"
-                className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase"
+                className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase"
                 delay={70}
                 duration={1}
                 ease="power3.out"
@@ -78,7 +78,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
                 textAlign="left"
               />
             ) : (
-              <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tight uppercase opacity-0">
+              <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tight uppercase opacity-0">
                 Your Energy
               </h1>
             )}
@@ -86,7 +86,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
               <SplitText
                 text="Profitability Partner"
                 tag="h1"
-                className="text-white text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase"
+                className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase -mt-2"
                 delay={70}
                 duration={1}
                 ease="power3.out"
@@ -98,7 +98,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
                 textAlign="left"
               />
             ) : (
-              <h1 className="text-transparent text-4xl md:text-6xl lg:text-8xl font-medium md:leading-[6rem] tracking-tighter uppercase opacity-0">
+              <h1 className="text-transparent text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase opacity-0 -mt-2">
                 Profitability Partner
               </h1>
             )}
