@@ -49,7 +49,7 @@ const Section13 = () => {
             <SplitText
               text="Start With a Free Energy Audit"
               tag="h3"
-              className="text-white text-2xl md:text-3xl font-bold tracking-wide mb-2"
+              className="text-white text-2xl md:text-3xl helvetica font-light tracking-wide mb-2"
               delay={40}
               duration={0.6}
               ease="power3.out"
@@ -63,7 +63,7 @@ const Section13 = () => {
             <p className="text-white/70 text-sm leading-relaxed mb-4">We find your hidden savings first. Then we talk BESS.</p>
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="w-full md:w-auto px-8 py-4 bg-[#6A9F30] text-white text-base font-bold tracking-wide uppercase hover:bg-[#5a8f20] transition-colors"
+              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Request Energy Audit
             </button>

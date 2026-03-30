@@ -22,7 +22,7 @@ export default function AboutPage() {
       const availableWidth = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
 
       let low = 10;
-      let high = 300; // Reduced max size from 500 to 300
+      let high = 280; // Reduced max size from 500 to 300
       while (high - low > 1) {
         const mid = Math.floor((low + high) / 2);
         text.style.fontSize = `${mid}px`;
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-12"
                 style={{
                   fontSize: `${fontSize}px`,
-                  background: 'linear-gradient(to top, transparent 20%, white 100%)',
+                  background: 'linear-gradient(to top, transparent 0%, white 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',

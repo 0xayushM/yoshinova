@@ -139,7 +139,7 @@ const Section2 = () => {
           </div>
           <button
               onClick={() => setIsDialogOpen(true)}
-              className="inline-block mt-4 px-6 py-3 bg-white text-black text-sm font-semibold uppercase tracking-wide hover:bg-white/90 transition-colors duration-300 cursor-pointer"
+              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Get a Free Audit
             </button>
