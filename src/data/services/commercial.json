@@ -5,8 +5,8 @@
   "heroImage": "/images/commercial.jpg",
   "heroDescription": "Smart energy storage for office buildings, retail centers, and commercial properties. Lower operating costs while enhancing tenant value.",
   "intro": {
-    "title": "StorEDGE 0.25: Commercial & Industrial Battery Energy Storage System",
-    "description": "StorEDGE 0.25 is a modular, 250 kWh / 125 kVA Battery Energy Storage System (BESS) engineered by GoodEnough Energy, a battery energy storage system manufacturer based in India. Designed for commercial and industrial customers, StorEDGE 0.25 helps cut demand charges, reduce diesel generator (DG) dependency, lower electricity bills by up to 50%, stabilize power supply, and unlock reliable EV charging and solar + BESS solutions across factories, buildings, and microgrids.",
+    "title": "NovaBizGuard: Commercial & Industrial Battery Energy Storage System",
+    "description": "NovaBizGuard is a modular Battery Energy Storage System (BESS) designed for commercial and industrial customers. NovaBizGuard helps cut demand charges, reduce diesel generator (DG) dependency, lower electricity bills by up to 50%, stabilize power supply, and unlock reliable EV charging and solar + BESS solutions across factories, buildings, and microgrids.",
     "bessImage": "/images/commercial_bess.png",
     "brochureUrl": "/brochures/commercial-bess.pdf"
   },

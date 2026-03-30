@@ -1,11 +1,15 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import SplitText from './SplitText';
+import ContactDialog from './ContactDialog';
 
 const Section2 = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
+    <>
     <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-slate-300/90">
       <div className="w-full h-full flex flex-col justify-center items-end">
         {/* Title Section */}
@@ -133,18 +137,18 @@ const Section2 = () => {
               We begin with a deep Energy Audit to uncover every hidden cost on your floor — then deploy a right-sized BESS to eliminate diesel dependency and arbitrage peak tariffs. Authority earned first, solution delivered second.
             </p>
           </div>
-          <div className="hidden md:flex justify-center">
-            <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="20" y="30" width="60" height="40" />
-              <path d="M30 50 L45 50 M55 50 L70 50" strokeWidth="3" />
-              <circle cx="50" cy="50" r="5" fill="currentColor" />
-              <path d="M40 20 L40 30 M60 20 L60 30 M40 70 L40 80 M60 70 L60 80" />
-            </svg>
-          </div>
+          <button
+              onClick={() => setIsDialogOpen(true)}
+              className="inline-block mt-4 px-6 py-3 bg-white text-black text-sm font-semibold uppercase tracking-wide hover:bg-white/90 transition-colors duration-300 cursor-pointer"
+            >
+              Get a Free Audit
+            </button>
         </div>
       </div>
       </div>
     </section>
+    <ContactDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} type="energy-audit" />
+    </>
   );
 };
 
