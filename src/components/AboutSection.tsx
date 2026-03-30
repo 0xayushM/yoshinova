@@ -42,7 +42,7 @@ export default function AboutSection() {
         <SplitText
           text="We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow."
           tag="h2"
-          className="text-white text-2xl md:text-5xl lg:text-6xl font-normal leading-tight mb-16"
+          className="text-white text-2xl md:text-4xl lg:text-5xl font-light leading-[1] mb-16"
           delay={30}
           duration={0.8}
           ease="power3.out"
