@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { services } from '@/utils/services';
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
+import ContactDialog from './ContactDialog';
 
 interface PageNavbarProps {
   isDark?: boolean; // true = black text/logo (for light backgrounds), false = white (for dark backgrounds)
@@ -14,6 +15,7 @@ interface PageNavbarProps {
 const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [navVisible, setNavVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -159,6 +161,14 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             >
               Contact
             </button>
+
+            {/* Energy Audit CTA */}
+            <button
+              onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
+              className="px-5 py-2 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+            >
+              Request Audit
+            </button>
           </div>
 
           {/* Mobile Hamburger Menu */}
@@ -295,9 +305,21 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             >
               Contact
             </button>
+            <button
+              ref={(el) => { menuItemsRef.current[3] = el; }}
+              onClick={() => { setMobileMenuOpen(false); setIsDialogOpen(true); }}
+              className="block w-full text-left text-xl font-bold uppercase tracking-tight text-white bg-[#6A9F30] px-6 py-4 mt-4"
+            >
+              Request Energy Audit
+            </button>
           </nav>
         </div>
       </div>
+      <ContactDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        type="energy-audit"
+      />
     </>
   );
 };

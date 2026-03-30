@@ -1,10 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import SplitText from './SplitText';
+import ContactDialog from './ContactDialog';
 
 const Section11 = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
+    <>
     <section className="w-full h-screen md:min-h-screen relative overflow-hidden">
       <div className="flex flex-col h-full justify-between">
         {/* Main Content Area */}
@@ -68,6 +72,12 @@ const Section11 = () => {
               <p className="text-black text-xs md:text-base leading-relaxed max-w-lg">
                 We built Yoshinova specifically for India&apos;s MSMEs — businesses that deserve enterprise-grade energy solutions without enterprise complexity or cost. Our Chief Energy Advisor personally oversees every audit, ensuring your first savings arrive within 30 days.
               </p>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="mt-6 inline-block px-6 py-3 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+              >
+                Talk to Our Advisor
+              </button>
             </div>
           </div>
 
@@ -149,6 +159,8 @@ const Section11 = () => {
 
 
     </section>
+    <ContactDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} type="energy-audit" />
+    </>
   );
 };
 

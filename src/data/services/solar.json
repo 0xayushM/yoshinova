@@ -5,8 +5,8 @@
   "heroImage": "/images/solar.jpg",
   "heroDescription": "Complete solar-plus-storage solutions. Generate clean energy during the day, use it whenever you need it — day or night.",
   "intro": {
-    "title": "StorEDGE Solar+: Integrated Solar & Storage Solution",
-    "description": "StorEDGE Solar+ combines solar generation with intelligent battery storage to maximize your renewable energy investment. Achieve 80-90% solar self-consumption by storing excess daytime generation for evening use. Stop exporting valuable solar energy to the grid at low rates — store it and use it when electricity prices peak. Complete energy independence with zero fossil fuel dependency and 24/7 clean power availability.",
+    "title": "NovaGrid: Integrated Solar & Storage Solution",
+    "description": "NovaGrid combines solar generation with intelligent battery storage to maximize your renewable energy investment. Achieve 80-90% solar self-consumption by storing excess daytime generation for evening use. Stop exporting valuable solar energy to the grid at low rates — store it and use it when electricity prices peak. Complete energy independence with zero fossil fuel dependency and 24/7 clean power availability.",
     "bessImage": "/images/grid_bess.png",
     "brochureUrl": "/brochures/solar-bess.pdf"
   },

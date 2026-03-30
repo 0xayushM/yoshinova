@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
+import ContactDialog from '@/components/ContactDialog';
 
 const auditSteps = [
   {
@@ -33,8 +34,7 @@ const auditSteps = [
 ];
 
 const benefits = [
-  { stat: "10%+", label: "Typical immediate cost reduction" },
-  { stat: "₹0", label: "Upfront investment for the audit" },
+  { stat: "10%+", label: "Typical immediate cost reduction on monthly bill" },
   { stat: "30 days", label: "Average time to first savings" },
   { stat: "Data-driven", label: "BESS sizing based on real numbers" },
 ];
@@ -43,6 +43,7 @@ export default function EnergyAuditPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const [fontSize, setFontSize] = useState(100);
+  const [isAuditDialogOpen, setIsAuditDialogOpen] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current || !textRef.current) return;
@@ -150,7 +151,7 @@ export default function EnergyAuditPage() {
 
           {/* Benefits strip */}
           <section className="w-full bg-[#6A9F30] px-6 md:px-14 py-16">
-            <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 justify-items-center">
               {benefits.map((b) => (
                 <div key={b.label} className="text-center">
                   <p className="text-white text-3xl md:text-4xl font-bold uppercase tracking-tight">
@@ -243,16 +244,22 @@ export default function EnergyAuditPage() {
               Book a no-obligation energy audit and find out exactly how much
               your facility is leaving on the table.
             </p>
-            <a
-              href="/contact"
-              className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
+            <button
+              onClick={() => setIsAuditDialogOpen(true)}
+              className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
             >
               Book Your Audit
-            </a>
+            </button>
           </section>
 
         </main>
       </ScrollSmootherWrapper>
+
+      <ContactDialog
+        isOpen={isAuditDialogOpen}
+        onClose={() => setIsAuditDialogOpen(false)}
+        type="energy-audit"
+      />
     </>
   );
 }
