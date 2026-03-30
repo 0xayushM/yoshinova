@@ -157,7 +157,7 @@ const Navbar = () => {
             {/* Energy Audit CTA */}
             <button
               onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
-              className="px-5 py-2 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+              className="px-5 py-2 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide text-center items-center hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
             >
               Request Audit
             </button>
@@ -324,7 +324,7 @@ const Navbar = () => {
             <button
               ref={(el) => { menuItemsRef.current[3] = el; }}
               onClick={() => { setMobileMenuOpen(false); setIsDialogOpen(true); }}
-              className="block w-full text-left text-xl font-bold uppercase tracking-tight text-white bg-[#6A9F30] px-6 py-4 mt-4"
+              className="block w-full items-center flex text-left text-xl font-bold uppercase tracking-tight text-white bg-[#6A9F30] px-6 py-4 mt-4"
             >
               Request Energy Audit
             </button>

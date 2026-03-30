@@ -50,13 +50,13 @@ const Section11 = () => {
             </div>
 
             {/* Bottom Content */}
-            <div className="space-y-4 md:space-y-8">
+            <div className="space-y-4">
               <div>
                 <p className="text-black/60 text-xs uppercase tracking-wider mb-4">WHO WE ARE</p>
                 <SplitText
                   text="India's MSME Energy Profitability Partner"
                   tag="h2"
-                  className="text-black text-xl md:text-3xl font-normal mb-6"
+                  className="text-black text-xl md:text-3xl font-normal mb-0"
                   delay={50}
                   duration={0.8}
                   ease="power3.out"
@@ -68,13 +68,9 @@ const Section11 = () => {
                   textAlign="left"
                 />
               </div>
-
-              <p className="text-black text-xs md:text-base leading-relaxed max-w-lg">
-                We built Yoshinova specifically for India&apos;s MSMEs — businesses that deserve enterprise-grade energy solutions without enterprise complexity or cost. Our Chief Energy Advisor personally oversees every audit, ensuring your first savings arrive within 30 days.
-              </p>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="mt-6 inline-block px-6 py-3 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+                className="mt-0 inline-block px-6 py-3 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
               >
                 Talk to Our Advisor
               </button>
