@@ -5,8 +5,8 @@
   "heroImage": "/images/residential.jpg",
   "heroDescription": "Energy independence for your home. Store solar power, cut peak-hour costs, and never worry about outages again.",
   "intro": {
-    "title": "StorEDGE Home: Residential Battery Energy Storage System",
-    "description": "StorEDGE Home is a compact, intelligent Battery Energy Storage System designed for residential applications. Store solar energy during the day and use it at night, reduce peak-hour electricity costs, and ensure your home stays powered during outages. With seamless solar integration and smart energy management, StorEDGE Home gives you complete control over your household energy consumption.",
+    "title": "NovaVault: Residential Battery Energy Storage System",
+    "description": "NovaVault is a compact, intelligent Battery Energy Storage System designed for residential applications. Store solar energy during the day and use it at night, reduce peak-hour electricity costs, and ensure your home stays powered during outages. With seamless solar integration and smart energy management, NovaVault gives you complete control over your household energy consumption.",
     "bessImage": "/images/residential_bess.png",
     "brochureUrl": "/brochures/residential-bess.pdf"
   },

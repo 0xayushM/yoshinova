@@ -18,6 +18,8 @@ export default function HomeScrollSnap() {
     if (pathname !== '/' || typeof window === "undefined") return;
 
     let observer: any = null;
+    let handleScroll: (() => void) | null = null;
+    
     const initTimer = setTimeout(() => {
       // Get all section elements from the page
       const sections = document.querySelectorAll('.page-section');
@@ -26,6 +28,30 @@ export default function HomeScrollSnap() {
       const totalSections = sections.length;
       let currentSection = 0;
       let isAnimating = false;
+      let scrollTimeout: NodeJS.Timeout;
+
+      // Update currentSection based on actual scroll position
+      const updateCurrentSection = () => {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        // Find which section we're closest to
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        
+        sections.forEach((section, index) => {
+          const rect = (section as HTMLElement).getBoundingClientRect();
+          const sectionTop = scrollY + rect.top;
+          const distance = Math.abs(scrollY - sectionTop);
+          
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+        
+        currentSection = closestIndex;
+      };
 
       const gotoSection = (index: number) => {
         if (isAnimating) return;
@@ -51,6 +77,18 @@ export default function HomeScrollSnap() {
           },
         });
       };
+
+      // Track manual scrollbar usage
+      handleScroll = () => {
+        if (isAnimating) return;
+        
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          updateCurrentSection();
+        }, 150);
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
 
       // Observer for section-by-section scrolling
       observer = Observer.create({
@@ -89,6 +127,9 @@ export default function HomeScrollSnap() {
       clearTimeout(initTimer);
       if (observer) {
         observer.kill();
+      }
+      if (handleScroll) {
+        window.removeEventListener('scroll', handleScroll);
       }
     };
   }, [pathname]);

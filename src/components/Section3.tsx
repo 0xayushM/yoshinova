@@ -1,11 +1,15 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import SplitText from './SplitText';
+import ContactDialog from './ContactDialog';
 
 const Section3 = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
+    <>
     <section className="w-screen h-screen relative overflow-hidden bg-black">
       {/* Background Video */}
       <video
@@ -73,16 +77,26 @@ const Section3 = () => {
             <p className="text-white/80 text-sm md:text-base leading-relaxed">
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
-            <a
-              href="/services/energy-audit"
-              className="inline-block mt-4 px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              Learn More
-            </a>
+            <div className="flex flex-wrap gap-4 mt-4">
+              <a
+                href="/services/energy-audit"
+                className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              >
+                Learn More
+              </a>
+              <button
+                onClick={() => setIsDialogOpen(true)}
+                className="inline-block px-6 py-3 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+              >
+                Request Audit
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <ContactDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} type="energy-audit" />
+    </>
   );
 };
 

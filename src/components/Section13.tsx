@@ -2,26 +2,10 @@
 
 import React, { useState } from 'react';
 import SplitText from './SplitText';
+import ContactDialog from './ContactDialog';
 
 const Section13 = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    powerBill: '',
-    contact: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <section className="w-screen h-screen md:min-h-screen flex flex-col">
@@ -60,12 +44,12 @@ const Section13 = () => {
             </div>
           </div>
 
-          {/* Lead capture form */}
-          <form onSubmit={handleSubmit} className="space-y-4 mt-6">
+          {/* Energy Audit CTA */}
+          <div className="space-y-6 mt-8 p-6 md:p-8 bg-white/5 border border-white/20 backdrop-blur-sm">
             <SplitText
               text="Start With a Free Energy Audit"
               tag="h3"
-              className="text-white text-lg font-bold tracking-wide mb-1"
+              className="text-white text-2xl md:text-3xl font-bold tracking-wide mb-2"
               delay={40}
               duration={0.6}
               ease="power3.out"
@@ -76,58 +60,18 @@ const Section13 = () => {
               rootMargin="0px"
               textAlign="left"
             />
-            <p className="text-white/50 text-xs leading-relaxed mb-2">We find your hidden savings first. Then we talk BESS.</p>
-            <div className="grid grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                placeholder="Your Name *"
-              />
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                placeholder="Company Name *"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="powerBill"
-                value={formData.powerBill}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                placeholder="Monthly Power Bill *"
-              />
-              <input
-                type="tel"
-                name="contact"
-                value={formData.contact}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2.5 bg-transparent border-b border-white/20 text-white text-sm placeholder-white/35 focus:outline-none focus:border-white/60 transition-colors"
-                placeholder="Contact Number *"
-              />
-            </div>
+            <p className="text-white/70 text-sm leading-relaxed mb-4">We find your hidden savings first. Then we talk BESS.</p>
             <button
-              type="submit"
-              className="mt-2 px-6 py-2.5 bg-white text-black text-sm font-semibold tracking-wide hover:bg-white/90 transition-colors"
+              onClick={() => setIsDialogOpen(true)}
+              className="w-full md:w-auto px-8 py-4 bg-[#6A9F30] text-white text-base font-bold tracking-wide uppercase hover:bg-[#5a8f20] transition-colors"
             >
-              Submit
+              Request Energy Audit
             </button>
-          </form>
+          </div>
 
           {/* Bottom tagline */}
-          <p className="text-white/30 text-[11px] tracking-[0.08em] leading-relaxed max-w-md mt-6">
-            Energy Audit &rarr; Right-sized BESS &rarr; Permanent cost reduction. Built for India&apos;s industrial backbone.
+          <p className="text-white text-base md:text-lg tracking-wide leading-relaxed max-w-2xl mt-8 font-light">
+            Energy Audit &rarr; Right-sized BESS &rarr; Permanent cost reduction.
           </p>
         </div>
 
@@ -152,6 +96,12 @@ const Section13 = () => {
           YOSHINOVA
         </h1>
       </div>
+
+      <ContactDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        type="energy-audit"
+      />
     </section>
   );
 };
