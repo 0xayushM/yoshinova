@@ -45,12 +45,12 @@ const Section10 = () => {
             textAlign="center"
           />
         </div>
-        <p className="text-white/80 text-base md:text-xl font-light max-w-2xl mx-auto leading-[1] tracking-tight mb-8">
+        <p className="text-white/80 text-base md:text-xl font-light max-w-2xl mx-auto leading-[1.2] tracking-tight mb-8">
           Every BESS we deploy is sized on real data from your facility not industry averages or guesswork. That&apos;s how we guarantee ROI, not just promise it.
         </p>
         <button
           onClick={() => setIsDialogOpen(true)}
-          className="px-8 py-4 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+          className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-[#8BC34A] hover:text-white transition-colors duration-300"
         >
           Start With a Free Audit
         </button>

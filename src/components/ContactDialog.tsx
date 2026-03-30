@@ -139,7 +139,7 @@ export default function ContactDialog({ isOpen, onClose, type = 'contact' }: Con
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-[#6A9F30] text-white text-base font-bold tracking-wide uppercase hover:bg-[#5a8f20] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
               >
                 {isSubmitting ? 'Submitting...' : 'Submit Request'}
               </button>

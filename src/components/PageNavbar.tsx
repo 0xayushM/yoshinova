@@ -165,7 +165,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             {/* Energy Audit CTA */}
             <button
               onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
-              className="px-5 py-2 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-[#6A9F30] hover:text-white transition-colors duration-300"
             >
               Request Audit
             </button>
