@@ -5,8 +5,8 @@
   "heroImage": "/images/telecom.jpg",
   "heroDescription": "Reliable power for critical infrastructure. Keep your towers running with clean, silent energy storage that never fails.",
   "intro": {
-    "title": "StorEDGE Telecom: Mission-Critical Power for Network Infrastructure",
-    "description": "StorEDGE Telecom is purpose-built for telecom towers and critical network infrastructure requiring 99.9% uptime. Replace diesel generators with silent, instant-response battery storage. Zero warm-up time, zero emissions, zero fuel costs. Reduce operating expenses by 70% while ensuring your network stays online 24/7. Remote monitoring and automated failover keep your towers running without manual intervention.",
+    "title": "NovaConnect: Mission-Critical Power for Network Infrastructure",
+    "description": "NovaConnect is purpose-built for telecom towers and critical network infrastructure requiring 99.9% uptime. Replace diesel generators with silent, instant-response battery storage. Zero warm-up time, zero emissions, zero fuel costs. Reduce operating expenses by 70% while ensuring your network stays online 24/7. Remote monitoring and automated failover keep your towers running without manual intervention.",
     "bessImage": "/images/industrial_bess.png",
     "brochureUrl": "/brochures/telecom-bess.pdf"
   },

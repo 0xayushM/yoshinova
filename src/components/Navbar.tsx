@@ -7,11 +7,13 @@ import { useRouter } from 'next/navigation';
 import { services } from '@/utils/services';
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
+import ContactDialog from './ContactDialog';
 
 const Navbar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
@@ -151,6 +153,14 @@ const Navbar = () => {
             >
               Contact
             </button>
+
+            {/* Energy Audit CTA */}
+            <button
+              onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
+              className="px-5 py-2 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+            >
+              Request Audit
+            </button>
           </div>
 
           {/* Mobile Hamburger Menu */}
@@ -215,6 +225,30 @@ const Navbar = () => {
             <div className="absolute inset-0 bg-black/30" />
           </div>
         ))}
+
+        {/* Close button */}
+        <button
+          onClick={() => { setMenuOpen(false); setHoveredService(null); }}
+          className={`absolute top-6 right-6 md:top-10 md:right-10 lg:top-14 lg:right-14 z-20 w-12 h-12 flex items-center justify-center transition-all duration-300 cursor-pointer ${
+            menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+          aria-label="Close menu"
+        >
+          <div className="relative w-8 h-8">
+            <span
+              className={`absolute top-1/2 left-0 w-full h-0.5 transition-colors duration-300 ${
+                hasHover ? 'bg-white' : 'bg-black'
+              }`}
+              style={{ transform: 'translateY(-50%) rotate(45deg)' }}
+            />
+            <span
+              className={`absolute top-1/2 left-0 w-full h-0.5 transition-colors duration-300 ${
+                hasHover ? 'bg-white' : 'bg-black'
+              }`}
+              style={{ transform: 'translateY(-50%) rotate(-45deg)' }}
+            />
+          </div>
+        </button>
 
         {/* Services list */}
         <div className={`absolute inset-0 z-10 flex items-center transition-opacity duration-300 delay-200 ${
@@ -287,9 +321,21 @@ const Navbar = () => {
             >
               Contact
             </button>
+            <button
+              ref={(el) => { menuItemsRef.current[3] = el; }}
+              onClick={() => { setMobileMenuOpen(false); setIsDialogOpen(true); }}
+              className="block w-full text-left text-xl font-bold uppercase tracking-tight text-white bg-[#6A9F30] px-6 py-4 mt-4"
+            >
+              Request Energy Audit
+            </button>
           </nav>
         </div>
       </div>
+      <ContactDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        type="energy-audit"
+      />
     </>
   );
 
