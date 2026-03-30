@@ -1,10 +1,14 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import SplitText from './SplitText';
+import ContactDialog from './ContactDialog';
 
 const Section10 = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
+    <>
     <section className="w-screen h-[100vh] relative flex items-center justify-center">
       {/* Dark overlay so text is always legible over the 3D model */}
       <div className="absolute inset-0 bg-black/60" />
@@ -41,11 +45,19 @@ const Section10 = () => {
             textAlign="center"
           />
         </div>
-        <p className="text-white/80 text-base md:text-xl font-light max-w-2xl mx-auto leading-[1] tracking-tight">
+        <p className="text-white/80 text-base md:text-xl font-light max-w-2xl mx-auto leading-[1] tracking-tight mb-8">
           Every BESS we deploy is sized on real data from your facility not industry averages or guesswork. That&apos;s how we guarantee ROI, not just promise it.
         </p>
+        <button
+          onClick={() => setIsDialogOpen(true)}
+          className="px-8 py-4 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+        >
+          Start With a Free Audit
+        </button>
       </div>
     </section>
+    <ContactDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} type="energy-audit" />
+    </>
   );
 };
 

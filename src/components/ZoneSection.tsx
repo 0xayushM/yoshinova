@@ -16,6 +16,8 @@ interface ZoneSectionProps {
   maxY: number;
   accentHex: string;
   accentRgb: string;
+  ctaLabel?: string;
+  onCTAClick?: () => void;
 }
 
 const ZoneSection: React.FC<ZoneSectionProps> = ({
@@ -27,7 +29,9 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
   yAxisLabel,
   maxY,
   accentHex,
-  accentRgb
+  accentRgb,
+  ctaLabel,
+  onCTAClick
 }) => {
   const [isOpen, setIsOpen] = useState(true);
   const isLeft = alignment === 'left';
@@ -126,6 +130,14 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
                 />
               </div>
             </div>
+            {ctaLabel && onCTAClick && (
+              <button
+                onClick={onCTAClick}
+                className="mt-6 px-8 py-3 bg-[#6A9F30] text-white text-sm font-semibold uppercase tracking-wide hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+              >
+                {ctaLabel}
+              </button>
+            )}
           </div>
         </div>
       </div>

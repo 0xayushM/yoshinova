@@ -9,9 +9,6 @@ import ServiceFeatures from '@/components/service/ServiceFeatures';
 import ServiceStats from '@/components/service/ServiceStats';
 import ServiceCTA from '@/components/service/ServiceCTA';
 import ServiceFooter from '@/components/service/ServiceFooter';
-import LeadAcidReplacementTable from '@/components/product/LeadAcidReplacementTable';
-import WallMountedESSTable from '@/components/product/WallMountedESSTable';
-import FloorMountedESSTable from '@/components/product/FloorMountedESSTable';
 
 import residentialData from '@/data/services/residential.json';
 
@@ -94,27 +91,6 @@ export default function ResidentialPage() {
                   <p className="text-gray-700 font-semibold">AIS156 (Phase 2)<br/>Approved Batteries</p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* Product Specifications Section */}
-          <section className="py-16 px-6 md:px-14 bg-white">
-            <div className="max-w-7xl mx-auto">
-              <LeadAcidReplacementTable />
-            </div>
-          </section>
-
-          {/* Wall Mounted ESS Section */}
-          <section className="py-16 px-6 md:px-14 bg-gray-50">
-            <div className="max-w-7xl mx-auto">
-              <WallMountedESSTable />
-            </div>
-          </section>
-
-          {/* Floor Mounted ESS Section */}
-          <section className="py-16 px-6 md:px-14 bg-white">
-            <div className="max-w-7xl mx-auto">
-              <FloorMountedESSTable />
             </div>
           </section>
 
