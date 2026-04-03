@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import SplitText from './SplitText';
 
 const caseStudies = [
   {
@@ -70,20 +69,9 @@ const CaseStudies = () => {
         {/* Headline and Description */}
         <div className="max-w-2xl py-4 md:py-12">
           <div className="pt-12 mb-4 md:mb-6">
-            <SplitText
-              text="Case Studies"
-              tag="h1"
-              className="text-black text-4xl md:text-6xl font-normal leading-[2rem] md:leading-[6rem]"
-              delay={70}
-              duration={1}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.5}
-              rootMargin="0px"
-              textAlign="left"
-            />
+            <h1 className="text-black text-4xl md:text-6xl font-normal leading-[2rem] md:leading-[6rem]">
+              Case Studies
+            </h1>
           </div>
           <p className="text-black text-base md:text-xl leading-relaxed mb-6">
             Discover how Yoshinova is transforming energy storage across industries. From groundbreaking deployments to innovative solutions, explore our latest achievements in sustainable energy management and BESS technology.
@@ -103,20 +91,9 @@ const CaseStudies = () => {
         <div className="w-full h-full md:w-1/2 bg-[#D3D3D3] p-4 md:p-12 flex flex-col justify-between">
           <div>
             <p className="text-black text-xs uppercase tracking-widest mb-6">{currentStudy.category}</p>
-            <SplitText
-              text={currentStudy.title}
-              tag="h2"
-              className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6"
-              delay={50}
-              duration={0.8}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 30 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="0px"
-              textAlign="left"
-            />
+            <h2 className="text-black text-2xl md:text-5xl font-normal leading-tight mb-6">
+              {currentStudy.title}
+            </h2>
             <p className="text-black/80 text-base leading-relaxed">
               {currentStudy.description}
             </p>

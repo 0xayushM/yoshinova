@@ -91,14 +91,17 @@ function ShadowLightRig() {
     lightRef.current.target.updateMatrixWorld();
   });
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const shadowMapSize = isMobile ? 512 : 1024;
+  
   return (
     <directionalLight
       ref={lightRef}
       castShadow
       position={[5, 8, 5]}
       intensity={2.5}
-      shadow-mapSize-width={2048}
-      shadow-mapSize-height={2048}
+      shadow-mapSize-width={shadowMapSize}
+      shadow-mapSize-height={shadowMapSize}
       shadow-bias={-0.0003}
       shadow-normalBias={0.03}
       shadow-camera-near={0.1}
@@ -117,21 +120,26 @@ interface ModelViewerProps {
 }
 
 export default function ModelViewer({ onProgress, loadingComplete = false }: ModelViewerProps): JSX.Element {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isLowEnd = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+  const shouldReduceQuality = isMobile || isLowEnd;
+  
   return (
     <div style={{ position: "fixed", inset: 0, width: "100%", height: "100vh", zIndex: 0 }}>
       <Canvas
-        shadows
-        dpr={[1, 2]}
+        shadows={!shouldReduceQuality}
+        dpr={shouldReduceQuality ? [1, 1] : [1, 2]}
         style={{ background: 'linear-gradient(180deg, #7bb1e8ff 0%, #d6dce4 40%, #e8e6e1 100%)' }}
         camera={{
           position: [0, 0, 3],
-          fov: typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 45,
+          fov: isMobile ? 60 : 45,
         }}
         gl={{
-          antialias: true,
+          antialias: !shouldReduceQuality,
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.2,
           outputColorSpace: THREE.SRGBColorSpace,
+          powerPreference: 'high-performance',
         }}
       >
 
