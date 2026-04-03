@@ -7,6 +7,13 @@ import ContactDialog from './ContactDialog';
 const Section13 = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <section className="w-screen h-screen md:min-h-screen flex flex-col">
       {/* Top area: left form + right transparent */}
@@ -80,7 +87,7 @@ const Section13 = () => {
       </div>
 
       {/* Bottom — giant YOSHINOVA text */}
-      <div className="hidden md:block w-full bg-[#0a0a0a] flex items-end overflow-hidden" style={{ height: '35%' }}>
+      <div className="hidden md:block w-full bg-[#0a0a0a] flex items-end overflow-hidden relative" style={{ height: '35%' }}>
         <h1
           className="font-bold leading-[2] w-full text-center select-none"
           style={{
@@ -95,6 +102,23 @@ const Section13 = () => {
         >
           YOSHINOVA
         </h1>
+        
+        {/* Scroll to Top Button */}
+        <button
+          onClick={scrollToTop}
+          className="absolute top-8 right-1/2 translate-x-1/2 px-6 py-3 border border-white/60 bg-white/5 backdrop-blur-sm text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-2 group"
+          aria-label="Scroll to top"
+        >
+          <span>Back to Top</span>
+          <svg 
+            className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
       </div>
 
       <ContactDialog 
