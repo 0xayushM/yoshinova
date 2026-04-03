@@ -12,7 +12,7 @@ interface GltfModelProps {
 }
 
 export function GltfModel({
-  url = "/models/yoshinova.glb",
+  url = "/models/yoshinova-transformed.glb",
   scale = 0.1,
   position = [0.0, 0.0, 0.0],
   rotation = [0, 0, 0],
