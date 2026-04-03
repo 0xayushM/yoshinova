@@ -23,7 +23,6 @@ const Section5 = () => {
         ctaLabel="Contact Us"
         onCTAClick={() => setIsDialogOpen(true)}
       />
-      <ContactDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} type="contact" />
     </>
   );
 };
