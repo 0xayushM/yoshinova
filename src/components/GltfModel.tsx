@@ -129,6 +129,6 @@ export function GltfModel({
 }
 
 // preload hint (call once when module is imported)
-useGLTF.preload("/models/yoshinova.glb", true);
+useGLTF.preload("/models/yoshinova-transformed.glb", true);
 
 export default GltfModel;
