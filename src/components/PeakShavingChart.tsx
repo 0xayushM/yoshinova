@@ -178,13 +178,13 @@ const PeakShavingChart: React.FC<PeakShavingChartProps> = ({
 
         {/* Y-axis line */}
         <text 
-          x={padL - 50} 
+          x={padL - 80} 
           y={padT + plotH / 2} 
           textAnchor="middle" 
           fontSize="14" 
           fill="#333"
           fontWeight="600"
-          transform={`rotate(-90, ${padL - 50}, ${padT + plotH / 2})`}
+          transform={`rotate(-90, ${padL - 80}, ${padT + plotH / 2})`}
         >
           Load in MW
         </text>

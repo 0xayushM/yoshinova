@@ -130,14 +130,6 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
                 />
               </div>
             </div>
-            {ctaLabel && onCTAClick && (
-              <button
-                onClick={onCTAClick}
-                className="inline-block mt-4 px-6 py-3 border border-[#6A9F30] bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
-              >
-                {ctaLabel}
-              </button>
-            )}
           </div>
         </div>
       </div>
