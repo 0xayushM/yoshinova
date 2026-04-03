@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import SplitText from './SplitText';
 import ContactDialog from './ContactDialog';
 
 const Section3 = () => {
@@ -43,37 +42,15 @@ const Section3 = () => {
         {/* Right side - content */}
         <div className="max-w-xl">
           <div className="mb-2">
-            <SplitText
-              text="Energy Audit"
-              tag="h1"
-              className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase"
-              delay={70}
-              duration={1}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.5}
-              rootMargin="0px"
-              textAlign="left"
-            />
+            <h1 className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase">
+              Energy Audit
+            </h1>
           </div>
           
           <div className="space-y-6 max-w-md">
-            <SplitText
-              text="Optimize Your Operations"
-              tag="h2"
-              className="text-xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]"
-              delay={50}
-              duration={0.8}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 30 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.5}
-              rootMargin="0px"
-              textAlign="left"
-            />
+            <h2 className="text-xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]">
+              Optimize Your Operations
+            </h2>
             <p className="text-white/80 text-sm md:text-base leading-relaxed">
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>

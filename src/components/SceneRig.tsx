@@ -22,6 +22,7 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
   const capRef = useRef<THREE.Object3D | null>(null);
   const [modelScale, setModelScale] = useState(0.025);
   const [positions, setPositions] = useState(() => getPositions(false));
+  const frameCount = useRef(0);
   
   // Mouse tracking for interactive model rotation
   const targetMouseRot = useRef({ x: 0, y: 0 });
@@ -50,17 +51,27 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
-  // Track window scroll progress
+  // Track window scroll progress with throttling
   useEffect(() => {
+    let rafId: number | null = null;
+    
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY;
-      scrollProgress.current = scrollHeight > 0 ? scrolled / scrollHeight : 0;
+      if (rafId !== null) return;
+      
+      rafId = requestAnimationFrame(() => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        scrollProgress.current = scrollHeight > 0 ? scrolled / scrollHeight : 0;
+        rafId = null;
+      });
     };
 
     handleScroll(); // Initial call
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Track mouse movement
@@ -82,6 +93,12 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
 
   useFrame(() => {
     if (!modelRef.current) return;
+    
+    // Throttle updates: run every other frame on low-end devices
+    frameCount.current++;
+    const isLowEnd = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    if (isLowEnd && frameCount.current % 2 !== 0) return;
+    
     const u = THREE.MathUtils.clamp(scrollProgress.current, 0, 1);
 
     // segment index

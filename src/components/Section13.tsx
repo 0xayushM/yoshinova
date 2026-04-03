@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import SplitText from './SplitText';
 import ContactDialog from './ContactDialog';
 
 const Section13 = () => {
@@ -53,20 +52,9 @@ const Section13 = () => {
 
           {/* Energy Audit CTA */}
           <div className="space-y-6 mt-8 p-6 md:p-8 bg-white/5 border border-white/20 backdrop-blur-sm">
-            <SplitText
-              text="Start With a Free Energy Audit"
-              tag="h3"
-              className="text-white text-2xl md:text-3xl helvetica font-light tracking-wide mb-2"
-              delay={40}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 20 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.5}
-              rootMargin="0px"
-              textAlign="left"
-            />
+            <h3 className="text-white text-2xl md:text-3xl helvetica font-light tracking-wide mb-2">
+              Start With a Free Energy Audit
+            </h3>
             <p className="text-white/70 text-sm leading-relaxed mb-4">We find your hidden savings first. Then we talk BESS.</p>
             <button
               onClick={() => setIsDialogOpen(true)}
