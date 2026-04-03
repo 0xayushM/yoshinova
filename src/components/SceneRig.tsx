@@ -160,7 +160,7 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
 
   return (
     <group ref={modelRef} name="model-root">
-      <GltfModel url="/models/yoshinova.glb" scale={modelScale} onProgress={onProgress} />
+      <GltfModel url="/models/yoshinova-transformed.glb" scale={modelScale} onProgress={onProgress} />
     </group>
   );
 }
