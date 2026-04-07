@@ -56,12 +56,6 @@ export default function ServiceHero({ title, heroImage, heroDescription, service
       />
       <div className="absolute inset-0 bg-black/55" />
 
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
-        <p className="text-[#6A9F30] text-xs uppercase tracking-widest">
-          SERVICE — {serviceNumber}
-        </p>
-      </div>
-
       <div
         ref={containerRef}
         className="absolute inset-x-0 top-48 z-10 px-6 pb-10 md:pb-16"
@@ -71,7 +65,7 @@ export default function ServiceHero({ title, heroImage, heroDescription, service
           className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-12"
           style={{
             fontSize: `${fontSize}px`,
-            background: 'linear-gradient(to top, transparent 20%, white 50%, white 100%)',
+            background: 'linear-gradient(to top, transparent 10%, white 50%, white 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',

@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
 import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import ContactDialog from '@/components/ContactDialog';
+import ServiceFooter from '@/components/service/ServiceFooter';
 
 const auditSteps = [
   {
@@ -94,12 +95,6 @@ export default function EnergyAuditPage() {
               priority
             />
             <div className="absolute inset-0 bg-black/55" />
-
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
-              <p className="text-[#6A9F30] text-xs uppercase tracking-widest">
-                SERVICE — 01
-              </p>
-            </div>
 
             <div
               ref={containerRef}
@@ -251,6 +246,7 @@ export default function EnergyAuditPage() {
               Book Your Audit
             </button>
           </section>
+          <ServiceFooter />
 
         </main>
       </ScrollSmootherWrapper>

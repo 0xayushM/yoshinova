@@ -5,6 +5,8 @@ import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
 import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import SplitText from '@/components/SplitText';
+import TeamSection from '@/components/TeamSection';
+import ServiceFooter from '@/components/service/ServiceFooter';
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,22 +50,15 @@ export default function AboutPage() {
         <main className="relative min-h-screen bg-black">
           
           {/* Hero Section with Background Image */}
-          <section className="relative w-full h-screen overflow-hidden">
+          <section className="relative w-full h-[70vh] md:h-screen overflow-hidden">
             <Image
               src="/images/about.png"
               alt="About Yoshinova"
               fill
-              className="object-cover"
+              className="object-contain"
               priority
             />
             <div className="absolute inset-0" />
-
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10">
-              <p className="text-[#6A9F30] text-xs uppercase tracking-widest">
-                ABOUT US
-              </p>
-            </div>
-
             <div
               ref={containerRef}
               className="absolute inset-x-0 top-1/3 -translate-y-1/2 z-10 px-6"
@@ -85,7 +80,7 @@ export default function AboutPage() {
               </h1>
             </div>
 
-            <div className="absolute bottom-12 left-6 md:left-14 z-10 max-w-lg">
+            <div className="absolute bottom-12 left-4 md:left-14 z-10 max-w-lg">
               <p className="text-white/70 text-base md:text-lg leading-relaxed border-t border-white/20 pt-4">
                 We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow.
               </p>
@@ -203,6 +198,9 @@ export default function AboutPage() {
             </div>
           </section>
 
+          {/* Team Section */}
+          <TeamSection />
+
           {/* CTA Section */}
           <section className="relative py-32 px-8 md:px-12">
             <div className="max-w-4xl mx-auto text-center">
@@ -231,7 +229,7 @@ export default function AboutPage() {
               </a>
             </div>
           </section>
-
+          <ServiceFooter />
         </main>
       </ScrollSmootherWrapper>
     </>
