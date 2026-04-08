@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preload" href="/models/yoshinova-transformed.glb" as="fetch" crossOrigin="anonymous" />
+        <link rel="preload" href="/models/yoshinova-compressed.glb" as="fetch" crossOrigin="anonymous" />
       </head>
       <body suppressHydrationWarning>
         <ClientLayout>{children}</ClientLayout>
