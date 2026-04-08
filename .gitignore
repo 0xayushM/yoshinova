@@ -45,3 +45,7 @@ next-env.d.ts
 /public/video/hero_3.mp4
 /public/video/hero_4.mp4
 /public/video/hero_5.mp4
+
+# large 3D model files
+/public/models/*.glb
+/public/models/*.gltf
