@@ -5,6 +5,7 @@ import ModelViewer from "@/components/ModelViewer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollSmootherWrapper from "@/components/ScrollSmootherWrapper";
 import HomeScrollSnap from "@/components/HomeScrollSnap";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import Section1 from "@/components/Section1";
 import AboutSection from "@/components/AboutSection";
 import Section2 from "@/components/Section2";
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <>
+      <ServiceWorkerRegistration />
       {loading && <LoadingScreen onComplete={handleLoadingComplete} progress={loadingProgress} />}
       
       {/* Fixed 3D Model Background */}

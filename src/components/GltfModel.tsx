@@ -1,5 +1,5 @@
 // components/GltfModel.tsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import * as THREE from "three";
 import { useGLTF, useAnimations, Center } from "@react-three/drei";
 
@@ -20,6 +20,7 @@ export function GltfModel({
 }: GltfModelProps) {
   const group = useRef<THREE.Group | null>(null);
   const progressReported = useRef(false);
+  const optimizationApplied = useRef(false);
   
   const gltf = useGLTF(url, true, undefined, (loader) => {
     loader.manager.onProgress = (url, loaded, total) => {
@@ -68,33 +69,75 @@ export function GltfModel({
     };
   }, [actions, mixer, gltf.animations]);
 
-  // Ensure meshes cast/receive shadows and fallback material if needed
+  // Optimize model: shadows, materials, textures, and geometry
   useEffect(() => {
-    if (!gltf || !gltf.scene) return;
+    if (!gltf || !gltf.scene || optimizationApplied.current) return;
+    
+    const textureCache = new Map<string, THREE.Texture>();
+    
     gltf.scene.traverse((child: any) => {
       if (!child.isMesh) return;
+      
       child.castShadow = true;
       child.receiveShadow = true;
+      child.frustumCulled = true;
+      
+      // Optimize geometry
+      if (child.geometry) {
+        if (!child.geometry.attributes.normal) {
+          child.geometry.computeVertexNormals();
+        }
+        child.geometry.computeBoundingSphere();
+        child.geometry.computeBoundingBox();
+      }
 
-      const assignFallback = (mat: any) => {
-        if (!mat || mat.isShaderMaterial) {
+      const optimizeMaterial = (mat: any) => {
+        if (!mat) return mat;
+        
+        if (mat.isShaderMaterial) {
           const fallback = new THREE.MeshStandardMaterial({
-            color: mat && mat.color ? mat.color : new THREE.Color(0xdddddd),
+            color: mat.color || new THREE.Color(0xdddddd),
             roughness: 0.7,
             envMapIntensity: 1.0,
           });
-          // Preserve emissive properties from shader materials
-          if (mat && mat.emissive) {
+          if (mat.emissive) {
             fallback.emissive = mat.emissive.clone();
             fallback.emissiveIntensity = mat.emissiveIntensity ?? 1;
             if (mat.emissiveMap) fallback.emissiveMap = mat.emissiveMap;
           }
           return fallback;
         }
-        // Keep emissive materials visible but not overpowering
+        
+        // Optimize textures
+        const optimizeTexture = (texture: THREE.Texture | null) => {
+          if (!texture || !texture.image) return texture;
+          
+          const cacheKey = texture.uuid;
+          if (textureCache.has(cacheKey)) {
+            return textureCache.get(cacheKey)!;
+          }
+          
+          texture.generateMipmaps = true;
+          texture.minFilter = THREE.LinearMipmapLinearFilter;
+          texture.magFilter = THREE.LinearFilter;
+          texture.anisotropy = 4;
+          texture.needsUpdate = true;
+          
+          textureCache.set(cacheKey, texture);
+          return texture;
+        };
+        
+        if (mat.map) mat.map = optimizeTexture(mat.map);
+        if (mat.normalMap) mat.normalMap = optimizeTexture(mat.normalMap);
+        if (mat.roughnessMap) mat.roughnessMap = optimizeTexture(mat.roughnessMap);
+        if (mat.metalnessMap) mat.metalnessMap = optimizeTexture(mat.metalnessMap);
+        if (mat.emissiveMap) mat.emissiveMap = optimizeTexture(mat.emissiveMap);
+        
+        // Optimize emissive materials
         if (mat.emissive && (mat.emissive.r > 0 || mat.emissive.g > 0 || mat.emissive.b > 0)) {
           mat.emissiveIntensity = Math.min(mat.emissiveIntensity ?? 1, 1);
         }
+        
         // Outdoor-realistic material tuning
         if (mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial) {
           mat.envMapIntensity = Math.min(mat.envMapIntensity ?? 1, 1.2);
@@ -102,15 +145,18 @@ export function GltfModel({
           mat.roughness = Math.max(mat.roughness ?? 0.5, 0.15);
           mat.needsUpdate = true;
         }
+        
         return mat;
       };
 
       if (Array.isArray(child.material)) {
-        child.material = child.material.map(assignFallback);
+        child.material = child.material.map(optimizeMaterial);
       } else {
-        child.material = assignFallback(child.material);
+        child.material = optimizeMaterial(child.material);
       }
     });
+    
+    optimizationApplied.current = true;
   }, [gltf]);
 
   return (
