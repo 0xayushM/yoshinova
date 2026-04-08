@@ -46,5 +46,6 @@ next-env.d.ts
 /public/video/hero_4.mp4
 /public/video/hero_5.mp4
 
-# large 3D model files (using Git LFS)
-# /public/models/*.gltf
+# large 3D model files
+/public/models/yoshinova-transformed.glb
+/public/models/*.gltf
