@@ -73,14 +73,14 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
         >
           <div className={`flex items-center ${isLeft ? 'justify-start' : 'justify-end'} gap-8 px-12 py-4 `}>
             {!isLeft && (
-              <div className={`text-white text-2xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
+              <div className={`text-white text-xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
                 ▼
               </div>
             )}
             <SplitText
               text={title}
               tag="h1"
-              className={`text-white text-4xl md:text-7xl lg:text-8xl font-medium tracking-tight uppercase`}
+              className={`text-white text-3xl md:text-7xl lg:text-8xl font-medium tracking-tight uppercase`}
               delay={70}
               duration={1}
               ease="power3.out"
@@ -92,7 +92,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
               textAlign={isLeft ? 'left' : 'right'}
             />
             {isLeft && (
-              <div className={`text-white text-2xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
+              <div className={`text-white text-xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
                 ▼
               </div>
             )}
