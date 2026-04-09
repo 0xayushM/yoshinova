@@ -12,21 +12,34 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
   const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let rafId: number | null = null;
+    
     const handleScroll = (e: Event) => {
-      const offset = (e as CustomEvent).detail?.offset ?? 0;
-      if (!sectionRef.current || !bgRef.current) return;
+      if (rafId !== null) return; // Skip if already scheduled
+      
+      rafId = requestAnimationFrame(() => {
+        const offset = (e as CustomEvent).detail?.offset ?? 0;
+        if (!sectionRef.current || !bgRef.current) {
+          rafId = null;
+          return;
+        }
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // For Section1: use how far the section has scrolled out of view
-      const progress = Math.max(0, Math.min(1, -rect.top / vh));
-      // Background moves slower: only shift down by 30% of scroll
-      const parallaxY = progress * vh * 0.3;
-      bgRef.current.style.transform = `translateY(${parallaxY}px)`;
+        const rect = sectionRef.current.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // For Section1: use how far the section has scrolled out of view
+        const progress = Math.max(0, Math.min(1, -rect.top / vh));
+        // Background moves slower: only shift down by 30% of scroll
+        const parallaxY = progress * vh * 0.3;
+        bgRef.current.style.transform = `translateY(${parallaxY}px)`;
+        rafId = null;
+      });
     };
 
     window.addEventListener('drei-scroll', handleScroll);
-    return () => window.removeEventListener('drei-scroll', handleScroll);
+    return () => {
+      window.removeEventListener('drei-scroll', handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
