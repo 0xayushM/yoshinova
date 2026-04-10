@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-// Lightweight scroll snap using CSS - much better performance
+// Smooth scroll without snap - prevents 3D model from snapping
 export default function HomeScrollSnap() {
   const pathname = usePathname();
 
@@ -11,17 +11,14 @@ export default function HomeScrollSnap() {
     // Only run on homepage
     if (pathname !== '/' || typeof window === "undefined") return;
 
-    // Add CSS scroll-snap to html element for hardware-accelerated snapping
+    // Only add smooth scrolling, NO snap-type to avoid model snapping
     const html = document.documentElement;
-    const originalScrollSnapType = html.style.scrollSnapType;
     const originalScrollBehavior = html.style.scrollBehavior;
     
-    html.style.scrollSnapType = 'y proximity'; // proximity is less aggressive than mandatory
     html.style.scrollBehavior = 'smooth';
 
     return () => {
-      // Restore original values
-      html.style.scrollSnapType = originalScrollSnapType;
+      // Restore original value
       html.style.scrollBehavior = originalScrollBehavior;
     };
   }, [pathname]);

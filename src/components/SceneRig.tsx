@@ -19,6 +19,7 @@ interface SceneRigProps {
 export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
   const modelRef = useRef<THREE.Group>(null);
   const scrollProgress = useRef(0);
+  const targetScrollProgress = useRef(0);
   const capRef = useRef<THREE.Object3D | null>(null);
   const [modelScale, setModelScale] = useState(0.025);
   const [positions, setPositions] = useState(() => getPositions(false));
@@ -61,7 +62,7 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
       rafId = requestAnimationFrame(() => {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrolled = window.scrollY;
-        scrollProgress.current = scrollHeight > 0 ? scrolled / scrollHeight : 0;
+        targetScrollProgress.current = scrollHeight > 0 ? scrolled / scrollHeight : 0;
         rafId = null;
       });
     };
@@ -98,6 +99,9 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
     frameCount.current++;
     const isLowEnd = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
     if (isLowEnd && frameCount.current % 2 !== 0) return;
+    
+    // Smooth lerp scroll progress to prevent snapping (0.08 = smooth damping)
+    scrollProgress.current += (targetScrollProgress.current - scrollProgress.current) * 0.08;
     
     const u = THREE.MathUtils.clamp(scrollProgress.current, 0, 1);
 
