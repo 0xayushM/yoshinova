@@ -38,7 +38,7 @@ export default function ServiceFooter() {
         
         <div className="border-t border-white/10 pt-8">
           <p className="text-white/40 text-xs text-center">
-            2024 YOSHINOVA. All rights reserved.
+            2026 YOSHINOVA. All rights reserved.
           </p>
         </div>
       </div>
