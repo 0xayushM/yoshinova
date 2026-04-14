@@ -40,12 +40,26 @@ const Section13 = () => {
                   projects@yoshinova.com
                 </a>
               </div>
+              <div>
+                <p className="text-white/40 mb-1">Phone</p>
+                <a href="tel:+919718204687" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors block">
+                  +91-9718204687
+                </a>
+                <a href="tel:+919311378904" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors block">
+                  +91-9311378904
+                </a>
+              </div>
             </div>
-            <div>
-              <p className="text-white/40 mb-1">Follow</p>
-              <div className="flex flex-col gap-1">
-                <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">Twitter</a>
+            <div className="space-y-3">
+              <div>
+                <p className="text-white/40 mb-1">Address</p>
+                <p className="text-white/80 normal-case tracking-normal text-[11px] leading-relaxed">
+                  F-6, Delhi State Industrial Development Corporation, Delhi State Industrial and Infrastructure Development, Nangloi, Delhi, 110041
+                </p>
+              </div>
+              <div>
+                <p className="text-white/40 mb-1">Follow</p>
+                <a href="https://www.linkedin.com/company/yoshinova/" target="_blank" rel="noopener noreferrer" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">LinkedIn</a>
               </div>
             </div>
           </div>
