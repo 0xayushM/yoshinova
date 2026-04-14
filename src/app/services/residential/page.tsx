@@ -65,30 +65,26 @@ export default function ResidentialPage() {
               </div>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 text-center">
                 <div>
-                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">1st</p>
-                  <p className="text-gray-700 font-semibold">India's first LMFP<br/>Battery Manufacturer</p>
+                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">No1</p>
+                  <p className="text-gray-700 font-semibold">World's No1 Ranked<br/>Recommended Chemistry Used IRON Phosphate</p>
                 </div>
                 <div>
-                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">30+</p>
-                  <p className="text-gray-700 font-semibold">Years of Experience<br/>in Battery Industry</p>
+                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">24x7</p>
+                  <p className="text-gray-700 font-semibold">Customer Support</p>
                 </div>
                 <div>
                   <p className="text-5xl font-bold text-[#6A9F30] mb-2">50+</p>
                   <p className="text-gray-700 font-semibold">Happy Customers</p>
                 </div>
                 <div>
-                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">50K+</p>
-                  <p className="text-gray-700 font-semibold">Sq Ft<br/>Factory Area</p>
+                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">45K+</p>
+                  <p className="text-gray-700 font-semibold">Sq Ft<br/>Ultra Modern Factory</p>
                 </div>
                 <div>
-                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">1.2</p>
-                  <p className="text-gray-700 font-semibold">GMH Annual<br/>Production Capacity</p>
-                </div>
-                <div>
-                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">22+</p>
-                  <p className="text-gray-700 font-semibold">AIS156 (Phase 2)<br/>Approved Batteries</p>
+                  <p className="text-5xl font-bold text-[#6A9F30] mb-2">100%</p>
+                  <p className="text-gray-700 font-semibold">Safe for Home And Commercial Application</p>
                 </div>
               </div>
             </div>
