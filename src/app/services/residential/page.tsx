@@ -76,7 +76,7 @@ export default function ResidentialPage() {
                 </div>
                 <div>
                   <p className="text-5xl font-bold text-[#6A9F30] mb-2">50+</p>
-                  <p className="text-gray-700 font-semibold">Service Centres<br/>across the Nation</p>
+                  <p className="text-gray-700 font-semibold">Happy Customers</p>
                 </div>
                 <div>
                   <p className="text-5xl font-bold text-[#6A9F30] mb-2">50K+</p>
