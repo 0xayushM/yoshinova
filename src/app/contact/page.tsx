@@ -33,7 +33,7 @@ export default function ContactPage() {
         {/* Background Image */}
         <div className="fixed inset-0 z-0">
           <Image
-            src="/images/contact.png"
+            src="/images/contact.webp"
             alt="Contact background"
             fill
             className="object-cover"

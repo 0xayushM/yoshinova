@@ -12,7 +12,7 @@ const allCaseStudies = [
     title: "Yoshinova Deploys 500kWh BESS for Industrial Client",
     description: "Our latest industrial deployment showcases peak shaving capabilities that reduced demand charges by 45% in the first quarter of operation. This comprehensive case study explores the technical implementation, challenges overcome, and measurable results achieved.",
     date: "2025-02-15",
-    image: "/images/industrial.jpg",
+    image: "/images/industrial.webp",
     tags: ["Industrial", "Peak Shaving", "Demand Reduction"]
   },
   {
@@ -21,7 +21,7 @@ const allCaseStudies = [
     title: "Smart Energy Management System Launch",
     description: "Introducing our AI-powered energy management platform that optimizes BESS performance in real-time across all deployment zones. Learn how machine learning algorithms predict energy demand patterns and optimize battery charging cycles.",
     date: "2025-02-10",
-    image: "/images/commercial.jpg",
+    image: "/images/commercial.webp",
     tags: ["AI", "Software", "Optimization"]
   },
   {
@@ -30,7 +30,7 @@ const allCaseStudies = [
     title: "Carbon Reduction Milestone Achieved",
     description: "Yoshinova's BESS deployments have collectively eliminated over 10,000 tons of CO2 emissions, equivalent to planting 450,000 trees. This milestone represents our commitment to sustainable energy solutions and environmental responsibility.",
     date: "2025-02-05",
-    image: "/images/solar.jpg",
+    image: "/images/solar.webp",
     tags: ["Sustainability", "Carbon Reduction", "Impact"]
   },
   {
@@ -39,7 +39,7 @@ const allCaseStudies = [
     title: "Home Energy Independence: A Case Study",
     description: "Explore how a residential installation achieved 90% energy independence through solar-plus-storage integration. This case study details the system design, installation process, and first-year performance metrics.",
     date: "2025-01-28",
-    image: "/images/residential.jpg",
+    image: "/images/residential.webp",
     tags: ["Residential", "Solar", "Energy Independence"]
   },
   {
@@ -48,7 +48,7 @@ const allCaseStudies = [
     title: "Telecom Tower Backup: Diesel to Battery Transition",
     description: "A comprehensive analysis of replacing diesel generators with BESS for telecom tower backup power. Learn about the 70% reduction in operating costs and elimination of maintenance headaches.",
     date: "2025-01-20",
-    image: "/images/telecom.jpg",
+    image: "/images/telecom.webp",
     tags: ["Telecom", "Backup Power", "Cost Reduction"]
   },
   {
@@ -57,7 +57,7 @@ const allCaseStudies = [
     title: "Office Building Demand Charge Optimization",
     description: "How a commercial office building reduced electricity costs by 35% through intelligent demand charge management. This case study includes detailed ROI analysis and tenant satisfaction metrics.",
     date: "2025-01-15",
-    image: "/images/commercial.jpg",
+    image: "/images/commercial.webp",
     tags: ["Commercial", "Demand Charges", "ROI"]
   }
 ];

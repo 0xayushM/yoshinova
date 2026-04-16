@@ -64,7 +64,7 @@ const LoadingScreen = ({ onComplete, progress: externalProgress }: LoadingScreen
       {/* Logo in top-left, matching navbar position */}
       <div className="p-4 md:px-10 lg:px-14 pt-4">
         <Image
-          src="/logo_white.png"
+          src="/logo_white.webp"
           alt="Yoshinova logo"
           width={160}
           height={200}

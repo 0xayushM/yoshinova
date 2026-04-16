@@ -8,37 +8,37 @@ const zones = [
     zoneNumber: "01",
     title: "Residential",
     description: "Shared storage for elevators, pumps & EV charging",
-    imagePath: "/images/residential.jpg"
+    imagePath: "/images/residential.webp"
   },
   {
     zoneNumber: "02",
     title: "Commercial",
     description: "Flatten HVAC spikes and arbitrage ToU rates",
-    imagePath: "/images/commercial.jpg"
+    imagePath: "/images/commercial.webp"
   },
   {
     zoneNumber: "03",
     title: "Industrial",
     description: "Shave machinery peaks and unlock demand-response revenue",
-    imagePath: "/images/industrial.jpg"
+    imagePath: "/images/industrial.webp"
   },
   {
     zoneNumber: "04",
     title: "Telecom",
     description: "Replace diesel backup with zero-downtime battery power",
-    imagePath: "/images/telecom.jpg"
+    imagePath: "/images/telecom.webp"
   },
   {
     zoneNumber: "05",
     title: "Household",
     description: "Store daytime solar, power your evenings",
-    imagePath: "/images/residential2.jpg"
+    imagePath: "/images/residential2.webp"
   },
   {
     zoneNumber: "06",
     title: "Solar",
     description: "Bridge the midday-to-evening gap",
-    imagePath: "/images/solar.jpg"
+    imagePath: "/images/solar.webp"
   }
 ];
 

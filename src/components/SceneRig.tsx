@@ -29,6 +29,12 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
   const targetMouseRot = useRef({ x: 0, y: 0 });
   const currentMouseRot = useRef({ x: 0, y: 0 });
 
+  // Pre-allocated quaternions to avoid per-frame GC pressure
+  const mouseQuatX = useRef(new THREE.Quaternion());
+  const mouseQuatY = useRef(new THREE.Quaternion());
+  const axisX = useRef(new THREE.Vector3(1, 0, 0));
+  const axisY = useRef(new THREE.Vector3(0, 1, 0));
+
   // Responsive model scaling and positions based on screen size
   useEffect(() => {
     const updateScale = () => {
@@ -75,21 +81,27 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
     };
   }, []);
 
-  // Track mouse movement
+  // Track mouse movement (throttled via rAF to avoid firing on every pixel)
   useEffect(() => {
+    let rafId: number | null = null;
+
     const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse position to -1 to 1 range and calculate target rotation
-      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-      
-      // Calculate target rotation based on mouse position (subtle effect)
-      const maxRotation = 0.008; // radians
-      targetMouseRot.current.x = mouseY * maxRotation;
-      targetMouseRot.current.y = mouseX * maxRotation;
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        const maxRotation = 0.008; // radians
+        targetMouseRot.current.x = mouseY * maxRotation;
+        targetMouseRot.current.y = mouseX * maxRotation;
+        rafId = null;
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useFrame(() => {
@@ -146,12 +158,12 @@ export default function SceneRig({ onProgress }: SceneRigProps): JSX.Element {
     currentMouseRot.current.x += (targetMouseRot.current.x - currentMouseRot.current.x) * lerpFactor;
     currentMouseRot.current.y += (targetMouseRot.current.y - currentMouseRot.current.y) * lerpFactor;
     
-    // Apply mouse rotation offset on top of base rotation
-    const mouseQuatX = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), currentMouseRot.current.x);
-    const mouseQuatY = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), currentMouseRot.current.y);
+    // Apply mouse rotation offset on top of base rotation (reuse pre-allocated quaternions)
+    mouseQuatX.current.setFromAxisAngle(axisX.current, currentMouseRot.current.x);
+    mouseQuatY.current.setFromAxisAngle(axisY.current, currentMouseRot.current.y);
     
     // Combine: base rotation + mouse offset
-    modelRef.current.quaternion.copy(baseQuat).multiply(mouseQuatX).multiply(mouseQuatY);
+    modelRef.current.quaternion.copy(baseQuat).multiply(mouseQuatX.current).multiply(mouseQuatY.current);
 
     // cap rotation
     if (!capRef.current && modelRef.current) {

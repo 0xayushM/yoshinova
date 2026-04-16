@@ -52,7 +52,8 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
+        poster="/video/yoshinova_hero_poster.jpg"
       >
         <source src="/video/yoshinova_hero.mp4" type="video/mp4" />
       </video>

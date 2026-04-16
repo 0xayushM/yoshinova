@@ -18,10 +18,11 @@ const ZoneCard: React.FC<ZoneCardProps> = ({ zoneNumber, title, description, ima
       onClick={onClick}
     >
       <div className="absolute inset-0">
-        <Image 
+        <Image
           src={imagePath}
           alt={title}
           fill
+          loading="lazy"
           className="object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-300 ease-out"
           sizes="(max-width: 768px) 50vw, 25vw"
           quality={75}

@@ -120,15 +120,25 @@ interface ModelViewerProps {
 }
 
 export default function ModelViewer({ onProgress, loadingComplete = false }: ModelViewerProps): JSX.Element {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  const isLowEnd = typeof navigator !== 'undefined' && navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
-  const shouldReduceQuality = isMobile || isLowEnd;
-  
+  // SSR-safe device detection — computed once on client mount via useState
+  const [deviceInfo, setDeviceInfo] = React.useState({ isMobile: false, shouldReduceQuality: false });
+
+  React.useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const isLowEnd =
+      typeof navigator !== 'undefined' &&
+      !!navigator.hardwareConcurrency &&
+      navigator.hardwareConcurrency <= 4;
+    setDeviceInfo({ isMobile, shouldReduceQuality: isMobile || isLowEnd });
+  }, []);
+
+  const { isMobile, shouldReduceQuality } = deviceInfo;
+
   return (
     <div style={{ position: "fixed", inset: 0, width: "100%", height: "100vh", zIndex: 0 }}>
       <Canvas
         shadows={!shouldReduceQuality}
-        dpr={shouldReduceQuality ? [1, 1] : [1, 2]}
+        dpr={shouldReduceQuality ? [1, 1] : [1, 1.5]}
         style={{ background: 'linear-gradient(180deg, #7bb1e8ff 0%, #d6dce4 40%, #e8e6e1 100%)' }}
         camera={{
           position: [0, 0, 3],

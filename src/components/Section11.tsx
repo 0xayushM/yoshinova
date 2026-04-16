@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import ContactDialog from './ContactDialog';
 
 const Section11 = () => {
@@ -45,10 +46,13 @@ const Section11 = () => {
 
           {/* Right: Image */}
           <div className="hidden md:block relative overflow-hidden bg-slate-300">
-            <img
-              src="/images/residential2.jpg"
+            <Image
+              src="/images/residential2.webp"
               alt="Yoshinova expertise"
-              className="w-full h-full object-cover"
+              fill
+              sizes="50vw"
+              loading="lazy"
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </div>

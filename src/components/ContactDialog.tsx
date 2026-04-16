@@ -149,9 +149,11 @@ export default function ContactDialog({ isOpen, onClose, type = 'contact' }: Con
           {/* Right: Image (desktop only) */}
           <div className="hidden md:block relative">
             <Image
-              src="/images/contact.png"
+              src="/images/contact.webp"
               alt="Contact Yoshinova"
               fill
+              loading="lazy"
+              sizes="50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] to-transparent opacity-60" />

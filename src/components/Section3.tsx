@@ -17,7 +17,8 @@ const Section3 = () => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
+        poster="/video/about_poster.jpg"
       >
         <source src="/video/about.mp4" type="video/mp4" />
       </video>
@@ -28,14 +29,16 @@ const Section3 = () => {
       <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
         {/* Left side - image */}
         <div className="flex-1 max-w-3xl h-full flex items-center justify-center">
-          <Image 
-            src="/images/energy-audit.png" 
+          <Image
+            src="/images/energy-audit.webp"
             alt="Energy Audit"
             className="w-full h-3/4 object-cover"
             style={{ clipPath: 'polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%)' }}
-            width={500}
-            height={500}
-            quality={75}
+            width={600}
+            height={450}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="lazy"
+            quality={80}
           />
         </div>
 

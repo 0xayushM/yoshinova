@@ -52,7 +52,7 @@ export default function AboutPage() {
           {/* Hero Section with Background Image */}
           <section className="relative w-full h-[70vh] md:h-screen overflow-hidden">
             <Image
-              src="/images/about.png"
+              src="/images/about.webp"
               alt="About Yoshinova"
               fill
               className="object-contain"

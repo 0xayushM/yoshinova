@@ -26,12 +26,14 @@ const Section2 = () => {
       <div className="w-full h-[calc(100%-250px)] grid md:grid-cols-2 lg:grid-cols-4">
         {/* Column 1: Image */}
         <div className="hidden md:block bg-slate-400 relative overflow-hidden">
-          <Image 
-            src="/images/industrial2.jpg" 
+          <Image
+            src="/images/industrial2.webp"
             alt="Industrial facility"
             className="w-full h-full object-cover"
-            width={500}
-            height={500}
+            fill
+            sizes="25vw"
+            loading="lazy"
+            style={{ objectFit: 'cover' }}
           />
         </div>
 

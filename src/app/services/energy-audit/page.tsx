@@ -88,7 +88,7 @@ export default function EnergyAuditPage() {
           {/* Hero */}
           <section className="relative w-full h-screen overflow-hidden">
             <Image
-              src="/images/energy-audit.png"
+              src="/images/energy-audit.webp"
               alt="Energy Audit"
               fill
               className="object-cover"
@@ -198,7 +198,7 @@ export default function EnergyAuditPage() {
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
               <div className="relative w-full aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/images/industrial2.jpg"
+                  src="/images/industrial2.webp"
                   alt="BESS Deployment"
                   fill
                   className="object-cover"

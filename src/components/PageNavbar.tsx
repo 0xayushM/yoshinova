@@ -108,7 +108,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
         <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
           <button onClick={goHome} className="p-4 flex items-center cursor-pointer pointer-events-auto">
             <Image
-              src="/logo_white.png"
+              src="/logo_white.webp"
               alt="Yoshinova logo"
               width={160}
               height={100}

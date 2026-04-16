@@ -11,7 +11,7 @@ const caseStudies = [
     title: "Yoshinova Deploys 500kWh BESS for Industrial Client",
     description: "Our latest industrial deployment showcases peak shaving capabilities that reduced demand charges by 45% in the first quarter of operation.",
     date: "2025-02-15",
-    image: "/images/industrial.jpg"
+    image: "/images/industrial.webp"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const caseStudies = [
     title: "Smart Energy Management System Launch",
     description: "Introducing our AI-powered energy management platform that optimizes BESS performance in real-time across all deployment zones.",
     date: "2025-02-10",
-    image: "/images/commercial.jpg"
+    image: "/images/commercial.webp"
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const caseStudies = [
     title: "Carbon Reduction Milestone Achieved",
     description: "Yoshinova's BESS deployments have collectively eliminated over 10,000 tons of CO2 emissions, equivalent to planting 450,000 trees.",
     date: "2025-02-05",
-    image: "/images/solar.jpg"
+    image: "/images/solar.webp"
   }
 ];
 
