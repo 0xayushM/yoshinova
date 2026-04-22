@@ -2,12 +2,12 @@
   "slug": "residential",
   "title": "RESIDENTIAL",
   "serviceNumber": "02",
-  "heroImage": "/images/residential.jpg",
+  "heroImage": "/images/residential.webp",
   "heroDescription": "Energy independence for your home. Store solar power, cut peak-hour costs, and never worry about outages again.",
   "intro": {
     "title": "NovaVault: Residential Battery Energy Storage System",
     "description": "NovaVault is a compact, intelligent Battery Energy Storage System designed for residential applications. Store solar energy during the day and use it at night, reduce peak-hour electricity costs, and ensure your home stays powered during outages. With seamless solar integration and smart energy management, NovaVault gives you complete control over your household energy consumption.",
-    "bessImage": "/images/residential_bess.png",
+    "bessImage": "/images/residential_bess.webp",
     "brochureUrl": "/brochures/residential-bess.pdf"
   },
   "features": [
@@ -52,9 +52,9 @@
       "Full compliance & training"
     ],
     "images": [
-      "/images/residential.jpg",
-      "/images/residential.jpg",
-      "/images/residential.jpg"
+      "/images/residential.webp",
+      "/images/residential.webp",
+      "/images/residential.webp"
     ]
   },
   "stats": [

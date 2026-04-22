@@ -2,12 +2,12 @@
   "slug": "industrial",
   "title": "INDUSTRIAL",
   "serviceNumber": "04",
-  "heroImage": "/images/industrial.jpg",
+  "heroImage": "/images/industrial.webp",
   "heroDescription": "Industrial-scale energy storage that cuts costs, improves power quality, and keeps production running without interruption.",
   "intro": {
     "title": "NovaMax: Heavy-Duty Battery Energy Storage System",
     "description": "NovaMax is a high-capacity, industrial-grade Battery Energy Storage System engineered for manufacturing plants, processing facilities, and heavy industrial operations. Cut demand charges by up to 40%, eliminate diesel dependency, stabilize power quality for sensitive equipment, and ensure zero-downtime production. Built to handle the most demanding industrial loads with proven reliability and rapid ROI.",
-    "bessImage": "/images/industrial_bess.png",
+    "bessImage": "/images/industrial_bess.webp",
     "brochureUrl": "/brochures/industrial-bess.pdf"
   },
   "features": [
@@ -52,9 +52,9 @@
       "24/7 monitoring & support"
     ],
     "images": [
-      "/images/industrial.jpg",
-      "/images/industrial.jpg",
-      "/images/industrial.jpg"
+      "/images/industrial.webp",
+      "/images/industrial.webp",
+      "/images/industrial.webp"
     ]
   },
   "stats": [

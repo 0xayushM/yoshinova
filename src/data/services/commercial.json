@@ -2,12 +2,12 @@
   "slug": "commercial",
   "title": "COMMERCIAL",
   "serviceNumber": "03",
-  "heroImage": "/images/commercial.jpg",
+  "heroImage": "/images/commercial.webp",
   "heroDescription": "Smart energy storage for office buildings, retail centers, and commercial properties. Lower operating costs while enhancing tenant value.",
   "intro": {
     "title": "NovaBizGuard: Commercial & Industrial Battery Energy Storage System",
     "description": "NovaBizGuard is a modular Battery Energy Storage System (BESS) designed for commercial and industrial customers. NovaBizGuard helps cut demand charges, reduce diesel generator (DG) dependency, lower electricity bills by up to 50%, stabilize power supply, and unlock reliable EV charging and solar + BESS solutions across factories, buildings, and microgrids.",
-    "bessImage": "/images/commercial_bess.png",
+    "bessImage": "/images/commercial_bess.webp",
     "brochureUrl": "/brochures/commercial-bess.pdf"
   },
   "features": [
@@ -52,9 +52,9 @@
       "Tenant communication support"
     ],
     "images": [
-      "/images/commercial.jpg",
-      "/images/commercial.jpg",
-      "/images/commercial.jpg"
+      "/images/commercial.webp",
+      "/images/commercial.webp",
+      "/images/commercial.webp"
     ]
   },
   "stats": [
