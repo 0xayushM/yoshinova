@@ -22,22 +22,19 @@ interface SmoothScrollProviderProps {
  *    "black screen" on client-side navigation.
  *  - ~3 kB gzipped, runs on a single shared rAF — does not stack with React
  *    re-renders.
- *
- * Why we skip the homepage
- *  - The homepage uses GSAP ScrollSmoother already (driving the 3-D scene's
- *    pinned/scroll-linked animations). Two smoothers would fight each other.
+ *  - Updates the real window.scrollY (via window.scrollTo) and emits native
+ *    'scroll' events, so the homepage's 3D ModelViewer / SceneRig — which
+ *    reads window.scrollY directly — keeps working without any code change.
  *
  * GSAP integration
  *  - We funnel Lenis's scroll callback into ScrollTrigger.update so any
- *    scroll-trigger animation on a Lenis page stays in sync. Lenis's rAF is
+ *    scroll-trigger animation on any page stays in sync. Lenis's rAF is
  *    driven by gsap.ticker so we avoid a second concurrent rAF loop.
  */
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const pathname = usePathname();
-  const isHome = pathname === '/';
 
   useEffect(() => {
-    if (isHome) return;
     if (typeof window === 'undefined') return;
 
     // Respect users who prefer reduced motion — never instantiate Lenis.
@@ -76,7 +73,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
       gsap.ticker.remove(tick);
       lenis.destroy();
     };
-  }, [isHome, pathname]);
+  }, [pathname]);
 
   return <>{children}</>;
 }

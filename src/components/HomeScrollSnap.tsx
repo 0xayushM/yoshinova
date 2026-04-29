@@ -1,27 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-
-// Smooth scroll without snap - prevents 3D model from snapping
+/**
+ * Deprecated: Lenis (see SmoothScrollProvider) now owns site-wide smooth
+ * scrolling, including the homepage. Setting scroll-behavior: smooth on
+ * <html> fights Lenis's own smoothing, so this component is intentionally
+ * a no-op. Kept as a stable export to avoid touching every import site.
+ */
 export default function HomeScrollSnap() {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    // Only run on homepage
-    if (pathname !== '/' || typeof window === "undefined") return;
-
-    // Only add smooth scrolling, NO snap-type to avoid model snapping
-    const html = document.documentElement;
-    const originalScrollBehavior = html.style.scrollBehavior;
-    
-    html.style.scrollBehavior = 'smooth';
-
-    return () => {
-      // Restore original value
-      html.style.scrollBehavior = originalScrollBehavior;
-    };
-  }, [pathname]);
-
   return null;
 }
