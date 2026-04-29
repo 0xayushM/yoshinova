@@ -1,255 +1,286 @@
 "use client";
 
 import Image from 'next/image';
-import { useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 import PageNavbar from '@/components/PageNavbar';
-import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import ContactDialog from '@/components/ContactDialog';
+import ServiceHero from '@/components/service/ServiceHero';
 import ServiceFooter from '@/components/service/ServiceFooter';
+
+import AuditFlow from '@/components/service/sections/AuditFlow';
+import MarketInsight from '@/components/service/sections/MarketInsight';
+import UseCaseGrid from '@/components/service/sections/UseCaseGrid';
+import HowItWorks from '@/components/service/sections/HowItWorks';
+import LiveMetricGraph from '@/components/service/sections/LiveMetricGraph';
+
+const auditUseCases = [
+  {
+    number: 'Audit 01',
+    title: 'MSME Manufacturing Units',
+    description:
+      "Older motors, sub-optimal layouts, contracted-load drift. We find the 18–25% of bill that's leaking through equipment you've stopped looking at.",
+    metric: '−22%',
+    metricLabel: 'avg bill cut',
+  },
+  {
+    number: 'Audit 02',
+    title: 'Commercial Buildings',
+    description:
+      'HVAC oversizing, lighting waste, lift cycling, idle UPS. We map every kVA and rank fixes by ROI — not by capex.',
+    metric: '−18%',
+    metricLabel: 'avg bill cut',
+  },
+  {
+    number: 'Audit 03',
+    title: 'Telecom & Data Sites',
+    description:
+      'Cooling efficiency, rectifier losses, idle radios. We benchmark you against best-in-class fleets and show the gap.',
+    metric: 'PUE 1.4',
+    metricLabel: 'achievable target',
+  },
+  {
+    number: 'Audit 04',
+    title: 'Pre-BESS Sizing Audit',
+    description:
+      "Before you buy a kWh of storage — we measure 30 days of real load. The difference between guessed and audited sizing is usually 30–40%.",
+    metric: '30 days',
+    metricLabel: 'load logged',
+  },
+  {
+    number: 'Audit 05',
+    title: 'Power-quality Forensics',
+    description:
+      'Tripping VFDs, cooked PCBs, mystery downtime. We chase harmonics, voltage sags, and earth leakage to root cause.',
+    metric: '±0.5%',
+    metricLabel: 'voltage tolerance',
+  },
+  {
+    number: 'Audit 06',
+    title: 'BEE / PAT Compliance',
+    description:
+      "Designated consumers under BEE\'s Perform-Achieve-Trade scheme. We deliver compliance-ready audit reports and ESCert pathways.",
+    metric: 'BEE',
+    metricLabel: 'accredited format',
+  },
+];
 
 const auditSteps = [
   {
-    number: "01",
-    title: "On-Site Assessment",
+    number: '01',
+    title: 'On-Site Walkthrough',
     description:
-      "Our Chief Energy Advisor visits your facility to conduct a thorough walkthrough — documenting your machinery, HVAC systems, lighting, and power distribution infrastructure.",
+      'Our Chief Energy Advisor visits your facility — meter rooms, motors, panels, HVAC. No template — every site gets a fresh read by senior engineers.',
   },
   {
-    number: "02",
-    title: "Power Quality Analysis",
+    number: '02',
+    title: 'Power-Quality Logging',
     description:
-      "We deploy power analysers to measure real-time energy consumption, power factor, harmonic distortion, and peak demand patterns across your entire operations.",
+      'Class-A power analysers logged for 7–30 days. We capture real load, harmonics, voltage events, peak demand profile and reactive draw across phases.',
   },
   {
-    number: "03",
-    title: "Loss Identification",
+    number: '03',
+    title: 'Loss Identification',
     description:
-      "Hidden inefficiencies are mapped: inefficient motors, transformer losses, idle equipment draw, and reactive power penalties that silently inflate your electricity bill.",
+      "We isolate every loss — motor inefficiency, transformer copper/iron, idle phantom load, reactive penalties — and quantify each one in ₹/month.",
   },
   {
-    number: "04",
-    title: "Optimisation Report",
+    number: '04',
+    title: 'Optimisation Roadmap',
     description:
-      "You receive a prioritised action plan with projected savings for each intervention — giving you a clear ROI picture before a single rupee is spent.",
+      "You receive a prioritised, ROI-ranked action plan. Quick wins first, capex projects costed and timed. BESS sizing — if relevant — is data-driven, not guessed.",
   },
-];
-
-const benefits = [
-  { stat: "10%+", label: "Typical immediate cost reduction on monthly bill" },
-  { stat: "30 days", label: "Average time to first savings" },
-  { stat: "Data-driven", label: "BESS sizing based on real numbers" },
 ];
 
 export default function EnergyAuditPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
-  const [fontSize, setFontSize] = useState(100);
   const [isAuditDialogOpen, setIsAuditDialogOpen] = useState(false);
-
-  useEffect(() => {
-    if (!containerRef.current || !textRef.current) return;
-
-    const resize = () => {
-      if (!containerRef.current || !textRef.current) return;
-      const container = containerRef.current;
-      const text = textRef.current;
-      const style = getComputedStyle(container);
-      const availableWidth =
-        container.clientWidth -
-        parseFloat(style.paddingLeft) -
-        parseFloat(style.paddingRight);
-
-      let low = 10;
-      let high = 500;
-      while (high - low > 1) {
-        const mid = Math.floor((low + high) / 2);
-        text.style.fontSize = `${mid}px`;
-        if (text.scrollWidth > availableWidth) {
-          high = mid;
-        } else {
-          low = mid;
-        }
-      }
-      setFontSize(low);
-    };
-
-    resize();
-    const observer = new ResizeObserver(resize);
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
       <PageNavbar />
-      <ScrollSmootherWrapper>
-        <main className="relative min-h-screen bg-[#0a0a0a]">
+      <main className="relative min-h-screen bg-[#0a0a0a]">
 
-          {/* Hero */}
-          <section className="relative w-full h-screen overflow-hidden">
-            <Image
-              src="/images/energy-audit.webp"
-              alt="Energy Audit"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/55" />
+        <ServiceHero
+          title="ENERGY AUDIT"
+          heroImage="/images/energy-audit.webp"
+          heroDescription="We uncover what your energy bill is hiding. A comprehensive floor audit that delivers real savings — fast."
+          serviceNumber="01"
+        />
 
-            <div
-              ref={containerRef}
-              className="absolute inset-x-0 top-48 z-10 px-6 pb-10 md:pb-16"
-            >
-              <h1
-                ref={textRef}
-                className="text-white font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full"
-                style={{ fontSize: `${fontSize}px` }}
-              >
-                ENERGY AUDIT
-              </h1>
-            </div>
-
-            <div className="absolute bottom-12 left-6 md:left-14 z-10 max-w-lg">
-              <p className="text-white/70 text-base md:text-lg leading-relaxed border-t border-white/20 pt-4">
-                We uncover what your energy bill is hiding. A comprehensive floor
-                audit that delivers real savings — fast.
-              </p>
-            </div>
-          </section>
-
-          {/* Intro */}
-          <section className="w-full bg-[#e8e6e1] px-6 md:px-14 py-24 md:py-32">
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                  Why an Energy Audit?
+        {/* INTRO + Audit flow diagram */}
+        <section className="relative w-full bg-white px-6 md:px-14 py-24 md:py-32 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-12 gap-10 items-start mb-16 md:mb-20">
+              <div className="md:col-span-5">
+                <p className="text-[#6A9F30] text-xs uppercase tracking-[0.3em] mb-4">
+                  Energy Audit — Yoshinova
                 </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  Your floor is bleeding money. We find exactly where.
+                <h2 className="text-black text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-6">
+                  Your floor is bleeding money. <span className="text-[#6A9F30]">We find exactly where.</span>
                 </h2>
-              </div>
-              <div>
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-                  Most facilities lose 10–25% of their energy to inefficiencies
-                  they cannot see — poor power factor, oversized motors running
-                  at partial load, phantom loads, and avoidable peak demand
-                  charges.
-                </p>
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                  Our Energy Audit gives you a precise, data-backed map of every
-                  leak. Before you invest in any solution, you know exactly what
-                  it will save — and we prove it.
+                <p className="text-black/65 text-base md:text-lg leading-relaxed mb-6">
+                  Most facilities lose 10–25% of their energy to inefficiencies they can&apos;t see — poor power factor, oversized motors at partial load, phantom draws, and reactive penalties silently inflating the bill. Our audit gives you a precise, data-backed map of every leak. Before you invest in any solution — BESS, solar, retrofit — you know exactly what it will save.
                 </p>
               </div>
-            </div>
-          </section>
 
-          {/* Benefits strip */}
-          <section className="w-full bg-[#6A9F30] px-6 md:px-14 py-16">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 justify-items-center">
-              {benefits.map((b) => (
-                <div key={b.label} className="text-center">
-                  <p className="text-white text-3xl md:text-4xl font-bold uppercase tracking-tight">
-                    {b.stat}
-                  </p>
-                  <p className="text-white/80 text-sm mt-2 uppercase tracking-wide">
-                    {b.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Audit Process */}
-          <section className="w-full bg-black px-6 md:px-14 py-24 md:py-32">
-            <div className="max-w-5xl mx-auto">
-              <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                The Process
-              </p>
-              <h2 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-16">
-                How We Do It
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-0 border-t border-white/10">
-                {auditSteps.map((step, i) => (
-                  <div
-                    key={step.number}
-                    className={`p-8 md:p-10 border-b border-white/10 ${
-                      i % 2 === 0 ? 'md:border-r md:border-white/10' : ''
-                    }`}
-                  >
-                    <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                      {step.number}
-                    </p>
-                    <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-white/60 text-base leading-relaxed">
-                      {step.description}
-                    </p>
+              <div className="md:col-span-7 md:pl-8">
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="border-t border-black/15 pt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Typical bill cut</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">10–25%</p>
+                    <p className="text-xs text-black/50 mt-1">post-audit, no capex needed</p>
                   </div>
-                ))}
+                  <div className="border-t border-black/15 pt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Logging window</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">7–30 d</p>
+                    <p className="text-xs text-black/50 mt-1">class-A analysers</p>
+                  </div>
+                  <div className="border-t border-black/15 pt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Time to first ₹ saved</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">~30 d</p>
+                    <p className="text-xs text-black/50 mt-1">from audit kickoff</p>
+                  </div>
+                  <div className="border-t border-black/15 pt-4">
+                    <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Sizing accuracy</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">±5%</p>
+                    <p className="text-xs text-black/50 mt-1">vs. nameplate-based ±35%</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </section>
 
-          {/* What comes next */}
-          <section className="w-full bg-[#e8e6e1] px-6 md:px-14 py-24 md:py-32">
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
-                <Image
-                  src="/images/industrial2.webp"
-                  alt="BESS Deployment"
-                  fill
-                  className="object-cover"
-                />
+            {/* Audit flow diagram */}
+            <div>
+              <div className="flex items-center justify-between mb-6 md:mb-8">
+                <p className="text-[#6A9F30] text-xs uppercase tracking-[0.3em]">
+                  Measure → Map → Quantify
+                </p>
+                <p className="text-black/40 text-xs uppercase tracking-widest hidden md:block">
+                  Live audit dashboard
+                </p>
               </div>
-              <div>
-                <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-                  What Comes Next
-                </p>
-                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight mb-6">
-                  From Audit to Action
-                </h2>
-                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-8">
-                  The audit data doesn&apos;t sit in a report. It directly informs
-                  the sizing and deployment of your Battery Energy Storage
-                  System — so your BESS investment is right-sized, not
-                  guessed. Every kilowatt-hour is accounted for.
-                </p>
-                <a
-                  href="/services"
-                  className="inline-block px-6 py-3 border border-black text-black text-sm uppercase tracking-widest hover:bg-black hover:text-white transition-colors duration-300"
-                >
-                  Explore All Services
-                </a>
+              <div className="bg-[#f8fafc] border border-black/[0.06] p-4 md:p-8">
+                <AuditFlow />
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* CTA */}
-          <section className="w-full bg-black px-6 md:px-14 py-24 md:py-32 text-center">
-            <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
-              Get Started
-            </p>
-            <h2 className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6">
-              Ready to stop the bleed?
-            </h2>
-            <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10">
-              Book a no-obligation energy audit and find out exactly how much
-              your facility is leaving on the table.
-            </p>
-            <button
-              onClick={() => setIsAuditDialogOpen(true)}
-              className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
-            >
-              Book Your Audit
-            </button>
-          </section>
-          <ServiceFooter />
+        {/* MARKET INSIGHT */}
+        <MarketInsight
+          eyebrow="Why an audit first"
+          title="An un-audited BESS purchase is a guess"
+          intro="The single largest reason BESS projects underperform in India is wrong sizing. Most installers quote based on connected load, sanctioned demand or nameplate ratings — which over-state real consumption by 25–40%. An audit first makes every rupee of subsequent capex defensible."
+          marketSize={{
+            value: '10–25%',
+            label: 'Typical waste in MSME bills',
+            sub: 'Recoverable through audit + low-capex fixes alone.',
+          }}
+          growth={{
+            value: '±5%',
+            label: 'BESS sizing accuracy',
+            sub: 'Audit-driven sizing vs. ±35% on nameplate-based.',
+          }}
+          keyDriver={{
+            title: 'BEE PAT-VIII (2025–28) makes audits compulsory.',
+            description:
+              "Designated consumers under BEE\'s Perform-Achieve-Trade scheme must now log a third-party energy audit each cycle. Yoshinova\'s audit format is BEE-aligned — your audit doubles as compliance and as an action plan.",
+          }}
+          bullets={[
+            'India\'s Energy Conservation (Amendment) Act, 2022 expanded mandatory audit coverage to mid-tier industries — most MSMEs don\'t know they\'re in scope.',
+            'PAT-VIII targets demand 1–4% energy intensity reduction over 3 years — un-audited facilities miss targets and pay through ESCert deficit.',
+            'Pre-BESS audits return their own cost in <60 days through low-capex fixes — long before any storage is deployed.',
+          ]}
+        />
 
-        </main>
-      </ScrollSmootherWrapper>
+        {/* LIVE METRIC GRAPH */}
+        <LiveMetricGraph
+          eyebrow="Live audit overlay"
+          title="Where exactly your bill leaks."
+          subtitle="Red is your raw metered draw. Green is what your floor actually needs. The gap — every hour — is wasted rupees we can recover."
+          yUnit="kW"
+          theme="light"
+          series={[
+            {
+              label: 'Metered draw',
+              color: '#ef4444',
+              dashed: true,
+              values: [0.32, 0.32, 0.34, 0.36, 0.42, 0.62, 0.78, 0.86, 0.9, 0.86, 0.84, 0.94, 0.98, 0.92, 0.86, 0.84, 0.82, 0.7, 0.58, 0.5, 0.46, 0.42, 0.38, 0.34, 0.32],
+            },
+            {
+              label: 'Productive load',
+              color: '#7DB840',
+              fill: true,
+              values: [0.18, 0.18, 0.18, 0.2, 0.28, 0.46, 0.6, 0.66, 0.7, 0.68, 0.66, 0.74, 0.78, 0.74, 0.7, 0.68, 0.64, 0.54, 0.42, 0.34, 0.3, 0.26, 0.22, 0.2, 0.18],
+            },
+          ]}
+          callouts={[
+            { label: 'Recoverable waste', value: '23%', sub: 'of monthly kWh on this floor' },
+            { label: 'Power factor', value: '0.78', sub: 'reactive penalty zone — fixable' },
+            { label: 'ROI on audit', value: '< 60 d', sub: 'before any capex investment' },
+          ]}
+        />
+
+        {/* USE CASES */}
+        <UseCaseGrid
+          eyebrow="Where audits land hardest"
+          title="Audit-first across every vertical"
+          description="We do not start with a product — we start with your meter. Here\'s where our audits typically uncover the biggest deltas, by sector."
+          cases={auditUseCases}
+          bgClass="bg-white"
+          textColor="dark"
+        />
+
+        {/* HOW IT WORKS */}
+        <HowItWorks
+          eyebrow="Process"
+          title="From meter to a costed roadmap"
+          steps={auditSteps}
+        />
+
+        {/* HERO IMAGE BAND */}
+        <section className="relative w-full h-[60vh] overflow-hidden">
+          <Image
+            src="/images/industrial2.webp"
+            alt="Audit on factory floor"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 px-6 md:px-14 pb-12 md:pb-16">
+            <div className="max-w-7xl mx-auto">
+              <p className="text-[#7DB840] text-xs uppercase tracking-[0.3em] mb-3">
+                Audit-first, always
+              </p>
+              <h3 className="text-white text-2xl md:text-4xl lg:text-5xl font-medium uppercase max-w-3xl leading-tight">
+                Personally led by our Chief Energy Advisor — no juniors, no guesswork.
+              </h3>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="w-full bg-black px-6 md:px-14 py-24 md:py-32 text-center">
+          <p className="text-[#6A9F30] text-xs uppercase tracking-widest mb-4">
+            Get Started
+          </p>
+          <h2 className="text-white text-3xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+            Ready to stop the bleed?
+          </h2>
+          <p className="text-white/60 text-base md:text-lg max-w-xl mx-auto mb-10">
+            Book a no-obligation energy audit and find out exactly how much your facility is leaving on the table.
+          </p>
+          <button
+            onClick={() => setIsAuditDialogOpen(true)}
+            className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+          >
+            Book Your Audit
+          </button>
+        </section>
+
+        <ServiceFooter />
+
+      </main>
 
       <ContactDialog
         isOpen={isAuditDialogOpen}

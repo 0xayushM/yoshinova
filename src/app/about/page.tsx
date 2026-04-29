@@ -3,7 +3,6 @@
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
-import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import SplitText from '@/components/SplitText';
 import TeamSection from '@/components/TeamSection';
 import ServiceFooter from '@/components/service/ServiceFooter';
@@ -46,7 +45,6 @@ export default function AboutPage() {
   return (
     <>
       <PageNavbar />
-      <ScrollSmootherWrapper>
         <main className="relative min-h-screen bg-black">
           
           {/* Hero Section with Background Image */}
@@ -231,7 +229,6 @@ export default function AboutPage() {
           </section>
           <ServiceFooter />
         </main>
-      </ScrollSmootherWrapper>
     </>
   );
 }

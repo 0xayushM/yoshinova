@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
-import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 import ServiceFooter from '@/components/service/ServiceFooter';
 
 const allCaseStudies = [
@@ -66,7 +65,6 @@ export default function CaseStudiesPage() {
   return (
     <>
       <PageNavbar isDark />
-      <ScrollSmootherWrapper>
         <main className="relative min-h-screen bg-[#e8e6e1]">
           {/* Hero Section */}
           <section className="pt-32 pb-20 px-6 md:px-14">
@@ -164,7 +162,6 @@ export default function CaseStudiesPage() {
           {/* Footer */}
           <ServiceFooter />
         </main>
-      </ScrollSmootherWrapper>
     </>
   );
 }

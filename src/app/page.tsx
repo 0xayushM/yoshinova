@@ -3,7 +3,6 @@
 import { useState, useCallback } from 'react';
 import ModelViewer from "@/components/ModelViewer";
 import LoadingScreen from "@/components/LoadingScreen";
-import ScrollSmootherWrapper from "@/components/ScrollSmootherWrapper";
 import HomeScrollSnap from "@/components/HomeScrollSnap";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import Section1 from "@/components/Section1";
@@ -44,9 +43,8 @@ export default function Home() {
       {/* Scroll Snapping for Homepage */}
       <HomeScrollSnap />
       
-      {/* Scrollable Content with ScrollSmoother */}
-      <ScrollSmootherWrapper>
-        <main className="relative">
+      {/* Scrollable Content */}
+      <main className="relative">
           <section className="page-section w-screen h-screen">
             <Section1 loadingComplete={!loading} />
           </section>
@@ -83,14 +81,13 @@ export default function Home() {
           <section className="page-section w-screen h-screen">
             <Section10 />
           </section>
-          <section className="page-section w-screen h-screen">
+          <section className="page-section w-screen min-h-screen">
             <Section11 />
           </section>
           <section className="page-section w-screen h-screen">
             <Section13 />
           </section>
-        </main>
-      </ScrollSmootherWrapper>
+      </main>
     </>
   );
 }

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import PageNavbar from '@/components/PageNavbar';
-import ScrollSmootherWrapper from '@/components/ScrollSmootherWrapper';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -28,7 +27,6 @@ export default function ContactPage() {
   return (
     <>
       <PageNavbar />
-      <ScrollSmootherWrapper>
         <main className="relative min-h-screen">
         {/* Background Image */}
         <div className="fixed inset-0 z-0">
@@ -159,7 +157,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-      </ScrollSmootherWrapper>
     </>
   );
 }
