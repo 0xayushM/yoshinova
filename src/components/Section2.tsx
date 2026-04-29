@@ -10,7 +10,7 @@ const Section2 = () => {
   return (
     <>
     <section className="w-screen h-screen md:min-h-screen relative overflow-hidden bg-slate-300/90">
-      <div className="w-full h-full flex flex-col justify-center items-end">
+      <div className="w-full h-full flex flex-col justify-end md:justify-center items-end">
         {/* Title Section */}
       <div className="w-full py-8 md:py-16 px-4 md:px-12 md:pt-48 flex flex-col">
         <p className="text-black/40 text-xs uppercase tracking-widest mb-3 leading-[0.9]">The Problem We Solve</p>
@@ -38,7 +38,7 @@ const Section2 = () => {
         </div>
 
         {/* Column 2: Inside Bleed */}
-        <div className="bg-slate-200 flex flex-col justify-between p-4 md:p-12">
+        <div className="bg-slate-200 flex flex-col justify-center p-4 md:p-12">
           <div>
             <h2 className="text-black text-xl md:text-3xl font-normal mb-0 md:mb-6">
               Inside Bleed
@@ -57,7 +57,7 @@ const Section2 = () => {
         </div>
 
         {/* Column 3: Outside Bleed */}
-        <div className="bg-slate-100 flex flex-col justify-between p-4 md:p-12">
+        <div className="bg-slate-100 flex flex-col justify-center p-4 md:p-12">
           <div>
             <h2 className="text-black text-xl md:text-3xl font-normal mb-4 md:mb-6">
               Outside Bleed
@@ -74,7 +74,7 @@ const Section2 = () => {
         </div>
 
         {/* Column 4: The Solution */}
-        <div className="bg-[#6A9F30] flex flex-col justify-between p-4 md:p-12">
+        <div className="bg-[#6A9F30] flex flex-col justify-center p-4 md:p-12 ">
           <div>
             <h2 className="text-white text-xl md:text-3xl font-normal mb-4 md:mb-6">
               Our Approach
@@ -85,7 +85,7 @@ const Section2 = () => {
           </div>
           <button
               onClick={() => setIsDialogOpen(true)}
-              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              className="hidden md:inline-block px-6 py-3 mt-4 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Get a Free Audit
             </button>

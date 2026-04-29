@@ -102,7 +102,7 @@ const Section11 = () => {
         {/* TOP HALF — headline + image */}
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen md:min-h-0">
           {/* Left content */}
-          <div className="md:col-span-7 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-28 pb-10 md:pb-20 flex flex-col justify-between bg-white relative">
+          <div className="md:col-span-6 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-28 pb-10 md:pb-20 flex flex-col justify-between bg-white relative">
             {/* Decorative grid lines */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
               <div className="absolute inset-y-0 left-1/3 w-px bg-black" />
@@ -120,12 +120,12 @@ const Section11 = () => {
             {/* Headline */}
             <div ref={titleRef} className="relative z-10">
               <div className="overflow-hidden">
-                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[9.5vw] leading-[0.9] font-medium uppercase tracking-tight">
+                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
                   Built On
                 </h1>
               </div>
               <div className="overflow-hidden mt-2">
-                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[9.5vw] leading-[0.9] font-medium uppercase tracking-tight">
+                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
                   Trust<span className="text-[#6A9F30]">.</span>
                 </h1>
               </div>
@@ -203,7 +203,7 @@ const Section11 = () => {
           </div>
 
           {/* Right image — desktop / tablet only */}
-          <div className="hidden md:block md:col-span-5 relative overflow-hidden bg-slate-200">
+          <div className="hidden md:block md:col-span-6 relative overflow-hidden bg-slate-200">
             <Image
               src="/images/residential2.webp"
               alt="Yoshinova expertise"
