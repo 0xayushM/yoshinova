@@ -30,11 +30,14 @@ export default function ResidentialFlow() {
         ease: 'sine.inOut',
       });
 
+      // Sun rays rotate in place around the sun. Using svgOrigin (absolute
+      // SVG viewBox coords) avoids any ambiguity with GSAP's CSS-style
+      // transformOrigin on SVG groups.
       gsap.to('.res-sun', {
         rotation: 360,
         duration: 30,
         repeat: -1,
-        transformOrigin: '90px 80px',
+        svgOrigin: '90 80',
         ease: 'none',
       });
 

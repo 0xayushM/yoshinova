@@ -11,10 +11,41 @@ export default function ContactPage() {
     powerBill: '',
     contact: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    try {
+      // 'contact-page' is not a Sheets target, so the API will forward
+      // to the BrewMyAgent dashboard only.
+      const res = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact-page',
+          name: formData.name,
+          company: formData.company,
+          contact: formData.contact,
+          power_bill_segment: formData.powerBill,
+          message: formData.contact,
+          page: typeof window !== 'undefined' ? window.location.pathname : undefined,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', company: '', powerBill: '', contact: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,11 +176,23 @@ export default function ContactPage() {
                   placeholder="Your message..."
                 />
                 
+                {submitStatus === 'success' && (
+                  <p className="text-[#8BC34A] text-sm">
+                    Thanks! We&apos;ll be in touch within 24 hours.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-400 text-sm">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-colors disabled:opacity-60"
                 >
-                  Submit
+                  {isSubmitting ? 'Submitting…' : 'Submit'}
                 </button>
               </form>
             </div>
