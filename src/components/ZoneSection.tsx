@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { gsap } from 'gsap';
-import PeakShavingChart from './PeakShavingChart';
 import { ChartDataPoint } from './BESSComparisonChart';
+import LiveMetricChart from './service/sections/LiveMetricChart';
 import SplitText from './SplitText';
 
 interface ZoneSectionProps {
@@ -38,6 +38,27 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
   const gradientClass = gradientDirection === 'left' 
     ? 'bg-gradient-to-tl from-transparent via-transparent to-[#111827]'
     : 'bg-gradient-to-tr from-transparent via-transparent to-[#111827]';
+
+  // Convert {hour, withoutBESS, withBESS} into two 0..1 normalised series for
+  // <LiveMetricChart>. Use `maxY` so the visual scale matches the original
+  // peak-shaving chart for each zone.
+  const liveSeries = useMemo(() => {
+    const norm = (n: number) => Math.max(0, Math.min(1, n / maxY));
+    return [
+      {
+        label: 'Without BESS',
+        color: '#ef4444',
+        dashed: true,
+        values: chartData.map((d) => norm(d.withoutBESS)),
+      },
+      {
+        label: 'With BESS',
+        color: accentHex,
+        fill: true,
+        values: chartData.map((d) => norm(d.withBESS)),
+      },
+    ];
+  }, [chartData, maxY, accentHex]);
 
   const toggleContent = () => {
     const contentRef = document.getElementById(`zone-content-${title}`);
@@ -122,11 +143,13 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
                 textAlign={isLeft ? 'left' : 'right'}
               />
             )}
-            <div className="md:w-[40vw] md:h-[30vh] h-[20vh] w-[70vw] bg-white rounded-xl p-0 border border-gray-200 shadow-lg">
+            <div className="md:w-[44vw] md:h-[34vh] h-[26vh] w-[80vw] rounded-xl p-3 md:p-4 bg-white border border-white/10 backdrop-blur-sm shadow-lg">
               <div className="relative z-10 h-full w-full overflow-hidden">
-                <PeakShavingChart
-                  data={chartData}
-                  accentColor={accentHex}
+                <LiveMetricChart
+                  series={liveSeries}
+                  yUnit={yAxisLabel}
+                  theme="dark"
+                  className="w-full h-full"
                 />
               </div>
             </div>
