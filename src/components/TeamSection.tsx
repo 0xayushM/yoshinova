@@ -9,13 +9,9 @@ const teamMembers = [
     index: '01',
     name: 'Sandeep Agarwal',
     role: 'Founder & CEO',
-    years: '18',
-    yearsSub: 'years on factory floors',
-    stat2: '200+',
-    stat2Sub: 'energy assessments, personally conducted',
     quote: 'No facility owner should buy a BESS on a promise. Buy it on data — your data, from your facility.',
     image: '/team/sandeep_agarwal.webp',
-    bio: 'Sandeep spent 18 years in industrial energy management before founding Yoshinova, working across manufacturing plants in Delhi NCR, Haryana, and Punjab. He has seen firsthand the gap between what installers promise and what facilities actually experience. He founded Yoshinova after one conversation too many with a factory owner who had bought an expensive BESS based on projected savings that never materialised. Sandeep leads every strategic client engagement and designed the audit methodology that underlies Yoshinova\'s ROI guarantee.',
+    bio: 'Sandeep brings over 21 years of hands-on experience in precision engineering as CEO of Vinayak Technoplast — a Tier-1 manufacturing partner to Maruti Suzuki, Hyundai, RR Kabel, and leading OEMs across the automotive, pharma, kitchenware, and electrical sectors. At Vinayak, he built the company\'s reputation not on the cheapest price, but on the lowest failure rate — diagnosing root causes of failure and engineering reliability into every tool, every part, and every cycle. He brings the same engineering-first discipline to Yoshinova: every BESS deployment is sized from real facility data, every component specified for reliability, and every commitment backed by measurable performance — never projection.',
     featured: true,
   },
   {
@@ -23,58 +19,42 @@ const teamMembers = [
     index: '02',
     name: 'Sunny Kalra',
     role: 'Chief Growth Strategist',
-    years: '10',
-    yearsSub: 'years building industrial markets, North India',
-    stat2: '50+',
-    stat2Sub: 'client relationships managed',
     quote: 'Growth that doesn\'t create retention isn\'t growth worth having.',
     image: '/team/sunny_kalra.webp',
-    bio: 'A decade building industrial and infrastructure businesses across North India, helping companies navigate the gap between technology capability and market readiness. At Yoshinova, Sunny shapes how the business grows — which clients we pursue, how we position our offering, and how we build relationships that generate long-term value rather than single transactions.',
+    bio: 'Sunny is the CEO of KBrushes and serves as Chief Growth Strategist at both Vinayak Technoplast and Yoshinova. Over the last decade he has driven strategic expansion and business development across the automotive, medical, electrical, and consumer goods sectors — establishing the key OEM partnerships that have positioned Vinayak Technoplast as a preferred Tier-1 partner in each of those industries. At Yoshinova, he shapes how the business grows: which clients we pursue, how we position our offering, and how we build relationships that generate long-term value rather than single transactions.',
     featured: true,
   },
   {
     id: 'mohit',
-    index: '04',
+    index: '03',
     name: 'Mohit Bansal',
     role: 'CFO',
-    years: '12',
-    yearsSub: 'years in infrastructure financial strategy',
-    stat2: '30%',
-    stat2Sub: 'avg. capex reduction via financing',
     quote: 'Good financial engineering should make the right decision easier, not harder.',
     image: '/team/mohit_bansal.webp',
-    bio: 'Mohit manages Yoshinova\'s financial strategy with a focus on making energy storage accessible to MSME clients who have historically been priced out of premium solutions. He has structured financing partnerships and flexible deployment models that allow facility owners to fund BESS installations from the savings they generate — rather than requiring large upfront capital.',
+    bio: 'Mohit is a qualified Chartered Accountant with 15 years of experience as CFO of LFC PowerCab, where he has overseen financial strategy alongside the development of battery systems and wire harnessing for industrial applications. His rare combination of deep financial discipline and ground-level familiarity with battery and power-component manufacturing makes him uniquely positioned to structure BESS deployments that work financially for the facility owner — not just the installer. At Yoshinova, Mohit ensures every project is structured so clients can fund their installations from the savings the system generates, turning energy storage from a capital expense into an operating return.',
     featured: true,
   },
   {
     id: 'sambhav',
-    index: '05',
-    name: 'Sambhav Chaddha',
+    index: '04',
+    name: 'Sambhav Chadha',
     role: 'COO',
-    years: '10',
-    yearsSub: 'years in operations & infrastructure delivery',
-    stat2: '4',
-    stat2Sub: 'states operational across North India',
     quote: 'Every timeline and quality commitment Yoshinova makes is ultimately mine to deliver.',
     image: '/team/sambhav_chadda.webp',
-    bio: 'Sambhav runs the operational engine of Yoshinova — audit scheduling, deployment logistics, installation quality, and post-deployment support. He has built the systems and partner network that allow Yoshinova to audit and deploy across Delhi NCR, Haryana, Punjab, and Rajasthan with consistent quality.',
+    bio: 'Sambhav brings nearly a decade of OEM-grade quality and manufacturing operations experience from Stellantis and FCA Fiat Chrysler at the Warren Truck Assembly Plant, where he served as Lead Product Quality Engineer. He led a team of nine engineers through the launch of the Jeep Grand Wagoneer and owned product quality across chassis, electrical, propulsions, and ADAS systems for the RAM 1500 — which earned Motor Trend Truck of the Year and a 1st-Quartile JD Power ranking on his watch. His career has been built on FMEA, root-cause analysis, lean manufacturing, and serving as the Voice of the Customer on the assembly line. He now brings that same OEM-grade discipline to Yoshinova — every audit, every installation, and every post-deployment SLA held to the standards a vehicle is signed off on.',
     featured: true,
   },
   {
     id: 'shourya',
-    index: '03',
+    index: '05',
     name: 'Shourya K. Chirania',
     role: 'CTO',
-    years: '—',
-    yearsSub: 'Power electronics & energy systems engineering',
-    stat2: '100%',
-    stat2Sub: 'system performance guarantee',
     quote: 'If the system isn\'t performing exactly as the audit predicted, the audit wasn\'t done properly.',
     image: '/team/shourya_k_chirania.webp',
-    bio: 'Shourya is the technical backbone of Yoshinova\'s BESS deployment capability. He oversees all system integration, hardware selection, and deployment quality — ensuring every system performs exactly as the audit predicted. He developed the proprietary load analysis methodology that enables Yoshinova\'s data-driven sizing process, and built the real-time monitoring platform giving clients live visibility into savings capture.',
+    bio: 'Shourya brings 2.5 years of engineering experience at JPMorgan Chase, where he worked on mission-critical systems where uptime, accuracy, and data integrity were non-negotiable. He brings the same standards to Yoshinova as CTO — overseeing system integration, hardware selection, deployment quality, and the real-time monitoring platform that gives clients live visibility into savings capture. He developed the proprietary load analysis methodology behind Yoshinova\'s data-driven sizing process, ensuring every system performs exactly as the audit predicted — measured, not promised.',
     featured: true,
   },
-  
+
 ];
 
 export default function TeamSection() {
@@ -136,23 +116,8 @@ export default function TeamSection() {
                     </h3>
                   </div>
 
-                  {/* Stats bar */}
-                  <div className="flex flex-wrap gap-x-10 gap-y-3 border-t border-b border-white/10 py-5 mb-8">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-[#8BC34A] font-semibold" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}>
-                        {member.years}
-                      </span>
-                      <span className="text-white/40 text-sm">{member.yearsSub}</span>
-                    </div>
-                    {member.stat2 && (
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-[#8BC34A] font-semibold" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}>
-                          {member.stat2}
-                        </span>
-                        <span className="text-white/40 text-sm">{member.stat2Sub}</span>
-                      </div>
-                    )}
-                  </div>
+                  {/* Divider */}
+                  <div className="border-t border-white/10 mb-8" />
 
                   {/* Bio */}
                   <p className="text-white/55 leading-[1.8] mb-8"
@@ -196,12 +161,6 @@ export default function TeamSection() {
         {/* Bottom rule */}
         <div className="border-t border-white/10" />
       </div>
-
-      <style>{`
-        @media (max-width: 640px) {
-          .team-years-stat { display: none; }
-        }
-      `}</style>
     </section>
   );
 }
