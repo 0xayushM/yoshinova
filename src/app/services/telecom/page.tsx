@@ -170,9 +170,9 @@ export default function TelecomPage() {
           <MarketInsight
             eyebrow="Market Outlook — Telecom"
             title="The diesel-to-storage shift is no longer optional"
-            intro="Indian telecom towers consumed roughly 2.5 billion litres of diesel annually until 2024. With diesel near ₹95/L and 5G densification adding 30–40% load to existing sites, the OPEX math has flipped permanently in favour of lithium-ion BESS."
+            intro="Indian telecom towers consumed roughly 250 crore litres of diesel annually until 2024. With diesel near ₹95/L and 5G densification adding 30–40% load to existing sites, the OPEX math has flipped permanently in favour of lithium-ion BESS."
             marketSize={{
-              value: '$1.7B',
+              value: '₹14,000 Cr',
               label: 'India telecom BESS by 2030',
               sub: 'Tower-co fleets are the fastest-converting segment.',
             }}

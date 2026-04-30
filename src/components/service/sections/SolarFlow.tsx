@@ -66,6 +66,26 @@ export default function SolarFlow() {
         repeat: -1,
         ease: 'sine.inOut',
       });
+
+      // Appliance activation sequence (Light → WiFi → AC → Fridge → Fan)
+      const appliances = [
+        '.sf-app-light',
+        '.sf-app-wifi',
+        '.sf-app-ac',
+        '.sf-app-fridge',
+        '.sf-app-fan',
+      ];
+      gsap.set(appliances, { opacity: 0.18 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.2 });
+      appliances.forEach((cls, i) => {
+        tl.to(
+          cls,
+          { opacity: 1, duration: 0.4, ease: 'power2.out' },
+          i * 0.45
+        );
+      });
+      tl.to({}, { duration: 1.4 });
+      tl.to(appliances, { opacity: 0.18, duration: 0.5, ease: 'power2.in' });
     }, ref);
 
     return () => ctx.revert();
@@ -247,15 +267,50 @@ export default function SolarFlow() {
         <rect x="32" y="120" width="14" height="14" fill="#fde68a" stroke="#92400e" strokeWidth="0.5" />
         <rect x="74" y="120" width="14" height="14" fill="#fde68a" stroke="#92400e" strokeWidth="0.5" />
 
-        {/* Indicator pill */}
-        <g transform="translate(20, 178)">
-          <rect x="0" y="0" width="80" height="18" rx="9" fill="#7DB840" opacity="0.15" />
-          <circle cx="10" cy="9" r="3" fill="#7DB840">
-            <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" />
-          </circle>
-          <text x="42" y="12" textAnchor="middle" fontSize="9" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">ON-GRID</text>
+        {/* Appliance activation strip — Light → WiFi → AC → Fridge → Fan */}
+        <g transform="translate(10, 176)">
+          <rect x="0" y="0" width="100" height="22" rx="3" fill="#0f172a" opacity="0.04" />
+          {/* Cell width 20 → 5 cells across 100px */}
+          {/* 1. LIGHT */}
+          <g className="sf-app-light" transform="translate(10, 11)">
+            <circle cx="0" cy="0" r="7" fill="url(#sf-bess-fill)" />
+            <circle cx="0" cy="-1.5" r="3" fill="#fde68a" stroke="#92400e" strokeWidth="0.5" />
+            <rect x="-1.5" y="1.5" width="3" height="1.5" fill="#92400e" />
+          </g>
+          {/* 2. WIFI */}
+          <g className="sf-app-wifi" transform="translate(30, 11)">
+            <circle cx="0" cy="0" r="7" fill="url(#sf-bess-fill)" />
+            <circle cx="0" cy="3" r="0.9" fill="#4f7a1f" />
+            <path d="M -2 1 Q 0 -0.5 2 1" stroke="#4f7a1f" strokeWidth="0.7" fill="none" strokeLinecap="round" />
+            <path d="M -3.5 -0.5 Q 0 -3.5 3.5 -0.5" stroke="#4f7a1f" strokeWidth="0.7" fill="none" strokeLinecap="round" />
+          </g>
+          {/* 3. AC */}
+          <g className="sf-app-ac" transform="translate(50, 11)">
+            <circle cx="0" cy="0" r="7" fill="url(#sf-bess-fill)" />
+            <rect x="-5" y="-2.5" width="10" height="5" rx="0.5" fill="white" stroke="#4f7a1f" strokeWidth="0.5" />
+            <line x1="-4" y1="-1" x2="4" y2="-1" stroke="#4f7a1f" strokeWidth="0.3" />
+            <line x1="-4" y1="0" x2="4" y2="0" stroke="#4f7a1f" strokeWidth="0.3" />
+            <line x1="-4" y1="1" x2="4" y2="1" stroke="#4f7a1f" strokeWidth="0.3" />
+          </g>
+          {/* 4. FRIDGE */}
+          <g className="sf-app-fridge" transform="translate(70, 11)">
+            <circle cx="0" cy="0" r="7" fill="url(#sf-bess-fill)" />
+            <rect x="-3" y="-5" width="6" height="10" rx="0.5" fill="white" stroke="#4f7a1f" strokeWidth="0.5" />
+            <line x1="-3" y1="-1.5" x2="3" y2="-1.5" stroke="#4f7a1f" strokeWidth="0.4" />
+            <rect x="1.6" y="-3.5" width="0.4" height="1.4" fill="#4f7a1f" />
+            <rect x="1.6" y="-0.5" width="0.4" height="2.5" fill="#4f7a1f" />
+          </g>
+          {/* 5. FAN */}
+          <g className="sf-app-fan" transform="translate(90, 11)">
+            <circle cx="0" cy="0" r="7" fill="url(#sf-bess-fill)" />
+            <circle cx="0" cy="0" r="5" fill="white" stroke="#4f7a1f" strokeWidth="0.5" />
+            <ellipse cx="0" cy="-2.4" rx="0.7" ry="1.7" fill="#4f7a1f" opacity="0.85" />
+            <ellipse cx="0" cy="2.4" rx="0.7" ry="1.7" fill="#4f7a1f" opacity="0.85" />
+            <ellipse cx="-2.4" cy="0" rx="1.7" ry="0.7" fill="#4f7a1f" opacity="0.85" />
+            <ellipse cx="2.4" cy="0" rx="1.7" ry="0.7" fill="#4f7a1f" opacity="0.85" />
+            <circle cx="0" cy="0" r="0.7" fill="#0f172a" />
+          </g>
         </g>
-
         <text x="60" y="218" textAnchor="middle" fontSize="11" fill="#475569" fontFamily="monospace" letterSpacing="2" fontWeight="bold">HOME / SITE</text>
       </g>
 

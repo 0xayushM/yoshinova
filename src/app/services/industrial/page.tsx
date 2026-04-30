@@ -173,7 +173,7 @@ export default function IndustrialPage() {
             title="Industrial BESS isn't optional anymore"
             intro="Demand charges in industrial tariffs across Maharashtra, Gujarat and Tamil Nadu now exceed ₹450/kVA. Diesel hit ₹95/L. The economic case for behind-the-meter storage flipped in 2024 — and 2026 is the catch-up year."
             marketSize={{
-              value: '$5.8B',
+              value: '₹48,000 Cr',
               label: 'India BESS by 2030',
               sub: 'Industrial + C&I lead the segment, ahead of utility-scale.',
             }}

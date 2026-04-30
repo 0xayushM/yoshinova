@@ -76,7 +76,7 @@ const residentialSteps = [
     number: '02',
     title: 'NovaVault Selection',
     description:
-      'Pick from wall-mounted (5–10 kWh) or floor-standing (10–25 kWh) units. LFP chemistry, 6,000-cycle warranty, IP65 outdoor or indoor versions.',
+      'Pick from wall-mounted (5–10 kWh) or floor-standing (10–15 kWh) units — sized to your actual load, typically 2–5 kW. LFP chemistry, 6,000-cycle warranty, IP65 outdoor or indoor versions.',
   },
   {
     number: '03',
@@ -132,8 +132,8 @@ export default function ResidentialPage() {
                   </div>
                   <div className="border-t border-black/15 pt-4">
                     <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Backup time</p>
-                    <p className="text-3xl md:text-4xl font-medium text-black">8–14 h</p>
-                    <p className="text-xs text-black/50 mt-1">on essential loads</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">3–6 h</p>
+                    <p className="text-xs text-black/50 mt-1">on typical 2–5 kW home loads</p>
                   </div>
                   <div className="border-t border-black/15 pt-4">
                     <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Cycle life</p>
@@ -170,7 +170,7 @@ export default function ResidentialPage() {
         <MarketInsight
           eyebrow="Market Outlook — Residential"
           title="Indian homes are switching from inverters to BESS"
-          intro="Lead-acid inverter homes are crossing 80 million across India, and 25% of that base is due for replacement in the next 24 months. With residential ToD tariffs and PM Surya Ghar incentives stacking up, homes that retrofit BESS today recover their cost in 4–5 years — and gain 8–14 hours of clean backup along the way."
+          intro="Lead-acid inverter homes are crossing 80 million across India, and 25% of that base is due for replacement in the next 24 months. With residential ToD tariffs and PM Surya Ghar incentives stacking up, homes that retrofit BESS today recover their cost in 4–5 years — and gain 3–6 hours of silent, clean backup on a typical 2–5 kW home load."
           marketSize={{
             value: '11 GWh',
             label: 'Residential BESS by 2030',
@@ -216,7 +216,7 @@ export default function ResidentialPage() {
           ]}
           callouts={[
             { label: 'Bill reduction', value: '−45%', sub: 'on residential ToD slabs' },
-            { label: 'Backup time', value: '12 hr', sub: 'on essential household loads' },
+            { label: 'Backup time', value: '4–6 hr', sub: 'on typical 2–3 kW home loads' },
             { label: 'CO₂e avoided', value: '2.4 kg', sub: 'today, this household' },
           ]}
         />
