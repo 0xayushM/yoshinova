@@ -48,14 +48,14 @@ export default function LiveMetricGraph({
       callouts.forEach((c, i) => {
         const el = counterRefs.current[i];
         if (!el) return;
-        // Try to extract a numeric portion (handles "−45%", "12.4 kW", "₹2,340", etc.)
+        // Try to extract a numeric portion (handles "-45%", "12.4 kW", "₹2,340", etc.)
         const match = c.value.match(/-?\d[\d,]*(?:\.\d+)?/);
         if (!match) {
           el.textContent = c.value;
           return;
         }
         const raw = match[0];
-        const isNegative = raw.startsWith('-') || c.value.startsWith('−');
+        const isNegative = raw.startsWith('-') || c.value.startsWith('-');
         const cleanNum = parseFloat(raw.replace(/,/g, '').replace('-', ''));
         if (Number.isNaN(cleanNum)) {
           el.textContent = c.value;
@@ -69,8 +69,8 @@ export default function LiveMetricGraph({
           delay: 0.2 + i * 0.15,
           onUpdate: () => {
             const display = obj.v >= 100 ? Math.round(obj.v) : Math.round(obj.v * 10) / 10;
-            const prefix = isNegative ? '−' : '';
-            const suffix = c.value.replace(raw, '').replace('−', '');
+            const prefix = isNegative ? '-' : '';
+            const suffix = c.value.replace(raw, '').replace('-', '');
             el.textContent = `${prefix}${display.toLocaleString()}${suffix}`;
           },
         });

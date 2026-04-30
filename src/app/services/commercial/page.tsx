@@ -28,7 +28,7 @@ const commercialUseCases = [
     title: 'Retail Malls & Hypermarkets',
     description:
       'Refrigeration, escalators, billing terminals — all kept live. Slash demand charges that mall ops budgets bleed every month.',
-    metric: '−32%',
+    metric: '-32%',
     metricLabel: 'monthly fixed bill',
   },
   {
@@ -127,7 +127,7 @@ export default function CommercialPage() {
                   <div className="grid grid-cols-2 gap-4 mb-8">
                     <div className="border-t border-black/15 pt-4">
                       <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Demand charge</p>
-                      <p className="text-3xl md:text-4xl font-medium text-black">−35%</p>
+                      <p className="text-3xl md:text-4xl font-medium text-black">-35%</p>
                       <p className="text-xs text-black/50 mt-1">avg monthly reduction</p>
                     </div>
                     <div className="border-t border-black/15 pt-4">
@@ -216,7 +216,7 @@ export default function CommercialPage() {
             ]}
             callouts={[
               { label: 'Avg ₹/kWh saved', value: '₹3.4', sub: 'measured arbitrage spread across all slots' },
-              { label: 'Demand charge', value: '−35%', sub: 'avg monthly fixed-bill reduction' },
+              { label: 'Demand charge', value: '-35%', sub: 'avg monthly fixed-bill reduction' },
               { label: 'Tenant flicker', value: '0 ms', sub: 'critical loads stay live through every event' },
             ]}
           />

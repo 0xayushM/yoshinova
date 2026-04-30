@@ -179,7 +179,7 @@ export default function CommercialFlow() {
       {/* Bottom KPI strip */}
       <g transform="translate(50, 360)">
         <text x="0" y="0" fontSize="10" fill="#475569" fontFamily="monospace">SAVINGS DELTA</text>
-        <text x="0" y="22" fontSize="22" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">−35%</text>
+        <text x="0" y="22" fontSize="22" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">-35%</text>
         <text x="60" y="22" fontSize="10" fill="#94a3b8" fontFamily="monospace">peak demand charge</text>
 
         <text x="280" y="0" fontSize="10" fill="#475569" fontFamily="monospace">UPTIME</text>

@@ -196,7 +196,7 @@ export default function TelecomFlow() {
         <text x="0" y="0" fontSize="20" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">99.9%</text>
         <text x="0" y="14" fontSize="9" fill="#94a3b8" fontFamily="monospace">UPTIME</text>
 
-        <text x="180" y="0" fontSize="20" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">−70%</text>
+        <text x="180" y="0" fontSize="20" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">-70%</text>
         <text x="180" y="14" fontSize="9" fill="#94a3b8" fontFamily="monospace">OPEX vs DIESEL</text>
 
         <text x="380" y="0" fontSize="20" fill="#4f7a1f" fontFamily="monospace" fontWeight="bold">0 dB</text>

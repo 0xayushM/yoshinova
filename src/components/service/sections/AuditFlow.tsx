@@ -279,7 +279,7 @@ export default function AuditFlow() {
             return (
               <g key={i}>
                 {/* Value above bar */}
-                <text x={x + 30} y={baseY - b.h - 12} textAnchor="middle" fontSize="14" fill="#0f172a" fontFamily="monospace" fontWeight="bold">−{b.val}%</text>
+                <text x={x + 30} y={baseY - b.h - 12} textAnchor="middle" fontSize="14" fill="#0f172a" fontFamily="monospace" fontWeight="bold">-{b.val}%</text>
                 {/* Bar */}
                 <rect className="savings-bar" x={x} y={baseY - b.h} width="60" height={b.h} fill={i === 3 ? 'url(#audit-bar)' : b.color} rx="2" />
                 {/* X label */}
@@ -296,7 +296,7 @@ export default function AuditFlow() {
         <g transform="translate(530, 12)">
           <rect x="0" y="0" width="230" height="156" rx="6" fill="#0f172a" />
           <text x="115" y="26" textAnchor="middle" fontSize="9" fill="#7DB840" fontFamily="monospace" letterSpacing="3" fontWeight="bold">CUMULATIVE</text>
-          <text x="115" y="86" textAnchor="middle" fontSize="56" fill="white" fontFamily="monospace" fontWeight="bold">−38%</text>
+          <text x="115" y="86" textAnchor="middle" fontSize="56" fill="white" fontFamily="monospace" fontWeight="bold">-38%</text>
           <text x="115" y="108" textAnchor="middle" fontSize="10" fill="white" opacity="0.7" fontFamily="monospace">on monthly utility bill</text>
           <line x1="40" y1="120" x2="190" y2="120" stroke="#7DB840" strokeWidth="0.5" opacity="0.4" />
           <text x="115" y="140" textAnchor="middle" fontSize="9" fill="#7DB840" fontFamily="monospace" opacity="0.85">audited. quantified. guaranteed.</text>

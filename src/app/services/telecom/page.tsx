@@ -28,7 +28,7 @@ const telecomUseCases = [
     title: 'Greenfield Rural Towers',
     description:
       'Long grid distances, weak feeders. Solar + NovaConnect runs 18+ hours daily on renewables, cutting diesel runs to seasonal-only.',
-    metric: '−85%',
+    metric: '-85%',
     metricLabel: 'diesel litres',
   },
   {
@@ -76,7 +76,7 @@ const telecomSteps = [
     number: '02',
     title: 'NovaConnect Configuration',
     description:
-      'Each site gets a custom kWh / kW config. Outdoor cabinets are IP55, −10 °C to +55 °C rated. Solar-ready out of the box.',
+      'Each site gets a custom kWh / kW config. Outdoor cabinets are IP55, -10 °C to +55 °C rated. Solar-ready out of the box.',
   },
   {
     number: '03',
@@ -132,12 +132,12 @@ export default function TelecomPage() {
                     </div>
                     <div className="border-t border-black/15 pt-4">
                       <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">OPEX vs DG</p>
-                      <p className="text-3xl md:text-4xl font-medium text-black">−70%</p>
+                      <p className="text-3xl md:text-4xl font-medium text-black">-70%</p>
                       <p className="text-xs text-black/50 mt-1">fuel + AMC + theft</p>
                     </div>
                     <div className="border-t border-black/15 pt-4">
                       <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Footprint</p>
-                      <p className="text-3xl md:text-4xl font-medium text-black">−60%</p>
+                      <p className="text-3xl md:text-4xl font-medium text-black">-60%</p>
                       <p className="text-xs text-black/50 mt-1">vs. lead-acid bank</p>
                     </div>
                     <div className="border-t border-black/15 pt-4">
@@ -215,7 +215,7 @@ export default function TelecomPage() {
               },
             ]}
             callouts={[
-              { label: 'OPEX vs DG', value: '−70%', sub: 'fuel + AMC + theft' },
+              { label: 'OPEX vs DG', value: '-70%', sub: 'fuel + AMC + theft' },
               { label: 'Uptime today', value: '99.99%', sub: 'across the active fleet' },
               { label: 'Diesel litres saved', value: '12,450', sub: 'cumulative this quarter' },
             ]}

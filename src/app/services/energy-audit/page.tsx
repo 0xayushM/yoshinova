@@ -19,7 +19,7 @@ const auditUseCases = [
     title: 'MSME Manufacturing Units',
     description:
       "Older motors, sub-optimal layouts, contracted-load drift. We find the 18–25% of bill that's leaking through equipment you've stopped looking at.",
-    metric: '−22%',
+    metric: '-22%',
     metricLabel: 'avg bill cut',
   },
   {
@@ -27,7 +27,7 @@ const auditUseCases = [
     title: 'Commercial Buildings',
     description:
       'HVAC oversizing, lighting waste, lift cycling, idle UPS. We map every kVA and rank fixes by ROI — not by capex.',
-    metric: '−18%',
+    metric: '-18%',
     metricLabel: 'avg bill cut',
   },
   {

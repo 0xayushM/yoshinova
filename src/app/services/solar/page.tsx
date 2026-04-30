@@ -28,7 +28,7 @@ const solarUseCases = [
     title: 'C&I Captive Solar',
     description:
       'Stop paying export tariffs at ₹2/kWh and re-buying at ₹9/kWh. Store the noon surplus, discharge it through evening shift.',
-    metric: '−₹7/kWh',
+    metric: '-₹7/kWh',
     metricLabel: 'arbitrage spread',
   },
   {
@@ -44,7 +44,7 @@ const solarUseCases = [
     title: 'Hybrid Solar + DG',
     description:
       'Existing diesel hybrid? Slot in BESS to handle short outages so the DG only fires for sustained events. Cuts run-hours by 70%.',
-    metric: '−70%',
+    metric: '-70%',
     metricLabel: 'DG run-hours',
   },
   {
@@ -216,7 +216,7 @@ export default function SolarPage() {
             callouts={[
               { label: 'Self-consumption', value: '85%', sub: 'vs. ~35% solar-only' },
               { label: 'Round-trip eff.', value: '94%', sub: 'DC-coupled NovaGrid topology' },
-              { label: 'Grid kWh imported', value: '−72%', sub: 'against the same site, pre-storage' },
+              { label: 'Grid kWh imported', value: '-72%', sub: 'against the same site, pre-storage' },
             ]}
           />
 

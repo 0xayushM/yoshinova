@@ -36,7 +36,7 @@ const residentialUseCases = [
     title: 'Time-of-Day Tariff Homes',
     description:
       'Maharashtra, Karnataka and Delhi residential ToD slabs reward off-peak charging. NovaVault auto-buys cheap, sells dear.',
-    metric: '−45%',
+    metric: '-45%',
     metricLabel: 'monthly bill',
   },
   {
@@ -60,7 +60,7 @@ const residentialUseCases = [
     title: 'Apartment Communities',
     description:
       'Common-area BESS for societies — lift backup, water pumps, security. ESG-compliant, reduces society opex meaningfully.',
-    metric: '−60%',
+    metric: '-60%',
     metricLabel: 'common-area DG',
   },
 ];
@@ -127,7 +127,7 @@ export default function ResidentialPage() {
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div className="border-t border-black/15 pt-4">
                     <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Bill reduction</p>
-                    <p className="text-3xl md:text-4xl font-medium text-black">−45%</p>
+                    <p className="text-3xl md:text-4xl font-medium text-black">-45%</p>
                     <p className="text-xs text-black/50 mt-1">on residential ToD slabs</p>
                   </div>
                   <div className="border-t border-black/15 pt-4">
@@ -215,7 +215,7 @@ export default function ResidentialPage() {
             },
           ]}
           callouts={[
-            { label: 'Bill reduction', value: '−45%', sub: 'on residential ToD slabs' },
+            { label: 'Bill reduction', value: '-45%', sub: 'on residential ToD slabs' },
             { label: 'Backup time', value: '4–6 hr', sub: 'on typical 2–3 kW home loads' },
             { label: 'CO₂e avoided', value: '2.4 kg', sub: 'today, this household' },
           ]}

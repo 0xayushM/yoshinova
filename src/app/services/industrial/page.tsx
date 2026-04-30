@@ -20,7 +20,7 @@ const industrialUseCases = [
     title: 'Steel & Metal Processing',
     description:
       'Furnaces, rolling mills and electric arc loads need stable voltage. NovaMax flattens sharp current draws and protects sensitive control systems.',
-    metric: '−38%',
+    metric: '-38%',
     metricLabel: 'demand charge',
   },
   {
@@ -52,7 +52,7 @@ const industrialUseCases = [
     title: 'Plastics & Moulding',
     description:
       'Injection cycles spike at start. Shave peak draw without oversizing your sanctioned load — keep contract demand low.',
-    metric: '−42%',
+    metric: '-42%',
     metricLabel: 'peak kVA',
   },
   {
@@ -128,7 +128,7 @@ export default function IndustrialPage() {
                   <div className="grid grid-cols-2 gap-4 mb-8">
                     <div className="border-t border-black/15 pt-4">
                       <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Peak shaving</p>
-                      <p className="text-3xl md:text-4xl font-medium text-black">−40%</p>
+                      <p className="text-3xl md:text-4xl font-medium text-black">-40%</p>
                       <p className="text-xs text-black/50 mt-1">vs. unmanaged factory load</p>
                     </div>
                     <div className="border-t border-black/15 pt-4">
@@ -143,7 +143,7 @@ export default function IndustrialPage() {
                     </div>
                     <div className="border-t border-black/15 pt-4">
                       <p className="text-[10px] uppercase tracking-widest text-black/50 mb-1">Footprint</p>
-                      <p className="text-3xl md:text-4xl font-medium text-black">−70%</p>
+                      <p className="text-3xl md:text-4xl font-medium text-black">-70%</p>
                       <p className="text-xs text-black/50 mt-1">vs. lead-acid bank</p>
                     </div>
                   </div>
@@ -216,7 +216,7 @@ export default function IndustrialPage() {
               },
             ]}
             callouts={[
-              { label: 'Peak shaved', value: '−40%', sub: 'measured peak vs. unmanaged contract demand' },
+              { label: 'Peak shaved', value: '-40%', sub: 'measured peak vs. unmanaged contract demand' },
               { label: 'Today\'s saving', value: '₹14,280', sub: 'across all three phases, across all shifts' },
               { label: 'Carbon offset', value: '184 kg', sub: 'CO₂e displaced from grid coal' },
             ]}
