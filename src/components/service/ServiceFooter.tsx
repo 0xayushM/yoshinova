@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export default function ServiceFooter() {
   return (
-    <footer className="w-full bg-[#0a0a0a] px-6 md:px-14 py-16 border-t border-white/10">
+    <footer className="w-full bg-[#0a0a0a] px-6 sm:px-8 md:px-10 lg:px-14 py-12 md:py-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <h3 className="text-white text-2xl font-bold uppercase tracking-tight mb-4">YOSHINOVA</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-10 md:mb-12">
+          <div className="sm:col-span-2 md:col-span-2">
+            <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight mb-3 md:mb-4">YOSHINOVA</h3>
+            <p className="text-white/60 text-sm leading-relaxed mb-4 md:mb-6 max-w-md">
               India's MSME Energy Profitability Partner. We audit first, then deploy cutting-edge Battery Energy Storage Solutions tailored for your business.
             </p>
           </div>

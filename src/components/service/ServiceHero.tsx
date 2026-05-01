@@ -58,11 +58,11 @@ export default function ServiceHero({ title, heroImage, heroDescription, service
 
       <div
         ref={containerRef}
-        className="absolute inset-x-0 top-48 z-10 px-6 pb-10 md:pb-16"
+        className="absolute inset-x-0 top-32 sm:top-40 md:top-48 z-10 px-4 sm:px-6 pb-8 md:pb-16"
       >
         <h1
           ref={textRef}
-          className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-12"
+          className="font-bold uppercase tracking-tighter leading-none whitespace-nowrap w-full pt-8 sm:pt-10 md:pt-12"
           style={{
             fontSize: `${fontSize}px`,
             background: 'linear-gradient(to top, transparent 10%, white 50%, white 100%)',
@@ -77,8 +77,8 @@ export default function ServiceHero({ title, heroImage, heroDescription, service
         </h1>
       </div>
 
-      <div className="absolute bottom-12 left-6 md:left-14 z-10 max-w-lg">
-        <p className="text-white/70 text-base md:text-lg leading-relaxed border-t border-white/20 pt-4">
+      <div className="absolute bottom-8 md:bottom-12 left-4 sm:left-6 md:left-10 lg:left-14 right-4 md:right-auto z-10 max-w-lg">
+        <p className="text-white/70 text-sm md:text-base lg:text-lg leading-relaxed border-t border-white/20 pt-3 md:pt-4">
           {heroDescription}
         </p>
       </div>

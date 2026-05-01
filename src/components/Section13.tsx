@@ -14,13 +14,13 @@ const Section13 = () => {
   };
 
   return (
-    <section className="w-screen h-screen md:min-h-screen flex flex-col">
+    <section className="w-screen min-h-screen md:min-h-screen flex flex-col">
       {/* Top area: left form + right transparent */}
       <div className="flex flex-1 min-h-0">
         {/* Left side — dark background with form */}
-        <div className="w-full md:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-12 lg:px-16 py-8 md:py-12 pt-20">
+        <div className="w-full xl:w-[55%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50 flex flex-col justify-between px-6 md:px-10 lg:px-16 xl:px-16 py-8 md:py-12 pt-20">
           {/* Company info row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase md:pt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-white text-xs tracking-[0.15em] uppercase md:pt-12">
             <div className="space-y-1">
               <p className="font-bold text-white/90">Yoshinova</p>
               <p className="text-white/50 normal-case tracking-normal text-[11px] leading-relaxed">
@@ -65,35 +65,35 @@ const Section13 = () => {
           </div>
 
           {/* Energy Audit CTA */}
-          <div className="space-y-6 mt-8 p-6 md:p-8 bg-white/5 border border-white/20 backdrop-blur-sm">
-            <h3 className="text-white text-2xl md:text-3xl helvetica font-light tracking-wide mb-2">
+          <div className="space-y-4 md:space-y-6 mt-8 p-5 md:p-6 lg:p-8 bg-white/5 border border-white/20 backdrop-blur-sm">
+            <h3 className="text-white text-xl md:text-2xl lg:text-3xl helvetica font-light tracking-wide mb-2">
               Start With a Free Energy Audit
             </h3>
             <p className="text-white/70 text-sm leading-relaxed mb-4">We find your hidden savings first. Then we talk BESS.</p>
             <button
               onClick={() => setIsDialogOpen(true)}
-              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              className="inline-block px-5 py-2.5 md:px-6 md:py-3 border border-white/60 text-white text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Request Energy Audit
             </button>
           </div>
 
           {/* Bottom tagline */}
-          <p className="text-white text-base md:text-lg tracking-wide leading-relaxed max-w-2xl mt-8 font-light">
+          <p className="text-white text-sm md:text-base lg:text-lg tracking-wide leading-relaxed max-w-2xl mt-8 font-light">
             Energy Audit &rarr; Right-sized BESS &rarr; Permanent cost reduction.
           </p>
         </div>
 
         {/* Right side — transparent to show 3D model */}
-        <div className="hidden md:block w-[45%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50" />
+        <div className="hidden xl:block xl:w-[45%] bg-gradient-to-t from-[#0a0a0a] to-[#0a0a0a]/50" />
       </div>
 
       {/* Bottom — giant YOSHINOVA text */}
-      <div className="hidden md:block w-full bg-[#0a0a0a] flex items-end overflow-hidden relative" style={{ height: '35%' }}>
+      <div className="hidden xl:block w-full bg-[#0a0a0a] flex items-end overflow-hidden relative" style={{ height: '35%' }}>
         <h1
           className="font-bold leading-[2] w-full text-center select-none"
           style={{
-            fontSize: 'clamp(210px, 14vw, 150px)',
+            fontSize: 'clamp(80px, 14vw, 220px)',
             letterSpacing: '-0.02em',
             marginBottom: '-0.05em',
             background: 'linear-gradient(to bottom, #ffffff, #453f3fff, #000000)',

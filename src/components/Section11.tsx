@@ -100,9 +100,9 @@ const Section11 = () => {
         className="w-full min-h-screen relative overflow-hidden bg-white"
       >
         {/* TOP HALF — headline + image */}
-        <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen md:min-h-0">
+        <div className="grid grid-cols-1 xl:grid-cols-12 min-h-screen xl:min-h-0">
           {/* Left content */}
-          <div className="md:col-span-6 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-28 pb-10 md:pb-20 flex flex-col justify-between bg-white relative">
+          <div className="xl:col-span-6 px-6 sm:px-10 md:px-14 lg:px-20 pt-24 md:pt-28 pb-10 md:pb-20 flex flex-col justify-between bg-white relative">
             {/* Decorative grid lines */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
               <div className="absolute inset-y-0 left-1/3 w-px bg-black" />
@@ -120,19 +120,19 @@ const Section11 = () => {
             {/* Headline */}
             <div ref={titleRef} className="relative z-10">
               <div className="overflow-hidden">
-                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
+                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
                   Built On
                 </h1>
               </div>
               <div className="overflow-hidden mt-2">
-                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
+                <h1 className="line-anim text-black text-[18vw] sm:text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-8xl leading-[0.9] font-medium uppercase tracking-tight">
                   Trust<span className="text-[#6A9F30]">.</span>
                 </h1>
               </div>
             </div>
 
-            {/* Mobile-only inline image that keeps the section visually full */}
-            <div className="md:hidden relative w-full aspect-[16/11] mt-8 mb-2 overflow-hidden bg-slate-100">
+            {/* Tablet/mobile inline image (hidden at xl when right column shows) */}
+            <div className="xl:hidden relative w-full aspect-[16/8] md:aspect-[16/6] lg:aspect-[16/5] mt-8 mb-2 overflow-hidden bg-slate-100">
               <Image
                 src="/images/residential2.webp"
                 alt="Yoshinova expertise"
@@ -202,8 +202,8 @@ const Section11 = () => {
             </div>
           </div>
 
-          {/* Right image — desktop / tablet only */}
-          <div className="hidden md:block md:col-span-6 relative overflow-hidden bg-slate-200">
+          {/* Right image — only at xl (desktop) */}
+          <div className="hidden xl:block xl:col-span-6 relative overflow-hidden bg-slate-200">
             <Image
               src="/images/residential2.webp"
               alt="Yoshinova expertise"
@@ -242,7 +242,7 @@ const Section11 = () => {
         </div>
 
         {/* BOTTOM — three pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-black/10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 border-t border-black/10">
           {PILLARS.map((p, i) => {
             const bg = i === 0 ? 'bg-[#f1f5f9]' : i === 1 ? 'bg-[#6A9F30]' : 'bg-[#0f172a]';
             const numColor = i === 0 ? 'text-black/40' : i === 1 ? 'text-white/70' : 'text-white/40';

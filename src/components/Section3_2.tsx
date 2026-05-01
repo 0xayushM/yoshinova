@@ -65,34 +65,34 @@ const Section3_2 = () => {
   return (
     <section className="w-screen h-screen relative overflow-hidden bg-[#6A9F30]/90 backdrop-blur-sm">
       {/* Main content - reversed layout */}
-      <div className="relative z-10 w-full h-full flex items-center justify-between gap-12 px-4 md:pl-12 md:pr-0">
+      <div className="relative z-10 w-full h-full flex flex-col xl:flex-row items-start xl:items-center justify-center xl:justify-between gap-6 xl:gap-12 px-6 sm:px-8 md:px-12 lg:px-16 xl:pl-12 xl:pr-0 py-20 md:py-24 xl:py-0">
 
         {/* Left side - Large headline and description */}
-        <div className="max-w-xl">
+        <div className="max-w-2xl xl:max-w-xl shrink-0 xl:basis-auto">
           <div className="pb-2">
-            <h1 className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight uppercase">
               BESS Deployment
             </h1>
           </div>
-          
-          <div className="space-y-6 max-w-md">
-            <h2 className="text-[#111827] text-xl font-normal border-t-2 border-[#111827]">
+
+          <div className="space-y-4 md:space-y-5 lg:space-y-6 max-w-md">
+            <h2 className="text-[#111827] text-base md:text-lg lg:text-xl font-normal border-t-2 border-[#111827] pt-1">
               Asset Creation & Revenue Generation
             </h2>
-            <p className="text-white/80 text-sm md:text-base leading-relaxed">
+            <p className="text-white/80 text-sm md:text-base lg:text-base leading-relaxed">
               We deploy a custom-sized Battery Energy Storage System tailored to your facility's exact needs. Replace diesel generators, bypass peak Time-of-Day tariffs, and transform your energy infrastructure into a revenue-generating asset — a permanent solution to energy cost challenges.
             </p>
             <a
               href="/services/"
-              className="inline-block mt-4 px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              className="inline-block mt-4 px-5 py-2.5 md:px-6 md:py-3 border border-white/60 text-white text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Learn More
             </a>
           </div>
         </div>
 
-        {/* Right side - 3-row grid of deployment zones */}
-        <div className="hidden md:grid flex-1 grid-rows-3 gap-0 h-full">
+        {/* Right side - 3-row grid of deployment zones (only at xl) */}
+        <div className="hidden xl:grid flex-1 grid-rows-3 gap-0 h-full">
           {/* Row 1 */}
           <div className="grid grid-cols-2 gap-0">
             <ZoneCard {...zones[0]} onClick={() => handleZoneClick(zones[0].title)} />
@@ -110,6 +110,17 @@ const Section3_2 = () => {
             <ZoneCard {...zones[4]} onClick={() => handleZoneClick(zones[4].title)} />
             <ZoneCard {...zones[5]} onClick={() => handleZoneClick(zones[5].title)} />
           </div>
+        </div>
+
+        {/* Tablet zone grid (md/lg) - 3 cols × 2 rows so titles fit */}
+        <div className="hidden md:grid xl:hidden grid-cols-3 grid-rows-2 gap-2 w-full max-w-3xl h-[40vh]">
+          {zones.map((zone) => (
+            <ZoneCard
+              key={zone.zoneNumber}
+              {...zone}
+              onClick={() => handleZoneClick(zone.title)}
+            />
+          ))}
         </div>
       </div>
     </section>

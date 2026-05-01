@@ -105,7 +105,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
         className="fixed top-0 left-0 w-full z-[9990] pointer-events-none transition-transform duration-500 ease-in-out"
         style={{ transform: (navVisible || menuOpen) ? 'translateY(0)' : 'translateY(-100%)' }}
       >
-        <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
+        <div className="relative flex items-center justify-between w-full p-4 md:px-6 lg:px-10 xl:px-14 pt-4">
           <button onClick={goHome} className="p-4 flex items-center cursor-pointer pointer-events-auto">
             <Image
               src="/logo_white.webp"
@@ -122,22 +122,22 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             />
           </button>
 
-          {/* Brand name — absolutely centered, clickable to go home */}
+          {/* Brand name — absolutely centered, clickable to go home. Hidden at md/lg to avoid overlap with nav links on iPad widths. */}
           <button
             onClick={goHome}
-            className="absolute left-1/2 -translate-x-1/2 text-base md:text-xl lg:text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
+            className="hidden xl:block absolute left-1/2 -translate-x-1/2 text-2xl font-bold uppercase tracking-tight transition-colors duration-300 cursor-pointer pointer-events-auto"
             style={{ color: (mobileMenuOpen || menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
           >
             Yoshinova
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 pointer-events-auto">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 pointer-events-auto">
             {/* Services button: hover opens menu, click goes to /services */}
             <button
               onMouseEnter={() => setMenuOpen(true)}
               onClick={() => { setMenuOpen(false); router.push('/services'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
             >
               <div className="flex font-light items-center justify-between" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}>
                 <span>Services</span>
@@ -147,7 +147,7 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             {/* About button */}
             <button
               onClick={() => { setMenuOpen(false); router.push('/about'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
               style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
             >
               About
@@ -156,16 +156,20 @@ const PageNavbar = ({ isDark = false }: PageNavbarProps) => {
             {/* Contact button */}
             <button
               onClick={() => { setMenuOpen(false); router.push('/contact'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
               style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : (isDark ? 'black' : 'white')) }}
             >
               Contact
             </button>
 
-            {/* Energy Audit CTA */}
+            {/* Energy Audit CTA — inherits isDark so it's black on light pages, white on dark. */}
             <button
               onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
-              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-[#6A9F30] hover:text-white transition-colors duration-300"
+              className={`inline-block px-4 py-2 lg:px-6 lg:py-3 border text-xs lg:text-sm uppercase tracking-widest hover:bg-[#6A9F30] hover:text-white hover:border-[#6A9F30] transition-colors duration-300 ${
+                (menuOpen && !hasHover) || isDark
+                  ? 'border-black/60 text-black'
+                  : 'border-white/60 text-white'
+              }`}
             >
               Request Audit
             </button>

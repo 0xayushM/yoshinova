@@ -64,19 +64,19 @@ export default function TeamSection() {
     <section className="bg-[#080808] relative overflow-hidden">
 
       {/* ── Section header ── */}
-      <div className="max-w-[1200px] mx-auto px-6 md:px-14 pt-20 md:pt-28">
-        <p className="text-[#6A9F30] text-[11px] font-semibold uppercase tracking-[0.22em] mb-5">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 md:px-10 lg:px-14 pt-16 md:pt-24 lg:pt-28">
+        <p className="text-[#6A9F30] text-[11px] font-semibold uppercase tracking-[0.22em] mb-4 md:mb-5">
           The Team
         </p>
         <h2 className="text-white font-light leading-[1.05] tracking-tight"
-          style={{ fontSize: 'clamp(2rem, 4.5vw, 3.75rem)' }}>
+          style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.75rem)' }}>
           Every person here has stood on a factory floor<br className="hidden md:block" />
           <span className="text-[#6A9F30]"> and fixed real problems.</span>
         </h2>
       </div>
 
       {/* ── Roster ── */}
-      <div className="max-w-[1200px] mx-auto px-6 md:px-14 mt-16 pb-24">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 md:px-10 lg:px-14 mt-12 md:mt-16 pb-16 md:pb-24">
 
         {/* ─────────── ALL TEAM MEMBERS ─────────── */}
         {teamMembers.map(member => {
@@ -84,11 +84,11 @@ export default function TeamSection() {
           return (
             <div
               key={member.id}
-              className="border-t border-white/10 pt-12 md:pt-16 pb-14 md:pb-20"
+              className="border-t border-white/10 pt-10 md:pt-14 lg:pt-16 pb-12 md:pb-16 lg:pb-20"
               onMouseEnter={() => setHoveredId(member.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 md:gap-12 items-end">
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_340px] gap-8 md:gap-10 lg:gap-12 items-end">
 
                 {/* Left — all the text */}
                 <div>

@@ -66,21 +66,21 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
       <div className="relative z-10 w-full h-full flex flex-col justify-center">
 
         {/* YOSHINOVA label — sits above the border line */}
-        <p className="text-white text-sm md:text-xl font-bold uppercase tracking-widest mb-3 px-4 md:pl-12">
+        <p className="text-white text-sm md:text-base lg:text-xl font-bold uppercase tracking-widest mb-3 px-4 sm:px-6 md:px-8 lg:pl-12">
           YOSHINOVA
         </p>
 
         {/* Main row: headline left, description right */}
-        <div className="flex justify-between flex-col md:flex-row border-t border-white/20">
+        <div className="flex justify-between flex-col xl:flex-row border-t border-white/20">
 
           {/* Left: Main headline */}
-          <div className="flex-3 pt-4 flex flex-col justify-start w-full px-4 md:pl-12 leading-none">
+          <div className="flex-2 xl:flex-3 pt-4 flex flex-col justify-start w-full px-4 sm:px-6 md:px-8 lg:pl-12 leading-none">
 
             {loadingComplete ? (
               <SplitText
                 text="Your Energy"
                 tag="h1"
-                className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase"
+                className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] tracking-tighter uppercase"
                 delay={70}
                 duration={1}
                 ease="power3.out"
@@ -92,7 +92,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
                 textAlign="left"
               />
             ) : (
-              <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tight uppercase opacity-0">
+              <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] tracking-tight uppercase opacity-0">
                 Your Energy
               </h1>
             )}
@@ -100,7 +100,7 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
               <SplitText
                 text="Profitability Partner"
                 tag="h1"
-                className="text-white text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase -mt-2"
+                className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] tracking-tighter uppercase -mt-2"
                 delay={70}
                 duration={1}
                 ease="power3.out"
@@ -112,18 +112,18 @@ const Section1 = ({ loadingComplete = false }: Section1Props) => {
                 textAlign="left"
               />
             ) : (
-              <h1 className="text-transparent text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tighter uppercase opacity-0 -mt-2">
+              <h1 className="text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] tracking-tighter uppercase opacity-0 -mt-2">
                 Profitability Partner
               </h1>
             )}
-            <p className="text-white/60 text-sm md:text-base font-light tracking-wide mt-4 uppercase">
+            <p className="text-white/60 text-xs sm:text-sm md:text-base font-light tracking-wide mt-4 uppercase">
               Energy Audit &nbsp;·&nbsp; BESS Deployment &nbsp;·&nbsp; India
             </p>
           </div>
 
           {/* Right: description */}
           <div className="flex-1 flex-shrink-0 group">
-            <p className="text-white text-base md:text-xl font-light tracking-tight text-left mr-auto my-4 px-4 md:px-8 md:border-l md:border-white/50">
+            <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-tight text-left mr-auto my-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-8 xl:border-l xl:border-white/50">
               Advanced battery energy storage systems designed for industrial, commercial, and residential applications. Eliminate diesel dependency, optimize power costs, and create revenue-generating assets through intelligent energy management.
             </p>
           </div>

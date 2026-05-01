@@ -72,13 +72,13 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div className="relative z-10 max-w-[1600px] mx-auto pt-32 px-8 md:px-12 lg:px-20">
-          {/* 3-Column Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 py-12">
-            
+        <div className="relative z-10 max-w-[1600px] mx-auto pt-24 md:pt-28 lg:pt-32 px-6 sm:px-8 md:px-10 lg:px-20">
+          {/* Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-12 lg:gap-16 py-8 md:py-12">
+
             {/* Left Column - Contact Us */}
-            <div className="space-y-8">
-              <h2 className="text-white text-3xl md:text-4xl font-normal mb-8">Contact Us</h2>
+            <div className="space-y-6 md:space-y-8">
+              <h2 className="text-white text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal mb-6 md:mb-8">Contact Us</h2>
               
               {/* Social Links */}
               <div className="flex gap-4">
@@ -120,13 +120,13 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Middle Column - Spacer */}
-            <div className="hidden md:block"></div>
+            {/* Middle Column - Spacer (only at xl+) */}
+            <div className="hidden xl:block"></div>
 
             {/* Right Column - Send Us A Message */}
-            <div className="space-y-6">
-              <h2 className="text-white text-3xl md:text-4xl font-normal mb-2">Send Us</h2>
-              <h2 className="text-white text-3xl md:text-4xl font-normal mb-8">A Message</h2>
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-white text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal mb-2">Send Us</h2>
+              <h2 className="text-white text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-normal mb-6 md:mb-8">A Message</h2>
               
               <p className="text-white/60 text-sm mb-8">
                 Kindly fill this form. Average response is within 24hrs

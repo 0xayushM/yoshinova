@@ -26,9 +26,9 @@ const Section3 = () => {
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black/50" />
       {/* Main content */}
-      <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
-        {/* Left side - image */}
-        <div className="flex-1 max-w-3xl h-full flex items-center justify-center">
+      <div className="relative z-10 w-full h-full flex flex-col xl:flex-row items-center justify-center xl:justify-between px-6 sm:px-8 md:px-12 lg:px-16 xl:px-12 gap-8 xl:gap-12 py-20 md:py-24 xl:py-0">
+        {/* Left side - image (only show side-by-side at xl) */}
+        <div className="hidden xl:flex flex-1 max-w-3xl h-full items-center justify-center">
           <Image
             src="/images/energy-audit.webp"
             alt="Energy Audit"
@@ -43,30 +43,30 @@ const Section3 = () => {
         </div>
 
         {/* Right side - content */}
-        <div className="max-w-xl">
+        <div className="max-w-xl w-full xl:w-auto">
           <div className="mb-2">
-            <h1 className="text-white text-3xl md:text-7xl font-medium tracking-tight uppercase">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight uppercase">
               Energy Audit
             </h1>
           </div>
-          
-          <div className="space-y-6 max-w-md">
-            <h2 className="text-xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30]">
+
+          <div className="space-y-4 md:space-y-6 max-w-md">
+            <h2 className="text-base md:text-lg lg:text-xl text-[#6A9F30] font-normal border-t-2 border-[#6A9F30] pt-1">
               Optimize Your Operations
             </h2>
-            <p className="text-white/80 text-sm md:text-base leading-relaxed">
+            <p className="text-white/80 text-sm md:text-sm lg:text-base leading-relaxed">
               Our Chief Energy Advisor conducts a comprehensive floor audit to uncover hidden savings — identifying inefficient motors, poor power factors, and energy leaks. We deliver actionable insights that immediately cut your operating costs and establish a data-driven foundation for smarter energy decisions.
             </p>
-            <div className="flex flex-wrap gap-4 mt-4">
+            <div className="flex flex-wrap gap-3 md:gap-4 mt-4">
               <a
                 href="/services/energy-audit"
-                className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+                className="inline-block px-5 py-2.5 md:px-6 md:py-3 border border-white/60 text-white text-xs md:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
               >
                 Learn More
               </a>
               <button
                 onClick={() => setIsDialogOpen(true)}
-                className="inline-block px-6 py-3 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
+                className="inline-block px-5 py-2.5 md:px-6 md:py-3 bg-[#6A9F30] text-white text-xs md:text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300 cursor-pointer"
               >
                 Request Audit
               </button>

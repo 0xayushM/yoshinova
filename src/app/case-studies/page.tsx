@@ -67,23 +67,23 @@ export default function CaseStudiesPage() {
       <PageNavbar isDark />
         <main className="relative min-h-screen bg-[#e8e6e1]">
           {/* Hero Section */}
-          <section className="pt-32 pb-20 px-6 md:px-14">
+          <section className="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 px-6 sm:px-8 md:px-10 lg:px-14">
             <div className="max-w-7xl mx-auto">
-              <h1 className="text-black text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+              <h1 className="text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight mb-4 md:mb-6">
                 Case Studies
               </h1>
-              <p className="text-gray-700 text-lg md:text-xl max-w-3xl leading-relaxed">
-                Explore real-world implementations of Yoshinova's Battery Energy Storage Systems. 
-                From industrial deployments to residential installations, discover how we're transforming 
+              <p className="text-gray-700 text-base md:text-lg lg:text-xl max-w-3xl leading-relaxed">
+                Explore real-world implementations of Yoshinova's Battery Energy Storage Systems.
+                From industrial deployments to residential installations, discover how we're transforming
                 energy management across diverse applications.
               </p>
             </div>
           </section>
 
           {/* Case Studies Grid */}
-          <section className="pb-20 px-6 md:px-14">
+          <section className="pb-16 md:pb-20 px-6 sm:px-8 md:px-10 lg:px-14">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
                 {allCaseStudies.map((study) => (
                   <article 
                     key={study.id}
@@ -142,17 +142,17 @@ export default function CaseStudiesPage() {
           </section>
 
           {/* CTA Section */}
-          <section className="py-20 px-6 md:px-14 bg-black">
+          <section className="py-16 md:py-20 px-6 sm:px-8 md:px-10 lg:px-14 bg-black">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-white text-3xl md:text-5xl font-bold uppercase tracking-tight mb-6">
+              <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight mb-4 md:mb-6">
                 Ready to Transform Your Energy Management?
               </h2>
-              <p className="text-white/80 text-lg mb-8">
+              <p className="text-white/80 text-base md:text-lg mb-6 md:mb-8">
                 Let's discuss how Yoshinova's BESS solutions can deliver measurable results for your business.
               </p>
               <a
                 href="/contact"
-                className="inline-block px-8 py-4 bg-[#6A9F30] text-white text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
+                className="inline-block px-6 md:px-8 py-3 md:py-4 bg-[#6A9F30] text-white text-xs md:text-sm uppercase tracking-widest hover:bg-[#5a8f20] transition-colors duration-300"
               >
                 Get Started
               </a>

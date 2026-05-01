@@ -38,11 +38,11 @@ export default function AboutSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12">
         <SplitText
           text="We take a power-first, innovation-driven approach to developing, commercializing, and operating the critical infrastructure that underpins the breakthrough technologies of today and tomorrow."
           tag="h2"
-          className="text-white text-2xl md:text-4xl lg:text-5xl font-light leading-[1] mb-16"
+          className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light leading-[1.05] mb-10 md:mb-14 lg:mb-16"
           delay={30}
           duration={0.8}
           ease="power3.out"

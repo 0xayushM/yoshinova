@@ -97,7 +97,7 @@ const Navbar = () => {
         className="fixed top-0 left-0 w-full z-[9990] pointer-events-none transition-opacity duration-500"
         style={{ opacity: isHidden ? 0 : 1 }}
       >
-        <div className="relative flex items-center justify-between w-full p-4 md:px-10 lg:px-14 pt-4">
+        <div className="relative flex items-center justify-between w-full p-4 md:px-6 lg:px-10 xl:px-14 pt-4">
           <button onClick={goHome} className="flex items-center cursor-pointer pointer-events-auto">
             <Image
               src="/logo_white.webp"
@@ -124,31 +124,31 @@ const Navbar = () => {
           </button> */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 pointer-events-auto">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 pointer-events-auto">
             {/* Services button: hover opens menu, click goes to /services */}
             <button
               onMouseEnter={() => setMenuOpen(true)}
               onClick={() => { setMenuOpen(false); router.push('/services'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
             >
               <div className="flex font-light items-center justify-between" style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}>
                 <span>Services</span>
               </div>
             </button>
-            
+
             {/* About button */}
             <button
               onClick={() => { setMenuOpen(false); router.push('/about'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
               style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}
             >
               About
             </button>
-            
+
             {/* Contact button */}
             <button
               onClick={() => { setMenuOpen(false); router.push('/contact'); }}
-              className="text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
+              className="text-sm lg:text-base font-light uppercase tracking-tight transition-colors duration-300 cursor-pointer"
               style={{ color: (menuOpen ? (hasHover ? 'white' : 'black') : 'white') }}
             >
               Contact
@@ -157,7 +157,7 @@ const Navbar = () => {
             {/* Energy Audit CTA */}
             <button
               onClick={() => { setMenuOpen(false); setMobileMenuOpen(false); setIsDialogOpen(true); }}
-              className="inline-block px-6 py-3 border border-white/60 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
+              className="inline-block px-4 py-2 lg:px-6 lg:py-3 border border-white/60 text-white text-xs lg:text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-colors duration-300"
             >
               Request Audit
             </button>
@@ -299,7 +299,7 @@ const Navbar = () => {
         }}
       >
         <div className="flex flex-col items-center justify-center h-full px-8">
-          <nav className="space-y-8 w-full">
+          <nav className="space-y-4 w-full">
             <button
               ref={(el) => { menuItemsRef.current[0] = el; }}
               onClick={() => handleMobileNavClick('/services')}
@@ -326,7 +326,7 @@ const Navbar = () => {
               onClick={() => { setMobileMenuOpen(false); setIsDialogOpen(true); }}
               className="block w-full items-center flex text-left text-xl font-bold uppercase tracking-tight text-white bg-[#6A9F30] px-6 py-4 mt-4"
             >
-              Request Energy Audit
+              <span>Request</span> <span className="ml-2">Energy Audit</span>
             </button>
           </nav>
         </div>

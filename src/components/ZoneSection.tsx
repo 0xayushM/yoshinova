@@ -92,16 +92,16 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
           className='w-full cursor-pointer hover:bg-white/5 transition-colors border-b border-white/50'
           onClick={toggleContent}
         >
-          <div className={`flex items-center ${isLeft ? 'justify-start' : 'justify-end'} gap-8 px-12 py-4 `}>
+          <div className={`flex items-center ${isLeft ? 'justify-start' : 'justify-end'} gap-4 md:gap-6 lg:gap-8 px-4 sm:px-6 md:px-8 lg:px-12 py-4 `}>
             {!isLeft && (
-              <div className={`text-white text-xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
+              <div className={`text-white text-xl md:text-3xl lg:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
                 ▼
               </div>
             )}
             <SplitText
               text={title}
               tag="h1"
-              className={`text-white text-3xl md:text-7xl lg:text-8xl font-medium tracking-tight uppercase`}
+              className={`text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-medium tracking-tight uppercase`}
               delay={70}
               duration={1}
               ease="power3.out"
@@ -113,7 +113,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
               textAlign={isLeft ? 'left' : 'right'}
             />
             {isLeft && (
-              <div className={`text-white text-xl md:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
+              <div className={`text-white text-xl md:text-3xl lg:text-4xl transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} flex items-center`}>
                 ▼
               </div>
             )}
@@ -126,12 +126,12 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
           className="w-full overflow-hidden"
           style={{ height: 'auto', opacity: 1 }}
         >
-          <div className={`pt-8 pb-8 px-12 flex flex-col ${isLeft ? 'items-start' : 'items-end'}`}>
+          <div className={`pt-6 md:pt-8 pb-6 md:pb-8 px-4 sm:px-6 md:px-8 lg:px-12 flex flex-col ${isLeft ? 'items-start' : 'items-end'}`}>
             {isOpen && (
               <SplitText
                 text={description}
                 tag="p"
-                className={`text-white text-base md:text-xl font-medium tracking-tight ${isLeft ? 'text-left' : 'text-right'} md:max-w-[50%] mb-6`}
+                className={`text-white text-sm md:text-base lg:text-lg xl:text-xl font-medium tracking-tight ${isLeft ? 'text-left' : 'text-right'} md:max-w-[60%] lg:max-w-[50%] mb-4 md:mb-6`}
                 delay={0}
                 duration={0.6}
                 ease="power3.out"
@@ -143,7 +143,7 @@ const ZoneSection: React.FC<ZoneSectionProps> = ({
                 textAlign={isLeft ? 'left' : 'right'}
               />
             )}
-            <div className="md:w-[44vw] md:h-[34vh] h-[26vh] w-[80vw] rounded-xl p-3 md:p-4 bg-white border border-white/10 backdrop-blur-sm shadow-lg">
+            <div className="w-[90vw] sm:w-[88vw] md:w-[80vw] lg:w-[70vw] xl:w-[44vw] h-[26vh] md:h-[30vh] lg:h-[32vh] xl:h-[34vh] rounded-xl p-3 md:p-4 bg-white border border-white/10 backdrop-blur-sm shadow-lg">
               <div className="relative z-10 h-full w-full overflow-hidden">
                 <LiveMetricChart
                   series={liveSeries}
