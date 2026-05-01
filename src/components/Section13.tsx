@@ -89,7 +89,7 @@ const Section13 = () => {
       </div>
 
       {/* Bottom — giant YOSHINOVA text */}
-      <div className="hidden xl:block w-full bg-[#0a0a0a] flex items-end overflow-hidden relative" style={{ height: '35%' }}>
+      <div className="hidden lg:block w-full bg-[#0a0a0a] flex items-end overflow-hidden relative" style={{ height: '35%' }}>
         <h1
           className="font-bold leading-[2] w-full text-center select-none"
           style={{
