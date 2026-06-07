@@ -97,10 +97,7 @@ export default function ContactPage() {
                   </svg>
                   <div className="space-y-1">
                     <a href="tel:+919718204687" className="block text-white hover:text-[#6A9F30] transition-colors">
-                      +91-9718204687
-                    </a>
-                    <a href="tel:+919311378904" className="block text-white hover:text-[#6A9F30] transition-colors">
-                      +91-9311378904
+                      +91 97182 04687
                     </a>
                   </div>
                 </div>
@@ -113,9 +110,9 @@ export default function ContactPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div className="text-white">
-                  <p>F-6, Delhi State Industrial Development Corporation,</p>
-                  <p>Delhi State Industrial and Infrastructure Development,</p>
-                  <p>Nangloi, Delhi, 110041</p>
+                  <p>Ojas Mobility LLP, Part-B, Plot No. 103,</p>
+                  <p>Udyog Vihar, Delhi-Rohtak Road, Vill-Sankhol,</p>
+                  <p>Bahadurgarh -124507, Haryana</p>
                 </div>
               </div>
             </div>

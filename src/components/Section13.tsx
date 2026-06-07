@@ -30,23 +30,20 @@ const Section13 = () => {
             <div className="space-y-3">
               <div>
                 <p className="text-white/40 mb-1">General Enquiries</p>
-                <a href="mailto:info@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
-                  info@yoshinova.com
+                <a href="mailto:projecthead@ojasmobility.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
+                  projecthead@ojasmobility.com
                 </a>
               </div>
               <div>
                 <p className="text-white/40 mb-1">New Projects</p>
-                <a href="mailto:projects@yoshinova.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
-                  projects@yoshinova.com
+                <a href="mailto:projecthead@ojasmobility.com" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors">
+                  projecthead@ojasmobility.com
                 </a>
               </div>
               <div>
                 <p className="text-white/40 mb-1">Phone</p>
                 <a href="tel:+919718204687" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors block">
-                  +91-9718204687
-                </a>
-                <a href="tel:+919311378904" className="text-white/80 normal-case tracking-normal underline underline-offset-2 hover:text-white transition-colors block">
-                  +91-9311378904
+                  +91 97182 04687
                 </a>
               </div>
             </div>
@@ -54,7 +51,7 @@ const Section13 = () => {
               <div>
                 <p className="text-white/40 mb-1">Address</p>
                 <p className="text-white/80 normal-case tracking-normal text-[11px] leading-relaxed">
-                  F-6, Delhi State Industrial Development Corporation, Delhi State Industrial and Infrastructure Development, Nangloi, Delhi, 110041
+                  Ojas Mobility LLP, Part-B, Plot No. 103, Udyog Vihar, Delhi-Rohtak Road, Vill-Sankhol, Bahadurgarh -124507, Haryana
                 </p>
               </div>
               <div>
