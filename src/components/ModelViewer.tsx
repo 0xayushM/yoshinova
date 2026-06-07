@@ -121,7 +121,7 @@ interface ModelViewerProps {
 
 export default function ModelViewer({ onProgress, loadingComplete = false }: ModelViewerProps): JSX.Element {
   // SSR-safe device detection — computed once on client mount via useState
-  const [deviceInfo, setDeviceInfo] = React.useState({ isMobile: false, shouldReduceQuality: false });
+  const [deviceInfo, setDeviceInfo] = React.useState({ isMobile: false, isLowEnd: false, shouldReduceQuality: false });
 
   React.useEffect(() => {
     const isMobile = window.innerWidth < 768;
@@ -129,23 +129,28 @@ export default function ModelViewer({ onProgress, loadingComplete = false }: Mod
       typeof navigator !== 'undefined' &&
       !!navigator.hardwareConcurrency &&
       navigator.hardwareConcurrency <= 4;
-    setDeviceInfo({ isMobile, shouldReduceQuality: isMobile || isLowEnd });
+    setDeviceInfo({ isMobile, isLowEnd, shouldReduceQuality: isMobile || isLowEnd });
   }, []);
 
-  const { isMobile, shouldReduceQuality } = deviceInfo;
+  const { isMobile, isLowEnd, shouldReduceQuality } = deviceInfo;
 
   return (
     <div style={{ position: "fixed", inset: 0, width: "100%", height: "100vh", zIndex: 0 }}>
       <Canvas
         shadows={!shouldReduceQuality}
-        dpr={shouldReduceQuality ? [1, 1] : [1, 1.5]}
+        // Render at the real device pixel ratio (capped at 2) so high-DPI
+        // phones aren't upscaled from a 1x framebuffer (the blur cause).
+        // Low-end devices stay at a gentler 1.5x cap to protect frame rate.
+        dpr={isLowEnd ? [1, 1.5] : [1, 2]}
         style={{ background: 'linear-gradient(180deg, #7bb1e8ff 0%, #d6dce4 40%, #e8e6e1 100%)' }}
         camera={{
           position: [0, 0, 3],
           fov: isMobile ? 60 : 45,
         }}
         gl={{
-          antialias: !shouldReduceQuality,
+          // MSAA stays on except on genuinely low-end hardware — the thin
+          // tower lattice aliases badly without it.
+          antialias: !isLowEnd,
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.2,
           outputColorSpace: THREE.SRGBColorSpace,
